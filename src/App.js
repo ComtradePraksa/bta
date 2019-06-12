@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import classes from './App.css';
 import Login from './components/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -12,14 +12,18 @@ class App extends Component {
     accomodations: []
   }
 
-  componentDidMount() {
-    axios.get(`http://localhost:3001/accomodations`)
-      .then(res => {
-        const accomodations = (res.data).data[0];
-        this.setState({ accomodations });
-        console.log(accomodations);
-      })
-  };
+  // componentDidMount() {
+  //   const url = 'https://www.booking.com/hotel/de/hotel-dortmund.html';
+  //   axios.get(`https://scrappet.herokuapp.com/api/scrape?url=${url}`)
+  //     .then(res => {
+  //       const accomodations = res.data.page.meta_tags;
+  //       this.setState({ accomodations });
+  //     })
+  // };
+        // <h1>{this.state.accomodations['og:title']}</h1>
+        // <div>{this.state.accomodations['og:description']}</div>
+        // <div><img src={this.state.accomodations['og:image']} alt="Hotel"></img></div>
+        // <div>{this.state.accomodations['og:url']}</div>
 
   render() {
     return (
