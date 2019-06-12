@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styles from './Login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Login extends Component {
   state = {
@@ -68,7 +69,7 @@ class Login extends Component {
           <div className= {styles.formGroup}>
             <div className={styles.inputWrapper}>
               <div className={styles.iconWrapper}>
-                <i className="fas fa-user"></i>
+              <FontAwesomeIcon icon="user" />
               </div>
               <input onChange = {this.handleInput} type="text" name="username" placeholder="username"/>
             </div>
@@ -76,7 +77,7 @@ class Login extends Component {
           <div className={styles.formGroup}>
             <div className={styles.inputWrapper}>
               <div className={styles.iconWrapper}>
-                <i className="fas fa-key"></i>
+              <FontAwesomeIcon icon="check-square" />
               </div>
               <input onChange = {this.handleInput} type="password" name="password" placeholder="password"/>
             </div>
