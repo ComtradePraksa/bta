@@ -1,9 +1,5 @@
 .App {
   text-align: center;
-  height: 100vh;
-}
-.App {
-  text-align: center;
   min-height: 100vh;
   background-image: url("./assets/girl-city.jpg");
   background-repeat: no-repeat;
