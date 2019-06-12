@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Login from './components/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckSquare, faUser } from '@fortawesome/free-solid-svg-icons';
+import {  faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faCheckSquare, faUser);
+library.add( faKey, faUser);
 
 class App extends Component {
   state = {
