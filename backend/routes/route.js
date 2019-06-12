@@ -1,6 +1,6 @@
 module.exports = function (app, express, mysqlConnection) {
 
-  let router = express.Router();
+  const router = express.Router();
 
   router.route('/hotels')
     .get((req, res) => {

@@ -12,12 +12,11 @@ class App extends Component {
       .then(res => {
         const hotels = (res.data).data[0];
         this.setState({ hotels });
-      })
-      
+      });
   }
 
   render() {
-    let name = (this.state.hotels.name);
+    const name = (this.state.hotels.name);
     return (
       <div className={classes.App}>
           <h1 className="App-title">BTA</h1>
