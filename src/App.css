@@ -1,3 +1,24 @@
 .App {
   text-align: center;
+  height: 100vh;
+}
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-image: url("./assets/girl-city.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.App::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
 }

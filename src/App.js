@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import classes from './App.css';
+import Login from './components/Login/Login';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckSquare, faUser } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCheckSquare, faUser);
 
 class App extends Component {
   state = {
-    hotels: []
+    accomodations: []
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/hotels`)
+    axios.get(`http://localhost:3001/accomodations`)
       .then(res => {
-        const hotels = (res.data).data[0];
-        this.setState({ hotels });
+        const accomodations = (res.data).data[0];
+        this.setState({ accomodations });
+        console.log(accomodations);
       })
-      
-  }
+  };
 
   render() {
-    let name = (this.state.hotels.name);
     return (
       <div className={classes.App}>
-          <h1 className="App-title">BTA</h1>
-          <p>{name}</p>
+        <Login /> 
       </div>
     );
   }
