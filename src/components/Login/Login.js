@@ -69,7 +69,7 @@ class Login extends Component {
           <div className= {styles.formGroup}>
             <div className={styles.inputWrapper}>
               <div className={styles.iconWrapper}>
-              <FontAwesomeIcon icon="key" />
+              <FontAwesomeIcon icon="user" />
               </div>
               <input onChange = {this.handleInput} type="text" name="username" placeholder="username"/>
             </div>
@@ -77,7 +77,7 @@ class Login extends Component {
           <div className={styles.formGroup}>
             <div className={styles.inputWrapper}>
               <div className={styles.iconWrapper}>
-              <FontAwesomeIcon icon="user" />
+              <FontAwesomeIcon icon="key" />
               </div>
               <input onChange = {this.handleInput} type="password" name="password" placeholder="password"/>
             </div>
