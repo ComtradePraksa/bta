@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 
 connection.connect((err) => {
   return (err) ? console.log('error', err) : console.log('Successfully connected to database:', config.dbConfig.database);
-});
+  });
 
 connection.on('error', (err) => {
   console.log('error', err);

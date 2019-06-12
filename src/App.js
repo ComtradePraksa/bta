@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import classes from './App.css';
+import Login from './components/Login/Login';
 
 class App extends Component {
   state = {
@@ -12,15 +13,13 @@ class App extends Component {
       .then(res => {
         const hotels = (res.data).data[0];
         this.setState({ hotels });
-      });
-  }
+      })
+  };
 
   render() {
-    const name = (this.state.hotels.name);
     return (
       <div className={classes.App}>
-          <h1 className="App-title">BTA</h1>
-          <p>{name}</p>
+        <Login /> 
       </div>
     );
   }
