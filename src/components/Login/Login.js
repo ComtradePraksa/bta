@@ -77,7 +77,7 @@ class Login extends Component {
           <div className={styles.formGroup}>
             <div className={styles.inputWrapper}>
               <div className={styles.iconWrapper}>
-              <FontAwesomeIcon icon="check-square" />
+              <FontAwesomeIcon icon="key" />
               </div>
               <input onChange = {this.handleInput} type="password" name="password" placeholder="password"/>
             </div>
