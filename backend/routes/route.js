@@ -64,6 +64,13 @@ module.exports = function (app, express, mysqlConnection) {
         return res.send({ error: false, data: results, message: 'Users list.' });
       });
     });
+  router.route('/users')
+    .post((req, res) => {
+      mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?',[req.body.username,req.body.password], function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Users list.' });
+      });
+    });
 
   router.route('/users/:id')
     .get((req, res) => {
