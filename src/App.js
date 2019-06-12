@@ -5,14 +5,15 @@ import Login from './components/Login/Login';
 
 class App extends Component {
   state = {
-    hotels: []
+    accomodations: []
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:3001/hotels`)
+    axios.get(`http://localhost:3001/accomodations`)
       .then(res => {
-        const hotels = (res.data).data[0];
-        this.setState({ hotels });
+        const accomodations = (res.data).data[0];
+        this.setState({ accomodations });
+        console.log(accomodations);
       })
   };
 
