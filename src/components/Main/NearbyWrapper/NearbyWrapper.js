@@ -34,7 +34,7 @@ class NearbyWrapper extends Component {
     render() {
         let nearbyPlacesToRender = null;
 
-        if (true) {
+        if (this.state.nearbyPlaces !== []) {
             nearbyPlacesToRender = (
                 <div>
                     {this.state.nearbyPlaces.slice(0,5).map((nearbyPlace) => {
