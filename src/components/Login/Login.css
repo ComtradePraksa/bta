@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+.loginWrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background-image: url("./../../assets/frankfurt.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+position: relative;
+padding: 2.5rem 1rem;
+}
+
+.loginWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(37, 35, 54, 0.9), rgba(45, 35, 70, 0.8));
+  /* background-image: linear-gradient(rgba(56, 121, 192,0.9),rgba(56, 121, 192,0.9)), url('../images/login-back.jpg'); */
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 0.8rem;
+  background-color: #ff5f8a;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  width: 100%;
+  transition: box-shadow 0.05s linear;
+}
+
+.btn:hover {
+  box-shadow: 0rem 0rem 0.2rem rgba(0, 0, 0, 0.7);
+}
+
+.loginWrapper form {
+  background-color: #fff;
+  padding: 6rem 2.5rem 2.5rem 2.5rem;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0.2rem;
+  /* overflow: hidden; */
+  box-shadow: 0rem 0rem 0.6rem 0.2rem rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  animation-name: slide;
+  animation-duration: 2s;
+}
+
+.loginWrapper form .formGroup {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.6rem;
+  box-shadow: 0rem 0rem 0.1rem rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+  display: inline-block;
+}
+
+.loginWrapper form .formHeader {
+  background-color: #384867;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+}
+
+.inputWrapper .iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #384867;
+  width: 2.5rem;
+  box-shadow: 0px 0px 0.1rem rgba(0, 0, 0, 0.7);
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+@keyframes slide {
+  from {
+    margin-top: -1000px;
+  }
+
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -1,59 +1,94 @@
+const jwt = require('jsonwebtoken');
+const secret = 'secretkeyexample';
+const tokenVerification = (req, res, next) => {
+  //bearer header
+  const bearerHeader = req.headers['authorization'];
+  //see if bearer is defined
+  if (typeof bearerHeader !== 'undefined') {
+    //split a bearer header by space and take second part of it(that is out token value);
+    const token = bearerHeader.split(' ')[1];
+    req.token = token;
+    next();
+  }
+  else {
+    res.send({
+      message: 'Forbidden route'
+    })
+  }
+}
+
 module.exports = function (app, express, mysqlConnection) {
 
-  let router = express.Router();
+  const router = express.Router();
 
-  router.route('/hotels')
+  router.route('/accomodations')
     .get((req, res) => {
-      mysqlConnection.query('SELECT * FROM hotels', function (error, results) {
+      mysqlConnection.query('SELECT * FROM accomodations', function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Hotels list.' });
+        return res.send({ error: false, data: results, message: 'accomodations list.' });
       });
     })
-    .post((req, res) => {
-      if (!req.body) {
-        return res.status(400).send({ error: true, message: 'Please provide hotel data' });
-      }
-      mysqlConnection.query("INSERT INTO hotels SET ?", req.body, function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'New hotel has been added successfully.' });
-      });
+    // .post((req, res) => {
+    //   if (!req.body) {
+    //     return res.status(400).send({ error: true, message: 'Please provide accomodation data' });
+    //   }
+    //   mysqlConnection.query("INSERT INTO accomodations SET ?", req.body, function (error, results) {
+    //     if (error) throw error;
+    //     return res.send({ error: false, data: results, message: 'New accomodation has been added successfully.' });
+    //   });
+    // })
+    .post(tokenVerification, (req, res) => {
+      jwt.verify(req.token, secret, (err, authData) => {
+        if (err) {
+          res.sendStatus(403);
+        }
+        else {
+          if (!req.body) {
+            return res.status(400).send({ error: true, message: 'Please provide accomodation data' });
+          }
+          mysqlConnection.query("INSERT INTO accomodations SET ?", req.body, function (error, results) {
+            if (error) throw error;
+            return res.send({ error: false, data: results, message: 'New accomodation has been added successfully.', authData });
+          });
+        }
+      })
     })
     .put((req, res) => {
       if (!req.body.id || !req.body) {
-        return res.status(400).send({ error: req.body, message: 'Please provide hotel data and hotel id' });
+        return res.status(400).send({ error: req.body, message: 'Please provide accomodation data and accomodation id' });
       }
-      mysqlConnection.query("UPDATE hotels SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
+      mysqlConnection.query("UPDATE accomodations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Hotel has been updated successfully.' });
+        return res.send({ error: false, data: results, message: 'accomodation has been updated successfully.' });
       });
     })
     .patch((req, res) => {
       if (!req.body.id || !req.body) {
-        return res.status(400).send({ error: req.body, message: 'Please provide hotel data and hotel id' });
+        return res.status(400).send({ error: req.body, message: 'Please provide accomodation data and accomodation id' });
       }
-      mysqlConnection.query("UPDATE hotels SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
+      mysqlConnection.query("UPDATE accomodations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Hotel has been patched successfully.' });
+        return res.send({ error: false, data: results, message: 'accomodation has been patched successfully.' });
       });
     })
     .delete((req, res) => {
       if (!req.body.id) {
-        return res.status(400).send({ error: true, message: 'Please provide hotel id' });
+        return res.status(400).send({ error: true, message: 'Please provide accomodation id' });
       }
-      mysqlConnection.query('DELETE FROM hotels WHERE id = ?', [req.body.id], function (error, results) {
+      mysqlConnection.query('DELETE FROM accomodations WHERE id = ?', [req.body.id], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Hotel has been deleted successfully.' });
+        return res.send({ error: false, data: results, message: 'accomodation has been deleted successfully.' });
       });
     });
 
-  router.route('/hotels/:id')
+  router.route('/accomodations/:id')
     .get((req, res) => {
       if (!req.params.id) {
-        return res.status(400).send({ error: true, message: 'Please provide hotel id' });
+        return res.status(400).send({ error: true, message: 'Please provide accomodation id' });
       }
-      mysqlConnection.query('SELECT * FROM hotels where id=?', req.params.id, function (error, results) {
+      mysqlConnection.query('SELECT * FROM accomodations where id=?', req.params.id, function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results[0], message: 'Hotels list by id.' });
+        return res.send({ error: false, data: results[0], message: 'accomodations list by id.' });
       });
     });
 
@@ -62,6 +97,28 @@ module.exports = function (app, express, mysqlConnection) {
       mysqlConnection.query('SELECT * FROM users', function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Users list.' });
+      });
+    });
+  // router.route('/users')
+  //   .post((req, res) => {
+  //     mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?',[req.body.username,req.body.password], function (error, results) {
+  //       if (error) throw error;
+  //       return res.send({ error: false, data: results, message: 'Users list.' });
+  //     });
+  //   });
+  //test JWT
+  router.route('/users')
+    .post((req, res) => {
+      mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?', [req.body.username, req.body.password], function (error, results) {
+        if (error) throw error;
+        const loggedUser = results[0];
+        if (loggedUser) {
+          //JWT sign
+          jwt.sign({ loggedUser }, secret, (err, token) => {
+            if (err) console.log(err);
+            return res.send({ error: false, data: results, message: 'Users list.', token: token });
+          })
+        }
       });
     });
 
