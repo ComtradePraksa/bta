@@ -1,13 +1,11 @@
-"use strict";
-
-let express = require('express');
-let bodyParser = require('body-parser');
-let mysql = require('mysql');
-let cors = require('cors');
-let morgan = require('morgan');
-let app = express();
-let config = require('./config/config');
-let connection = mysql.createConnection(config.dbConfig);
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
+const cors = require('cors');
+const morgan = require('morgan');
+const app = express();
+const config = require('./config/config');
+const connection = mysql.createConnection(config.dbConfig);
 
 app.use(cors());
 
@@ -16,12 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 connection.connect((err) => {
-  if (err) {
-    console.log('error', err);
-  } else {
-    console.log('Successfully connected to database:', config.dbConfig.database);
-  }
-});
+  return (err) ? console.log('error', err) : console.log('Successfully connected to database:', config.dbConfig.database);
+  });
+
 connection.on('error', (err) => {
   console.log('error', err);
 });
