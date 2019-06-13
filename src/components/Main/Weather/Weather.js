@@ -10,16 +10,18 @@ class Weather extends Component {
     componentDidMount() {
         (async () => {
            const weather = await getCLWeather();
+           console.log(weather);
            this.setState({weather:weather})
         })();
     };
     render() {
-        let view = ''
         if(this.state.weather!==""){
-            view = <div>{this.state.weather.weather[0].main}<img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt='icon' />{Math.round(this.state.weather.main.temp)}</div>
+            var temp = Math.round(this.state.weather.main.temp);
+            var icon = this.state.weather.weather[0].icon;
+            var type = this.state.weather.weather[0].main;
         }
         return (
-            <React.Fragment>{view}</React.Fragment>
+            <div>{type}<img src={`http://openweathermap.org/img/w/${icon}.png`} alt={this.state.userName} />{temp}</div>
         );
     }
 }
