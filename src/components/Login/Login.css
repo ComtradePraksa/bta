@@ -1,15 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 .loginWrapper{
-display: flex;
-justify-content: center;
-align-items: center;
 min-height: 100vh;
 background-image: url("./../../assets/frankfurt.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-background-position: center;
-position: relative;
 padding: 2.5rem 1rem;
 }
 
@@ -21,78 +14,54 @@ padding: 2.5rem 1rem;
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(rgba(37, 35, 54, 0.9), rgba(45, 35, 70, 0.8));
-  /* background-image: linear-gradient(rgba(56, 121, 192,0.9),rgba(56, 121, 192,0.9)), url('../images/login-back.jpg'); */
 }
 
 .btn {
   display: inline-block;
   padding: 0.6rem 0.8rem;
-  background-color: #ff5f8a;
-  color: #fff;
-  text-transform: uppercase;
-  border-radius: 0.2rem;
-  cursor: pointer;
-  width: 100%;
-  transition: box-shadow 0.05s linear;
-}
-
-.btn:hover {
-  box-shadow: 0rem 0rem 0.2rem rgba(0, 0, 0, 0.7);
+  font-size: 1em;
+  
+  background: linear-gradient(to bottom, rgb(120, 119, 128) 0%, rgb(59, 58, 68) 0%, rgb(130, 135, 161) 0%, #413e42 49%, rgb(62, 59, 63) 50%, rgb(140, 140, 156) 100%);
+   /*
+  background: linear-gradient(to bottom, rgb(43, 181, 142) 0%, rgb(7, 84, 57) 52%, rgb(8, 86, 61) 54%, rgb(13, 105, 66) 70%, rgb(43, 181, 132) 100%);
+   */
+  /*
+  background: linear-gradient(to bottom, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 0%, rgba(51,153,255,1) 49%, rgba(51,153,255,1) 50%, rgba(41,184,229,1) 100%);*/
 }
 
 .loginWrapper form {
   background-color: #fff;
-  padding: 6rem 2.5rem 2.5rem 2.5rem;
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 0.2rem;
-  /* overflow: hidden; */
+ /* padding: 6rem 2.5rem 2.5rem 2.5rem; */
+  padding: 6rem 0.8rem 0.8rem 0.8rem;
+  max-width: 100vw;
   box-shadow: 0rem 0rem 0.6rem 0.2rem rgba(0, 0, 0, 0.4);
   z-index: 2;
-  animation-name: slide;
-  animation-duration: 2s;
 }
 
 .loginWrapper form .formGroup {
-  margin-bottom: 30px;
-  width: 100%;
+  margin-bottom: 2em;;
 }
 
 .formGroup input {
-  width: 100%;
   padding: 0.6rem;
   box-shadow: 0rem 0rem 0.1rem rgba(0, 0, 0, 0.7);
-  font-size: 16px;
-  border: none;
-  outline: none;
+  /*font-size: 1em; isključeno zbog zbrke u firefox-u*/
   border-top-right-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
   display: inline-block;
 }
 
 .loginWrapper form .formHeader {
-  background-color: #384867;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  color: #fff;
+ /* background-color: #384867; */
+  background-color: #232b4b;
+  transition: box-shadow 0.05s linear;
+  height: 20%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  text-transform: uppercase;
-}
-
-.inputWrapper {
-  position: relative;
-  display: flex;
 }
 
 .inputWrapper .iconWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: #384867;
   width: 2.5rem;
   box-shadow: 0px 0px 0.1rem rgba(0, 0, 0, 0.7);
@@ -100,24 +69,15 @@ padding: 2.5rem 1rem;
   border-bottom-left-radius: 0.2rem;
 }
 
-@keyframes slide {
-  from {
-    margin-top: -1000px;
-  }
-
-  to {
-    margin-top: 0;
-  }
+.btn:hover {
+  background: transparent;
+  color: navy;
+  outline: 1.5px inset navy;
 }
 
-@keyframes fadein {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
+@media(min-width: 400px) {
+  .loginWrapper form {
+    max-width: 400px;
+    padding: 6rem 2.5rem 2.5rem 2.5rem;
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styles from './Login.css';
+import classesIndex from './../../index.css';
+import classes from './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Login extends Component {
@@ -61,31 +62,31 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className= {styles.loginWrapper} >
-        <form onSubmit = {this.login}>
-          <div className={styles.formHeader}>
+      <div className= {[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.backg].join(' ')} >
+        <form onSubmit = {this.login} className={[classesIndex.fullWidth, classesIndex.slide, classesIndex.radius2, classesIndex.rel].join(' ')}>
+          <div className={[classes.formHeader, classesIndex.white, classesIndex.upperC, classesIndex.flexCenter, classesIndex.fullWidth].join(' ')}>
             Login to BTA
           </div>
-          <div className= {styles.formGroup}>
-            <div className={styles.inputWrapper}>
-              <div className={styles.iconWrapper}>
+          <div className= {[classes.formGroup, classesIndex.fullWidth].join(' ')}>
+            <div className={[classes.inputWrapper, classesIndex.flex, classesIndex.rel].join(' ')}>
+              <div className={[classes.iconWrapper, classesIndex.flexCenter].join(' ')}>
               <FontAwesomeIcon icon="user" />
               </div>
-              <input onChange = {this.handleInput} type="text" name="username" placeholder="username"/>
+              <input onChange = {this.handleInput} className={classesIndex.fullWidth} type="text" name="username" placeholder="Username"/>
             </div>
           </div>
-          <div className={styles.formGroup}>
-            <div className={styles.inputWrapper}>
-              <div className={styles.iconWrapper}>
+          <div className={[classes.formGroup, classesIndex.fullWidth].join(' ')}>
+            <div className={[classes.inputWrapper, classesIndex.flex, classesIndex.rel].join(' ')}>
+              <div className={[classes.iconWrapper, classesIndex.flexCenter].join(' ')}>
               <FontAwesomeIcon icon="key" />
               </div>
-              <input onChange = {this.handleInput} type="password" name="password" placeholder="password"/>
+              <input onChange = {this.handleInput} className={classesIndex.fullWidth} type="password" name="password" placeholder="Password"/>
             </div>
           </div>
           <div className = "feedback">
             {this.state.feedback}
           </div>
-          <button className={styles.btn}>Login</button>
+          <button className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
         </form>
       </div>
     );
