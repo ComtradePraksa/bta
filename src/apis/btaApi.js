@@ -3,11 +3,11 @@ import axios from 'axios';
 const url = `http://localhost:3001`;
 const headers = { 'Content-Type': 'application/json' };
 
-const get = async () => {
+const get = async (table) => {
     try {
-        const response = await axios.get(`${url}`, { headers });
+        const response = await axios.get(`${url}/${table}`, { headers });
         const data = await response.data;
-        console.log(data)
+        return data
     } catch (error) {
         console.log(error)
     }
