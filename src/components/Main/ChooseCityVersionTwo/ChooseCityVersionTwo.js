@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getFromDatabase } from '../../../apis/btaApi';
-import classes from './ChooseCity.css';
+import classes from './ChooseCityVersionTwo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -8,7 +8,7 @@ class ChooseCity extends Component {
     state = {
         cities: [],
         dropdownVisible: false,
-        placeholderMessage: "Select city..."
+        placeholderMessage: "City..."
     }
 
     componentDidMount() {
@@ -40,20 +40,24 @@ class ChooseCity extends Component {
         })
         return (
             <div className={classes.chooseCity}>
-                <h2>I would like to get some info on the city: </h2>
-                <div className={classes.dropdownWrapper} onClick={this.toggleDropdown}>
+                <h2>I would like to get some info on the</h2><div>&nbsp;</div>
+                {!this.state.dropdownVisible &&
+
+                <h2 className={classes.cityLink} onClick={this.toggleDropdown}>city</h2>}
+                {this.state.dropdownVisible &&
+
+                <div className={classes.dropdownWrapper}>
                     <div className={classes.dropdown} >
                         <div className={classes.dropdownTileWrapper}>
                             <input placeholder={this.state.placeholderMessage} readOnly />
                             <FontAwesomeIcon icon="chevron-down" />
                         </div>
-                        {this.state.dropdownVisible &&
                             <ul className={classes.dropdownItemList}>
                                 {list}
                             </ul>
-                        }
+                        
                     </div>
-                </div>
+                </div>}
             </div>
         )
     };

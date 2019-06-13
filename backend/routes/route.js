@@ -1,3 +1,22 @@
+const jwt = require('jsonwebtoken');
+const secret = 'secretkeyexample';
+const tokenVerification = (req, res, next) => {
+  //bearer header
+  const bearerHeader = req.headers['authorization'];
+  //see if bearer is defined
+  if (typeof bearerHeader !== 'undefined') {
+    //split a bearer header by space and take second part of it(that is out token value);
+    const token = bearerHeader.split(' ')[1];
+    req.token = token;
+    next();
+  }
+  else {
+    res.send({
+      message: 'Forbidden route'
+    })
+  }
+}
+
 module.exports = function (app, express, mysqlConnection) {
 
   const router = express.Router();
@@ -9,14 +28,30 @@ module.exports = function (app, express, mysqlConnection) {
         return res.send({ error: false, data: results, message: 'accomodations list.' });
       });
     })
-    .post((req, res) => {
-      if (!req.body) {
-        return res.status(400).send({ error: true, message: 'Please provide accomodation data' });
-      }
-      mysqlConnection.query("INSERT INTO accomodations SET ?", req.body, function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'New accomodation has been added successfully.' });
-      });
+    // .post((req, res) => {
+    //   if (!req.body) {
+    //     return res.status(400).send({ error: true, message: 'Please provide accomodation data' });
+    //   }
+    //   mysqlConnection.query("INSERT INTO accomodations SET ?", req.body, function (error, results) {
+    //     if (error) throw error;
+    //     return res.send({ error: false, data: results, message: 'New accomodation has been added successfully.' });
+    //   });
+    // })
+    .post(tokenVerification, (req, res) => {
+      jwt.verify(req.token, secret, (err, authData) => {
+        if (err) {
+          res.sendStatus(403);
+        }
+        else {
+          if (!req.body) {
+            return res.status(400).send({ error: true, message: 'Please provide accomodation data' });
+          }
+          mysqlConnection.query("INSERT INTO accomodations SET ?", req.body, function (error, results) {
+            if (error) throw error;
+            return res.send({ error: false, data: results, message: 'New accomodation has been added successfully.', authData });
+          });
+        }
+      })
     })
     .put((req, res) => {
       if (!req.body.id || !req.body) {
@@ -64,11 +99,26 @@ module.exports = function (app, express, mysqlConnection) {
         return res.send({ error: false, data: results, message: 'Users list.' });
       });
     });
+  // router.route('/users')
+  //   .post((req, res) => {
+  //     mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?',[req.body.username,req.body.password], function (error, results) {
+  //       if (error) throw error;
+  //       return res.send({ error: false, data: results, message: 'Users list.' });
+  //     });
+  //   });
+  //test JWT
   router.route('/users')
     .post((req, res) => {
-      mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?',[req.body.username,req.body.password], function (error, results) {
+      mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?', [req.body.username, req.body.password], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Users list.' });
+        const loggedUser = results[0];
+        if (loggedUser) {
+          //JWT sign
+          jwt.sign({ loggedUser }, secret, (err, token) => {
+            if (err) console.log(err);
+            return res.send({ error: false, data: results, message: 'Users list.', token: token });
+          })
+        }
       });
     });
 
