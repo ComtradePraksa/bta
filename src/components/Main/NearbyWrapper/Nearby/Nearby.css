@@ -1,0 +1,8 @@
+.Nearby {
+    display: block;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 1%;
+    margin: 5% auto;
+    width: 95%;
+}
