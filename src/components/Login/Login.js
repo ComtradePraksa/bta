@@ -24,7 +24,7 @@ class Login extends Component {
     //no empty fields allowed!!!
     if(!user.username || !user.password){
       //display feedback
-      this.feedback = 'Username and password are required!'
+      this.setState({feedback :'Username and password are required!'})
     }
     else{
       //check if there is a user with these credentials
