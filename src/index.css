@@ -25,8 +25,19 @@ nav, section, summary, video {
 }
 
 .flexCenter {
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.rel {
+  position: relative;
+}
+
+.backg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .white {
@@ -43,4 +54,50 @@ nav, section, summary, video {
 
 .p1 {
   padding: 1em;
+}
+
+.radius2 {
+  border-radius: 0.2rem;
+}
+
+.upperC {
+  text-transform: uppercase;
+}
+
+.hover:hover {
+  transition: 0.8s;
+  box-shadow: 5px 5px 5px #201e1ed0;
+  cursor:pointer;
+}
+
+.slide {
+  animation-name: slide;
+  animation-duration: 2s;
+}
+
+.fadein {
+  animation-name: fadein;
+  animation-duration: 1s;
+}
+
+@keyframes slide {
+  from {
+    margin-top: -1000px;
+  }
+
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
