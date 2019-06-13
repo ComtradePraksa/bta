@@ -1,21 +1,18 @@
 import axios from 'axios';
 
-const rawUrl = 'https://www.booking.com/hotel/de/hotel-dortmund.sr.html';
-const urlEncoded = encodeURIComponent(rawUrl);
-const requestUrl = `https://opengraph.io/api/1.1/site/${urlEncoded}`
+const url = `https://scrappet.herokuapp.com/api/scrape?url=`
 const headers = {
     'Content-Type': 'application/json',
-    'Api-Key': 'fb1fde18-4402-4c35-863c-4009aa50f6d3'
 };
 
-const getHotel = async () => {
+const getHotel = async (hotelUrl) => {
     try {
-        const response = await axios.get(`${requestUrl}`, { headers });
+        const response = await axios.get(`${url}${hotelUrl}`, { headers });
         const hotel = await response.data;
-        console.log(hotel)
+        return (hotel)
     } catch (error) {
         console.log(error)
     }
 };
 
-export default getHotel;
+export {getHotel};
