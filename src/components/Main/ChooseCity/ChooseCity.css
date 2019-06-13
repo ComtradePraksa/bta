@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .dropdownWrapper {
     border: 1px solid black;
     padding: 5px 10px;
@@ -13,6 +14,7 @@
     height: 100%;
     background-color: white;
 }
+
 .dropdown {
     position: absolute;
     width: 100%;
@@ -20,16 +22,18 @@
     top: 0;
     left: 0;
 }
+
 .dropdownTileWrapper {
     height: 100%;
     cursor: pointer;
 }
+
 .dropdownTileWrapper input {
     height: 100%;
     cursor: pointer;
     background-color: transparent
-
 }
+
 .dropdownItemList {
     min-height: 0vh;
     max-height: 15vh;
@@ -39,6 +43,7 @@
     flex-direction: column;
     z-index: 10;
 }
+
 .dropdownItem {
     list-style-type: none;
     padding: 5px 10px;
@@ -46,7 +51,8 @@
     min-height: 5vh;
     background-color: white;
 }
-.dropdownItem:hover{
+
+.dropdownItem:hover {
     background-color: gray;
     cursor: pointer;
 }

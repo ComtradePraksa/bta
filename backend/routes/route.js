@@ -28,7 +28,6 @@ module.exports = function (app, express, mysqlConnection) {
         return res.send({ error: false, data: results, message: 'accomodations list.' });
       });
     })
-<<<<<<< HEAD
     // .post((req, res) => {
     //   if (!req.body) {
     //     return res.status(400).send({ error: true, message: 'Please provide accomodation data' });
@@ -53,16 +52,6 @@ module.exports = function (app, express, mysqlConnection) {
           });
         }
       })
-=======
-    .post((req, res) => {
-      if (!req.body) {
-        return res.status(400).send({ error: true, message: 'Please provide accomodation data' });
-      }
-      mysqlConnection.query("INSERT INTO accomodations SET ?", req.body, function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'New accomodation has been added successfully.' });
-      });
->>>>>>> 9e3df226609ba57c5a0ba37433f3197f728a3ea6
     })
     .put((req, res) => {
       if (!req.body.id || !req.body) {
@@ -110,7 +99,6 @@ module.exports = function (app, express, mysqlConnection) {
         return res.send({ error: false, data: results, message: 'Users list.' });
       });
     });
-<<<<<<< HEAD
   // router.route('/users')
   //   .post((req, res) => {
   //     mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?',[req.body.username,req.body.password], function (error, results) {
@@ -131,13 +119,6 @@ module.exports = function (app, express, mysqlConnection) {
             return res.send({ error: false, data: results, message: 'Users list.', token: token });
           })
         }
-=======
-  router.route('/users')
-    .post((req, res) => {
-      mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?',[req.body.username,req.body.password], function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Users list.' });
->>>>>>> 9e3df226609ba57c5a0ba37433f3197f728a3ea6
       });
     });
 
