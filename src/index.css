@@ -24,6 +24,11 @@ nav, section, summary, video {
   display: flex;
 }
 
+.flexCenter {
+  justify-content: center;
+  align-items: center;
+}
+
 .white {
   color: white;
 }
