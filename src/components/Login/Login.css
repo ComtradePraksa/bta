@@ -75,6 +75,10 @@ padding: 2.5rem 1rem;
   outline: 1.5px inset navy;
 }
 
+.feedback {
+  color: crimson;
+}
+
 @media(min-width: 400px) {
   .loginWrapper form {
     max-width: 400px;
