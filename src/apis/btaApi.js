@@ -39,4 +39,4 @@ const del = async(id)=>{
         console.log(error)
     }
 };
-export default {get, post, del, put};
+export {get, post, del, put};
