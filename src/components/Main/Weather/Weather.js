@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 //import classes from './Main.css';
-import Welcome from './Welcome/Welcome';
 
-class Main extends Component {
+class Weather extends Component {
     state ={
-        location:'Dortmund'
+        location:''
     }
-
+    
     render() {
         return (
-            <Welcome />
+            <div></div>
         );
     }
 }
 
-export default Main;
+export default Weather;
