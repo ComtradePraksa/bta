@@ -3,19 +3,9 @@ import axios from 'axios';
 const url = `http://localhost:3001`;
 const headers = { 'Content-Type': 'application/json' };
 
-const get = async (table) => {
+const getFromDatabase = async (query) => {
     try {
-        const response = await axios.get(`${url}/${table}`, { headers });
-        const data = await response.data;
-        return data
-    } catch (error) {
-        console.log(error)
-    }
-};
-
-const getById = async (id) => {
-    try {
-        const response = await axios.get(`${url}/users/${id}`, { headers });
+        const response = await axios.get(`${url}${query}`, { headers });
         const data = await response.data;
         return data;
     } catch (error) {
@@ -23,10 +13,9 @@ const getById = async (id) => {
     }
 };
 
-
 // data is object
 
-const post = async (data) => {
+const postToDatabase = async (data) => {
     try {
         await axios.post(`${url}/tablename/`, data, { headers });
     } catch (error) {
@@ -34,7 +23,7 @@ const post = async (data) => {
     }
 };
 
-const put = async (data,id) => {
+const putInDatabase = async (data,id) => {
     try {
         await axios.put(`${url}/tablename/${id}`, data, { headers });
     } catch (error) {
@@ -43,11 +32,12 @@ const put = async (data,id) => {
 };
 
 
-const del = async(id)=>{
+const deleteFromDatabase = async(id)=>{
     try {
         await axios.delete(`${url}/tablename/${id}`, { headers });
     } catch (error) {
         console.log(error)
     }
 };
-export {get, getById, post, del, put};
+
+export {getFromDatabase, postToDatabase, putInDatabase, deleteFromDatabase};
