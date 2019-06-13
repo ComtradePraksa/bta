@@ -13,8 +13,6 @@ class App extends Component {
     accomodations: []
   }
 
-  
-
   componentDidMount() {
      (async () => {
       const data = await getHotel('https://www.booking.com/hotel/de/hotel-dortmund.html');
@@ -22,8 +20,7 @@ class App extends Component {
        this.setState({ accomodations });
    })();
   }
-         
-
+  
   render() {
     return (
       <div className={classes.App}>
