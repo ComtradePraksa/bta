@@ -5,6 +5,7 @@ import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 
 import Weather from './Weather/Weather';
+import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
 
 
 class Main extends Component {
@@ -19,6 +20,7 @@ class Main extends Component {
             <ChooseCity/>
             <ChooseCityVersionTwo/>
             <Weather/>
+            <NearbyWrapper />
             </div>
         );
     }
