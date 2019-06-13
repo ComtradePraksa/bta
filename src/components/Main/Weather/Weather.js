@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { getCLWeather } from '../../../apis/weatherApi';
+import Map from './Map/HereMap'
 //import classes from './Weather.css';
 
 class Weather extends Component {
     state = {
-        location: '',
         weather: ''
     }
-    
+    getCoord(lat,lng){
+        this.setState({lat,lng})
+    }
     componentDidMount() {
         (async () => {
            const weather = await getCLWeather();
@@ -16,18 +18,22 @@ class Weather extends Component {
     };
 
     render() {
-        // let temp, icon, type;
+        // let temp, icon, type, lat, lng;
         // if (this.state.weather !== '') {
         //     temp = Math.round(this.state.weather.main.temp);
         //     icon = this.state.weather.weather[0].icon;
         //     type = this.state.weather.weather[0].main;
+        //     lat = this.state.weather.coord.lat;
+        //     lng = this.state.weather.coord.lon;
         // }
         // return (
-        //     <div>{type}<img src={`http://openweathermap.org/img/w/${icon}.png`} alt={this.state.userName} />{temp}</div>
+        //     <div>{type}<img src={`http://openweathermap.org/img/w/${icon}.png`} alt={this.state.userName} />{temp}<Map lat={lat} lng={lng}/></div>
         // );
         let view = ''
         if(this.state.weather!==""){
-            view = <div>{this.state.weather.weather[0].main}<img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />{Math.round(this.state.weather.main.temp)}</div>
+            let lat = this.state.weather.coord.lat;
+            let lng = this.state.weather.coord.lon;
+            view = <div>{this.state.weather.weather[0].main}<img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />{Math.round(this.state.weather.main.temp)}<Map lat={lat} lng={lng}/></div>
         }
         return (
             <React.Fragment>{view}</React.Fragment>
