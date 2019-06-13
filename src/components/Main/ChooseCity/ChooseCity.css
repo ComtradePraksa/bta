@@ -43,7 +43,7 @@
     list-style-type: none;
     padding: 5px 10px;
     border-bottom: 1px solid black;
-    height: 5vh;
+    min-height: 5vh;
     background-color: white;
 }
 .dropdownItem:hover{
