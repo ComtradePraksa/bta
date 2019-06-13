@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Login from './components/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {  faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+import {  faKey, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import {getHotel} from './apis/hotelScrapersApi.js';
 import Main from './components/Main/Main';
 
-library.add( faKey, faUser);
+library.add( faKey, faUser,faChevronDown);
 
 class App extends Component {
   state = {
