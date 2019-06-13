@@ -13,6 +13,17 @@ const get = async () => {
     }
 };
 
+const getById = async (id) => {
+    try {
+        const response = await axios.get(`${url}/users/${id}`, { headers });
+        const data = await response.data;
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+};
+
+
 // data is object
 
 const post = async (data) => {
@@ -39,4 +50,4 @@ const del = async(id)=>{
         console.log(error)
     }
 };
-export {get, post, del, put};
+export {get, getById, post, del, put};
