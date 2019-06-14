@@ -24,7 +24,6 @@ class Main extends Component {
 
     componentDidMount() {
         const options = {
-            //enableHighAccuracy: true,
             timeout: 10000
         };
 

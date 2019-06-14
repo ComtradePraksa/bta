@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getWeather } from '../../../apis/weatherApi';
-//import Map from './Map/HereMap';
 //import classes from './Weather.css';
 
 class Weather extends Component {
@@ -14,8 +13,8 @@ class Weather extends Component {
                 const weather = await getWeather(this.props.latitude, this.props.longitude);
                 this.setState({ weather: weather });
             })();
-        }
-    };
+        };
+    }
 
     render() {
         let view = ''
