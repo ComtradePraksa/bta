@@ -16,6 +16,7 @@ class Welcome extends Component {
            const userPhoto = user.data.photo;
            if (user.data.is_admin === 1) { this.setState({isAdmin: ' - admin'}); }
            this.setState({userName, userPhoto});
+           console.log(userPhoto)
         })();
     };
 

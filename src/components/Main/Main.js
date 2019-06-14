@@ -5,6 +5,7 @@ import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import { asyncGetCurrentPosition } from '../../apis/weatherApi';
 
+import FeedbackContainer from './FeedbackContainer/FeedbackContainer';
 import Weather from './Weather/Weather';
 import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
 
@@ -44,6 +45,7 @@ class Main extends Component {
                 <ChooseCityVersionTwo />
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
                 <NearbyWrapper location={this.state.value} />
+                <FeedbackContainer/>
             </div>
         );
     }
