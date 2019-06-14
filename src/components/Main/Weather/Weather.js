@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import { getCLWeather } from '../../../apis/weatherApi';
+import { getCLWeather, asyncGetCurrentPosition } from '../../../apis/weatherApi';
 import Map from './Map/HereMap'
 //import classes from './Weather.css';
 
 class Weather extends Component {
     state = {
-        weather: ''
+        weather: '',
+        latitude: '',
+        longitude: ''
     }
-    getCoord(lat,lng){
-        this.setState({lat,lng})
-    }
+
     componentDidMount() {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 10000
+        };
         (async () => {
-           const weather = await getCLWeather();
+            let {coords: {latitude, longitude}} = await asyncGetCurrentPosition(options);
+            this.setState({latitude, longitude});
+           const weather = await getCLWeather(this.state.latitude, this.state.longitude);
            this.setState( {weather:weather} );
         })();
     };
@@ -31,9 +37,9 @@ class Weather extends Component {
         // );
         let view = ''
         if(this.state.weather!==""){
-            let lat = this.state.weather.coord.lat;
-            let lng = this.state.weather.coord.lon;
-            view = <div>{this.state.weather.weather[0].main}<img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />{Math.round(this.state.weather.main.temp)}<Map lat={lat} lng={lng}/></div>
+            view = <div>{this.state.weather.weather[0].main}
+                    <img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />
+                    {Math.round(this.state.weather.main.temp)}<Map lat={this.state.latitude} lng={this.state.longitude}/></div>
         }
         return (
             <React.Fragment>{view}</React.Fragment>

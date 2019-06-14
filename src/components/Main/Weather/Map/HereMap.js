@@ -5,8 +5,8 @@ class Map extends Component {
         super(props);
         this.state = {
             center: {
-                lat: props.lat,
-                lng: props.lng,
+                lat: this.props.lat,
+                lng: this.props.lng,
             },
         }
         this.platform = null;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './NearbyWrapper.css';
 import axios from 'axios';
 import Nearby from './Nearby/Nearby';
+import { asyncGetCurrentPosition } from '../../../apis/weatherApi';
 
 class NearbyWrapper extends Component {
     state = {
@@ -11,24 +12,22 @@ class NearbyWrapper extends Component {
       }
 
       componentDidMount() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            (position) => {
-              this.setState({
-                value: position.coords.latitude + ',' + position.coords.longitude,
-                error: null,
-              });
-              axios.get(`https://places.cit.api.here.com/places/v1/discover/around?app_id=oAYeL0kErguvl8l584Tn&app_code=1XgtGSFk3UzuYMqCKiRRSw&at=${this.state.value}&pretty`)
+        const options = {
+          enableHighAccuracy: true,
+          timeout: 10000
+      };
+
+        (async () => {
+          let {coords: {latitude, longitude}} = await asyncGetCurrentPosition(options);
+          this.setState({
+                  value: latitude + ',' + longitude,
+                  error: null,});
+        axios.get(`https://places.cit.api.here.com/places/v1/discover/around?app_id=oAYeL0kErguvl8l584Tn&app_code=1XgtGSFk3UzuYMqCKiRRSw&at=${this.state.value}&pretty`)
         .then(res => {
             const nearbyPlaces = res.data.results.items;
             this.setState({ nearbyPlaces: nearbyPlaces });
         })
-            },
-            (error) => this.setState(
-              {error: error.message}
-            )
-          );
-        }
+        })();
       }
 
     render() {
