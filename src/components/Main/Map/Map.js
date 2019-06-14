@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 class Map extends Component {
     state = {
-        latitude: '',
-        longitude: '',
         platform: null,
         map: null
     }
