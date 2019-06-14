@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getWeather } from '../../../apis/weatherApi';
-import Map from './Map/HereMap';
+//import Map from './Map/HereMap';
 //import classes from './Weather.css';
 
 class Weather extends Component {
@@ -22,7 +22,7 @@ class Weather extends Component {
         if (this.state.weather !== "") {
             view = <div>{this.state.weather.weather[0].main}
                 <img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />
-                {Math.round(this.state.weather.main.temp)}<Map lat={this.props.latitude} lng={this.props.longitude} /></div>
+                {Math.round(this.state.weather.main.temp)}</div>
         }
         return (
             <React.Fragment>{view}</React.Fragment>
