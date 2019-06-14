@@ -14,8 +14,7 @@ class Map extends Component {
     }
 
     componentDidMount() {
-
-        this.platform = new window.H.service.Platform({ app_id: 'bIV674hGvmDcJyBxVMjW', app_code: 'pZnLTja-QcfDIq6mwL63og', center: this.setState.center, zoom: 12, });
+        this.platform = new window.H.service.Platform({ app_id: 'bIV674hGvmDcJyBxVMjW', app_code: 'pZnLTja-QcfDIq6mwL63og', center: this.state.center, zoom: 12, });
 
         const layer = this.platform.createDefaultLayers();
         const container = document.getElementById('here-map');
@@ -26,10 +25,9 @@ class Map extends Component {
         })
         let marker = new window.H.map.Marker({ lat: this.state.center.lat, lng: this.state.center.lng });
         this.map.addObject(marker);
-
     }
+
     render() {
-        console.log(this.state.center);
         return (
             <div id="here-map" style={{ width: '25vw', height: '25vw', background: 'grey' }} />
         );

@@ -13,4 +13,3 @@ const nearby = props => {
 }
 
 export default nearby;
-

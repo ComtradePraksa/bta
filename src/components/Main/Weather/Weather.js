@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { getCLWeather } from '../../../apis/weatherApi';
+import { getWeather } from '../../../apis/weatherApi';
 import Map from './Map/HereMap';
 //import classes from './Weather.css';
 
 class Weather extends Component {
     state = {
-        weather: '',
-        latitude: '',
-        longitude: ''
+        weather: ''
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.latitude !== this.props.latitude) {
             (async () => {
-                const weather = await getCLWeather(this.props.latitude, this.props.longitude);
+                const weather = await getWeather(this.props.latitude, this.props.longitude);
                 this.setState({ weather: weather });
             })();
         }
