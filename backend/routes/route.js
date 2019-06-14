@@ -21,6 +21,7 @@ module.exports = function (app, express, mysqlConnection) {
 
   const router = express.Router();
 
+
   router.route('/accomodations')
     .get((req, res) => {
       mysqlConnection.query('SELECT * FROM accomodations', function (error, results) {
@@ -107,6 +108,7 @@ module.exports = function (app, express, mysqlConnection) {
   //     });
   //   });
   //test JWT
+
   router.route('/users')
     .post((req, res) => {
       mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?', [req.body.username, req.body.password], function (error, results) {
@@ -184,9 +186,16 @@ module.exports = function (app, express, mysqlConnection) {
       }
       mysqlConnection.query('SELECT * FROM locations where id=?', req.params.id, function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results[0], message: 'Locations list by id.' });
+        res.send({ error: false, data: results[0], message: 'Locations list by id.' });
       });
     });
 
+    router.route('/location_feedbacks')
+    .get((req, res) => {
+      mysqlConnection.query('SELECT * FROM location_feedbacks AS lf JOIN users AS u ON lf.id_user=u.id', function (error, results) {
+        if (error) throw error;
+        res.send({ error: false, data: results, message: 'Feedbacks list.' });
+       });
+  });
   app.use(router);
 };

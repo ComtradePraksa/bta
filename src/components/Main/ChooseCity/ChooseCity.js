@@ -11,6 +11,7 @@ class ChooseCity extends Component {
         placeholderMessage: "Select city..."
     }
 
+    
     componentDidMount() {
         (async () => {
             const data = await getFromDatabase(`/locations`);

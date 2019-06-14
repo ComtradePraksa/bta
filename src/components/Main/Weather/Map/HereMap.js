@@ -29,6 +29,7 @@ class Map extends Component {
 
     }
     render() {
+        console.log(this.state.center);
         return (
             <div id="here-map" style={{ width: '25vw', height: '25vw', background: 'grey' }} />
         );
