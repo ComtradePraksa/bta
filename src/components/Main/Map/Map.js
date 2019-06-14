@@ -10,7 +10,6 @@ class Map extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.latitude !== prevProps.longitude && this.props.longitude !== prevProps.longitude) {
-            this.setState({ latitude: this.props.latitude, longitude: this.props.longitude })
             this.platform = new window.H.service.Platform({ app_id: 'bIV674hGvmDcJyBxVMjW', app_code: 'pZnLTja-QcfDIq6mwL63og'});
 
             const layer = this.platform.createDefaultLayers();
