@@ -1,0 +1,30 @@
+.Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    background-color: #232b4b;
+    color: whitesmoke;
+}
+
+.Title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3vw;
+    padding: 1% 0;
+}
+
+.Welcome {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 3.2vw;
+    text-transform: uppercase;
+    padding: 1% 10% 1% 0;
+    letter-spacing: 0.8vw;
+}
+
+.Photo {
+    border-radius: 50%;
+    width: 4.5vw;
+    height: 4.5vw;
+    padding: 1% 1%;
+}
