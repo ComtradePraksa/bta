@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Welcome from './Welcome/Welcome';
 import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
-
+import FeedbackContainer from './FeedbackContainer/FeedbackContainer';
 import Weather from './Weather/Weather';
 import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
 
@@ -21,6 +21,7 @@ class Main extends Component {
             <ChooseCityVersionTwo/>
             <Weather/>
             <NearbyWrapper />
+            <FeedbackContainer/>
             </div>
         );
     }

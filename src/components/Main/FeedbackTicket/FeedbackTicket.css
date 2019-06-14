@@ -1,0 +1,56 @@
+/* dimenzije nece biti odredjene na ovaj nacin, vec ce se preuzeti od parent elementa */
+.ticketContainer{
+    height: 20vh;
+    width: 20vw;
+    border: 1px solid black;
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 2.5fr 5fr 2.5fr;
+    grid-template-rows: 1.5fr 1fr 1fr 1fr 3.5fr 2fr;
+    grid-template-areas: 
+    ". . type"
+    "photo name ."
+    "photo title title"
+    "photo progressbar raiting"
+    "fb fb fb"
+    "com . readmore"
+
+}
+
+.feedbackType{
+grid-area: type;
+}
+.userPicture{
+    grid-area: photo;
+
+}
+.userName{
+    grid-area: name
+
+}
+.feedbackTitle{
+    grid-area: title
+
+}
+.feedbackProgress{
+    grid-area: progressbar
+
+}
+.feedbackRaiting{
+    grid-area: raiting
+
+}
+.feedbackText{
+    grid-area: fb;
+    font-size: 0.8em;
+    text-align: left;
+
+}
+.numberOfComments{
+    grid-area: com
+
+}
+.readMore{
+    grid-area: readmore
+
+}
