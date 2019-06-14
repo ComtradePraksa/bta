@@ -5,8 +5,8 @@ class Map extends Component {
         super(props);
         this.state = {
             center: {
-                lat: this.props.lat,
-                lng: this.props.lng,
+                latitude: this.props.latitudeFromWeather,
+                longitude: this.props.longitudeFromWeather,
             },
         }
         this.platform = null;
@@ -23,7 +23,7 @@ class Map extends Component {
             center: this.state.center,
             zoom: 12,
         })
-        let marker = new window.H.map.Marker({ lat: this.state.center.lat, lng: this.state.center.lng });
+        let marker = new window.H.map.Marker({ lat: this.state.center.latitude, lng: this.state.center.longitude });
         this.map.addObject(marker);
     }
 
