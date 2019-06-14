@@ -9,7 +9,7 @@ class ChooseCity extends Component {
         cities: [],
         dropdownVisible: false,
         placeholderMessage: "Select city..."
-    }
+    };
 
     
     componentDidMount() {
@@ -27,18 +27,18 @@ class ChooseCity extends Component {
         this.setState({
             dropdownVisible: !this.state.dropdownVisible
         })
-    }
+    };
     getClickedCity = (item) => {
-        this.setState({ placeholderMessage: item.city })
+        this.setState({ placeholderMessage: item.city });
         return item.city
-    }
+    };
     render() {
         const list = this.state.cities.map(city => {
             return (
                 <li key={city.id} className={classes.dropdownItem}
                     onClick={this.getClickedCity.bind(this, city)}>{city.city}</li>
             )
-        })
+        });
         return (
             <div className={classes.chooseCity}>
                 <h2>I would like to get some info on the city: </h2>

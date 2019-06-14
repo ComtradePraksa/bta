@@ -10,7 +10,7 @@ class Login extends Component {
     password: '',
     //feedback for user(message)
     feedback: ''
-  }
+  };
 
   inputHandler = e => {
     this.setState ({ [e.target.name]: e.target.value });
@@ -48,11 +48,11 @@ class Login extends Component {
       })
       .catch(err=>{console.log(err)});
     }
-  }
+  };
 
   render() {
     return (
-      <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.backg].join(' ')} >
+      <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
         <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.slide, classesIndex.radius2, classesIndex.rel].join(' ')}>
           <div className={[classes.formHeader, classesIndex.white, classesIndex.upperC, classesIndex.flexCenter, classesIndex.fullWidth].join(' ')}>
             Login to BTA

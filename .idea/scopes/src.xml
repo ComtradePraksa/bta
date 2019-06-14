@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="src" pattern="(file[bta]:src//*||file[bta]:backend//*)&amp;&amp;!file:src/registerServiceWorker.js" />
+</component>

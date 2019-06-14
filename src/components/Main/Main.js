@@ -16,7 +16,7 @@ class Main extends Component {
         latitude: '',
         longitude: '',
         error: null
-    }
+    };
 
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);

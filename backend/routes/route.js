@@ -15,7 +15,7 @@ const tokenVerification = (req, res, next) => {
       message: 'Forbidden route'
     })
   }
-}
+};
 
 module.exports = function (app, express, mysqlConnection) {
 

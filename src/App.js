@@ -10,13 +10,13 @@ library.add( faKey, faUser,faChevronDown);
 class App extends Component {
   state = {
     login: false
-  }
+  };
   
   render() {
     let app;
     this.login === false ? 
     app = <Login /> : 
-    app = <Main />
+    app = <Main />;
     return (
       <div className={classes.App}>
          {app}

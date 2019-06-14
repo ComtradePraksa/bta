@@ -4,7 +4,7 @@ class Map extends Component {
     state = {
         platform: null,
         map: null
-    }
+    };
 
     componentDidUpdate(prevProps) {
         if (this.props.latitude !== prevProps.longitude && this.props.longitude !== prevProps.longitude) {
@@ -16,7 +16,7 @@ class Map extends Component {
             this.map = new window.H.Map(container, layer.normal.map, {
                 center: { lat: this.props.latitude, lng: this.props.longitude },
                 zoom: 12,
-            })
+            });
             let marker = new window.H.map.Marker({ lat: this.props.latitude, lng: this.props.longitude  });
             this.map.addObject(marker); 
         }

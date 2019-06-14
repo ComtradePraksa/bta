@@ -10,6 +10,6 @@ const nearby = props => {
             <p>{props.address}</p>
         </div>
     )
-}
+};
 
 export default nearby;

@@ -7,7 +7,7 @@ class FeedbackContainer extends Component {
     state={
         feedbacks:[],
         users:[]
-    }
+    };
     componentDidMount() {
         (async () => {
             const data = await getFromDatabase('/location_feedbacks');
@@ -15,7 +15,7 @@ class FeedbackContainer extends Component {
             data.data.map(fb => (
                 feedback.push(fb)
             ));
-            this.setState({feedbacks:feedback})
+            this.setState({feedbacks:feedback});
             console.log('FB: '+this.state.feedbacks)
         })();
     }

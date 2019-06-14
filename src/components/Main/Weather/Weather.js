@@ -5,7 +5,7 @@ import { getWeather } from '../../../apis/weatherApi';
 class Weather extends Component {
     state = {
         weather: ''
-    }
+    };
 
     componentDidUpdate(prevProps) {
         if (prevProps.latitude !== this.props.latitude) {
@@ -13,18 +13,18 @@ class Weather extends Component {
                 const weather = await getWeather(this.props.latitude, this.props.longitude);
                 this.setState({ weather: weather });
             })();
-        };
+        }
     }
 
     render() {
-        let view = ''
+        let weather = '';
         if (this.state.weather !== "") {
-            view = <div>{this.state.weather.weather[0].main}
+            weather = <div>{this.state.weather.weather[0].main}
                 <img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />
-                {Math.round(this.state.weather.main.temp)}</div>
+                {Math.round(this.state.weather.main["temp"])}</div>
         }
         return (
-            <React.Fragment>{view}</React.Fragment>
+            <React.Fragment>{weather}</React.Fragment>
         );
     }
 }
