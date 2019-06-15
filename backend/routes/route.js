@@ -7,10 +7,10 @@ module.exports = function (app, express, mysqlConnection) {
 
 
   router.route('/accomodations')
-    .get((req, res) => {
+    .get(verifyToken,(req, res) => {
       mysqlConnection.query('SELECT * FROM accomodations', function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'accomodations list.' });
+        return res.send({ error: false, data: results, message: 'accomodations list.' , user: req.user});
       });
     })
     .post(verifyToken,(req, res) => {

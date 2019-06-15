@@ -59,6 +59,11 @@ class Login extends Component {
     }
   };
 
+  getAccomodationsHandler(){
+    axios.get('http://localhost:3001/accomodations').then(res=>console.log(res));
+  }
+  
+
   render() {
     return (
       <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
@@ -87,6 +92,8 @@ class Login extends Component {
           </div>
           <button className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
         </form>
+        <button onClick={this.getAccomodationsHandler} className={[classes.btn, classesIndex.white, classesIndex.radius2, classesIndex.upperC].join(' ')}>Get Acc</button>
+        <button onClick={localStorage.removeItem('jwtoken')} className={[classes.btn, classesIndex.white, classesIndex.radius2, classesIndex.upperC].join(' ')}>Logout</button>
       </div>
     );
   }
