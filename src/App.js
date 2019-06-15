@@ -14,7 +14,7 @@ class App extends Component {
   
   render() {
     let app;
-    this.state.login === false ?
+    this.state.login !== false ?
     app = <Login /> : 
     app = <Main />;
     return (
