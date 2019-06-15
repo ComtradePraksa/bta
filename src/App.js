@@ -9,7 +9,8 @@ library.add( faKey, faUser,faChevronDown,faCommentAlt,faHamburger,faBus,faHardHa
 
 class App extends Component {
   state = {
-    login: false
+    login: false,
+    loggedUser: []
   };
   
   render() {

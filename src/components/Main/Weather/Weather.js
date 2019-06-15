@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { getWeather } from '../../../apis/weatherApi';
+//import { getWeather } from '../../../apis/weatherApi';
 //import classes from './Weather.css';
+import axios from 'axios';
 
 class Weather extends Component {
     state = {
@@ -9,10 +10,24 @@ class Weather extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.latitude !== this.props.latitude) {
-            (async () => {
-                const weather = await getWeather(this.props.latitude, this.props.longitude);
-                this.setState({ weather: weather });
-            })();
+            function removeAuthHeader() {
+                let options = {
+                  transformRequest: [function (data, headers) {
+                    delete headers.common.Authorization;
+                    return data;
+                    }]
+                  }
+                  return options;
+              }
+            // (async () => {
+            //     const weather = await getWeather(this.props.latitude, this.props.longitude);
+            //     this.setState({ weather: weather });
+            // })();
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.latitude}&lon=${this.props.longitude}&units=metric&appid=7126e4ea78f69676d33c761f723dd918`, removeAuthHeader())
+            .then(res => {
+               let weatherData = res.data;
+               this.setState({ weather: weatherData });
+            })
         }
     }
 

@@ -23,131 +23,131 @@ module.exports = function (app, express, mysqlConnection) {
         return res.send({ error: false, data: results, message: 'New accomodation has been added successfully.', user: req.user});
       });
     })
-    .put((req, res) => {
+    .put(verifyToken,(req, res) => {
       if (!req.body.id || !req.body) {
         return res.status(400).send({ error: req.body, message: 'Please provide accomodation data and accomodation id' });
       }
       mysqlConnection.query("UPDATE accomodations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'accomodation has been updated successfully.' });
+        return res.send({ error: false, data: results, message: 'accomodation has been updated successfully.', user: req.user });
       });
     })
-    .patch((req, res) => {
+    .patch(verifyToken,(req, res) => {
       if (!req.body.id || !req.body) {
         return res.status(400).send({ error: req.body, message: 'Please provide accomodation data and accomodation id' });
       }
       mysqlConnection.query("UPDATE accomodations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'accomodation has been patched successfully.' });
+        return res.send({ error: false, data: results, message: 'accomodation has been patched successfully.', user: req.user });
       });
     })
-    .delete((req, res) => {
+    .delete(verifyToken,(req, res) => {
       if (!req.body.id) {
         return res.status(400).send({ error: true, message: 'Please provide accomodation id' });
       }
       mysqlConnection.query('DELETE FROM accomodations WHERE id = ?', [req.body.id], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'accomodation has been deleted successfully.' });
+        return res.send({ error: false, data: results, message: 'accomodation has been deleted successfully.', user: req.user });
       });
     });
 
   router.route('/accomodations/:id')
-    .get((req, res) => {
+    .get(verifyToken,(req, res) => {
       if (!req.params.id) {
         return res.status(400).send({ error: true, message: 'Please provide accomodation id' });
       }
       mysqlConnection.query('SELECT * FROM accomodations where id=?', req.params.id, function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results[0], message: 'accomodations list by id.' });
+        return res.send({ error: false, data: results[0], message: 'accomodations list by id.', user: req.user });
       });
     });
 
   router.route('/users')
-    .get((req, res) => {
+    .get(verifyToken,(req, res) => {
       mysqlConnection.query('SELECT * FROM users', function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Users list.' });
+        return res.send({ error: false, data: results, message: 'Users list.', user: req.user });
       });
     });
   router.route('/users')
-    .post((req, res) => {
+    .post(verifyToken,(req, res) => {
       mysqlConnection.query('SELECT * FROM `users` WHERE username = ? && password = ?',[req.body.username,req.body.password], function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Users list.' });
+        return res.send({ error: false, data: results, message: 'Users list.', user: req.user });
       });
     });
 
   router.route('/users/:id')
-    .get((req, res) => {
+    .get(verifyToken,(req, res) => {
       if (!req.params.id) {
         return res.status(400).send({ error: true, message: 'Please provide user id' });
       }
       mysqlConnection.query('SELECT * FROM users where id=?', req.params.id, function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results[0], message: 'Users by id.' });
+        return res.send({ error: false, data: results[0], message: 'Users by id.', user: req.user});
       });
     });
 
   router.route('/locations')
-  .get((req, res) => {
+  .get(verifyToken,(req, res) => {
     mysqlConnection.query('SELECT * FROM locations', function (error, results) {
       if (error) throw error;
-      return res.send({ error: false, data: results, message: 'Locations list.' });
+      return res.send({ error: false, data: results, message: 'Locations list.', user: req.user });
     });
   })
-  .post((req, res) => {
+  .post(verifyToken,(req, res) => {
     if (!req.body) {
       return res.status(400).send({ error: true, message: 'Please provide location data' });
     }
     mysqlConnection.query("INSERT INTO locations SET ?", req.body, function (error, results) {
       if (error) throw error;
-      return res.send({ error: false, data: results, message: 'New location has been added successfully.' });
+      return res.send({ error: false, data: results, message: 'New location has been added successfully.', user: req.user });
     });
   })
-  .put((req, res) => {
+  .put(verifyToken,(req, res) => {
     if (!req.body.id || !req.body) {
       return res.status(400).send({ error: req.body, message: 'Please provide location data and location id' });
     }
     mysqlConnection.query("UPDATE locations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
       if (error) throw error;
-      return res.send({ error: false, data: results, message: 'Location has been updated successfully.' });
+      return res.send({ error: false, data: results, message: 'Location has been updated successfully.', user: req.user });
     });
   })
-  .patch((req, res) => {
+  .patch(verifyToken,(req, res) => {
     if (!req.body.id || !req.body) {
       return res.status(400).send({ error: req.body, message: 'Please provide location data and location id' });
     }
     mysqlConnection.query("UPDATE locations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
       if (error) throw error;
-      return res.send({ error: false, data: results, message: 'Location has been patched successfully.' });
+      return res.send({ error: false, data: results, message: 'Location has been patched successfully.', user: req.user });
     });
   })
-  .delete((req, res) => {
+  .delete(verifyToken,(req, res) => {
     if (!req.body.id) {
       return res.status(400).send({ error: true, message: 'Please provide location id' });
     }
     mysqlConnection.query('DELETE FROM locations WHERE id = ?', [req.body.id], function (error, results) {
       if (error) throw error;
-      return res.send({ error: false, data: results, message: 'Location has been deleted successfully.' });
+      return res.send({ error: false, data: results, message: 'Location has been deleted successfully.', user: req.user });
     });
   });
 
   router.route('/locations/:id')
-    .get((req, res) => {
+    .get(verifyToken,(req, res) => {
       if (!req.params.id) {
         return res.status(400).send({ error: true, message: 'Please provide location\'s id' });
       }
       mysqlConnection.query('SELECT * FROM locations where id=?', req.params.id, function (error, results) {
         if (error) throw error;
-        res.send({ error: false, data: results[0], message: 'Locations list by id.' });
+        res.send({ error: false, data: results[0], message: 'Locations list by id.', user: req.user });
       });
     });
 
     router.route('/location_feedbacks')
-    .get((req, res) => {
+    .get(verifyToken,(req, res) => {
       mysqlConnection.query('SELECT * FROM location_feedbacks AS lf JOIN users AS u ON lf.id_user=u.id', function (error, results) {
         if (error) throw error;
-        res.send({ error: false, data: results, message: 'Feedbacks list.' });
+        res.send({ error: false, data: results, message: 'Feedbacks list.', user: req.user });
        });
     });
 
