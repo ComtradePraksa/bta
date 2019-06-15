@@ -4,7 +4,7 @@ import Welcome from './Welcome/Welcome';
 import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import FeedbackContainer from './FeedbackContainer/FeedbackContainer';
-import Weather from './Weather/Weather';
+//import Weather from './Weather/Weather';
 import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
 import Map from './Map/Map';
 
@@ -41,7 +41,7 @@ class Main extends Component {
                 <Welcome />
                 <ChooseCity />
                 <ChooseCityVersionTwo />
-                <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
+                {/* <Weather latitude={this.state.latitude} longitude={this.state.longitude} /> */}
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} />
                 <NearbyWrapper location={this.state.value} />
                 <FeedbackContainer/>
