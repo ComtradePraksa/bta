@@ -3,6 +3,8 @@ import axios from 'axios';
 import classesIndex from './../../index.css';
 import classes from './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import setAuthToken from '../../utils/setAuthToken';
+import jwt from 'jsonwebtoken';
 
 class Login extends Component {
   state = {
@@ -32,17 +34,24 @@ class Login extends Component {
       //check if there is a user with these credentials
       axios({
         method: 'post',
-        url: 'http://localhost:3001/users',
+        url: 'http://localhost:3001/login',
         data: user,
         config: { headers: { 'Content-Type': 'application/json' } }
       })
       .then(res => {
-        //there is a user in db
-        if (res.data.data.length) {
-          //redirect to a home page
-          this.setState({ feedback: `Logged in as ${res.data.data[0].username}` });
+        //check if token exists
+        if (res.data.token) {
+          const token = res.data.token;
+          //save token in localStorage
+          localStorage.setItem('jwtoken',token);
+          //seth auth token so that every axios req has that token uncluded
+          setAuthToken(token);
+          //decode token to fetch a logged user info!!!
+          const loggedUser = jwt.decode(token);
+          this.setState({ feedback: `Logged in as ${loggedUser.username}`});
         }
         else {
+          console.log('no user sdfsdf');
           this.setState({ feedback: 'no user with that credentials' });
         }
       })
