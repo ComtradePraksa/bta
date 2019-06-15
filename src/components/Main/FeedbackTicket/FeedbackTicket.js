@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import classes from "./FeedbackTicket.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
