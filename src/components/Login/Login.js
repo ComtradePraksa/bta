@@ -3,6 +3,8 @@ import axios from 'axios';
 import classesIndex from './../../index.css';
 import classes from './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import setAuthToken from '../../utils/setAuthToken';
+import jwt from 'jsonwebtoken';
 
 class Login extends Component {
   state = {
@@ -10,7 +12,7 @@ class Login extends Component {
     password: '',
     //feedback for user(message)
     feedback: ''
-  }
+  };
 
   inputHandler = e => {
     this.setState ({ [e.target.name]: e.target.value });
@@ -32,28 +34,40 @@ class Login extends Component {
       //check if there is a user with these credentials
       axios({
         method: 'post',
-        url: 'http://localhost:3001/users',
+        url: 'http://localhost:3001/login',
         data: user,
         config: { headers: { 'Content-Type': 'application/json' } }
       })
       .then(res => {
-        //there is a user in db
-        if (res.data.data.length) {
-          //redirect to a home page
-          this.setState({ feedback: `Logged in as ${res.data.data[0].username}` });
+        //check if token exists
+        if (res.data.token) {
+          const token = res.data.token;
+          //save token in localStorage
+          localStorage.setItem('jwtoken',token);
+          //seth auth token so that every axios req has that token uncluded
+          setAuthToken(token);
+          //decode token to fetch a logged user info!!!
+          const loggedUser = jwt.decode(token);
+          this.setState({ feedback: `Logged in as ${loggedUser.username}`});
         }
         else {
+          console.log('no user sdfsdf');
           this.setState({ feedback: 'no user with that credentials' });
         }
       })
       .catch(err=>{console.log(err)});
     }
+  };
+
+  getAccomodationsHandler(){
+    axios.get('http://localhost:3001/accomodations').then(res=>console.log(res));
   }
+  
 
   render() {
     return (
-      <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.backg].join(' ')} >
-        <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.slide, classesIndex.radius2, classesIndex.rel].join(' ')}>
+      <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
+        <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.fadein, classesIndex.radius2, classesIndex.rel].join(' ')}>
           <div className={[classes.formHeader, classesIndex.white, classesIndex.upperC, classesIndex.flexCenter, classesIndex.fullWidth].join(' ')}>
             Login to BTA
           </div>
@@ -73,11 +87,12 @@ class Login extends Component {
               <input onChange={this.inputHandler} className={classesIndex.fullWidth} type="password" name="password" placeholder="password"/>
             </div>
           </div>
-          <div className={classes.feedback}>
+          <div className="feedback">
             {this.state.feedback}
           </div>
           <button className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
         </form>
+        <button onClick={this.getAccomodationsHandler} className={[classes.btn, classesIndex.white, classesIndex.radius2, classesIndex.upperC].join(' ')}>Get Acc</button>
       </div>
     );
   }
