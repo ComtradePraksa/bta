@@ -53,7 +53,7 @@ class Login extends Component {
   render() {
     return (
       <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
-        <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.slide, classesIndex.radius2, classesIndex.rel].join(' ')}>
+        <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.fadein, classesIndex.radius2, classesIndex.rel].join(' ')}>
           <div className={[classes.formHeader, classesIndex.white, classesIndex.upperC, classesIndex.flexCenter, classesIndex.fullWidth].join(' ')}>
             Login to BTA
           </div>
