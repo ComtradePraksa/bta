@@ -10,26 +10,17 @@ library.add( faKey, faUser,faChevronDown,faCommentAlt,faHamburger,faBus,faHardHa
 
 class App extends Component {
   state = {
-    accomodations: []
-  }
-
-  componentDidMount() {
-     (async () => {
-      const data = await getHotel('https://www.booking.com/hotel/de/hotel-dortmund.html');
-      const accomodations = data.page.meta_tags;
-       this.setState({ accomodations });
-   })();
-  }
+    login: false
+  };
   
   render() {
+    let app;
+    this.state.login !== false ?
+    app = <Login /> : 
+    app = <Main />;
     return (
       <div className={classes.App}>
-        <Login /> 
-        <h1>{this.state.accomodations['og:title']}</h1>
-        <div>{this.state.accomodations['og:description']}</div>
-        <div><img src={this.state.accomodations['og:image']} alt="Hotel"></img></div>
-        <div>{this.state.accomodations['og:url']}</div>
-        <Main />
+         {app}
       </div>
     );
   }

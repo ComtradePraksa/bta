@@ -7,7 +7,7 @@ class Welcome extends Component {
         userName: '',
         userPhoto: '',
         isAdmin: ''
-    }
+    };
 
     componentDidMount() {
         (async () => {
