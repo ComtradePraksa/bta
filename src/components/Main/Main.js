@@ -6,6 +6,7 @@ import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import FeedbackContainer from './FeedbackContainer/FeedbackContainer';
 import Weather from './Weather/Weather';
 import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
+import Map from './Map/Map';
 
 
 class Main extends Component {
@@ -15,7 +16,7 @@ class Main extends Component {
         latitude: '',
         longitude: '',
         error: null
-    }
+    };
 
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
@@ -23,7 +24,7 @@ class Main extends Component {
 
     componentDidMount() {
         const options = {
-            //enableHighAccuracy: true,
+            enableHighAccuracy: true,
             timeout: 10000
         };
 
@@ -41,6 +42,7 @@ class Main extends Component {
                 <ChooseCity />
                 <ChooseCityVersionTwo />
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
+                <Map latitude={this.state.latitude} longitude={this.state.longitude} />
                 <NearbyWrapper location={this.state.value} />
                 <FeedbackContainer/>
             </div>

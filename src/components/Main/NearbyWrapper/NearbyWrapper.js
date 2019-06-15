@@ -7,7 +7,7 @@ class NearbyWrapper extends Component {
     state = {
         error: null,
         nearbyPlaces: []
-      }
+      };
 
       componentDidUpdate(prevProps) {
         if(this.props.location !== prevProps.location){
