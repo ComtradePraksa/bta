@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
 import { getFromDatabase } from '../../../apis/btaApi';
+import classes from "./FeedbackContainer.css"
 
 
 class FeedbackContainer extends Component {
-    state={
-        feedbacks:[],
-        users:[]
+    state = {
+        feedbacks: [],
+        users: []
     }
     componentDidMount() {
         (async () => {
@@ -15,21 +16,24 @@ class FeedbackContainer extends Component {
             data.data.map(fb => (
                 feedback.push(fb)
             ));
-            this.setState({feedbacks:feedback})
-            console.log('FB: '+this.state.feedbacks)
+            this.setState({ feedbacks: feedback })
+            console.log('FB: ' + this.state.feedbacks)
         })();
     }
 
-  render() {
-    return (
-        <div>
-        {this.state.feedbacks.map((fb,index)=>(
-            <FeedbackTicket key={index} fb={fb}/>
-        ))}
+    render() {
+        return (
+            <div className={classes.feedbackContainer}>
+                <div className={classes.sortTicket}></div>
+                <div className={classes.ticketsWrapper}>
+                    {this.state.feedbacks.map((fb, index) => (
+                        <FeedbackTicket key={index} fb={fb} />
+                    ))}
 
-        </div>
-    );
-  }
+                </div>
+                </div>
+        );
+    }
 }
 
 export default FeedbackContainer;
