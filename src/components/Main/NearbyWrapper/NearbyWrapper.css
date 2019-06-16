@@ -3,7 +3,9 @@
     display: block;
     border: 1px solid white;
     padding: 2%;
-    margin: 5% auto;
+    margin: 2% auto 5% auto;
     width: 60%;
+    height: 75vh;
     color: white;
+    font-size: 0.8vw;
 }
