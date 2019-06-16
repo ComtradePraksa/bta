@@ -18,6 +18,7 @@ class NearbyWrapper extends Component {
             });
         }
     }
+    
     render() {
         let nearbyPlacesToRender = null;
 
