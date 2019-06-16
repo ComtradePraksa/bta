@@ -12,7 +12,7 @@ class Login extends Component {
     password: '',
     //feedback for user(message)
     feedback: '',
-    isLogged:true
+    isLogged:false
   };
 
   inputHandler = e => {
@@ -50,7 +50,6 @@ class Login extends Component {
           //decode token to fetch a logged user info!!!
           const loggedUser = jwt.decode(token);
           this.setState({ feedback: `Logged in as ${loggedUser.username}`, isLogged : true});
-          console.log(this.state.isLogged)
           this.props.loginStatus(true);
         }
         else {
@@ -63,7 +62,7 @@ class Login extends Component {
   };
 
   render() {
-  
+    
     return (
       <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
         <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.fadein, classesIndex.radius2, classesIndex.rel].join(' ')}>
@@ -89,7 +88,7 @@ class Login extends Component {
           <div className="feedback">
             {this.state.feedback}
           </div>
-          <button onClick={this.login} className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
+          <button className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
         </form>
       </div>
     );
