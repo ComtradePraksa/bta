@@ -1,7 +1,8 @@
 .NearbyWrapper {
+    grid-area: nearby;
     display: block;
     border: 1px solid white;
     padding: 2%;
-    margin: 1% auto;
-    width: 25%;
+    margin: 5% auto;
+    width: 60%;
 }

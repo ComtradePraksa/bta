@@ -13,7 +13,7 @@ class App extends Component {
     loggedUser: []
   };
   
-  LoginStatus =(isLogged)=>{
+  LoginStatus = (isLogged) => {
     this.setState({isLogged})
   }
 

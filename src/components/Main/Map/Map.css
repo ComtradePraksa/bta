@@ -1,0 +1,5 @@
+.Map {
+    grid-area: map;
+    display: block;
+    margin: 10% auto;
+}
