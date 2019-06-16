@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = function(req,res,next){
+module.exports = function (req, res, next) {
   const bearer = req.headers['authorization'];
-  if(typeof bearer !== 'undefined'){
+  if (typeof bearer !== 'undefined') {
     try {
       //verify token
       const token = bearer.split(' ')[1];
@@ -10,12 +10,10 @@ module.exports = function(req,res,next){
       req.user = verified;
       //go to next middleware
       next();
-    }
-    catch (err) {
+    } catch (err) {
       res.status(400).send('Invalid token!!!');
     }
-  }
-  else{
+  } else {
     return res.status(401).send('Access Denied!!!');
   }
 }

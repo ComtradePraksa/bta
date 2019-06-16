@@ -5,7 +5,6 @@ module.exports = function (app, express, mysqlConnection) {
 
   const router = express.Router();
 
-
   router.route('/accomodations')
     .get(verifyToken,(req, res) => {
       mysqlConnection.query('SELECT * FROM accomodations', function (error, results) {

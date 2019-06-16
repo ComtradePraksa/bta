@@ -14,11 +14,10 @@ class App extends Component {
   };
   
   LoginStatus = (isLogged) => {
-    this.setState({isLogged})
-  }
+    this.setState({isLogged});
+  };
 
   render() {
- 
     return (
       <div className={classes.App}>
         {this.state.isLogged ? <Main />:<Login loginStatus = {this.LoginStatus}/>}
