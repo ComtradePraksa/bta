@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import classes from './Main.css';
+import classes from './Main.css';
 import Welcome from './Welcome/Welcome';
 import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
@@ -37,7 +37,7 @@ class Main extends Component {
 
     render() {
         return (
-            <div>
+            <div className={classes.Main}>
                 <Welcome />
                 <ChooseCity />
                 <ChooseCityVersionTwo />

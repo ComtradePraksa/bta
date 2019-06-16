@@ -1,0 +1,7 @@
+.Weather {
+    grid-area: weather;
+    display: block;
+    margin: 1% auto;
+    max-height: 5%;
+    color: white;
+}

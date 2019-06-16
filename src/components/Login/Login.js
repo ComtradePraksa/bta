@@ -50,7 +50,6 @@ class Login extends Component {
           //decode token to fetch a logged user info!!!
           const loggedUser = jwt.decode(token);
           this.setState({ feedback: `Logged in as ${loggedUser.username}`, isLogged : true});
-          console.log(this.state.isLogged)
           this.props.loginStatus(true);
         }
         else {
