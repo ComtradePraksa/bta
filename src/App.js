@@ -13,8 +13,8 @@ class App extends Component {
     loggedUser: []
   };
   
-  LoginStatus(isLogged){
-    this.setState(isLogged)
+  LoginStatus =(isLogged)=>{
+    this.setState({isLogged})
   }
 
   render() {

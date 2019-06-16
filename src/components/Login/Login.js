@@ -12,7 +12,7 @@ class Login extends Component {
     password: '',
     //feedback for user(message)
     feedback: '',
-    isLogged:false
+    isLogged:true
   };
 
   inputHandler = e => {
@@ -63,6 +63,7 @@ class Login extends Component {
   };
 
   render() {
+  
     return (
       <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
         <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.fadein, classesIndex.radius2, classesIndex.rel].join(' ')}>
