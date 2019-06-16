@@ -17,7 +17,6 @@ class FeedbackContainer extends Component {
                 feedback.push(fb)
             ));
             this.setState({ feedbacks: feedback })
-            console.log('FB: ' + this.state.feedbacks)
         })();
     }
 
