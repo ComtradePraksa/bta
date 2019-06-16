@@ -1,8 +1,33 @@
 .Nearby {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "icon title title title"
+    "icon category category category"
+    "icon address address address";
     border: 1px solid white;
     border-radius: 4px;
     padding: 1%;
     margin: 5% auto;
     width: 95%;
+}
+
+.icon {
+    grid-area: icon;
+    padding-left: 5%;
+}
+
+.title {
+    grid-area: title;
+    padding-right: 5%;
+}
+
+.category {
+    grid-area: category;
+    padding-right: 5%;
+}
+
+.address {
+    grid-area: address;
+    padding-right: 5%;
 }

@@ -11,7 +11,8 @@ class Login extends Component {
     username: '',
     password: '',
     //feedback for user(message)
-    feedback: ''
+    feedback: '',
+    isLogged:false
   };
 
   inputHandler = e => {
@@ -48,7 +49,8 @@ class Login extends Component {
           setAuthToken(token);
           //decode token to fetch a logged user info!!!
           const loggedUser = jwt.decode(token);
-          this.setState({ feedback: `Logged in as ${loggedUser.username}`});
+          this.setState({ feedback: `Logged in as ${loggedUser.username}`, isLogged : true});
+          this.props.loginStatus(true);
         }
         else {
           console.log('no user sdfsdf');
@@ -60,6 +62,7 @@ class Login extends Component {
   };
 
   render() {
+    
     return (
       <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
         <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.fadein, classesIndex.radius2, classesIndex.rel].join(' ')}>

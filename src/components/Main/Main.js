@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import classes from './Main.css';
+import classes from './Main.css';
 import Welcome from './Welcome/Welcome';
 import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
@@ -15,12 +15,17 @@ class Main extends Component {
         value: '0,0',
         latitude: '',
         longitude: '',
-        error: null
+        error: null,
+        city:''
     };
 
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
+
+    getCity = (city)=>{
+        this.setState({city})
+      }
 
     componentDidMount() {
         const options = {
@@ -37,10 +42,10 @@ class Main extends Component {
 
     render() {
         return (
-            <div>
+            <div className={classes.Main}>
                 <Welcome />
-                <ChooseCity />
-                <ChooseCityVersionTwo />
+                <ChooseCity getCity={this.getCity}/>
+                <ChooseCityVersionTwo getCity={this.getCity} />
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} />
                 <NearbyWrapper location={this.state.value} />

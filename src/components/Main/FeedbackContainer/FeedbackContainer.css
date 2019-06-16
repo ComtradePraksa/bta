@@ -1,4 +1,5 @@
 .feedbackContainer{
+    grid-area: feedback;
     height: 80vh;
     display: grid;
     grid-template-rows: 3fr 7fr;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import { getWeather } from '../../../apis/weatherApi';
-//import classes from './Weather.css';
+import classes from './Weather.css';
 import axios from 'axios';
 
 class Weather extends Component {
@@ -9,7 +9,7 @@ class Weather extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (prevProps.latitude !== this.props.latitude) {
+        if (prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude) {
             function removeAuthHeader() {
                 let options = {
                   transformRequest: [function (data, headers) {
@@ -34,7 +34,7 @@ class Weather extends Component {
     render() {
         let weather = '';
         if (this.state.weather !== "") {
-            weather = <div>{this.state.weather.weather[0].main}
+            weather = <div className={classes.Weather}>{this.state.weather.weather[0].main}
                 <img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />
                 {Math.round(this.state.weather.main["temp"])}</div>
         }
