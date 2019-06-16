@@ -11,7 +11,8 @@ class Login extends Component {
     username: '',
     password: '',
     //feedback for user(message)
-    feedback: ''
+    feedback: '',
+    isLogged:false
   };
 
   inputHandler = e => {
@@ -48,7 +49,9 @@ class Login extends Component {
           setAuthToken(token);
           //decode token to fetch a logged user info!!!
           const loggedUser = jwt.decode(token);
-          this.setState({ feedback: `Logged in as ${loggedUser.username}`});
+          this.setState({ feedback: `Logged in as ${loggedUser.username}`, isLogged : true});
+          console.log(this.state.isLogged)
+          this.props.loginStatus(true);
         }
         else {
           console.log('no user sdfsdf');
@@ -85,7 +88,7 @@ class Login extends Component {
           <div className="feedback">
             {this.state.feedback}
           </div>
-          <button className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
+          <button onClick={this.login} className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
         </form>
       </div>
     );

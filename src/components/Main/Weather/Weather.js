@@ -9,7 +9,7 @@ class Weather extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (prevProps.latitude !== this.props.latitude) {
+        if (prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude) {
             function removeAuthHeader() {
                 let options = {
                   transformRequest: [function (data, headers) {
