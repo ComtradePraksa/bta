@@ -12,7 +12,6 @@ class ChooseCity extends Component {
         placeholderMessage: "Select city..."
     };
 
-    
     componentDidMount() {
         const citiesArray = [];
         axios.get('http://localhost:3001/locations')
@@ -32,16 +31,19 @@ class ChooseCity extends Component {
         //     this.setState({ cities: citiesArray });
         // })();
     };
+
     toggleDropdown = () => {
         this.setState({
             dropdownVisible: !this.state.dropdownVisible
         })
     };
+
     getClickedCity = (item) => {
         this.setState({ placeholderMessage: item.city });
         this.props.getCity(item.city)
         return item.city
     };
+    
     render() {
         const list = this.state.cities.map(city => {
             return (

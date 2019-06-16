@@ -2,9 +2,8 @@ import React,{Component} from 'react';
 import classes from "./FeedbackTicket.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-
 class FeedbackTicket extends Component {
+    
     getStyle = () => {
         const rating = this.props.fb.rating
         switch (true) {
@@ -26,7 +25,8 @@ class FeedbackTicket extends Component {
                     width: this.props.fb.rating * 10 + "%"
                 }
         }
-    }
+    };
+
     getType = () => {
         switch (this.props.fb.category) {
             case "culture":
@@ -66,14 +66,14 @@ class FeedbackTicket extends Component {
                 }
 
         }
-    }
+    };
+
     render() {
         return (
             <div className={classes.ticketContainer}>
                 <div className={classes.feedbackType}>
                     <FontAwesomeIcon icon="map-marker-alt" style={{marginRight:"10%",color:"#FD6087"}}/>
                     <FontAwesomeIcon icon={this.getType().icon} style={{color:this.getType().color}}/>
-
                 </div>
                 <div className={classes.userPicture}><img src={require(`../../../${this.props.fb.photo}`)} alt="cao" /></div>
                 <p className={classes.userName}>{this.props.fb.name}</p>
@@ -96,6 +96,5 @@ class FeedbackTicket extends Component {
         );
     }
 }
-
 
 export default FeedbackTicket;

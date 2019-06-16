@@ -8,7 +8,8 @@ class FeedbackContainer extends Component {
     state = {
         feedbacks: [],
         users: []
-    }
+    };
+
     componentDidMount() {
         (async () => {
             const data = await getFromDatabase('/location_feedbacks');
@@ -18,7 +19,7 @@ class FeedbackContainer extends Component {
             ));
             this.setState({ feedbacks: feedback })
         })();
-    }
+    };
 
     render() {
         return (
@@ -30,7 +31,7 @@ class FeedbackContainer extends Component {
                     ))}
 
                 </div>
-                </div>
+            </div>
         );
     }
 }

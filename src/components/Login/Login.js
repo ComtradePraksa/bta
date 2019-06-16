@@ -53,7 +53,6 @@ class Login extends Component {
           this.props.loginStatus(true);
         }
         else {
-          console.log('no user sdfsdf');
           this.setState({ feedback: 'no user with that credentials' });
         }
       })

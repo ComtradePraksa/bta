@@ -6,7 +6,6 @@ import axios from 'axios';
 
 
 class ChooseCity extends Component {
-
     state = {
         cities: [],
         dropdownVisible: false,
@@ -33,16 +32,19 @@ class ChooseCity extends Component {
 
         // })();
     };
+
     toggleDropdown = () => {
         this.setState({
             dropdownVisible: !this.state.dropdownVisible
         })
     };
+
     getClickedCity = (item) => {
         this.setState({ placeholderMessage: item.city });
         this.props.getCity(item.city)
         return item.city
     };
+    
     render() {
         const list = this.state.cities.map(city => {
             return (
