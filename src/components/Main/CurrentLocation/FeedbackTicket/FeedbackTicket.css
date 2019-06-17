@@ -91,5 +91,6 @@
 }
 
 .readMore {
-    grid-area: readmore
+    grid-area: readmore;
+    cursor: pointer;
 }
