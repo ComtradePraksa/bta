@@ -28,7 +28,7 @@ class WeatherCity extends Component {
         }
     };
 
-    componentDidMount(){
+    componentDidMount() {
          function removeAuthHeader() {
                 let options = {
                     transformRequest: [function (data, headers) {
@@ -44,7 +44,7 @@ class WeatherCity extends Component {
                     const weatherData = res.data;
                     this.setState({ weatherData });
                 })       
-    }
+    };
 
     render() {
         let weather = '';

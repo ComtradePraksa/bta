@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import classes from "./FeedbackComment.css"
 import {formatDate } from "../FeedbackFunction/FeedbackFunction"
 
-
-
 class FeedbackComment extends Component{
-    render(){
+    render() {
+        
         return(
             <div className={classes.commentContainer}>
                 <div className={classes.userName}>
@@ -16,7 +15,6 @@ class FeedbackComment extends Component{
                 </div>
                 <div className={classes.commentDate}>{formatDate(this.props.comments.comment_date)}</div>
                 <div className={classes.commentText}>{this.props.comments.comments}</div>
-
             </div>
         )
     }

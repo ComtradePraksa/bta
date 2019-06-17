@@ -47,7 +47,7 @@ class FeedbackPopup extends Component {
                                             <FeedbackComment key={com.id_comment} comments={com} />
                                         )
                                     }
-                                    return true
+                                    return true;
                                 })}
                             </div>
                         </div>
