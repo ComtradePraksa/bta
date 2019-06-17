@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-.btn {
+button {
   display: inline-block;
   padding: 0.6rem 0.8rem;
   font-size: 1em;
-  background: linear-gradient(to bottom, rgb(120, 119, 128) 0%, rgb(59, 58, 68) 0%, rgb(130, 135, 161) 0%, #413e42 49%, rgb(62, 59, 63) 50%, rgb(140, 140, 156) 100%);
+  /* background: linear-gradient(to bottom, rgb(120, 119, 128) 0%, rgb(59, 58, 68) 0%, rgb(130, 135, 161) 0%, #413e42 49%, rgb(62, 59, 63) 50%, rgb(140, 140, 156) 100%); */
+  background: linear-gradient(to bottom, #ff5f8a, #fe5582, #fc4b79, #fb4071, #f93368);
   /*background: linear-gradient(to bottom, rgb(43, 181, 142) 0%, rgb(7, 84, 57) 52%, rgb(8, 86, 61) 54%, rgb(13, 105, 66) 70%, rgb(43, 181, 132) 100%);*/
   /*background: linear-gradient(to bottom, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 0%, rgba(51,153,255,1) 49%, rgba(51,153,255,1) 50%, rgba(41,184,229,1) 100%);*/
 }
@@ -50,14 +51,15 @@
   border-bottom-left-radius: 0.2rem;
 }
 
-.btn:hover {
-  background: transparent;
-  color: navy;
-  outline: 1.5px inset navy;
+button:hover {
+  color: whitesmoke;
+  cursor: pointer;
+  transform: scale(1.01);
 }
 
 .feedback {
   color: crimson;
+  padding-bottom: 1vw;
 }
 
 @media(min-width: 400px) {

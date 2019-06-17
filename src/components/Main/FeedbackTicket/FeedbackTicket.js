@@ -12,14 +12,12 @@ class FeedbackTicket extends Component {
                     backgroundColor: "red",
                     width: this.props.fb.rating * 10 + "%"
                 }
-                break;
             case (rating <= 7):
                 return {
                     backgroundColor: "orange",
                     width: this.props.fb.rating * 10 + "%"
                 }
-                break;
-            case (rating <= 10):
+            default:
                 return {
                     backgroundColor: "green",
                     width: this.props.fb.rating * 10 + "%"
@@ -34,32 +32,27 @@ class FeedbackTicket extends Component {
                     icon:"landmark",
                     color:"#5DBCD2"
                 }
-                break;
             case "transportation":
                 return {
                     icon:"bus",
                     color:"#7FBF7F"
                 }
-                break;
             case "food":
                 return {
                     icon:"hamburger",
                     color:"#EE82EE"
                 }
-                break;
             case "sightseeing":
                 return {
                     icon:"binoculars",
                     color:"#384685"
                 }
-                break;
             case "safety":
                 return {
                     icon:"hard-hat",
                     color:"#98615B"
                 }
-                break;
-            case "other":
+            default:
                 return {
                     icon:"map-signs",
                     color:"#ffa500"
@@ -75,6 +68,7 @@ class FeedbackTicket extends Component {
                     <FontAwesomeIcon icon="map-marker-alt" style={{marginRight:"10%",color:"#FD6087"}}/>
                     <FontAwesomeIcon icon={this.getType().icon} style={{color:this.getType().color}}/>
                 </div>
+                {console.log(this.props.fb.photo)}
                 <div className={classes.userPicture}><img src={require(`../../../${this.props.fb.photo}`)} alt="cao" /></div>
                 <p className={classes.userName}>{this.props.fb.name}</p>
                 <p className={classes.feedbackTitle}>{this.props.fb.title}</p>
