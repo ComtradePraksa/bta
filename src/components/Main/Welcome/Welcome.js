@@ -7,11 +7,11 @@ class Welcome extends Component {
         userName: '',
         userPhoto: '',
         isAdmin: ''
-    }
+    };
 
     componentDidMount() {
         (async () => {
-           const user = await getFromDatabase(`/users/2`);
+           const user = await getFromDatabase(`/users/1`);
            const userName = user.data.name;
            const userPhoto = user.data.photo;
            if (user.data.is_admin === 1) { this.setState({isAdmin: ' - admin'}); }

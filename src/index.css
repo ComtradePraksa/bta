@@ -34,7 +34,7 @@ nav, section, summary, video {
   position: relative;
 }
 
-.backg {
+.back {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -67,7 +67,7 @@ nav, section, summary, video {
 .hover:hover {
   transition: 0.8s;
   box-shadow: 5px 5px 5px #201e1ed0;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .slide {
@@ -77,7 +77,7 @@ nav, section, summary, video {
 
 .fadein {
   animation-name: fadein;
-  animation-duration: 1s;
+  animation-duration: 3s;
 }
 
 @keyframes slide {
@@ -92,12 +92,10 @@ nav, section, summary, video {
 
 @keyframes fadein {
   from {
-    transform: scale(0);
     opacity: 0;
   }
 
   to {
-    transform: scale(1);
     opacity: 1;
   }
 }

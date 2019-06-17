@@ -2,34 +2,39 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Login from './components/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {  faKey, faUser, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import {getHotel} from './apis/hotelScrapersApi.js';
+import {  faKey, faUser, faChevronDown,faCommentAlt ,faHamburger,faBus,faHardHat,faBinoculars,faLandmark,faMapSigns,faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 import Main from './components/Main/Main';
 
-library.add( faKey, faUser,faChevronDown);
+library.add( faKey, faUser,faChevronDown,faCommentAlt,faHamburger,faBus,faHardHat,faBinoculars,faLandmark,faMapSigns,faMapMarkerAlt);
 
 class App extends Component {
   state = {
-    accomodations: []
-  }
+    isLogged: false,
+    loggedUser: []
+  };
 
-  componentDidMount() {
-     (async () => {
-      const data = await getHotel('https://www.booking.com/hotel/de/hotel-dortmund.html');
-      const accomodations = data.page.meta_tags;
-       this.setState({ accomodations });
-   })();
+  componentDidMount(){
+    const token = localStorage.getItem('jwtoken');
+    if (token) {
+      this.setState({
+        isLogged: true
+      })
+    }
+    else{
+      this.setState({
+        isLogged: false
+      })
+    }
   }
   
+  LoginStatus = (isLogged) => {
+    this.setState({isLogged});
+  };
+
   render() {
     return (
       <div className={classes.App}>
-        <Login /> 
-        <h1>{this.state.accomodations['og:title']}</h1>
-        <div>{this.state.accomodations['og:description']}</div>
-        <div><img src={this.state.accomodations['og:image']} alt="Hotel"></img></div>
-        <div>{this.state.accomodations['og:url']}</div>
-        <Main />
+        {this.state.isLogged ? <Main/> : <Login loginStatus={this.LoginStatus}/>}
       </div>
     );
   }

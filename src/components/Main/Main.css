@@ -1,0 +1,12 @@
+.Main {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+    grid-template-areas:
+        "welcome welcome welcome welcome"
+        "choose-city choose-city choose-city choose-city"
+        "choose-city2 choose-city2 choose-city2 choose-city2"
+        "weather weather weather weather"
+        "nearby nearby map map"
+        "nearby nearby map map"
+        "feedback feedback feedback feedback";
+}

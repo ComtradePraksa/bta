@@ -14,7 +14,6 @@ const getFromDatabase = async (query) => {
 };
 
 // data is object
-
 const postToDatabase = async (data) => {
     try {
         await axios.post(`${url}/tablename/`, data, { headers });

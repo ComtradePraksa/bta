@@ -1,42 +1,41 @@
 import React, { Component } from 'react';
-import { getCLWeather } from '../../../apis/weatherApi';
-import Map from './Map/HereMap'
-//import classes from './Weather.css';
+import classes from './Weather.css';
+import axios from 'axios';
 
 class Weather extends Component {
     state = {
-        weather: ''
-    }
-    getCoord(lat,lng){
-        this.setState({lat,lng})
-    }
-    componentDidMount() {
-        (async () => {
-           const weather = await getCLWeather();
-           this.setState( {weather:weather} );
-        })();
+        weatherData: ''
+    };
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude) {
+            function removeAuthHeader() {
+                let options = {
+                    transformRequest: [function (data, headers) {
+                        delete headers.common.Authorization;
+                        return data;
+                    }]
+                };
+                return options;
+            };
+    
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.latitude}&lon=${this.props.longitude}&units=metric&appid=7126e4ea78f69676d33c761f723dd918`, removeAuthHeader())
+                .then(res => {
+                    const weatherData = res.data;
+                    this.setState({ weatherData });
+                })
+        }
     };
 
     render() {
-        // let temp, icon, type, lat, lng;
-        // if (this.state.weather !== '') {
-        //     temp = Math.round(this.state.weather.main.temp);
-        //     icon = this.state.weather.weather[0].icon;
-        //     type = this.state.weather.weather[0].main;
-        //     lat = this.state.weather.coord.lat;
-        //     lng = this.state.weather.coord.lon;
-        // }
-        // return (
-        //     <div>{type}<img src={`http://openweathermap.org/img/w/${icon}.png`} alt={this.state.userName} />{temp}<Map lat={lat} lng={lng}/></div>
-        // );
-        let view = ''
-        if(this.state.weather!==""){
-            let lat = this.state.weather.coord.lat;
-            let lng = this.state.weather.coord.lon;
-            view = <div>{this.state.weather.weather[0].main}<img src={`http://openweathermap.org/img/w/${this.state.weather.weather[0].icon}.png`} alt={this.state.userName} />{Math.round(this.state.weather.main.temp)}<Map lat={lat} lng={lng}/></div>
+        let weather = '';
+        if (this.state.weatherData !== "") {
+            weather = <div className={classes.Weather}>{this.state.weatherData.weather[0].main}
+                <img src={`http://openweathermap.org/img/w/${this.state.weatherData.weather[0].icon}.png`} alt={this.state.userName} />
+                {Math.round(this.state.weatherData.main["temp"])}</div>
         }
         return (
-            <React.Fragment>{view}</React.Fragment>
+            <React.Fragment>{weather}</React.Fragment>
         );
     }
 }
