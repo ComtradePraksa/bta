@@ -5,7 +5,6 @@ module.exports = function (app, express, mysqlConnection) {
 
   const router = express.Router();
 
-
   router.route('/accomodations')
     .get(verifyToken,(req, res) => {
       mysqlConnection.query('SELECT * FROM accomodations', function (error, results) {
@@ -84,7 +83,7 @@ module.exports = function (app, express, mysqlConnection) {
       }
       mysqlConnection.query('SELECT * FROM users where id=?', req.params.id, function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results[0], message: 'Users by id.', user: req.user });
+        return res.send({ error: false, data: results[0], message: 'Users by id.', user: req.user});
       });
     });
 
