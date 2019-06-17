@@ -12,6 +12,7 @@ class App extends Component {
     isLogged: false,
     loggedUser: []
   };
+<<<<<<< HEAD
 
   componentDidMount(){
     const token = localStorage.getItem('jwtoken');
@@ -26,6 +27,8 @@ class App extends Component {
       })
     }
   }
+=======
+>>>>>>> 24bf6a83e61f7a435c0c97fcf3924a56eec30723
   
   LoginStatus = (isLogged) => {
     this.setState({isLogged});
