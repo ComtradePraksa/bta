@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classes from "./FeedbackTicket.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackPopup from '../FeedbackPopup/FeedbackPopup';
-import { throws } from 'assert';
 import {getType,getStyle} from "../FeedbackFunction/FeedbackFunction"
 
 class FeedbackTicket extends Component {

@@ -31,10 +31,15 @@
         "photo title title"
         "photo progressbar rating"
         "com com com"
-        "date . icon"
+        "date . typeicon"
        ;
 }
-
+.feedbackPopupDate{
+grid-area: date
+}
+.feedbackPopupTypeIcon{
+grid-area: typeicon
+}
 .feedbackPopupUserPhoto{
     grid-area: photo
 }
