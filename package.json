@@ -99,6 +99,7 @@
       "react-app"
     ]
   },
+  "homepage" : "http://165.22.31.204/bta",
   "eslintConfig": {
     "extends": "react-app"
   }
