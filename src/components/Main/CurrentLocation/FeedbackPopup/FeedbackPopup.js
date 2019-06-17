@@ -27,7 +27,11 @@ class FeedbackPopup extends Component {
                             </div>
                         </div>
                         <div className={classes.feedbackPopupRate}>{this.props.fb.rating}</div>
-                        <div className={classes.feedbackContent}>${this.props.fb.feedback}</div>
+                        <div className={classes.feedbackContent}>{this.props.fb.feedback}</div>
+                        <div className={classes.feedbackPopupDate}>{this.props.fb.date}</div>
+                        <div className={classes.feedbackPopupTypeIcon}>
+                        <FontAwesomeIcon icon={getType(this.props.fb.category).icon} style={{ color: getType(this.props.fb.category).color }}/>
+                        </div>
                     </div>
                     <div className={classes.feedbackPopupMain}>
                     </div>
