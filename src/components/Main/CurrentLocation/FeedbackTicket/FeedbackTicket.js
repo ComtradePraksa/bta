@@ -13,10 +13,8 @@ class FeedbackTicket extends Component {
     }
 
     toggleComponents = () => {
-        this.setState({
-            popupVisible: !this.state.popupVisible
-        })
-    }
+        this.setState({ popupVisible: !this.state.popupVisible });
+    };
 
     componentDidMount() {
         (async () => {
@@ -28,16 +26,18 @@ class FeedbackTicket extends Component {
             this.setState({ comments: comments })
         })();
     };
+
     getNumberOfComments = () => {
         let sum = 0
         this.state.comments.map(comment => {
             if (comment.id_feedback === this.props.fb.id_feedback) {
                 sum++
             }
-            return true
+            return true;
         })
-        return sum
-    }
+        return sum;
+    };
+    
     render() {
         return (
             <div className={classes.ticketContainer}>

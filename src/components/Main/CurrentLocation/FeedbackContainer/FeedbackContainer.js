@@ -3,7 +3,6 @@ import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
 import { getFromDatabase } from '../../../../apis/btaApi';
 import classes from "./FeedbackContainer.css"
 
-
 class FeedbackContainer extends Component {
     state = {
         feedbacks: [],
@@ -20,6 +19,7 @@ class FeedbackContainer extends Component {
             this.setState({ feedbacks: feedback })
         })();
     };
+    
     render() {
 
         return (

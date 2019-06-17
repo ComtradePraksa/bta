@@ -12,18 +12,17 @@ class Main extends Component {
         city:''
     };
     
-    getCity = (city)=>{
-        this.setState({city})
-      }
+    getCity = (city) => {
+        this.setState({city});
+    };
     
     render() {
         return (
             <div className={classes.Main}>
-                <Welcome loggedUser={this.props.loggedUser} />
+                <Welcome loggedUser={this.props.loggedUser}/>
                 <ChooseCity getCity={this.getCity}/>
-                <ChooseCityVersionTwo getCity={this.getCity} />
+                <ChooseCityVersionTwo getCity={this.getCity}/>
                 {this.state.city ==='' ? <CurrentLocation/> : <City city={this.state.city}/>}
-                
             </div>
         );
     }
