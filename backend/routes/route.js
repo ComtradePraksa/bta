@@ -170,7 +170,9 @@ module.exports = function (app, express, mysqlConnection) {
             username: loggedUser.username,
             is_admin: loggedUser.is_admin,
             photo: loggedUser.photo
-          }, 'secretkey');
+          }, 'sdfsdfsdfsdf131sdfsdfs',{
+            expiresIn: '10m'
+          });
           //res now includes all info specified in jwt.sign method
           res.send({token});
         }

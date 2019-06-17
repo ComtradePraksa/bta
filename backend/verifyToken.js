@@ -6,7 +6,7 @@ module.exports = function (req, res, next) {
     try {
       //verify token
       const token = bearer.split(' ')[1];
-      const verified = jwt.verify(token, 'secretkey');
+      const verified = jwt.verify(token, 'sdfsdfsdfsdf131sdfsdfs');
       req.user = verified;
       //go to next middleware
       next();
