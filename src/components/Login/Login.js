@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import classesIndex from './../../index.css';
 import classes from './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import setAuthToken from '../../utils/setAuthToken';
@@ -62,31 +61,31 @@ class Login extends Component {
 
   render() {
     return (
-      <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
-        <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.fadein, classesIndex.radius2, classesIndex.rel].join(' ')}>
-          <div className={[classes.formHeader, classesIndex.white, classesIndex.upperC, classesIndex.flexCenter, classesIndex.fullWidth].join(' ')}>
+      <div className={[classes.loginWrapper, classes.flexCenter, classes.rel].join(' ')} >
+        <form onSubmit={this.login} className={[classes.fullWidth, classes.fadein, classes.radius2, classes.rel].join(' ')}>
+          <div className={[classes.formHeader, classes.white, classes.upperC, classes.flexCenter, classes.fullWidth].join(' ')}>
             Login to BTA
           </div>
-          <div className={[classes.formGroup, classesIndex.fullWidth].join(' ')}>
-            <div className={[classes.inputWrapper, classesIndex.flex, classesIndex.rel].join(' ')}>
-              <div className={[classes.iconWrapper, classesIndex.flexCenter].join(' ')}>
+          <div className={[classes.formGroup, classes.fullWidth].join(' ')}>
+            <div className={[classes.inputWrapper, classes.flex, classes.rel].join(' ')}>
+              <div className={[classes.iconWrapper, classes.flexCenter].join(' ')}>
                 <FontAwesomeIcon icon="user" />
               </div>
-              <input onChange={this.inputHandler} className={classesIndex.fullWidth} type="text" name="username" placeholder="username"/>
+              <input onChange={this.inputHandler} className={classes.fullWidth} type="text" name="username" placeholder="username"/>
             </div>
           </div>
-          <div className={[classes.formGroup, classesIndex.fullWidth].join(' ')}>
-            <div className={[classes.inputWrapper, classesIndex.flex, classesIndex.rel].join(' ')}>
-              <div className={[classes.iconWrapper, classesIndex.flexCenter].join(' ')}>
+          <div className={[classes.formGroup, classes.fullWidth].join(' ')}>
+            <div className={[classes.inputWrapper, classes.flex, classes.rel].join(' ')}>
+              <div className={[classes.iconWrapper, classes.flexCenter].join(' ')}>
                 <FontAwesomeIcon icon="key" />
               </div>
-              <input onChange={this.inputHandler} className={classesIndex.fullWidth} type="password" name="password" placeholder="password"/>
+              <input onChange={this.inputHandler} className={classes.fullWidth} type="password" name="password" placeholder="password"/>
             </div>
           </div>
           <div className={classes.feedback}>
             {this.state.feedback}
           </div>
-          <button className={[classes.button, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC].join(' ')}>Login</button>
+          <button className={[classes.fullWidth, classes.white, classes.radius2, classes.upperC].join(' ')}>Login</button>
         </form>
       </div>
     );
