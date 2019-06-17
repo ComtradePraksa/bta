@@ -10,17 +10,17 @@ library.add( faKey, faUser,faChevronDown,faCommentAlt,faHamburger,faBus,faHardHa
 class App extends Component {
   state = {
     isLogged: false,
-    loggedUser: []
+    loggedUser:{}
   };
   
-  LoginStatus = (isLogged) => {
-    this.setState({isLogged});
+  LoginStatus = (isLogged, loggedUser) => {
+    this.setState({ isLogged, loggedUser });
   };
 
   render() {
     return (
       <div className={classes.App}>
-        {this.state.isLogged ? <Main/> : <Login loginStatus={this.LoginStatus}/>}
+        {this.state.isLogged ? <Main loggedUser={this.state.loggedUser}/> : <Login loginStatus={this.LoginStatus}/>}
       </div>
     );
   }

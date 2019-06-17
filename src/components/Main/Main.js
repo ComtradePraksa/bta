@@ -5,6 +5,7 @@ import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import FeedbackContainer from './FeedbackContainer/FeedbackContainer';
 import Weather from './Weather/Weather';
+import WeatherCity from './WeatherCity/WeatherCity'
 import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
 import Map from './Map/Map';
 
@@ -43,10 +44,11 @@ class Main extends Component {
     render() {
         return (
             <div className={classes.Main}>
-                <Welcome />
+                <Welcome loggedUser={this.props.loggedUser} />
                 <ChooseCity getCity={this.getCity}/>
                 <ChooseCityVersionTwo getCity={this.getCity} />
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
+                <WeatherCity city={this.state.city}/>
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} />
                 <NearbyWrapper location={this.state.value} />
                 <FeedbackContainer/>
