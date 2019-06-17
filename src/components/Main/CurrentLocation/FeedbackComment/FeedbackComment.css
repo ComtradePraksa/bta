@@ -1,0 +1,23 @@
+.commentContainer{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 2fr 6fr 2fr;
+    grid-template-areas: 
+    "img name date"
+    "com com ."
+}
+.userName{
+    grid-area: name
+}
+.userPicture{
+    grid-area: img
+}
+.commentDate{
+    grid-area: date
+}
+.commentText{
+    grid-area: com
+}
+.userPicture img{
+    max-height: 90%;
+}
