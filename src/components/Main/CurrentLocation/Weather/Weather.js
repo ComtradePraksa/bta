@@ -18,8 +18,8 @@ class Weather extends Component {
                 };
                 return options;
             };
-    
-            axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.latitude}&lon=${this.props.longitude}&units=metric&appid=7126e4ea78f69676d33c761f723dd918`, removeAuthHeader())
+
+            axios.get(`http://api.apixu.com/v1/forecast.json?key=937e493fb43842b4a90103252191706&q=${this.props.latitude},${this.props.longitude}`, removeAuthHeader())
                 .then(res => {
                     const weatherData = res.data;
                     this.setState({ weatherData });
@@ -30,9 +30,10 @@ class Weather extends Component {
     render() {
         let weather = '';
         if (this.state.weatherData !== "") {
-            weather = <div className={classes.Weather}>{this.state.weatherData.weather[0].main}
-                <img src={`http://openweathermap.org/img/w/${this.state.weatherData.weather[0].icon}.png`} alt={this.state.userName} />
-                {Math.round(this.state.weatherData.main["temp"])}</div>
+            let imgLink = this.state.weatherData.current.condition.icon.substring(2).replace('64x64', '128x128');
+            weather = <div className={classes.Weather}>{this.state.weatherData.current.condition.text}
+                <img src={`http://${imgLink}`} alt={this.state.userName} />
+                {Math.round(this.state.weatherData.current.temp_c) + ' ‎°C'}</div>
         }
         return (
             <React.Fragment>{weather}</React.Fragment>
