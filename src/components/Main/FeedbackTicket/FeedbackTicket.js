@@ -69,7 +69,7 @@ class FeedbackTicket extends Component {
                     <FontAwesomeIcon icon={this.getType().icon} style={{color:this.getType().color}}/>
                 </div>
                 {console.log(this.props.fb.photo)}
-                {/* <div className={classes.userPicture}><img src={require(`../../../${this.props.fb.photo}`)} alt="cao" /></div> */}
+                <div className={classes.userPicture}><img src={require(`../../../${this.props.fb.photo}`)} alt="cao" /></div>
                 <p className={classes.userName}>{this.props.fb.name}</p>
                 <p className={classes.feedbackTitle}>{this.props.fb.title}</p>
                 <div className={classes.feedbackProgress}>

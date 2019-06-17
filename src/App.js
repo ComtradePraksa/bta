@@ -12,23 +12,11 @@ class App extends Component {
     isLogged: false,
     loggedUser: []
   };
-<<<<<<< HEAD
 
-  componentDidMount(){
+  componentDidMount() {
     const token = localStorage.getItem('jwtoken');
-    if (token) {
-      this.setState({
-        isLogged: true
-      })
-    }
-    else{
-      this.setState({
-        isLogged: false
-      })
-    }
-  }
-=======
->>>>>>> 24bf6a83e61f7a435c0c97fcf3924a56eec30723
+    return (token) ? this.setState({ isLogged: true }) : this.setState({ isLogged: false });
+  };
   
   LoginStatus = (isLogged) => {
     this.setState({isLogged});
