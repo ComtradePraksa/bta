@@ -2,7 +2,7 @@
 # dependencies
 /node_modules
 #configuration
-/config
+
 # testing
 /coverage
 # production
