@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
-import { getFromDatabase } from '../../../apis/btaApi';
+import { getFromDatabase } from '../../../../apis/btaApi'
 import classes from "./FeedbackContainer.css"
 
 
