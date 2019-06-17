@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-//import { getFromDatabase } from '../../../apis/btaApi';
+import { getFromDatabase } from '../../../apis/btaApi';
 import classes from './ChooseCityVersionTwo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 class ChooseCity extends Component {
-
     state = {
         cities: [],
         dropdownVisible: false,
@@ -14,35 +13,38 @@ class ChooseCity extends Component {
     };
 
     componentDidMount() {
-        const citiesArray = [];
-        axios.get('http://localhost:3001/locations')
-        .then(res => {
-            const cities = res.data.data;
-            cities.map((city) => {
-               return citiesArray.push({ id: city.id, city: city.city_name })
-            })
-            this.setState({ cities: citiesArray });
-        });
-        // (async () => {
-        //     const data = await getFromDatabase(`/locations`);
-        //     const citiesArray = [];
-        //     data.data.map(city => (
-        //         citiesArray.push({ id: city.id, city: city.city_name })
-        //     ));
+        // const citiesArray = [];
+        // axios.get('http://localhost:3001/locations')
+        // .then(res => {
+        //     const cities = res.data.data;
+        //     cities.map((city) => {
+        //        return citiesArray.push({ id: city.id, city: city.city_name })
+        //     })
         //     this.setState({ cities: citiesArray });
+        // });
+        (async () => {
+            const data = await getFromDatabase(`/locations`);
+            const citiesArray = [];
+            data.data.map(city => (
+                citiesArray.push({ id: city.id, city: city.city_name })
+            ));
+            this.setState({ cities: citiesArray });
 
-        // })();
+        })();
     };
+
     toggleDropdown = () => {
         this.setState({
             dropdownVisible: !this.state.dropdownVisible
         })
     };
+
     getClickedCity = (item) => {
         this.setState({ placeholderMessage: item.city });
         this.props.getCity(item.city)
         return item.city
     };
+    
     render() {
         const list = this.state.cities.map(city => {
             return (

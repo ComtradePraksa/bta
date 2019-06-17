@@ -50,10 +50,9 @@ class Login extends Component {
           //decode token to fetch a logged user info!!!
           const loggedUser = jwt.decode(token);
           this.setState({ feedback: `Logged in as ${loggedUser.username}`, isLogged : true});
-          this.props.loginStatus(true);
+          this.props.loginStatus(true,loggedUser);
         }
         else {
-          console.log('no user sdfsdf');
           this.setState({ feedback: 'no user with that credentials' });
         }
       })
@@ -62,7 +61,6 @@ class Login extends Component {
   };
 
   render() {
-    
     return (
       <div className={[classes.loginWrapper, classesIndex.flexCenter, classesIndex.rel, classesIndex.back].join(' ')} >
         <form onSubmit={this.login} className={[classesIndex.fullWidth, classesIndex.fadein, classesIndex.radius2, classesIndex.rel].join(' ')}>
@@ -85,10 +83,10 @@ class Login extends Component {
               <input onChange={this.inputHandler} className={classesIndex.fullWidth} type="password" name="password" placeholder="password"/>
             </div>
           </div>
-          <div className="feedback">
+          <div className={classes.feedback}>
             {this.state.feedback}
           </div>
-          <button className={[classes.btn, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC, classesIndex.hover].join(' ')}>Login</button>
+          <button className={[classes.button, classesIndex.fullWidth, classesIndex.white, classesIndex.radius2, classesIndex.upperC].join(' ')}>Login</button>
         </form>
       </div>
     );

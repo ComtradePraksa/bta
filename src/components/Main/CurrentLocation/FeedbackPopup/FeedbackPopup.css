@@ -1,0 +1,89 @@
+.feedbackPopupWindow{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedbackPopup{
+    height: 90%;
+    width: 40%;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 1fr 5fr 4fr;
+}
+.feedbackPopupHeader{
+    background-color: #232b4b;
+
+}
+.feedbackPopupUserInfo{
+    display: grid;
+    grid-template-columns: 2.5fr 5fr 2.5fr;
+    grid-template-rows: 1fr 1fr 1fr 7fr;
+    grid-template-areas:
+        "photo name ."
+        "photo title title"
+        "photo progressbar rating"
+        "com com com"
+        "date . icon"
+       ;
+}
+
+.feedbackPopupUserPhoto{
+    grid-area: photo
+}
+.feedbackPopupUserPhoto img{
+    max-height: 100%
+}
+.feedbackPopupUserName{
+    grid-area: name
+
+}
+.feedbackPopupTitle{
+    grid-area: title
+
+}
+.feedbackPopupType{
+    grid-area: icons
+
+}
+
+.feedbackPopupRate{
+    grid-area: rating
+
+}
+
+.feedbackPopupProgress {
+    grid-area: progressbar;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.feedbackPopupInnerProgress {
+    height: 40%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
+.feedbackPopupProgressColor {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.feedbackPopupMain{
+    height: 100%;
+    overflow-y: auto;
+}
+.feedbackContent{
+    grid-area: com
+}

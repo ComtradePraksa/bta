@@ -67,7 +67,7 @@ nav, section, summary, video {
 .hover:hover {
   transition: 0.8s;
   box-shadow: 5px 5px 5px #201e1ed0;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .slide {

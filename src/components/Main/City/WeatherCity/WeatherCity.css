@@ -1,0 +1,7 @@
+.WeatherCity {
+    grid-area: weather-city;
+    display: block;
+    margin: 1% auto;
+    max-height: 5%;
+    color: white;
+}

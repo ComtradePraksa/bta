@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-    min-height: 100vh;
-    background: linear-gradient(rgba(37, 35, 54, 0.9), rgba(45, 35, 70, 0.9)), url("./assets/frankfurt.jpg");
-    padding: 2.5rem 1rem;
+  min-height: 100vh;
+  background: linear-gradient(rgba(37, 35, 54, 0.9), rgba(45, 35, 70, 0.9)), url("./assets/frankfurt.jpg");
+  background-size: cover;
+  padding: 2.5rem 1rem;
 }
