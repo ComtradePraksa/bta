@@ -18,13 +18,14 @@ class NearbyWrapper extends Component {
             });
         }
     }
+    
     render() {
         let nearbyPlacesToRender = null;
 
         if (this.state.nearbyPlaces !== []) {
             nearbyPlacesToRender = (
                 <div>
-                    {this.state.nearbyPlaces.slice(0,5).map((nearbyPlace) => {
+                    {this.state.nearbyPlaces.slice(0,6).map((nearbyPlace) => {
                         return <Nearby
                         title={nearbyPlace.title}
                         icon={nearbyPlace.icon}

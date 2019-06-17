@@ -1,5 +1,5 @@
 /* dimenzije nece biti odredjene na ovaj nacin, vec ce se preuzeti od parent elementa */
-.ticketContainer{
+.ticketContainer {
     width: 80%;
     height: 80%;
     padding: 10px 20px;
@@ -8,43 +8,46 @@
     display: grid;
     grid-template-columns: 2.5fr 5fr 2.5fr;
     grid-template-rows: 1.5fr 1fr 1fr 1fr 3.5fr 2fr;
-    grid-template-areas: 
-    ". . type"
-    "photo name ."
-    "photo title title"
-    "photo progressbar raiting"
-    "fb fb fb"
-    "com . readmore";
+    grid-template-areas:
+        ". . type"
+        "photo name ."
+        "photo title title"
+        "photo progressbar raiting"
+        "fb fb fb"
+        "com . readmore";
     text-align: left;
 
 }
 
-.feedbackType{
-grid-area: type;
-display: flex;
-justify-content: flex-end;
+.feedbackType {
+    grid-area: type;
+    display: flex;
+    justify-content: flex-end;
 }
-.userPicture{
+
+.userPicture {
     grid-area: photo;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
-.userPicture img{
+
+.userPicture img {
     width: 8vh;
     height: 8vh;
     border-radius: 50%;
-  
+
 }
-.userName{
+
+.userName {
     grid-area: name
-
 }
-.feedbackTitle{
+
+.feedbackTitle {
     grid-area: title
-
 }
-.feedbackProgress{
+
+.feedbackProgress {
     grid-area: progressbar;
     width: 100%;
     height: 100%;
@@ -52,36 +55,42 @@ justify-content: flex-end;
     align-items: center;
 
 }
-.innerProgress{
+
+.innerProgress {
     height: 40%;
     width: 100%;
     border-radius: 10px;
     background-color: lightgray;
 }
-.colorProgress{
+
+.colorProgress {
     height: 100%;
     border-radius: 10px;
 }
-.feedbackRaiting{
+
+.feedbackRaiting {
     grid-area: raiting;
     text-align: center;
 
 }
-.feedbackText{
+
+.feedbackText {
     grid-area: fb;
     font-size: 0.8em;
 
 }
-.numberOfComments{
+
+.numberOfComments {
     grid-area: com
-
 }
-.numberOfCommentsWrapper{
-display: flex;
-align-items: center;
-height: 100%;
-}
-.readMore{
-    grid-area: readmore
 
+.numberOfCommentsWrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.readMore {
+    grid-area: readmore;
+    cursor: pointer;
 }

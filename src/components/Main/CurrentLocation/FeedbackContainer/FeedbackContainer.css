@@ -1,4 +1,5 @@
-.feedbackContainer{
+.feedbackContainer {
+    grid-area: feedback;
     height: 80vh;
     display: grid;
     grid-template-rows: 3fr 7fr;
@@ -6,15 +7,16 @@
     justify-items: center;
     background-color: blueviolet
 }
-    
-.ticketsWrapper{
+
+.ticketsWrapper {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     align-items: center;
 }
-.sortTicket{
+
+.sortTicket {
     height: 100%;
     display: flex;
     align-items: center;

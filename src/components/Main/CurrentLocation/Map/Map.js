@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classes from './Map.css';
 
 class Map extends Component {
     state = {
@@ -24,7 +25,7 @@ class Map extends Component {
 
     render() {
         return (
-            <div id="here-map" style={{ width: '25vw', height: '25vw', background: 'grey' }} />
+            <div className={classes.Map} id="here-map" style={{ width: '30vw', height: '30vw', background: 'grey' }} />
         );
     }
 }
