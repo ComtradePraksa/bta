@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Weather.css';
 import axios from 'axios';
-import { removeAuthHeader } from '../../../../apis/removeAuthHeader';
+import {removeAuthHeader} from '../../../../apis/removeAuthHeader';
 
 class Weather extends Component {
     state = {

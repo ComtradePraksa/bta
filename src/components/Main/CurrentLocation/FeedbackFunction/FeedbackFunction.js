@@ -56,7 +56,11 @@ const getType = (type) => {
 const formatDate = (params) => {
     const time = params.split("T")[1].split(":")
     const date = params.split("T")[0].split("-")
+<<<<<<< HEAD
+    return `${date[2]}.${date[1]}.${date[0]} ${time[0]}:${time[1]}`
+=======
     return `${date[2]}.${date[1]}.${date[0]}. ${time[0]}:${time[1]}`
+>>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0
 };
 
 export {getType,getStyle, formatDate}
