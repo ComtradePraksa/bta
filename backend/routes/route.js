@@ -149,6 +149,13 @@ module.exports = function (app, express, mysqlConnection) {
         res.send({ error: false, data: results, message: 'Feedbacks list.', user: req.user });
        });
     });
+    router.route('/location_comments')
+    .get(verifyToken,(req, res) => {
+      mysqlConnection.query('SELECT id_comment, comment_date,comments, users.photo,users.id,users.name,lf.id_feedback FROM location_comments AS com JOIN location_feedbacks AS lf ON lf.id_feedback=com.id_feedback INNER join users ON users.id = com.id_user', function (error, results) {
+        if (error) throw error;
+        res.send({ error: false, data: results, message: 'Feedback comments list.', user: req.user });
+       });
+    });
 
   //login route
   router.route('/login')
@@ -163,7 +170,9 @@ module.exports = function (app, express, mysqlConnection) {
             username: loggedUser.username,
             is_admin: loggedUser.is_admin,
             photo: loggedUser.photo
-          }, 'secretkey');
+          }, 'sdfsdfsdfsdf131sdfsdfs',{
+            expiresIn: '10m'
+          });
           //res now includes all info specified in jwt.sign method
           res.send({token});
         }

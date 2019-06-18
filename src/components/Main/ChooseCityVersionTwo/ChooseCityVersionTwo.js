@@ -29,7 +29,6 @@ class ChooseCity extends Component {
                 citiesArray.push({ id: city.id, city: city.city_name })
             ));
             this.setState({ cities: citiesArray });
-
         })();
     };
 
@@ -53,20 +52,20 @@ class ChooseCity extends Component {
             )
         });
         return (
-            <div className={classes.chooseCity}>
+            <div className={[classes.chooseCity, classes.flex].join(' ')}>
                 <h2>I would like to get some info on the</h2><div>&nbsp;</div>
                 {!this.state.dropdownVisible &&
 
-                    <h2 className={classes.cityLink} onClick={this.toggleDropdown}>city</h2>}
+                    <h2 className={[classes.cityLink, classes.pointer].join(' ')} onClick={this.toggleDropdown}>city</h2>}
                 {this.state.dropdownVisible &&
 
-                    <div className={classes.dropdownWrapper}>
-                        <div className={classes.dropdown} >
-                            <div className={classes.dropdownTileWrapper}>
-                                <input placeholder={this.state.placeholderMessage} readOnly />
+                    <div className={[classes.dropdownWrapper, classes.fullHeight].join(' ')}>
+                        <div className={[classes.dropdown, classes.fullHeight].join(' ')} >
+                            <div className={[classes.dropdownTileWrapper, classes.fullHeight, classes.pointer].join(' ')}>
+                            <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
                                 <FontAwesomeIcon icon="chevron-down" />
                             </div>
-                            <ul className={classes.dropdownItemList}>
+                            <ul className={[classes.dropdownItemList, classes.flex].join(' ')}>
                                 {list}
                             </ul>
                         </div>

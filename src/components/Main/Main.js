@@ -3,55 +3,28 @@ import classes from './Main.css';
 import Welcome from './Welcome/Welcome';
 import ChooseCity from './ChooseCity/ChooseCity';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
-import FeedbackContainer from './FeedbackContainer/FeedbackContainer';
-import Weather from './Weather/Weather';
-import WeatherCity from './WeatherCity/WeatherCity'
-import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
-import Map from './Map/Map';
+import CurrentLocation from './CurrentLocation/CurrentLocation'
+import City from './City/City'
+import Hotels from './Hotels/Hotels'
 
 
 class Main extends Component {
     state = {
-        location: 'Dortmund',
-        value: '0,0',
-        latitude: '',
-        longitude: '',
-        error: null,
         city:''
     };
-
-    asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject, options);
-    });
-
-    getCity = (city)=>{
-        this.setState({city})
-      }
-
-    componentDidMount() {
-        const options = {
-            enableHighAccuracy: true,
-            timeout: 10000
-        };
-
-        (async () => {
-            let { coords: { latitude, longitude } } = await this.asyncGetCurrentPosition(options);
-            const value = `${latitude},${longitude}`;
-            this.setState({value, latitude, longitude});
-        })();
-    }
-
+    
+    getCity = (city) => {
+        this.setState({city});
+    };
+    
     render() {
         return (
             <div className={classes.Main}>
-                <Welcome loggedUser={this.props.loggedUser} />
+                <Welcome loggedUser={this.props.loggedUser}/>
                 <ChooseCity getCity={this.getCity}/>
-                <ChooseCityVersionTwo getCity={this.getCity} />
-                <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
-                <WeatherCity city={this.state.city}/>
-                <Map latitude={this.state.latitude} longitude={this.state.longitude} />
-                <NearbyWrapper location={this.state.value} />
-                <FeedbackContainer/>
+                <ChooseCityVersionTwo getCity={this.getCity}/>
+                {this.state.city ==='' ? <CurrentLocation/> : <City city={this.state.city}/>}
+                <Hotels/>
             </div>
         );
     }
