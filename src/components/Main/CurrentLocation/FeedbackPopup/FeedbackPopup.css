@@ -97,9 +97,25 @@ grid-area: typeicon
 .feedbackContent{
     grid-area: com
 }
+.feedbackPopupComments{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.feedbackNewComment textarea{
+width: 90%;
+height: 10vh;
+resize: none;
+box-sizing: border-box;
+}
+.feedbackNewComment {
+    display: flex;
+}
 
 .feedbackPopupCommentTitleContainer{
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 4fr 3fr 
 }
 .feedbackPopupNumberOfComments{
     display: flex;

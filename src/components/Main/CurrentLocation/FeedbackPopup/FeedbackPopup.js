@@ -3,15 +3,53 @@ import React, { Component } from 'react';
 import { getType, getStyle, formatDate } from "../FeedbackFunction/FeedbackFunction"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackComment from "../FeedbackComment/FeedbackComment";
+import jwt from 'jsonwebtoken';
+import axios from 'axios';
+
 
 
 class FeedbackPopup extends Component {
+    state = {
+
+        commentVisible: false,
+        commentValue: ""
+    }
+    toggleComment = () => {
+        this.setState({ commentVisible: !this.state.commentVisible })
+    }
+
+    getCommentValue = event => {
+        this.setState({ commentValue : event.target.value })
+
+    }
+    getData = () => {
+        // document.querySelector("#commentText").value = ""
+        this.setState({ commentValue : "" })
+        const commentData = {
+            userId:jwt.decode(localStorage.getItem("jwtoken")).id,
+            fbId:this.props.fb.id_feedback,
+            com:this.state.commentValue,
+        }
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/location_comments',
+            data: commentData,
+            config: { headers: { 'Content-Type': 'application/json' } }
+          }).then(res=>
+            {
+                console.log(res.data.newComment);
+                this.props.addNewComent(res.data.newComment) 
+            }
+            )
+
+    }
     render() {
         return (
             <div className={classes.feedbackPopupWindow}>
                 <div className={classes.feedbackPopup}>
                     <div className={classes.feedbackPopupHeader} >
                         <FontAwesomeIcon icon="times" onClick={this.props.toggleComponents} />
+
                     </div>
                     <div className={classes.feedbackPopupMain}>
                         <div className={classes.feedbackPopupUserInfo}>
@@ -39,7 +77,12 @@ class FeedbackPopup extends Component {
                                     <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
                                     <p>{this.props.numberOfComments}</p>
                                 </div>
+                                <button onClick={this.toggleComment}> <FontAwesomeIcon icon="plus" onClick={this.getData} /> Add Comment</button>
                             </div>
+                            {this.state.commentVisible && <div className={classes.feedbackNewComment}>
+                                <textarea id={`commentText`} onChange={this.getCommentValue} />
+                                <FontAwesomeIcon onClick={this.getData} icon="chevron-circle-right" style={{ width: "40px", height: "40px" }} />
+                            </div>}
                             <div className={classes.feedbackPopupCommentsContainer}>
                                 {this.props.comments.map((com) => {
                                     if (com.id_feedback === this.props.fb.id_feedback) {

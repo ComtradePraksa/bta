@@ -24,9 +24,16 @@ class FeedbackTicket extends Component {
                 comments.push(fb)
             ));
             this.setState({ comments: comments })
+            console.log(this.state.comments)
         })();
     };
-
+    addNewComent = (newComment)=>{
+        const copy = this.state.comments;
+        this.setState({
+            comments: [...copy, newComment]
+        })
+        console.log(this.state.comments);
+    }
     getNumberOfComments = () => {
         let sum = 0
         this.state.comments.map(comment => {
@@ -39,6 +46,7 @@ class FeedbackTicket extends Component {
     };
     
     render() {
+        console.log(this.state.comments);
         return (
             <div className={classes.ticketContainer}>
                 <div className={classes.feedbackType}>
@@ -62,7 +70,7 @@ class FeedbackTicket extends Component {
                     </div>
                 </div>
                 <button className={classes.readMore} onClick={this.toggleComponents}>READ MORE</button>
-                {this.state.popupVisible && <FeedbackPopup numberOfComments={this.getNumberOfComments()} comments={this.state.comments} toggleComponents={this.toggleComponents} fb={this.props.fb} />}
+                {this.state.popupVisible && <FeedbackPopup addNewComent={this.addNewComent} numberOfComments={this.getNumberOfComments()} comments={this.state.comments} toggleComponents={this.toggleComponents} fb={this.props.fb} />}
             </div>
         );
     }
