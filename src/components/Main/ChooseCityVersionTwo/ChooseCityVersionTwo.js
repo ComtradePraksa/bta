@@ -29,7 +29,6 @@ class ChooseCity extends Component {
                 citiesArray.push({ id: city.id, city: city.city_name })
             ));
             this.setState({ cities: citiesArray });
-
         })();
     };
 

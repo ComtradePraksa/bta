@@ -16,11 +16,15 @@
     width: 40%;
     background-color: white;
     display: grid;
-    grid-template-rows: 1fr 5fr 4fr;
+    grid-template-rows: 1fr 9fr;
 }
 .feedbackPopupHeader{
     background-color: #232b4b;
 
+}
+.feedbackPopupMain{
+    max-height: 81vh; /* proveriti zasto ne rade procenti ovde*/
+    overflow-y:auto
 }
 .feedbackPopupUserInfo{
     display: grid;
@@ -33,9 +37,10 @@
         "com com com"
         "date . typeicon"
        ;
+       background-color: silver;
 }
 .feedbackPopupDate{
-grid-area: date
+grid-area: date;
 }
 .feedbackPopupTypeIcon{
 grid-area: typeicon
@@ -91,4 +96,11 @@ grid-area: typeicon
 }
 .feedbackContent{
     grid-area: com
+}
+
+.feedbackPopupCommentTitleContainer{
+    display: flex;
+}
+.feedbackPopupNumberOfComments{
+    display: flex;
 }

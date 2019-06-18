@@ -12,6 +12,7 @@ class CurrentLocation extends Component {
         longitude: '',
         error: null,
     };
+    
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
@@ -28,7 +29,7 @@ class CurrentLocation extends Component {
             const value = `${latitude},${longitude}`;
             this.setState({value, latitude, longitude});
         })();
-    }
+    };
 
 
 

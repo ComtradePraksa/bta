@@ -2,19 +2,42 @@ import React, { Component } from 'react';
 import classes from "./FeedbackTicket.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackPopup from '../FeedbackPopup/FeedbackPopup';
-import {getType,getStyle} from "../FeedbackFunction/FeedbackFunction"
+import { getType, getStyle } from "../FeedbackFunction/FeedbackFunction"
+import { getFromDatabase } from '../../../../apis/btaApi';
+
 
 class FeedbackTicket extends Component {
     state = {
-        popupVisible : false
+        popupVisible: false,
+        comments: []
     }
 
-    toggleComponents = ()=>{
-        this.setState({
-            popupVisible: !this.state.popupVisible
+    toggleComponents = () => {
+        this.setState({ popupVisible: !this.state.popupVisible });
+    };
+
+    componentDidMount() {
+        (async () => {
+            const data = await getFromDatabase('/location_comments');
+            const comments = [];
+            data.data.map(fb => (
+                comments.push(fb)
+            ));
+            this.setState({ comments: comments })
+        })();
+    };
+
+    getNumberOfComments = () => {
+        let sum = 0
+        this.state.comments.map(comment => {
+            if (comment.id_feedback === this.props.fb.id_feedback) {
+                sum++
+            }
+            return true;
         })
-    }
-
+        return sum;
+    };
+    
     render() {
         return (
             <div className={classes.ticketContainer}>
@@ -34,12 +57,12 @@ class FeedbackTicket extends Component {
                 <p className={classes.feedbackText}>{this.props.fb.feedback.slice(0, 150)}...</p>
                 <div className={classes.numberOfComments}>
                     <div className={classes.numberOfCommentsWrapper}>
-                        <p style={{ marginRight: "10px" }}>4</p>
                         <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
+                        <p style={{ marginRight: "10px" }}>{this.getNumberOfComments()}</p>
                     </div>
                 </div>
                 <button className={classes.readMore} onClick={this.toggleComponents}>READ MORE</button>
-                {this.state.popupVisible && <FeedbackPopup toggleComponents={this.toggleComponents} fb={this.props.fb} />}
+                {this.state.popupVisible && <FeedbackPopup numberOfComments={this.getNumberOfComments()} comments={this.state.comments} toggleComponents={this.toggleComponents} fb={this.props.fb} />}
             </div>
         );
     }

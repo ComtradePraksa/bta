@@ -9,7 +9,7 @@ class NearbyWrapper extends Component {
         nearbyPlaces: []
       };
 
-      componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps) {
         if(this.props.location !== prevProps.location){
             axios.get(`https://places.cit.api.here.com/places/v1/discover/around?app_id=oAYeL0kErguvl8l584Tn&app_code=1XgtGSFk3UzuYMqCKiRRSw&at=${this.props.location}&pretty`)
             .then(res => {

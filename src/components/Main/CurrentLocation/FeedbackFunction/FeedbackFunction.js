@@ -50,8 +50,13 @@ const getType = (type) => {
                 icon: "map-signs",
                 color: "#ffa500"
             }
-
     }
 };
 
-export {getType,getStyle}
+const formatDate = (params) => {
+    const time = params.split("T")[1].split(":")
+    const date = params.split("T")[0].split("-")
+    return `${date[2]}.${date[1]}.${date[0]} ${time[0]}:${time[1]}`
+};
+
+export {getType,getStyle, formatDate}
