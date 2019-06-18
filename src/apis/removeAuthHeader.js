@@ -1,4 +1,4 @@
-function removeAuthHeader() {
+const removeAuthHeader = () => {
     let options = {
         transformRequest: [function (data, headers) {
             delete headers.common.Authorization;
@@ -8,5 +8,4 @@ function removeAuthHeader() {
     return options;
 };
 
-
-export {removeAuthHeader}
+export { removeAuthHeader };

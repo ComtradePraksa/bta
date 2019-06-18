@@ -10,9 +10,9 @@ class Map extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.latitude !== prevProps.longitude && this.props.longitude !== prevProps.longitude) {
-           map(this.props.latitude,this.props.longitude)
+           map(this.props.latitude,this.props.longitude);
         }
-    }
+    };
 
     render() {
         return (
