@@ -16,7 +16,6 @@ class CurrentLocation extends Component {
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
-
     
     componentDidMount() {
         const options = {
@@ -30,8 +29,6 @@ class CurrentLocation extends Component {
             this.setState({value, latitude, longitude});
         })();
     };
-
-
 
     render() {
         return (<React.Fragment>

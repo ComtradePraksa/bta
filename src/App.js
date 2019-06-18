@@ -6,7 +6,7 @@ import {faChevronCircleRight,faPlus,faTimes, faKey, faUser, faChevronDown, faCom
 import Main from './components/Main/Main';
 import jwt from 'jsonwebtoken';
 
-library.add(faChevronCircleRight,faPlus, faTimes,faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
+library.add(faChevronCircleRight, faPlus, faTimes,faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
 
 class App extends Component {
   state = {

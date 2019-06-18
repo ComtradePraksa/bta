@@ -6,22 +6,21 @@ import FeedbackComment from "../FeedbackComment/FeedbackComment";
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
-
-
 class FeedbackPopup extends Component {
     state = {
-
         commentVisible: false,
         commentValue: ""
-    }
+    };
+
     toggleComment = () => {
         this.setState({ commentVisible: !this.state.commentVisible })
-    }
+    };
 
     getCommentValue = event => {
         this.setState({ commentValue : event.target.value })
 
-    }
+    };
+
     getData = () => {
         // document.querySelector("#commentText").value = ""
         this.setState({ commentValue : "" })
@@ -36,13 +35,9 @@ class FeedbackPopup extends Component {
             data: commentData,
             config: { headers: { 'Content-Type': 'application/json' } }
           }).then(res=>
-            {
-                console.log(res.data.newComment);
-                this.props.addNewComent(res.data.newComment) 
-            }
-            )
+            { this.props.addNewComent(res.data.newComment) })
+    };
 
-    }
     render() {
         return (
             <div className={classes.feedbackPopupWindow}>
@@ -100,4 +95,5 @@ class FeedbackPopup extends Component {
         )
     }
 }
+
 export default FeedbackPopup;
