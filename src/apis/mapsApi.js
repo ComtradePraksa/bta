@@ -1,15 +1,13 @@
 import axios from 'axios';
-
-
   
 const map = (latitude,longitude) => {
 
-let platform = new window.H.service.Platform({ app_id: 'bIV674hGvmDcJyBxVMjW', app_code: 'pZnLTja-QcfDIq6mwL63og'});
+const platform = new window.H.service.Platform({ app_id: 'bIV674hGvmDcJyBxVMjW', app_code: 'pZnLTja-QcfDIq6mwL63og'});
 
 const layer = platform.createDefaultLayers();
 const container = document.getElementById('here-map');
 
-let map = new window.H.Map(container, layer.normal.map, {
+const map = new window.H.Map(container, layer.normal.map, {
     center: { lat: latitude, lng: longitude },
     zoom: 12,
 });
