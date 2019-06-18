@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classes from './MapCity.css';
 import axios from 'axios';
 import {removeAuthHeader} from '../../../../apis/removeAuthHeader';
-import {map} from '../../../../apis/mapsApi'
+import map from '../../../../apis/mapsApi'
 class MapCity extends Component {
 state = {
     view:<div className={classes.Map} id="here-map" style={{ width: '30vw', height: '30vw', background: 'grey' }}> </div>
