@@ -9,7 +9,8 @@ import AdminPanel from './AdminPanel/AdminPanel';
 
 class Main extends Component {
     state = {
-        city:''
+        city:'',
+        is_admin: this.props.loggedUser.is_admin
     };
     
     getCity = (city) => {
@@ -22,7 +23,7 @@ class Main extends Component {
                 <Welcome loggedUser={this.props.loggedUser}/>
                 <ChooseCityVersionTwo getCity={this.getCity}/>
                 {this.state.city ==='' ? <CurrentLocation/> : <City city={this.state.city}/>}
-                <AdminPanel />
+                {this.state.is_admin === 1 ? <AdminPanel /> : null}
             </div>
         );
     }
