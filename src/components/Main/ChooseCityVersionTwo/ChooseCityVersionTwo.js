@@ -59,11 +59,11 @@ class ChooseCity extends Component {
                     <h2 className={[classes.cityLink, classes.pointer].join(' ')} onClick={this.toggleDropdown}>city</h2>}
                 {this.state.dropdownVisible &&
 
-                    <div className={[classes.dropdownWrapper, classes.fullHeight].join(' ')}>
-                        <div className={[classes.dropdown, classes.fullHeight].join(' ')} >
+                    <div className={classes.dropdownWrapper}>
+                        <div className={classes.dropdown} >
                             <div className={[classes.dropdownTileWrapper, classes.fullHeight, classes.pointer].join(' ')}>
                             <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
-                                <FontAwesomeIcon icon="chevron-down" />
+                                <FontAwesomeIcon icon="chevron-down" style={{color:"whitesmoke"}}/>
                             </div>
                             <ul className={[classes.dropdownItemList, classes.flex].join(' ')}>
                                 {list}

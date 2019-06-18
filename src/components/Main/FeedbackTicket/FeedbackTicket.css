@@ -1,0 +1,87 @@
+/* dimenzije nece biti odredjene na ovaj nacin, vec ce se preuzeti od parent elementa */
+.ticketContainer{
+    width: 80%;
+    height: 80%;
+    padding: 10px 20px;
+    background-color: white;
+
+    display: grid;
+    grid-template-columns: 2.5fr 5fr 2.5fr;
+    grid-template-rows: 1.5fr 1fr 1fr 1fr 3.5fr 2fr;
+    grid-template-areas: 
+    ". . type"
+    "photo name ."
+    "photo title title"
+    "photo progressbar raiting"
+    "fb fb fb"
+    "com . readmore";
+    text-align: left;
+
+}
+
+.feedbackType{
+grid-area: type;
+display: flex;
+justify-content: flex-end;
+}
+.userPicture{
+    grid-area: photo;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.userPicture img{
+    width: 8vh;
+    height: 8vh;
+    border-radius: 50%;
+  
+}
+.userName{
+    grid-area: name
+
+}
+.feedbackTitle{
+    grid-area: title
+
+}
+.feedbackProgress{
+    grid-area: progressbar;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.innerProgress{
+    height: 40%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: lightgray;
+}
+.colorProgress{
+    height: 100%;
+    border-radius: 10px;
+}
+.feedbackRaiting{
+    grid-area: raiting;
+    text-align: center;
+
+}
+.feedbackText{
+    grid-area: fb;
+    font-size: 0.8em;
+
+}
+.numberOfComments{
+    grid-area: com
+
+}
+.numberOfCommentsWrapper{
+display: flex;
+align-items: center;
+height: 100%;
+}
+.readMore{
+    grid-area: readmore
+
+}

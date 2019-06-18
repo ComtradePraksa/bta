@@ -1,0 +1,22 @@
+.feedbackContainer{
+    grid-area: feedback;
+    height: 80vh;
+    display: grid;
+    grid-template-rows: 3fr 7fr;
+    padding: 0px 40px 40px;
+    justify-items: center;
+    background-color: blueviolet
+}
+    
+.ticketsWrapper{
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    align-items: center;
+}
+.sortTicket{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
