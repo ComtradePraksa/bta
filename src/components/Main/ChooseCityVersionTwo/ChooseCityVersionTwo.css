@@ -1,6 +1,17 @@
-body, div,
-h1, h2, h3, h4, h5, h6, p,
-a, ol, ul, li, input
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ol,
+ul,
+li,
+input,
 nav {
   margin: 0;
   padding: 0;
@@ -22,7 +33,7 @@ nav {
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .chooseCity {
@@ -31,23 +42,25 @@ nav {
   height: 5vh;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-h2 {
+.chooseCity h2 {
   color: gray;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 
-.cityLink {
-  color: black;
+.cityLink h2{
+  color: pink;
 }
 
 .dropdownWrapper {
-  border: 1px solid black;
-  padding: 5px 10px;
-  position: relative;
-  width: 80%;
-  background-color: white;
+ /* border: 1px solid black; */
+ padding: 5px 10px;
+ position: relative;
+ width: 80%;
+/* background-color: white; */
+background-color: transparent;
 }
 
 .dropdown {
@@ -60,48 +73,64 @@ h2 {
 .dropdownTileWrapper input {
   background-color: transparent;
   width: 90%;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+  padding: 8px 0;
 }
 
 .dropdownItemList {
   min-height: 0vh;
   max-height: 15vh;
   overflow-y: auto;
-  border: 1px solid black;
+ /* border: 1px solid black;*/
   flex-direction: column;
   z-index: 10;
+  margin-top: 0.5rem;
 }
 
 .dropdownItem {
     padding: 5px 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 0.4px solid rgb(196, 192, 192);
     min-height: 5vh;
-    background-color: white;
+  /*  background-color: white;*/
+    background: rgba(255, 105, 145);
+    color: white;
 }
 
 .dropdownItem:hover {
-    background-color: gray;
-    cursor: pointer;
+  background-color: gray;
+  background: rgb(226, 103, 136);
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 @media(min-width: 400px) {
-    .dropdownWrapper {
-        width: 50vw;
-    }
-    h2 {
-        font-size: 1.2rem;
-    }
+  .dropdownWrapper {
+      width: 50vw;
+  }
+  .chooseCity h2 {
+      font-size: 1.2rem;
+  }
 }
 
-@media(min-width: 776px) {
-    .chooseCity {
-      width: 100%;
-    }
+@media(min-width: 768px) {
+  .chooseCity {
+    width: 100%;
+    flex-direction: row;
+  }
 
-    h2 {
-      font-size: 1.5rem;
-    }
+  .chooseCity h2 {
+    font-size: 1.5rem;
+  }
 
-    .dropdownWrapper {
-        width: 30vw;
-    }
+  .dropdownWrapper {
+      width: 30vw;
+      height: 100%;
+  }
+
+  .dropdownItemList {
+    margin-top: 0;
+  }
 }

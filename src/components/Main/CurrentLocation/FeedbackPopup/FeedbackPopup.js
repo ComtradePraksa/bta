@@ -34,7 +34,7 @@ class FeedbackPopup extends Component {
         }
         axios({
             method: 'post',
-            url: `http://localhost:3001/location_comments`,
+            url: 'http://localhost:3001/location_comments',
             data: commentData,
             config: { headers: { 'Content-Type': 'application/json' } }
           }).then(res=>

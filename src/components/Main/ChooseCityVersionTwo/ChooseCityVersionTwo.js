@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { getFromDatabase } from '../../../apis/btaApi';
 import classes from './ChooseCityVersionTwo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import axios from 'axios';
-
 
 class ChooseCity extends Component {
     state = {
@@ -13,15 +11,6 @@ class ChooseCity extends Component {
     };
 
     componentDidMount() {
-        // const citiesArray = [];
-        // axios.get('http://localhost:3001/locations')
-        // .then(res => {
-        //     const cities = res.data.data;
-        //     cities.map((city) => {
-        //        return citiesArray.push({ id: city.id, city: city.city_name })
-        //     })
-        //     this.setState({ cities: citiesArray });
-        // });
         (async () => {
             const data = await getFromDatabase(`/locations`);
             const citiesArray = [];
@@ -51,6 +40,7 @@ class ChooseCity extends Component {
                     onClick={this.getClickedCity.bind(this, city)}>{city.city}</li>
             )
         });
+
         return (
             <div className={[classes.chooseCity, classes.flex].join(' ')}>
                 <h2>I would like to get some info on the</h2><div>&nbsp;</div>
@@ -63,7 +53,7 @@ class ChooseCity extends Component {
                         <div className={[classes.dropdown, classes.fullHeight].join(' ')} >
                             <div className={[classes.dropdownTileWrapper, classes.fullHeight, classes.pointer].join(' ')}>
                             <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
-                                <FontAwesomeIcon icon="chevron-down" />
+                                <FontAwesomeIcon icon="chevron-down" style={{color: '#fff'}}/>
                             </div>
                             <ul className={[classes.dropdownItemList, classes.flex].join(' ')}>
                                 {list}

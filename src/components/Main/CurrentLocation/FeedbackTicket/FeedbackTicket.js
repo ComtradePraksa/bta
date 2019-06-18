@@ -5,12 +5,11 @@ import FeedbackPopup from '../FeedbackPopup/FeedbackPopup';
 import { getType, getStyle } from "../FeedbackFunction/FeedbackFunction"
 import { getFromDatabase } from '../../../../apis/btaApi';
 
-
 class FeedbackTicket extends Component {
     state = {
         popupVisible: false,
         comments: []
-    }
+    };
 
     toggleComponents = () => {
         this.setState({ popupVisible: !this.state.popupVisible });
@@ -26,7 +25,8 @@ class FeedbackTicket extends Component {
             this.setState({ comments: comments })
         })();
     };
-    addNewComent = (newComment)=>{
+
+    addNewComent = (newComment) => {
         const copy = this.state.comments;
         this.setState({
             comments: [...copy, newComment]
