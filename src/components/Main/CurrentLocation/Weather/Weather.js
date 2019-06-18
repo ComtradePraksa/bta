@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import classes from './Weather.css';
 import axios from 'axios';
+<<<<<<< HEAD
+=======
+import {removeAuthHeader} from '../../../../apis/removeAuthHeader';
+>>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0
 
 class Weather extends Component {
     state = {
@@ -9,6 +13,7 @@ class Weather extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.latitude !== this.props.latitude || prevProps.longitude !== this.props.longitude) {
+<<<<<<< HEAD
             function removeAuthHeader() {
                 let options = {
                     transformRequest: [function (data, headers) {
@@ -19,6 +24,8 @@ class Weather extends Component {
                 return options;
             };
 
+=======
+>>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0
             axios.get(`http://api.apixu.com/v1/forecast.json?key=937e493fb43842b4a90103252191706&q=${this.props.latitude},${this.props.longitude}`, removeAuthHeader())
                 .then(res => {
                     const weatherData = res.data;

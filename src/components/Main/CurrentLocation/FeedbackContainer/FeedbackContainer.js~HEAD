@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
-import { getFromDatabase } from '../../../apis/btaApi';
+import { getFromDatabase } from '../../../../apis/btaApi';
 import classes from "./FeedbackContainer.css"
-
 
 class FeedbackContainer extends Component {
     state = {
@@ -20,14 +19,15 @@ class FeedbackContainer extends Component {
             this.setState({ feedbacks: feedback })
         })();
     };
-
+    
     render() {
+
         return (
             <div className={classes.feedbackContainer}>
                 <div className={classes.sortTicket}></div>
                 <div className={classes.ticketsWrapper}>
-                    {this.state.feedbacks.map((fb, index) => (
-                        <FeedbackTicket key={index} fb={fb} />
+                    {this.state.feedbacks.map((fb) => (
+                        <FeedbackTicket key={fb.id_feedback} fb={fb} />
                     ))}
 
                 </div>

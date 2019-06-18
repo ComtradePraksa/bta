@@ -97,6 +97,7 @@ grid-area: typeicon
 .feedbackContent{
     grid-area: com
 }
+<<<<<<< HEAD
 
 .feedbackPopupCommentTitleContainer{
     display: flex;
@@ -104,3 +105,28 @@ grid-area: typeicon
 .feedbackPopupNumberOfComments{
     display: flex;
 }
+=======
+.feedbackPopupComments{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.feedbackNewComment textarea{
+width: 90%;
+height: 10vh;
+resize: none;
+box-sizing: border-box;
+}
+.feedbackNewComment {
+    display: flex;
+}
+
+.feedbackPopupCommentTitleContainer{
+    display: grid;
+    grid-template-columns: 2fr 4fr 3fr 
+}
+.feedbackPopupNumberOfComments{
+    display: flex;
+}
+>>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0

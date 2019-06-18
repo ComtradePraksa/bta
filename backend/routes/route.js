@@ -151,9 +151,23 @@ module.exports = function (app, express, mysqlConnection) {
     });
     router.route('/location_comments')
     .get(verifyToken,(req, res) => {
-      mysqlConnection.query('SELECT id_comment, comment_date,comments, users.photo,users.id,users.name,lf.id_feedback FROM location_comments AS com JOIN location_feedbacks AS lf ON lf.id_feedback=com.id_feedback INNER join users ON users.id = com.id_user', function (error, results) {
+      mysqlConnection.query('SELECT id_comment, comment_date,comments, users.photo,users.id,users.name,lf.id_feedback FROM location_comments AS com JOIN location_feedbacks AS lf ON lf.id_feedback=com.id_feedback INNER join users ON users.id = com.id_user ORDER BY comment_date DESC', function (error, results) {
         if (error) throw error;
         res.send({ error: false, data: results, message: 'Feedback comments list.', user: req.user });
+       });
+    });
+    router.route('/location_comments')
+    .post(verifyToken,(req, res) => {
+      const newComment = {
+        userId: req.body.userId ,
+        fbId: req.body.fbId,
+        com: req.body.com
+      }
+      mysqlConnection.query('insert into location_comments (id_user,id_feedback,comments,comment_date) values (?,?,?,NOW())',
+      [req.body.userId,req.body.fbId,req.body.com], function (error, results) {
+        if (error) throw error;
+        console.log(results[0])
+        res.send({ error: false, newComment, user: req.user });
        });
     });
 

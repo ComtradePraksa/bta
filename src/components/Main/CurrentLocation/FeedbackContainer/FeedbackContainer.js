@@ -24,7 +24,9 @@ class FeedbackContainer extends Component {
 
         return (
             <div className={classes.feedbackContainer}>
-                <div className={classes.sortTicket}></div>
+                <div className={classes.sortTicket}>
+                    
+                </div>
                 <div className={classes.ticketsWrapper}>
                     {this.state.feedbacks.map((fb) => (
                         <FeedbackTicket key={fb.id_feedback} fb={fb} />
