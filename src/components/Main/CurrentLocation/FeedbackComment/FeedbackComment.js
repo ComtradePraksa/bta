@@ -4,7 +4,6 @@ import {formatDate } from "../FeedbackFunction/FeedbackFunction"
 
 class FeedbackComment extends Component{
     render() {
-        
         return(
             <div className={classes.commentContainer}>
                 <div className={classes.userName}>

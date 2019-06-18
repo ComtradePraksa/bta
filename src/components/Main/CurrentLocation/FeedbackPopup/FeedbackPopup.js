@@ -8,6 +8,7 @@ import axios from 'axios';
 
 
 
+
 class FeedbackPopup extends Component {
     state = {
 
@@ -29,10 +30,11 @@ class FeedbackPopup extends Component {
             userId:jwt.decode(localStorage.getItem("jwtoken")).id,
             fbId:this.props.fb.id_feedback,
             com:this.state.commentValue,
+            
         }
         axios({
             method: 'post',
-            url: 'http://localhost:3001/location_comments',
+            url: `http://localhost:3001/location_comments`,
             data: commentData,
             config: { headers: { 'Content-Type': 'application/json' } }
           }).then(res=>
@@ -87,7 +89,7 @@ class FeedbackPopup extends Component {
                                     <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
                                     <p>{this.props.numberOfComments}</p>
                                 </div>
-                                <button onClick={this.toggleComment}> <FontAwesomeIcon icon="plus" onClick={this.getData} /> Add Comment</button>
+                                <button onClick={this.toggleComment}> <FontAwesomeIcon icon="plus" /> Add Comment</button>
                             </div>
                             {this.state.commentVisible && <div className={classes.feedbackNewComment}>
                                 <textarea id={`commentText`} onChange={this.getCommentValue} />
