@@ -1,32 +1,36 @@
-.feedbackPopupWindow{
+.feedbackPopupWindow {
     height: 100vh;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.feedbackPopup{
+.feedbackPopup {
     height: 90%;
     width: 40%;
     background-color: white;
     display: grid;
     grid-template-rows: 1fr 9fr;
 }
-.feedbackPopupHeader{
+
+.feedbackPopupHeader {
     background-color: #232b4b;
 
 }
-.feedbackPopupMain{
-    max-height: 81vh; /* proveriti zasto ne rade procenti ovde*/
-    overflow-y:auto
+
+.feedbackPopupMain {
+    max-height: 81vh;
+    /* proveriti zasto ne rade procenti ovde*/
+    overflow-y: auto
 }
-.feedbackPopupUserInfo{
+
+.feedbackPopupUserInfo {
     display: grid;
     grid-template-columns: 2.5fr 5fr 2.5fr;
     grid-template-rows: 1fr 1fr 1fr 7fr;
@@ -36,37 +40,40 @@
         "photo progressbar rating"
         "com com com"
         "date . typeicon"
-       ;
-       background-color: silver;
+    ;
+    background-color: silver;
 }
-.feedbackPopupDate{
-grid-area: date;
+
+.feedbackPopupDate {
+    grid-area: date;
 }
-.feedbackPopupTypeIcon{
-grid-area: typeicon
+
+.feedbackPopupTypeIcon {
+    grid-area: typeicon
 }
-.feedbackPopupUserPhoto{
+
+.feedbackPopupUserPhoto {
     grid-area: photo
 }
-.feedbackPopupUserPhoto img{
+
+.feedbackPopupUserPhoto img {
     max-height: 100%
 }
-.feedbackPopupUserName{
+
+.feedbackPopupUserName {
     grid-area: name
-
 }
-.feedbackPopupTitle{
+
+.feedbackPopupTitle {
     grid-area: title
-
 }
-.feedbackPopupType{
+
+.feedbackPopupType {
     grid-area: icons
-
 }
 
-.feedbackPopupRate{
+.feedbackPopupRate {
     grid-area: rating
-
 }
 
 .feedbackPopupProgress {
@@ -90,43 +97,37 @@ grid-area: typeicon
     border-radius: 10px;
 }
 
-.feedbackPopupMain{
+.feedbackPopupMain {
     height: 100%;
     overflow-y: auto;
 }
-.feedbackContent{
+
+.feedbackContent {
     grid-area: com
 }
-<<<<<<< HEAD
 
-.feedbackPopupCommentTitleContainer{
-    display: flex;
-}
-.feedbackPopupNumberOfComments{
-    display: flex;
-}
-=======
-.feedbackPopupComments{
+.feedbackPopupComments {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.feedbackNewComment textarea{
-width: 90%;
-height: 10vh;
-resize: none;
-box-sizing: border-box;
+.feedbackNewComment textarea {
+    width: 90%;
+    height: 10vh;
+    resize: none;
+    box-sizing: border-box;
 }
+
 .feedbackNewComment {
     display: flex;
 }
 
-.feedbackPopupCommentTitleContainer{
+.feedbackPopupCommentTitleContainer {
     display: grid;
-    grid-template-columns: 2fr 4fr 3fr 
+    grid-template-columns: 2fr 4fr 3fr
 }
-.feedbackPopupNumberOfComments{
+
+.feedbackPopupNumberOfComments {
     display: flex;
 }
->>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0

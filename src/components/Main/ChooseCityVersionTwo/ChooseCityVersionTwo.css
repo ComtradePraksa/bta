@@ -1,7 +1,17 @@
-body, div,
-h1, h2, h3, h4, h5, h6, p,
-a, ol, ul, li, input
-nav {
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ol,
+ul,
+li,
+input nav {
   margin: 0;
   padding: 0;
   font-family: "Open Sans", Arial, sans-serif;
@@ -22,7 +32,7 @@ nav {
 }
 
 .pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .chooseCity {
@@ -72,36 +82,37 @@ h2 {
 }
 
 .dropdownItem {
-    padding: 5px 10px;
-    border-bottom: 1px solid black;
-    min-height: 5vh;
-    background-color: white;
+  padding: 5px 10px;
+  border-bottom: 1px solid black;
+  min-height: 5vh;
+  background-color: white;
 }
 
 .dropdownItem:hover {
-    background-color: gray;
-    cursor: pointer;
+  background-color: gray;
+  cursor: pointer;
 }
 
 @media(min-width: 400px) {
-    .dropdownWrapper {
-        width: 50vw;
-    }
-    h2 {
-        font-size: 1.2rem;
-    }
+  .dropdownWrapper {
+    width: 50vw;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
 }
 
 @media(min-width: 776px) {
-    .chooseCity {
-      width: 100%;
-    }
+  .chooseCity {
+    width: 100%;
+  }
 
-    h2 {
-      font-size: 1.5rem;
-    }
+  h2 {
+    font-size: 1.5rem;
+  }
 
-    .dropdownWrapper {
-        width: 30vw;
-    }
+  .dropdownWrapper {
+    width: 30vw;
+  }
 }

@@ -1,35 +1,23 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {getFromDatabase} from '../../../apis/btaApi'
-import classes from '../Hotels/Hotels.css'
+import {removeAuthHeader} from '../../../apis/removeAuthHeader';
+import {getFromDatabase} from '../../../apis/btaApi';
+import classes from '../Hotels/Hotels.css';
 
 class Hotels extends Component{
-
     state = {
         hotel: {}
-    }
+    };
 
-    componentDidMount(){
-        function removeAuthHeader() {
-            let options = {
-                transformRequest: [function (data, headers) {
-                    delete headers.common.Authorization;
-                    return data;
-                }]
-            };
-            return options;
-        };
+    componentDidMount() {
         (async () => {
             const hotel = await getFromDatabase('/accomodations/2');
             axios.get(`http://scrappet.herokuapp.com/api/scrape?url=${hotel.data.link}`,removeAuthHeader())
             .then(res => {
                 const hotel = res.data.page.meta_tags;
-                this.setState({
-                    hotel
-                })
+                this.setState({ hotel });
             })
         })();
-        
     }
 
     render(){
@@ -42,7 +30,6 @@ class Hotels extends Component{
             </div>
         );
     }
-
 }
 
 export default Hotels;

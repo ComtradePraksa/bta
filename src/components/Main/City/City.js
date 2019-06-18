@@ -4,8 +4,7 @@ import MapCity from './MapCity/MapCity';
 
 class City extends Component {
  
-    render() {
-       
+    render() {     
         return (<React.Fragment>
                 <WeatherCity city={this.props.city}/>
                 <MapCity city={this.props.city}/>
