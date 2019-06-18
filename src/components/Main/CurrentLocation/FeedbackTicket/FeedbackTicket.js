@@ -24,11 +24,6 @@ class FeedbackTicket extends Component {
                 comments.push(fb)
             ));
             this.setState({ comments: comments })
-<<<<<<< HEAD
-        })();
-    };
-
-=======
             console.log(this.state.comments)
         })();
     };
@@ -39,7 +34,6 @@ class FeedbackTicket extends Component {
         })
         console.log(this.state.comments);
     }
->>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0
     getNumberOfComments = () => {
         let sum = 0
         this.state.comments.map(comment => {
@@ -52,10 +46,7 @@ class FeedbackTicket extends Component {
     };
     
     render() {
-<<<<<<< HEAD
-=======
         console.log(this.state.comments);
->>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0
         return (
             <div className={classes.ticketContainer}>
                 <div className={classes.feedbackType}>
@@ -79,11 +70,7 @@ class FeedbackTicket extends Component {
                     </div>
                 </div>
                 <button className={classes.readMore} onClick={this.toggleComponents}>READ MORE</button>
-<<<<<<< HEAD
-                {this.state.popupVisible && <FeedbackPopup numberOfComments={this.getNumberOfComments()} comments={this.state.comments} toggleComponents={this.toggleComponents} fb={this.props.fb} />}
-=======
                 {this.state.popupVisible && <FeedbackPopup addNewComent={this.addNewComent} numberOfComments={this.getNumberOfComments()} comments={this.state.comments} toggleComponents={this.toggleComponents} fb={this.props.fb} />}
->>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0
             </div>
         );
     }

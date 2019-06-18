@@ -97,15 +97,6 @@ grid-area: typeicon
 .feedbackContent{
     grid-area: com
 }
-<<<<<<< HEAD
-
-.feedbackPopupCommentTitleContainer{
-    display: flex;
-}
-.feedbackPopupNumberOfComments{
-    display: flex;
-}
-=======
 .feedbackPopupComments{
     display: flex;
     flex-direction: column;
@@ -129,4 +120,3 @@ box-sizing: border-box;
 .feedbackPopupNumberOfComments{
     display: flex;
 }
->>>>>>> 138ab09f0b4def01c0e5e0c7cad7562ab41f34e0
