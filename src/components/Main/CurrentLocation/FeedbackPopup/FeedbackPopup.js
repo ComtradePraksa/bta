@@ -37,8 +37,18 @@ class FeedbackPopup extends Component {
             config: { headers: { 'Content-Type': 'application/json' } }
           }).then(res=>
             {
-                console.log(res.data.newComment);
-                this.props.addNewComent(res.data.newComment) 
+                const dbResults = res.data
+                console.log(res)
+                const newCom = {
+                    id_comment:dbResults.insertedId,
+                    comment_date:"2018-10-16T10:11:00.000Z",
+                    comments:dbResults.newComment.com,
+                    id_feedback:dbResults.newComment.fbId,
+                    id:dbResults.newComment.userId,
+                    name:dbResults.user.name,
+                    photo:dbResults.user.photo
+                }
+                this.props.addNewComent(newCom) 
             }
             )
 

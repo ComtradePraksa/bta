@@ -24,7 +24,6 @@ class FeedbackTicket extends Component {
                 comments.push(fb)
             ));
             this.setState({ comments: comments })
-            console.log(this.state.comments)
         })();
     };
     addNewComent = (newComment)=>{
@@ -32,7 +31,6 @@ class FeedbackTicket extends Component {
         this.setState({
             comments: [...copy, newComment]
         })
-        console.log(this.state.comments);
     }
     getNumberOfComments = () => {
         let sum = 0
@@ -46,7 +44,6 @@ class FeedbackTicket extends Component {
     };
     
     render() {
-        console.log(this.state.comments);
         return (
             <div className={classes.ticketContainer}>
                 <div className={classes.feedbackType}>
