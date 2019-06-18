@@ -34,7 +34,7 @@ class Login extends Component {
       //check if there is a user with these credentials
       axios({
         method: 'post',
-        url: '/login',
+        url: 'http://localhost:3001/login',
         data: user,
         config: { headers: { 'Content-Type': 'application/json' } }
       })
