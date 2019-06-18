@@ -42,10 +42,18 @@
 @media(min-width:768px){
 .Container {
     padding: 1%;
-}    
+    /*privremeno, videti za raspored*/
+    display: flex;
+}   
+/*privremeno*/
+ .Welcome, .Photo, .Title {
+     padding: 1%;
+ } 
 .Welcome {
     font-size: 1.1rem;
 }
+
+
 }
 
 /* prvobitni prikaz

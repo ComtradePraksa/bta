@@ -2,7 +2,7 @@
 .ticketContainer {
     width: 80%;
     height: 80%;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background-color: white;
     display: grid;
     grid-template-columns: 2.5fr 5fr 2.5fr;
@@ -15,7 +15,7 @@
         "fb fb fb"
         "com . readmore";
     text-align: left;
-   /* grid-row-gap: 2px;?*/
+    grid-row-gap: 2px;
 }
 
 .feedbackType {
@@ -29,11 +29,13 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    padding-right: 5x;
+
 }
 
 .userPicture img {
-    width: 8vh;
-    height: 8vh;
+    width: 7vh;
+    height: 7vh;
     border-radius: 50%;
 }
 
@@ -54,7 +56,7 @@
 }
 
 .innerProgress {
-    height: 40%;
+    height: 20%;
     width: 100%;
     border-radius: 10px;
     background-color: lightgray;
@@ -89,18 +91,24 @@
 .readMore {
     grid-area: readmore;
     cursor: pointer;
-    font-size: 0.6rem;
+    font-size: 0.5rem;
+    background-color: transparent;
 }
 
 .readMore:hover {
-  background-color: lightgray;
+  color: lightgray;
   transition: 0.5s;
+  background: linear-gradient(to bottom, rgba(251, 65, 115, 0.856) 0%, rgba(251, 65, 115, 0.801) 60%, rgba(251, 65, 115, 0.87) 53%, rgba(210, 75, 91, 0.836) 53%, rgba(251, 65, 115, 0.808) 53%);
+}
+
+@media(min-width:400px) {
+    .readmMore {
+    font-size: 0.6rem;
+    }
 }
 
 @media(min-width: 992px) {
-    .readMore {
-        font-size: 0.8rem;
-    }
+
     .feedbackText {
       font-size: 0.8em;
     }

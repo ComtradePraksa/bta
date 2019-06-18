@@ -23,6 +23,7 @@ nav {
       "map"
       "nearby"
       "feedback";
+    background-color: #333;
 }
 
 @media(min-width: 768px) {

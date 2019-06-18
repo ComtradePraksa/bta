@@ -10,6 +10,8 @@
     padding: 1%;
     margin: 5% auto;
     width: 95%;
+    text-align: left;
+    color: white;
 }
 
 .icon {
@@ -30,4 +32,11 @@
 .address {
     grid-area: address;
     padding-right: 5%;
+    font-size: 0.7rem;
+}
+
+@media(min-width:400px){
+    .address {
+    font-size: 0.9rem;
+    }
 }
