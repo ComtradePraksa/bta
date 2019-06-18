@@ -31,25 +31,23 @@ nav {
   height: 5vh;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
-.chooseCity h2 {
+h2 {
   color: gray;
   font-size: 0.7rem;
 }
 
 .cityLink {
-  color: whitesmoke;
+  color: black;
 }
 
 .dropdownWrapper {
- /* border: 1px solid black; */
+  border: 1px solid black;
   padding: 5px 10px;
   position: relative;
   width: 80%;
- /* background-color: white; */
- background-color: transparent;
+  background-color: white;
 }
 
 .dropdown {
@@ -68,23 +66,20 @@ nav {
   min-height: 0vh;
   max-height: 15vh;
   overflow-y: auto;
- /* border: 1px solid black; */
+  border: 1px solid black;
   flex-direction: column;
   z-index: 10;
 }
 
 .dropdownItem {
     padding: 5px 10px;
-    border-bottom: 0.4px solid rgb(196, 192, 192);
+    border-bottom: 1px solid black;
     min-height: 5vh;
-  /*  background-color: white;*/
-    background: rgba(255, 105, 145);
-    color: white;
+    background-color: white;
 }
 
 .dropdownItem:hover {
     background-color: gray;
-    background: rgb(226, 103, 136);
     cursor: pointer;
 }
 
@@ -92,7 +87,7 @@ nav {
     .dropdownWrapper {
         width: 50vw;
     }
-    .chooseCity h2 {
+    h2 {
         font-size: 1.2rem;
     }
 }
@@ -100,15 +95,13 @@ nav {
 @media(min-width: 776px) {
     .chooseCity {
       width: 100%;
-      flex-direction: row;
     }
 
-    .chooseCity h2 {
+    h2 {
       font-size: 1.5rem;
     }
 
     .dropdownWrapper {
         width: 30vw;
-        height: 100%;
     }
 }
