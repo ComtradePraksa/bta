@@ -6,7 +6,7 @@ const headers = { 'Content-Type': 'application/json' };
 const getFromDatabase = async (query) => {
     try {
         const response = await axios.get(`${url}${query}`, { headers });
-        const data = await response.data;
+        const data = response.data;
         return data;
     } catch (error) {
         console.log(error)
