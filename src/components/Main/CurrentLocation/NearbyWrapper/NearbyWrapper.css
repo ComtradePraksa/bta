@@ -4,8 +4,15 @@
     border: 1px solid white;
     padding: 2%;
     margin: 2% auto 5% auto;
-    width: 65%;
+    width: 90%;
     min-height: 75vh;
-    font-size: 0.8vw;
+    font-size: 0.8rem;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+}
+
+@media(min-width: 776px) {
+    .NearbyWrapper {
+        width: 65%;
+        font-size: 0.8vw;
+    }
 }

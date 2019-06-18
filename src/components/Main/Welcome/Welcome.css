@@ -1,18 +1,62 @@
 .Container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     grid-area: welcome;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: 
+    "Welcome Welcome Welcome menu menu"
+    "Photo . . menu menu"
+    "Title Title Title . .";
+    grid-row-gap: 5px;
     width: 100%;
     background-color: #232b4b;
     color: whitesmoke;
+    height: 15vh;
+    text-align: justify;
+    padding: 2% 5%;
 }
 
 .Title {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 3vw;
-    padding: 1% 0;
+    font-size: 0.8rem;
+   /* padding: 1% 0;*/
+    grid-area: Title;
 }
+
+.Welcome {
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8vw;
+    grid-area: Welcome;
+}
+
+.Photo {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    grid-area: Photo;
+}
+
+@media(min-width:768px){
+.Container {
+    padding: 1%;
+    /*privremeno, videti za raspored*/
+    display: flex;
+}   
+/*privremeno*/
+ .Welcome, .Photo, .Title {
+     padding: 1%;
+ } 
+.Welcome {
+    font-size: 1.1rem;
+}
+
+
+}
+
+/* prvobitni prikaz
 
 .Welcome {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,11 +65,12 @@
     text-transform: uppercase;
     padding: 1% 10% 1% 0;
     letter-spacing: 0.8vw;
+    height: 10vh;
 }
-
 .Photo {
     border-radius: 50%;
     width: 4.5vw;
     height: 4.5vw;
     padding: 1% 1%;
 }
+*/
