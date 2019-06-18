@@ -29,7 +29,6 @@ class WeatherCity extends Component {
     };
 
     render() {
-        console.log(this.state.weatherData)
         let weather = '';
         if (this.state.weatherData !== '') {
             let imgLink = this.state.weatherData.current.condition.icon.substring(2).replace('64x64', '128x128');
