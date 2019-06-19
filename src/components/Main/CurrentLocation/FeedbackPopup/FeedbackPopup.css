@@ -26,6 +26,11 @@
     justify-content: flex-end;
 }
 
+.feedbackPopupHeader svg {
+    font-size: 1.4em;
+    padding: 3%;
+}
+
 .feedbackPopupMain {
     max-height: 81vh;
     /* proveriti zasto ne rade procenti ovde*/
