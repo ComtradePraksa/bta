@@ -11,6 +11,7 @@
     text-align: justify;
 }
 .Nav{
+    z-index: 5;
     height: 60px;
     background-color: rgb(0, 81, 255);
     display: flex;
