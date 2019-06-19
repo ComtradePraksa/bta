@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Main.css';
-import Welcome from './Welcome/Welcome';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import CurrentLocation from './CurrentLocation/CurrentLocation'
 import City from './City/City'
@@ -10,20 +9,33 @@ import Nav from './Nav/Nav';
 class Main extends Component {
     state = {
         city:'',
-        is_admin: this.props.loggedUser.is_admin
+        is_admin: this.props.loggedUser.is_admin,
+        adminToggle: false
     };
     
     getCity = (city) => {
         this.setState({city});
     };
-    
+
+    adminToggleHandler = (status) => {
+        this.setState({ adminToggle: status })
+    }
+
     render() {
+        let main;
+        if (this.state.adminToggle) {
+            main = <AdminPanel />
+        }
+        if (this.state.adminToggle === false && this.state.city === '') {
+            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation key="2"/>]
+        }
+        if (this.state.adminToggle === false && this.state.city !== '') {
+            main = <City city={this.state.city}/>
+        }
         return (
             <div className={classes.Main}>
-                <Nav loginStatus = {this.props.loginStatus} loggedUser={this.props.loggedUser}/>
-                <ChooseCityVersionTwo getCity={this.getCity}/>
-                {this.state.city ==='' ? <CurrentLocation/> : <City city={this.state.city}/>}
-                {this.state.is_admin === 1 ? <AdminPanel /> : null}
+                <Nav loginStatus = {this.props.loginStatus} loggedUser={this.props.loggedUser} adminToggle={() => this.adminToggleHandler(true)}/>
+                {main}
             </div>
         );
     }

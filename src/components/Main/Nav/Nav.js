@@ -32,7 +32,7 @@ class Nav extends Component{
         let adminPanelLink;
         let admin = ''
         if(isAdmin) {
-            adminPanelLink = <a href = "/link">Admin panel</a>
+            adminPanelLink = 'Admin panel'
             admin = ' (admin)'
         }
         return (
@@ -49,7 +49,7 @@ class Nav extends Component{
                                 <img src={require(`../../../${this.props.loggedUser.photo}`)} alt = "" />
                             </div>
                             <div className={this.state.toggleUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
-                                {adminPanelLink}
+                                <div className={classes.isAdminCheck} onClick={this.props.adminToggle}>{adminPanelLink}</div>
                                 <a href="/link" onClick={this.logout}>Logout</a>
                             </div>
                         </div>

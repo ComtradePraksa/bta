@@ -59,6 +59,10 @@ class Login extends Component {
     }
   };
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+  
   render() {
     return (
       <div className={[classes.loginWrapper, classes.flexCenter, classes.rel].join(' ')} >
