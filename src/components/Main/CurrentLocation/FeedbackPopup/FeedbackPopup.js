@@ -1,6 +1,6 @@
 import classes from "./FeedbackPopup.css"
 import React, { Component } from 'react';
-import { getType, getStyle, formatDate } from "../FeedbackFunction/FeedbackFunction"
+import { getType, getStyle, formatDate,stringForDb } from "../FeedbackFunction/FeedbackFunction"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackComment from "../FeedbackComment/FeedbackComment";
 import jwt from 'jsonwebtoken';
@@ -24,12 +24,13 @@ class FeedbackPopup extends Component {
 
     }
     getData = () => {
-        // document.querySelector("#commentText").value = ""
+        document.querySelector("#commentText").value = ""
         this.setState({ commentValue : "" })
         const commentData = {
             userId:jwt.decode(localStorage.getItem("jwtoken")).id,
             fbId:this.props.fb.id_feedback,
             com:this.state.commentValue,
+            dt: stringForDb()
             
         }
         axios({
@@ -43,7 +44,7 @@ class FeedbackPopup extends Component {
                 console.log(res)
                 const newCom = {
                     id_comment:dbResults.insertedId,
-                    comment_date:"2018-10-16T10:11:00.000Z",
+                    comment_date:dbResults.newComment.dt,
                     comments:dbResults.newComment.com,
                     id_feedback:dbResults.newComment.fbId,
                     id:dbResults.newComment.userId,

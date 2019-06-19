@@ -4,7 +4,7 @@
     grid-template-columns: 2fr 6fr 2fr;
     grid-template-areas:
         "img name date"
-        "com com .";
+        "com com delete";
     padding: 3%;
     grid-row-gap: 3px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
@@ -26,6 +26,10 @@
 
 .commentText {
     grid-area: com;
+}
+.deleteComment{
+    grid-area: delete;
+    text-align: end;
 }
 
 .userPicture img {

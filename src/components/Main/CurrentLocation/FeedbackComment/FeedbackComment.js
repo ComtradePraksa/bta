@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from "./FeedbackComment.css"
 import {formatDate } from "../FeedbackFunction/FeedbackFunction"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class FeedbackComment extends Component{
     render() {
@@ -14,6 +15,8 @@ class FeedbackComment extends Component{
                 </div>
                 <div className={classes.commentDate}>{formatDate(this.props.comments.comment_date)}</div>
                 <div className={classes.commentText}>{this.props.comments.comments}</div>
+                <div className={classes.deleteComment}>
+                <FontAwesomeIcon icon="trash-alt"/></div>
             </div>
         )
     }

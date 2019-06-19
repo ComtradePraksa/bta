@@ -276,12 +276,14 @@ module.exports = function (app, express, mysqlConnection) {
         userId: req.body.userId ,
         fbId: req.body.fbId,
         com: req.body.com,
+        dt:req.body.dt
       }
-      mysqlConnection.query('insert into location_comments (id_user,id_feedback,comments,comment_date) values (?,?,?,NOW())',
-      [req.body.userId,req.body.fbId,req.body.com], function (error, results) {
+      mysqlConnection.query('insert into location_comments (id_user,id_feedback,comments,comment_date) values (?,?,?,?)',
+      [req.body.userId,req.body.fbId,req.body.com,req.body.dt], function (error, results) {
         if (error) throw error;
+          res.send({ error: false, newComment, user: req.user,insertedId:results.insertedId });
+
         
-        res.send({ error: false, newComment, user: req.user,insertedId:results.insertId });
        });
     });
 
