@@ -2,22 +2,18 @@ import React,{ Component } from 'react';
 import classes from './Nav.css';
 
 class Nav extends Component{
-
     state = {
         toggleMenu: false,
         toggleLogout: false
-    }
+    };
 
     toggleMenu = () => {
-        this.setState({
-            toggleMenu: !this.state.toggleMenu
-        })
-    }
+        this.setState({ toggleMenu: !this.state.toggleMenu });
+    };
+
     toggleUserMenu = () => {
-        this.setState({
-            toggleUserMenu: !this.state.toggleUserMenu
-        })
-    }
+        this.setState({ toggleUserMenu: !this.state.toggleUserMenu });
+    };
 
     logout = (e) => {
         e.preventDefault();
@@ -25,13 +21,13 @@ class Nav extends Component{
         this.props.loginStatus(false,{});
         //remove token from localStorage
         localStorage.removeItem('jwtoken');
-    }
+    };
 
-    render(){
+    render() {
         const isAdmin = this.props.loggedUser.is_admin;
         let adminPanelLink;
         let admin = ''
-        if(isAdmin) {
+        if (isAdmin) {
             adminPanelLink = 'Admin panel'
             admin = ' (admin)'
         }

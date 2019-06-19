@@ -7,9 +7,10 @@ class Map extends Component {
         platform: null,
         map: null
     };
+
     componentDidUpdate(prevProps) {
         if (this.props.nearbyPlaces !== prevProps.nearbyPlaces) {
-           map(this.props.latitude,this.props.longitude,this.props.nearbyPlaces);
+           map(this.props.latitude, this.props.longitude, this.props.nearbyPlaces);
         }
     };
 

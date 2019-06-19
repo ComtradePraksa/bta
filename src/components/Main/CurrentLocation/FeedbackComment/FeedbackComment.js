@@ -4,6 +4,7 @@ import {formatDate } from "../FeedbackFunction/FeedbackFunction"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class FeedbackComment extends Component{
+   
     render() {
         return(
             <div className={classes.commentContainer}>
@@ -21,4 +22,5 @@ class FeedbackComment extends Component{
         )
     }
 }
-export default FeedbackComment
+
+export default FeedbackComment;

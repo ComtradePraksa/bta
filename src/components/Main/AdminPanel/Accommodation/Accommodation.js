@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {postToDatabase} from '../../../../apis/btaApi';
 
-class Accomodation extends Component {
+class Accommodation extends Component {
     state = {
         name: '',
         link: '',
@@ -14,12 +14,12 @@ class Accomodation extends Component {
 
     saveHandler = () => {
         (async () => {
-            await postToDatabase('/accomodations', this.state);
+            await postToDatabase('/accommodations', this.state);
         })();
     };
 
     render() {
-        console.log(this.state);
+        
         return(
             <div>
                 <h2>Enter new accomodation for travel</h2>
@@ -34,4 +34,4 @@ class Accomodation extends Component {
     }
 }
 
-export default Accomodation;
+export default Accommodation;

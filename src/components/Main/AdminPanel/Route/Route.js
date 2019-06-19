@@ -51,7 +51,7 @@ class Route extends Component {
     };
 
     render() {
-        console.log(this.state);
+
         const locations = this.state.locations.map(city => {
             return (
                 <option key={city.id} value={city.id}>{city.city}</option>

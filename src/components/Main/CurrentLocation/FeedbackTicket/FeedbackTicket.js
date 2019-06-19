@@ -31,8 +31,8 @@ class FeedbackTicket extends Component {
         this.setState({
             comments: [newComment,...copy]
         })
-        
-    }
+    };
+
     getNumberOfComments = () => {
         let sum = 0
         this.state.comments.map(comment => {

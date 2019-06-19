@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Login from './components/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {faTrashAlt,faChevronCircleRight,faPlus,faTimes, faKey, faUser, faChevronDown, faCommentAlt , faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt, faChevronCircleRight, faPlus, faTimes, faKey, faUser, faChevronDown, faCommentAlt , faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 import Main from './components/Main/Main';
 import jwt from 'jsonwebtoken';
 
-library.add(faTrashAlt,faChevronCircleRight, faPlus, faTimes,faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
+library.add(faTrashAlt, faChevronCircleRight, faPlus, faTimes,faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
 
 class App extends Component {
   state = {

@@ -18,7 +18,7 @@ class Provider extends Component {
     };
 
     render() {
-        console.log(this.state);
+        
         return(
             <div>
                 <h2>Enter new provider for travel</h2>

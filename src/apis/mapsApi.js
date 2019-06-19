@@ -1,4 +1,4 @@
-const map = (latitude,longitude,location) => {
+const map = (latitude, longitude, location) => {
 
     const platform = new window.H.service.Platform({ app_id: 'bIV674hGvmDcJyBxVMjW', app_code: 'pZnLTja-QcfDIq6mwL63og'});
 
@@ -25,7 +25,6 @@ const map = (latitude,longitude,location) => {
     const marker7 = new window.H.map.Marker({ lat: location[5].position[0], lng: location[5].position[1] },{icon:pngIcon7});
     /*eslint-disable */
     const ui = window.H.ui.UI.createDefault(map, layer);
-    
 
     map.addObject(marker); 
     map.addObject(marker2);
@@ -35,14 +34,9 @@ const map = (latitude,longitude,location) => {
     map.addObject(marker6); 
     map.addObject(marker7);
    
-
-    
-    
-
     const mapEvents = new window.H.mapevents.MapEvents(map);  
     const behavior = new window.H.mapevents.Behavior(mapEvents);
     /*eslint-enable */
-    
 }
 
 export default map;

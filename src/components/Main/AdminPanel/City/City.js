@@ -13,14 +13,13 @@ class City extends Component {
     };
 
     saveHandler = () => {
-
         (async () => {
             await postToDatabase('/locations', this.state);
         })();
     };
 
     render() {
-        console.log(this.state);
+
         return(
             <div>
                 <h2>Enter new city for travel</h2>
