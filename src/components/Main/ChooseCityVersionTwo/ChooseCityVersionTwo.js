@@ -51,7 +51,7 @@ class ChooseCity extends Component {
                         <div className={[classes.dropdown, classes.fullHeight].join(' ')} >
                             <div className={[classes.dropdownTileWrapper, classes.fullHeight, classes.pointer].join(' ')}>
                             <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
-                                <FontAwesomeIcon icon="chevron-down" />
+                                <FontAwesomeIcon icon="chevron-down" style={{color: '#fff'}}/>
                             </div>
                             <ul className={[classes.dropdownItemList, classes.flex].join(' ')}>
                                 {list}

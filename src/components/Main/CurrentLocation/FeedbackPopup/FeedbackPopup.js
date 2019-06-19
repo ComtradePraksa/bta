@@ -6,21 +6,23 @@ import FeedbackComment from "../FeedbackComment/FeedbackComment";
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
+
+
+
 class FeedbackPopup extends Component {
     state = {
+
         commentVisible: false,
         commentValue: ""
-    };
-
+    }
     toggleComment = () => {
         this.setState({ commentVisible: !this.state.commentVisible })
-    };
+    }
 
     getCommentValue = event => {
         this.setState({ commentValue : event.target.value })
 
-    };
-
+    }
     getData = () => {
         // document.querySelector("#commentText").value = ""
         this.setState({ commentValue : "" })
@@ -28,6 +30,7 @@ class FeedbackPopup extends Component {
             userId:jwt.decode(localStorage.getItem("jwtoken")).id,
             fbId:this.props.fb.id_feedback,
             com:this.state.commentValue,
+            
         }
         axios({
             method: 'post',
@@ -35,9 +38,23 @@ class FeedbackPopup extends Component {
             data: commentData,
             config: { headers: { 'Content-Type': 'application/json' } }
           }).then(res=>
-            { this.props.addNewComent(res.data.newComment) })
-    };
+            {
+                const dbResults = res.data
+                console.log(res)
+                const newCom = {
+                    id_comment:dbResults.insertedId,
+                    comment_date:"2018-10-16T10:11:00.000Z",
+                    comments:dbResults.newComment.com,
+                    id_feedback:dbResults.newComment.fbId,
+                    id:dbResults.newComment.userId,
+                    name:dbResults.user.name,
+                    photo:dbResults.user.photo
+                }
+                this.props.addNewComent(newCom) 
+            }
+            )
 
+    }
     render() {
         return (
             <div className={classes.feedbackPopupWindow}>
@@ -72,7 +89,7 @@ class FeedbackPopup extends Component {
                                     <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
                                     <p>{this.props.numberOfComments}</p>
                                 </div>
-                                <button onClick={this.toggleComment}> <FontAwesomeIcon icon="plus" onClick={this.getData} /> Add Comment</button>
+                                <button onClick={this.toggleComment}> <FontAwesomeIcon icon="plus" /> Add Comment</button>
                             </div>
                             {this.state.commentVisible && <div className={classes.feedbackNewComment}>
                                 <textarea id={`commentText`} onChange={this.getCommentValue} />
@@ -95,5 +112,4 @@ class FeedbackPopup extends Component {
         )
     }
 }
-
 export default FeedbackPopup;

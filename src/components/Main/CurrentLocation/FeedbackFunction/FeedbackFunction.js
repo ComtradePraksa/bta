@@ -59,4 +59,4 @@ const formatDate = (params) => {
     return `${date[2]}.${date[1]}.${date[0]}. ${time[0]}:${time[1]}`;
 };
 
-export {getType, getStyle, formatDate};
+export { getType, getStyle, formatDate }

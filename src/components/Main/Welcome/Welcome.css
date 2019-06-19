@@ -3,7 +3,7 @@
     grid-area: welcome;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: 1fr auto 1fr;
     grid-template-areas: 
     "Welcome Welcome Welcome menu menu"
     "Photo . . menu menu"
@@ -12,7 +12,6 @@
     width: 100%;
     background-color: #232b4b;
     color: whitesmoke;
-    height: 15vh;
     text-align: justify;
     padding: 2% 5%;
 }

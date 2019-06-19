@@ -275,13 +275,13 @@ module.exports = function (app, express, mysqlConnection) {
       const newComment = {
         userId: req.body.userId ,
         fbId: req.body.fbId,
-        com: req.body.com
+        com: req.body.com,
       }
       mysqlConnection.query('insert into location_comments (id_user,id_feedback,comments,comment_date) values (?,?,?,NOW())',
       [req.body.userId,req.body.fbId,req.body.com], function (error, results) {
         if (error) throw error;
-        console.log(results[0])
-        res.send({ error: false, newComment, user: req.user });
+        
+        res.send({ error: false, newComment, user: req.user,insertedId:results.insertId });
        });
     });
 
@@ -297,7 +297,8 @@ module.exports = function (app, express, mysqlConnection) {
             id: loggedUser.id,
             username: loggedUser.username,
             is_admin: loggedUser.is_admin,
-            photo: loggedUser.photo
+            photo: loggedUser.photo,
+            name:loggedUser.name,
           }, 'sdfsdfsdfsdf131sdfsdfs',{
             expiresIn: '10m'
           });
