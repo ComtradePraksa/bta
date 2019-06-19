@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Users from './Users/Users';
-import City from '../City/City';
+import City from './City/City';
+import Accomodation from './Accomodation/Accomodation';
+import Provider from './Provider/Provider';
+import Route from './Route/Route';
+import Feedback from './Feedback/Feedback';
 
 class AdminPanel extends Component {
     state = {
@@ -13,11 +17,12 @@ class AdminPanel extends Component {
 
     render() {
         let optionForRender = '';
-        if (this.state.option === 'Users') {
-            optionForRender = <Users />;
-        } else if (this.state.option === 'City') {
-            optionForRender = <City />
-        }
+        if (this.state.option === 'Users') { optionForRender = <Users />; } 
+        else if (this.state.option === 'City') { optionForRender = <City />; } 
+        else if (this.state.option === 'Accomodation') { optionForRender = <Accomodation />; } 
+        else if (this.state.option === 'Provider') { optionForRender = <Provider />; } 
+        else if (this.state.option === 'Route') { optionForRender = <Route />; } 
+        else if (this.state.option === 'Feedback') { optionForRender = <Feedback />; }
 
         return (
             <div>

@@ -14,9 +14,9 @@ const getFromDatabase = async (query) => {
 };
 
 // data is object
-const postToDatabase = async (data) => {
+const postToDatabase = async (tableName, data) => {
     try {
-        await axios.post(`${url}/tablename/`, data, { headers });
+        await axios.post(`${url}${tableName}`, data, { headers });
     } catch (error) {
         console.log(error)
     }
@@ -29,7 +29,6 @@ const putInDatabase = async (data,id) => {
         console.log(error)
     }
 };
-
 
 const deleteFromDatabase = async(id)=>{
     try {
