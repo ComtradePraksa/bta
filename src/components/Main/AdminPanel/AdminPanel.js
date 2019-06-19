@@ -28,12 +28,14 @@ class AdminPanel extends Component {
         return (
             <div className={classes.AdminPanel}>
                 <h1>Admin panel</h1>
-                <div onClick={this.optionHandler} id='Users'>Users</div>
-                <div onClick={this.optionHandler} id='City'>City</div>
-                <div onClick={this.optionHandler} id='Accommodation'>Accommodation</div>
-                <div onClick={this.optionHandler} id='Provider'>Provider</div>
-                <div onClick={this.optionHandler} id='Route'>Route</div>
-                <div onClick={this.optionHandler} id='Feedback'>Feedback</div>
+                <div className={classes.AdminContainer}>
+                    <div onClick={this.optionHandler} id='Users'>Users</div>
+                    <div onClick={this.optionHandler} id='City'>City</div>
+                    <div onClick={this.optionHandler} id='Accommodation'>Accommodation</div>
+                    <div onClick={this.optionHandler} id='Provider'>Provider</div>
+                    <div onClick={this.optionHandler} id='Route'>Route</div>
+                    <div onClick={this.optionHandler} id='Feedback'>Feedback</div>
+                </div>
                 {optionForRender}
             </div>
         );

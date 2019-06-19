@@ -301,7 +301,7 @@ module.exports = function (app, express, mysqlConnection) {
             is_admin: loggedUser.is_admin,
             photo: loggedUser.photo,
             name:loggedUser.name,
-          }, 'sdfsdfsdfsdf131sdfsdfs',{ expiresIn: '10m' });
+          }, 'sdfsdfsdfsdf131sdfsdfs',{ expiresIn: '12h' });
           //res now includes all info specified in jwt.sign method
           res.send({token});
         }

@@ -5,6 +5,7 @@ class Route extends Component {
     state = {
         locations: [],
         provider: [],
+        routes: [],
         from_loaction_id: '',
         to_location_id: '',
         type: '',
@@ -42,12 +43,9 @@ class Route extends Component {
 
         (async () => {
             const data = await getFromDatabase(`/provider`);
-            const providers = [];
-            data.data.map(provider => (
-                providers.push({ id: provider.id, name: provider.name, type: provider.type })
-            ));
+            const providers = data.data;
             this.setState({ provider: providers });
-        })();        
+        })();
     };
 
     render() {
@@ -67,18 +65,20 @@ class Route extends Component {
         return(
             <div>
                 <h2>Enter new route for travel</h2>
-                <select onClick={this.inputHandler} name="from_loaction_id">
-                    <option value="" defaultChecked>Select location from:</option>
-                    {locations}
-                </select>
-                <select onClick={this.inputHandler} name="to_location_id">
-                    <option value="" defaultChecked>Select location to:</option>
-                    {locations}
-                </select>
-                <select onClick={this.inputHandler} name="type">
-                    <option value="" defaultChecked>Select provider:</option>
-                    {provider}
-                </select>
+                <div>
+                    <select onClick={this.inputHandler} name="from_loaction_id">
+                        <option value="" defaultChecked>Select location from:</option>
+                        {locations}
+                    </select>
+                    <select onClick={this.inputHandler} name="to_location_id">
+                        <option value="" defaultChecked>Select location to:</option>
+                        {locations}
+                    </select>
+                    <select onClick={this.inputHandler} name="type">
+                        <option value="" defaultChecked>Select provider:</option>
+                        {provider}
+                    </select>
+                </div>
                 <button onClick={this.saveHandler}>Add to database</button>
             </div>
         )
