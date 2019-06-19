@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 .commentContainer {
     display: grid;
     grid-template-rows: 1fr auto;
@@ -9,6 +10,7 @@
     grid-row-gap: 3px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
     margin: 5% 0;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
 .userName {
@@ -22,6 +24,18 @@
 .commentDate {
     grid-area: date;
     font-size: 0.7rem;
+}
+
+.feedbackPopupCommentTitleContainer {
+    height: 40px;
+}
+
+.feedbackPopupNumberOfComments p, .commentDate {
+    color: gray;
+}
+
+.feedbackPopupNumberOfComments p {
+    padding-left: 2%;
 }
 
 .commentText {

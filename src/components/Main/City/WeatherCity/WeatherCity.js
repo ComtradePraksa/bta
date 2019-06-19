@@ -32,9 +32,12 @@ class WeatherCity extends Component {
         let weather = '';
         if (this.state.weatherData !== '') {
             let imgLink = this.state.weatherData.current.condition.icon.substring(2).replace('64x64', '128x128');
-            weather = <div className={classes.Weather}>{this.state.weatherData.location.name},&nbsp;{this.state.weatherData.current.condition.text}
-                <img src={`http://${imgLink}`} alt={this.state.userName} />
-                {Math.round(this.state.weatherData.current.temp_c) + ' ‎°C'}</div>
+            weather = <div className={classes.Weather}>
+            <div>{this.state.weatherData.location.name},</div>
+            <div>{this.state.weatherData.current.condition.text}</div>
+            <div><img src={`http://${imgLink}`} alt={this.state.userName} /></div>  
+            <div> {Math.round(this.state.weatherData.current.temp_c) + ' ‎°C'}</div>  
+            </div>
         }
         return (
             <React.Fragment>{weather}</React.Fragment>

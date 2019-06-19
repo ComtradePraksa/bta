@@ -23,7 +23,7 @@ const map = (latitude,longitude,location) => {
     const marker5 = new window.H.map.Marker({ lat: location[3].position[0], lng: location[3].position[1] },{icon:pngIcon5});
     const marker6 = new window.H.map.Marker({ lat: location[4].position[0], lng: location[4].position[1] },{icon:pngIcon6});
     const marker7 = new window.H.map.Marker({ lat: location[5].position[0], lng: location[5].position[1] },{icon:pngIcon7});
-
+    /*eslint-disable */
     const ui = window.H.ui.UI.createDefault(map, layer);
     
 
@@ -41,6 +41,8 @@ const map = (latitude,longitude,location) => {
 
     const mapEvents = new window.H.mapevents.MapEvents(map);  
     const behavior = new window.H.mapevents.Behavior(mapEvents);
+    /*eslint-enable */
+    
 }
 
 export default map;
