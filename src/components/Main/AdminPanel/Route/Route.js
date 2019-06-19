@@ -42,11 +42,11 @@ class Route extends Component {
 
         (async () => {
             const data = await getFromDatabase(`/provider`);
-            const provider = [];
+            const providers = [];
             data.data.map(provider => (
-                provider.push({ id: provider.id, name: provider.name, type: provider.type })
+                providers.push({ id: provider.id, name: provider.name, type: provider.type })
             ));
-            this.setState({ provider });
+            this.setState({ provider: providers });
         })();        
     };
 
