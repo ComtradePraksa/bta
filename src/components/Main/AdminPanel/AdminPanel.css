@@ -1,0 +1,4 @@
+.AdminPanel {
+    grid-area: choose-city;
+    z-index: 1;
+}

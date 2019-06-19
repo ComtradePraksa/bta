@@ -5,6 +5,7 @@ import Accomodation from './Accomodation/Accomodation';
 import Provider from './Provider/Provider';
 import Route from './Route/Route';
 import Feedback from './Feedback/Feedback';
+import classes from './AdminPanel.css';
 
 class AdminPanel extends Component {
     state = {
@@ -25,7 +26,7 @@ class AdminPanel extends Component {
         else if (this.state.option === 'Feedback') { optionForRender = <Feedback />; }
 
         return (
-            <div>
+            <div className={classes.AdminPanel}>
                 <h1>Admin panel</h1>
                 <div onClick={this.optionHandler} id='Users'>Users</div>
                 <div onClick={this.optionHandler} id='City'>City</div>
