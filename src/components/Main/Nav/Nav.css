@@ -24,6 +24,7 @@
 
 .Logo span{
     font-size: 30px;
+    cursor: pointer;
 }
 .Menu{
     display: flex;

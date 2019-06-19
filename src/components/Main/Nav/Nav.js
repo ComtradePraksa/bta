@@ -38,7 +38,7 @@ class Nav extends Component{
         return (
             <div className={classes.Container}>
                 <div className={classes.Nav}>
-                    <div className={classes.Logo}>
+                    <div className={classes.Logo} onClick={() => this.props.adminToggle(false)}>
                         <span>bta.</span>
                     </div>
                     <div className={classes.Menu}>
