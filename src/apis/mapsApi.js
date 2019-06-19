@@ -9,8 +9,12 @@ const map = (latitude,longitude) => {
         center: { lat: latitude, lng: longitude },
         zoom: 12,
     });
-    let marker = new window.H.map.Marker({ lat: latitude, lng: longitude });
+    const marker = new window.H.map.Marker({ lat: latitude, lng: longitude });
     map.addObject(marker); 
+    window.H.ui.UI.createDefault(map, layer);
+
+    const mapEvents = new window.H.mapevents.MapEvents(map);  
+    const behavior = new window.H.mapevents.Behavior(mapEvents);
 }
 
 export default map;
