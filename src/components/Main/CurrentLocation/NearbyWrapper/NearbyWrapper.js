@@ -15,6 +15,7 @@ class NearbyWrapper extends Component {
             .then(res => {
                 const nearbyPlaces = res.data.results.items;
                 this.setState({ nearbyPlaces: nearbyPlaces });
+                this.props.getNearbyPlaces(this.state.nearbyPlaces.slice(0,6))
             });
         }
     }
