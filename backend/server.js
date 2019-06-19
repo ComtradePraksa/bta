@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.use( express.static( `${__dirname}/../build` ) );
+app.use(express.static(path.join(__dirname, 'html')));
 
 connection.connect((err) => {
   return (err) ? console.log('error', err) : console.log('Successfully connected to database:', config.dbConfig.database);
@@ -29,5 +29,3 @@ require('./routes/route')(app, express, connection);
 app.listen(3001, () => {
   console.log('Server listening on port 3001');
 });
-
-app.get('*', (req, res)=>{  res.sendFile(path.join(__dirname, '../build/index.html'));})
