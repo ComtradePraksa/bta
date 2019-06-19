@@ -19,7 +19,8 @@ class Nav extends Component{
         })
     }
 
-    logout = () => {
+    logout = (e) => {
+        e.preventDefault();
         //go back to login page
         this.props.loginStatus(false,{});
         //remove token from localStorage
