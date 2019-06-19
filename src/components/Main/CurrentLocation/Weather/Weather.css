@@ -6,6 +6,7 @@
     color: white;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 } 
 .Weather img {
     display: block;
@@ -15,6 +16,6 @@
 
 @media(min-width:768px) {
     .Weather img {
-        width: 60%;
+        width: 50%;
     }
 }
