@@ -49,7 +49,7 @@ class Nav extends Component{
                                 <img src={require(`../../../${this.props.loggedUser.photo}`)} alt = "" />
                             </div>
                             <div className={this.state.toggleUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
-                                <div className={classes.isAdminCheck} onClick={this.props.adminToggle}>{adminPanelLink}</div>
+                                <div className={classes.isAdminCheck} onClick={() => this.props.adminToggle(true)}>{adminPanelLink}</div>
                                 <a href="/link" onClick={this.logout}>Logout</a>
                             </div>
                         </div>
@@ -61,7 +61,7 @@ class Nav extends Component{
 
                     </div>
                     <ul className={this.state.toggleMenu ? `${classes.NavbarToggle} ${classes.Show}` : `${classes.NavbarToggle}`}>
-                        <li><a href="/link">Accomations</a></li>
+                        <li><a href="/link">Accommodations</a></li>
                         <li><a href="/link">Transport</a></li>
                         <li><a href="/link">City life</a></li>
                     </ul>
