@@ -5,6 +5,7 @@ import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import CurrentLocation from './CurrentLocation/CurrentLocation'
 import City from './City/City'
 import AdminPanel from './AdminPanel/AdminPanel';
+import Nav from './Nav/Nav';
 
 class Main extends Component {
     state = {
@@ -19,7 +20,7 @@ class Main extends Component {
     render() {
         return (
             <div className={classes.Main}>
-                <Welcome loggedUser={this.props.loggedUser}/>
+                <Nav loginStatus = {this.props.loginStatus} loggedUser={this.props.loggedUser}/>
                 <ChooseCityVersionTwo getCity={this.getCity}/>
                 {this.state.city ==='' ? <CurrentLocation/> : <City city={this.state.city}/>}
                 {this.state.is_admin === 1 ? <AdminPanel /> : null}

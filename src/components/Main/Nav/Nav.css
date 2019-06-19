@@ -1,0 +1,135 @@
+.Container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    grid-area: welcome;
+    display: grid;
+    /* grid-template-columns: repeat(5, 1fr); */
+    /* grid-template-rows: 1fr auto 1fr; */
+    grid-row-gap: 5px;
+    width: 100%;
+    background-color: #232b4b;
+    color: whitesmoke;
+    text-align: justify;
+}
+.Nav{
+    height: 60px;
+    background-color: rgb(0, 81, 255);
+    display: flex;
+    padding: 0 5%;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    /* position: relative; */
+}
+
+.Logo span{
+    font-size: 30px;
+}
+.Menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.User{
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+}
+.BurgerMenu{
+    cursor: pointer;
+    margin-left: 10px;
+}
+.User .UserPhoto{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+}
+.UserPhoto img{
+    width: 100%;
+    height: 100%;
+}
+.UserMenu{
+    background-color: #fff;
+    padding: 20px 0;
+    position: absolute;
+    color: #666;
+    top: 65px;
+    right: 0px;
+    display: none;
+    text-align: left;
+    border-radius: 2px;
+    z-index: 10;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.UserMenu:before{
+    position: absolute;
+    top: -5px;
+    right: 8px;
+    background-color: #fff;
+    content: '';
+    width: 15px;
+    height: 15px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+}
+.UserMenu a{
+    padding: 5px 20px;
+    color: #444;
+    width: 100%;
+}
+.UserMenu a:hover{
+    background-color: rgb(0, 81, 255);
+    color: #fff;
+}
+.UserMenu.Show{
+    display: flex;
+}
+.Line{
+    width: 40px;
+    height: 4px;
+    background-color: white;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+.Line:first-child{
+    margin-top: 0px;
+}
+.Line.TransformMenu:first-of-type {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  
+.Line.TransformMenu:nth-of-type(2) {
+    transform: rotate(-45deg);
+}
+  
+.Line.TransformMenu:nth-of-type(3) {
+    opacity: 0;
+}
+.NavbarToggle{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgb(0, 81, 255);
+    transition: height 0.3s linear;
+    overflow: hidden;
+    padding: 0 5%;
+    text-align: center;
+}
+.NavbarToggle.Show{
+    height: 125px;
+}
+.NavbarToggle li a{
+    padding: 10px 0;
+    display: block;
+    text-transform: uppercase;
+    color: #fff;
+}
+.NavbarToggle li a:hover{
+    background-color: rgb(19, 83, 221);
+}

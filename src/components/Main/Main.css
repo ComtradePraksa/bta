@@ -16,7 +16,7 @@ nav {
     display: grid;
     grid-gap: 20px;
     grid-template-areas: 
-      "welcome"
+      "nav"
       "choose-city"
       "choose-city2"
       "weather"
