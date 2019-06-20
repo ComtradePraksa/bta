@@ -11,12 +11,17 @@ class CurrentLocation extends Component {
         latitude: '',
         longitude: '',
         error: null,
+        nearbyPlaces:''
     };
     
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
-    
+
+    getNearbyPlaces =(nearbyPlaces)=>{
+        this.setState({nearbyPlaces});
+    };
+
     componentDidMount() {
         const options = {
             enableHighAccuracy: true,
@@ -33,8 +38,8 @@ class CurrentLocation extends Component {
     render() {
         return (<React.Fragment>
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
-                <Map latitude={this.state.latitude} longitude={this.state.longitude} />
-                <NearbyWrapper location={this.state.value} />
+                <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces}/>
+                <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces} />
                 <FeedbackContainer/>
                 </React.Fragment>
         );

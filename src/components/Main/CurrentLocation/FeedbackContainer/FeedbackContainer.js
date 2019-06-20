@@ -6,32 +6,38 @@ import classes from "./FeedbackContainer.css"
 class FeedbackContainer extends Component {
     state = {
         feedbacks: [],
-        users: []
+        users: [],
+        userfeedbacks : []
     };
 
     componentDidMount() {
         (async () => {
             const data = await getFromDatabase('/location_feedbacks');
             const feedback = [];
-            data.data.map(fb => (
+            const userfeedback = []
+
+            data.data.map(fb => {
                 feedback.push(fb)
-            ));
-            this.setState({ feedbacks: feedback })
+                if (data.user.id === fb.id) {
+                    userfeedback.push(fb.id_feedback);
+                    this.setState({ userfeedbacks: userfeedback });
+                }
+                return true;
+            });
+            this.setState({ feedbacks: feedback });
         })();
     };
-    
-    render() {
 
+    render() {
+        
         return (
             <div className={classes.feedbackContainer}>
                 <div className={classes.sortTicket}>
-                    
                 </div>
                 <div className={classes.ticketsWrapper}>
                     {this.state.feedbacks.map((fb) => (
                         <FeedbackTicket key={fb.id_feedback} fb={fb} />
                     ))}
-
                 </div>
             </div>
         );

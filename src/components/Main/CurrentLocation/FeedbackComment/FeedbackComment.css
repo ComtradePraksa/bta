@@ -1,14 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 .commentContainer {
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: 2fr 6fr 2fr;
     grid-template-areas:
         "img name date"
-        "com com .";
+        "com com delete";
     padding: 3%;
     grid-row-gap: 3px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0px 0 16px 3px rgba(0, 0, 0, 0.21);
     margin: 5% 0;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
 .userName {
@@ -24,8 +27,28 @@
     font-size: 0.7rem;
 }
 
+.feedbackPopupCommentTitleContainer {
+    height: 40px;
+}
+
+.feedbackPopupNumberOfComments p,
+.commentDate {
+    color: gray;
+}
+
+.feedbackPopupNumberOfComments p {
+    padding-left: 2%;
+}
+
 .commentText {
     grid-area: com;
+}
+
+.deleteComment {
+    grid-area: delete;
+    text-align: end;
+    color: crimson;
+    cursor: pointer;
 }
 
 .userPicture img {
@@ -34,4 +57,18 @@
    height: 5vh;
    border-radius: 50%;
   /* max-height: 100%;*/
+}
+   .deleteComment:hover {
+       opacity: 0.5;
+       transition: 0.6s;
+   }
+
+@media(min-width: 768px) {
+    .deleteComment {
+        font-size: 1.2rem;
+    }
+
+    .commentDate {
+        font-size: 0.9rem;
+    }
 }

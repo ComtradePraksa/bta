@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 .feedbackPopupWindow {
     height: 100vh;
     width: 100%;
@@ -17,6 +19,8 @@
     background-color: white;
     display: grid;
     grid-template-rows: 1fr 9fr;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
 .feedbackPopupHeader {
@@ -24,31 +28,32 @@
     color: white;
     display: flex;
     justify-content: flex-end;
+    font-size: 1.2rem;
 }
 
 .feedbackPopupHeader svg {
     font-size: 1.4em;
     padding: 3%;
+    cursor: pointer;
 }
 
 .feedbackPopupMain {
     max-height: 81vh;
     /* proveriti zasto ne rade procenti ovde*/
     overflow-y: auto;
-    padding: 1%;
 }
 
 .feedbackPopupUserInfo {
-    background-color: silver;
+    background-color: #c0c0c0a6;
     padding: 3%;
     display: grid;
     grid-template-columns: 3fr;
-   /* grid-template-columns: 2.5fr 5fr 2.5fr;
+    /* grid-template-columns: 2.5fr 5fr 2.5fr;
     grid-template-rows: 1fr 1fr 1fr 7fr;*/
     grid-template-areas:
         "photo name ."
-        "photo . ."
         "photo title ."
+        "photo . ."
         "progressbar rating ."
         "com com com"
         "date . typeicon"
@@ -58,11 +63,16 @@
 
 .feedbackPopupDate {
     grid-area: date;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    color: rgb(126, 124, 124);
 }
 
 .feedbackPopupTypeIcon {
     grid-area: typeicon;
+    text-align: right;
+    font-size: 1.1em;
+    opacity: 0.9;
+    padding: 0 1rem;
 }
 
 .feedbackPopupUserPhoto {
@@ -73,7 +83,6 @@
     width: 9vh;
     height: 9vh;
     border-radius: 50%;
-    max-height: 100%;
 }
 
 .feedbackPopupUserName {
@@ -92,6 +101,7 @@
 .feedbackPopupRate {
     grid-area: rating;
     font-size: 0.9rem;
+    text-align: left;
 }
 
 .feedbackPopupProgress {
@@ -152,6 +162,11 @@
     display: flex;
 }
 
+.feedbackPopupHeader svg:hover {
+    color: gray;
+    transition: 0.6s;
+}
+
 @media(min-width: 768px) {
     .feedbackPopupUserInfo {
         display: grid;
@@ -164,5 +179,13 @@
             "com com com"
             "date . typeicon"
         ;
+    }
+
+    .feedbackPopup {
+        width: 60%;
+    }
+
+    .feedbackPopupTypeIcon {
+        font-size: 1.5em;
     }
 }

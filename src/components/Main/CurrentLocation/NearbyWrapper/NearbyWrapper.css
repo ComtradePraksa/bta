@@ -1,13 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 .NearbyWrapper {
     grid-area: nearby;
     display: block;
-    border: 1px solid white;
     padding: 2%;
-    margin: 2% auto 5% auto;
+    margin: 2% auto;
     width: 90%;
     min-height: 75vh;
     font-size: 0.8rem;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+   /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5); */
+    z-index: 1;
+    background-color:#2347796e;  
+}
+
+.NearbyWrapper > div {
+    display: flex;
+    flex-direction: column;
 }
 
 @media(min-width: 776px) {

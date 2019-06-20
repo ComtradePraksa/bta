@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 /* dimenzije nece biti odredjene na ovaj nacin, vec ce se preuzeti od parent elementa */
 .ticketContainer {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     padding: 15px 20px;
     background-color: white;
     display: grid;
@@ -15,19 +17,22 @@
         "fb fb fb"
         "com . readmore";
     text-align: left;
-    grid-row-gap: 2px;
+    grid-row-gap: 3px;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
 .feedbackType {
     grid-area: type;
     display: flex;
     justify-content: flex-end;
+    font-size: 1.1em;
+    opacity: 0.9;
 }
 
 .userPicture {
     grid-area: photo;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: flex-start;
     padding-right: 5x;
 
@@ -38,6 +43,11 @@
     height: 7vh;
     border-radius: 50%;
 }
+
+/*
+.userName, .feedbackTitle, .feedbackText {
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+}*/
 
 .userName {
     grid-area: name
@@ -93,21 +103,25 @@
     cursor: pointer;
     font-size: 0.5rem;
     background-color: transparent;
+    color: gray;
 }
 
 .readMore:hover {
-    color: lightgray;
+    color: white;
     transition: 0.5s;
     background: linear-gradient(to bottom, rgba(251, 65, 115, 0.856) 0%, rgba(251, 65, 115, 0.801) 60%, rgba(251, 65, 115, 0.87) 53%, rgba(210, 75, 91, 0.836) 53%, rgba(251, 65, 115, 0.808) 53%);
 }
 
 @media(min-width:400px) {
-    .readmMore {
-        font-size: 0.6rem;
+    .readMore {
+        font-size: 0.8rem;
     }
 }
 
-@media(min-width: 992px) {
+@media(min-width:768px) {
+    .feedbackType {
+        font-size: 1.5em;
+    }
 
     .feedbackText {
         font-size: 0.8em;

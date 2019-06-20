@@ -29,9 +29,10 @@ class FeedbackTicket extends Component {
     addNewComent = (newComment) => {
         const copy = this.state.comments;
         this.setState({
-            comments: [...copy, newComment]
+            comments: [newComment,...copy]
         })
-    }
+    };
+
     getNumberOfComments = () => {
         let sum = 0
         this.state.comments.map(comment => {
@@ -63,7 +64,11 @@ class FeedbackTicket extends Component {
                 <div className={classes.numberOfComments}>
                     <div className={classes.numberOfCommentsWrapper}>
                         <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
+                        <p style={{ marginLeft: "8px", color: "gray" }}>{this.getNumberOfComments()}</p>
+                    <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
                         <p style={{ marginRight: "10px" }}>{this.getNumberOfComments()}</p>
+                    {this.props.loggedUser && <FontAwesomeIcon icon="trash-alt"/>}
+
                     </div>
                 </div>
                 <button className={classes.readMore} onClick={this.toggleComponents}>READ MORE</button>

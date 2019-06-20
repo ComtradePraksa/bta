@@ -22,3 +22,4 @@ yarn-error.log*
 apiTest.http
 debug.log
 .idea
+test.html

@@ -26,11 +26,11 @@ class Login extends Component {
     e.preventDefault();
 
     //no empty fields allowed!!!
-    if(!user.username || !user.password){
+    if (!user.username || !user.password) {
       //display feedback
       this.setState({ feedback: 'Username and password are required!' });
     }
-    else{
+    else {
       //check if there is a user with these credentials
       axios({
         method: 'post',
@@ -59,6 +59,10 @@ class Login extends Component {
     }
   };
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  };
+  
   render() {
     return (
       <div className={[classes.loginWrapper, classes.flexCenter, classes.rel].join(' ')} >

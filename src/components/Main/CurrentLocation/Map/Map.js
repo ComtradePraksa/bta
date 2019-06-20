@@ -9,14 +9,14 @@ class Map extends Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (this.props.latitude !== prevProps.longitude && this.props.longitude !== prevProps.longitude) {
-           map(this.props.latitude,this.props.longitude);
+        if (this.props.nearbyPlaces !== prevProps.nearbyPlaces) {
+           map(this.props.latitude, this.props.longitude, this.props.nearbyPlaces);
         }
     };
 
     render() {
         return (
-            <div className={classes.Map} id="here-map" style={{ width: '30vw', height: '30vw', background: 'grey' }} />
+            <div className={classes.Map} id="here-map" />
         );
     }
 }
