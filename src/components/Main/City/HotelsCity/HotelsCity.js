@@ -1,56 +1,41 @@
 import React, { Component } from 'react';
 import classes from './HotelsCity.css';
 import { getFromDatabase } from '../../../../apis/btaApi';
+import HotelCity from './HotelCity/HotelCity'
 
 class HotelsCity extends Component {
     state = {
-        error: null,
-        nearbyPlaces: []
+        hotelLinks: []
       };
 
     componentDidUpdate(prevProps) {
         if (this.props.city!== prevProps.city) {
             (async()=>{
-                const hotelLinks = await getFromDatabase(`/accommodations?id_city=${this.props.city.id}`)
+                const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
+                const hotelsByCityId = res.data;
+                const hotelLinks = []
+                hotelsByCityId.map(e=>hotelLinks.push(e.link))
                 console.log(hotelLinks)
-            });
+            })();
         }
     }
 
-    componentDidMount(){
-        (async()=>{
-            const hotelLinks = await getFromDatabase(`/accommodations?id_city=${this.props.city.id}`)
-            console.log(hotelLinks)
-        })();
-    }
-    
+        componentDidMount(){
+            (async()=>{
+                const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
+                const hotelsByCityId = res.data;
+                const hotelLinks = []
+                hotelsByCityId.map(e=>hotelLinks.push(e.link))
+                this.setState({hotelLinks})
+                console.log(this.state.hotelLinks)
+            })();
+        }
+        
     render() {
-        /*
-        let nearbyPlacesToRender = null;
-
-        if (this.state.nearbyPlaces !== []) {
-            nearbyPlacesToRender = (
-                <div>
-                    {this.state.nearbyPlaces.slice(0,6).map((nearbyPlace) => {
-                        return <Nearby
-                        title={nearbyPlace.title}
-                        icon={nearbyPlace.icon}
-                        address={nearbyPlace.vicinity.replace('<br/>',' ')}
-                        category={nearbyPlace.category.title}
-                        key={nearbyPlace.id} />
-                    })}
-                </div>
-            );
-        }
-        return (
-            <div className={classes.NearbyWrapper}>
-               {nearbyPlacesToRender}
-            </div>
-        );
-
-        */
+        const view = this.state.hotelLinks.slice(0,5).map((e,index)=><HotelCity key={index} hotelLink={e}/>)
+    
        return(
-       <div>Lalala</div>
+       <React.Fragment>{view}</React.Fragment>
        )
     }
 }

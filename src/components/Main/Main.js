@@ -31,7 +31,7 @@ class Main extends Component {
             main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation loggedUser={this.props.loggedUser} key="2"/>]
         }
         if (this.state.adminToggle === false && this.state.city !== '') {
-            main = <City city={this.state.city}/>
+            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<City key='2' city={this.state.city}/>]
         }
         return (
             <div className={classes.Main}>
