@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     z-index: 1;
+    font-size: 0.9rem;
 } 
 
 .Weather div {
@@ -17,8 +18,28 @@
   width: 50vw;
 }
 
+.Weather div:nth-last-of-type(2) img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
 
-/*
+.Weather div:nth-of-type(4) {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
+
+
 @media(min-width:768px) {
+  .Weather {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-}*/
+  .Weather div:nth-of-type(2) {
+    width: 30%;
+  }
+
+}

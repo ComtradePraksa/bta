@@ -12,7 +12,8 @@
 
 .Map:hover {
   filter: brightness(100%);
-  transition: 0.6s;
+  transition: ease-in-out;
+  transition-duration: 0.5s;
 }
 
 @media(min-width:768px) {
