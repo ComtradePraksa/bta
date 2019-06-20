@@ -15,7 +15,7 @@ class FeedbackContainer extends Component {
             const data = await getFromDatabase('/location_feedbacks');
             const feedback = [];
             const userfeedback = []
-
+            if(data!==undefined){
             data.data.map(fb => {
                 feedback.push(fb)
                 if (data.user.id === fb.id) {
@@ -25,6 +25,7 @@ class FeedbackContainer extends Component {
                 return true;
             });
             this.setState({ feedbacks: feedback });
+        }
         })();
     };
 

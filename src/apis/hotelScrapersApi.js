@@ -1,16 +1,15 @@
 import axios from 'axios';
 
 const url = `https://scrappet.herokuapp.com/api/scrape?url=`;
-const headers = { 'Content-Type': 'application/json' };
 
-const getHotel = async (hotelUrl) => {
+const getHotel = async (hotelUrl,removeAuthHeader) => {
     try {
-        const response = await axios.get(`${url}${hotelUrl}`, { headers });
+        const response = await axios.get(`${url}${hotelUrl}`, removeAuthHeader);
         const hotel = await response.data;
-        return (hotel);
+        return hotel;
     } catch (error) {
         console.log(error);
     }
 };
 
-export { getHotel };
+export {getHotel}

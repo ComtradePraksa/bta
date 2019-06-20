@@ -15,6 +15,7 @@ class Main extends Component {
     
     getCity = (city) => {
         this.setState({city});
+        console.log(city)
     };
 
     adminToggleHandler = (status) => {

@@ -9,8 +9,8 @@ class WeatherCity extends Component {
     };
 
     componentDidUpdate(prevProps) {
-       if (prevProps.city !== this.props.city) {
-            let city = this.props.city.toLowerCase();
+       if (prevProps.city.city !== this.props.city.city) {
+            let city = this.props.city.city.toLowerCase();
             axios.get(`http://api.apixu.com/v1/current.json?key=937e493fb43842b4a90103252191706&q=${city}`, removeAuthHeader())
             .then(res => {
                 const weatherData = res.data;
@@ -20,7 +20,7 @@ class WeatherCity extends Component {
     };
 
     componentDidMount() {
-        let city = this.props.city.toLowerCase();
+        let city = this.props.city.city.toLowerCase();
         axios.get(`http://api.apixu.com/v1/current.json?key=937e493fb43842b4a90103252191706&q=${city}`, removeAuthHeader())
         .then(res => {
             const weatherData = res.data;

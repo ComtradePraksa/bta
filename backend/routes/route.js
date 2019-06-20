@@ -61,7 +61,18 @@ module.exports = function (app, express, mysqlConnection) {
         return res.send({ error: false, data: results[0], message: 'Accommodations list by id.', user: req.user });
       });
     });
-
+/*
+    router.route('/accommodations?id_city=:id')
+    .get(verifyToken,(req, res) => {
+      if (!req.params.id) {
+        return res.status(400).send({ error: true, message: 'Please provide accommodation id' });
+      }
+      mysqlConnection.query('SELECT * FROM accommodations where id_city=?', req.params.id, function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results[0], message: 'Accommodations list by id.', user: req.user });
+      });
+    });
+*/
 // users table //
   router.route('/users')
     .get(verifyToken,(req, res) => {
