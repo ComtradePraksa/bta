@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class FeedbackComment extends Component{
    
     render() {
+        console.log(this.props.loggedUser, this.props.comme)
         return(
             <div className={classes.commentContainer}>
                 <div className={classes.userName}>
@@ -17,7 +18,8 @@ class FeedbackComment extends Component{
                 <div className={classes.commentDate}>{formatDate(this.props.comments.comment_date)}</div>
                 <div className={classes.commentText}>{this.props.comments.comments}</div>
                 <div className={classes.deleteComment}>
-                <FontAwesomeIcon icon="trash-alt"/></div>
+                {(this.props.loggedUser.id ===this.props.comments.id)&&<FontAwesomeIcon icon="trash-alt"/>}
+                </div>
             </div>
         )
     }
