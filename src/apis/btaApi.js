@@ -30,9 +30,9 @@ const putInDatabase = async (data, id) => {
     }
 };
 
-const deleteFromDatabase = async (id) => {
+const deleteFromDatabase = async (tableName,id) => {
     try {
-        await axios.delete(`${url}/tablename/${id}`, { headers });
+        await axios.delete(`${url}${tableName}/${id}`, { headers });
     } catch (error) {
         console.log(error);
     }

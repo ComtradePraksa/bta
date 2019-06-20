@@ -37,7 +37,6 @@ class FeedbackPopup extends Component {
           }).then(res=>
             {
                 const dbResults = res.data
-                console.log(res)
                 const newCom = {
                     id_comment:dbResults.insertedId,
                     comment_date:dbResults.newComment.dt,
@@ -95,7 +94,7 @@ class FeedbackPopup extends Component {
                                 {this.props.comments.map((com) => {
                                     if (com.id_feedback === this.props.fb.id_feedback) {
                                         return (
-                                            <FeedbackComment key={com.id_comment} comments={com} />
+                                            <FeedbackComment loggedUser={this.props.loggedUser} key={com.id_comment} comments={com} />
                                         )
                                     }
                                     return true;
