@@ -30,7 +30,7 @@ class HotelsCity extends Component {
     render() {
 
         return (
-            <React.Fragment>{this.state.view}</React.Fragment>
+            <div>{this.state.view}</div>
         )
     }
 }

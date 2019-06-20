@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './HotelsCity.css';
+//import classes from './HotelsCity.css';
 import { getFromDatabase } from '../../../../apis/btaApi';
 import HotelCity from './HotelCity/HotelCity'
 
