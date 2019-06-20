@@ -1,8 +1,8 @@
 .Weather {
     grid-area: weather;
-   /* display: block;*/
+    /* display: block;*/
     margin: 3% auto;
-   /* max-height: 5%;*/
+    /* max-height: 5%;*/
     color: white;
     display: flex;
     flex-direction: column;

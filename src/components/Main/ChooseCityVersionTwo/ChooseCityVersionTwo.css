@@ -50,7 +50,7 @@ nav {
 
 .chooseCity h2 {
   font-size: 1rem;
-  
+
   font-weight: 200;
 }
 
@@ -65,10 +65,10 @@ nav {
 }
 
 .dropdownWrapper {
- padding: 5px 10px;
- position: relative;
- width: 80%;
-background-color: transparent;
+  padding: 5px 10px;
+  position: relative;
+  width: 80%;
+  background-color: transparent;
 }
 
 .dropdown {
@@ -92,7 +92,7 @@ background-color: transparent;
   min-height: 0vh;
   max-height: 15vh;
   overflow-y: auto;
- /* border: 1px solid black;*/
+  /* border: 1px solid black;*/
   flex-direction: column;
   z-index: 10;
   margin-top: 0.5rem;
@@ -103,8 +103,8 @@ background-color: transparent;
     border-bottom: 0.4px solid rgba(237, 230, 230, 0.18);
     min-height: 5vh;
   /*  background-color: white;*/
-    background: rgba(255, 105, 145);
-    color: white;
+  background: rgba(255, 105, 145);
+  color: white;
 }
 
 .dropdownItem:hover {
@@ -121,10 +121,11 @@ background-color: transparent;
 
 @media(min-width: 400px) {
   .dropdownWrapper {
-      width: 50vw;
+    width: 50vw;
   }
+
   .chooseCity h2 {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -139,8 +140,8 @@ background-color: transparent;
   }
 
   .dropdownWrapper {
-      width: 30vw;
-      height: 100%;
+    width: 30vw;
+    height: 100%;
   }
 
   .dropdownItemList {

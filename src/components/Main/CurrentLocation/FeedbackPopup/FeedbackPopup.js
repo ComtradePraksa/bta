@@ -6,32 +6,28 @@ import FeedbackComment from "../FeedbackComment/FeedbackComment";
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
-
-
-
 class FeedbackPopup extends Component {
     state = {
-
         commentVisible: false,
         commentValue: ""
-    }
+    };
+
     toggleComment = () => {
-        this.setState({ commentVisible: !this.state.commentVisible })
-    }
+        this.setState({ commentVisible: !this.state.commentVisible });
+    };
 
     getCommentValue = event => {
-        this.setState({ commentValue : event.target.value })
+        this.setState({ commentValue : event.target.value });
+    };
 
-    }
     getData = () => {
-        document.querySelector("#commentText").value = ""
-        this.setState({ commentValue : "" })
+        document.querySelector("#commentText").value = "";
+        this.setState({ commentValue : "" });
         const commentData = {
             userId:jwt.decode(localStorage.getItem("jwtoken")).id,
             fbId:this.props.fb.id_feedback,
             com:this.state.commentValue,
             dt: stringForDb()
-            
         }
         axios({
             method: 'post',
@@ -54,15 +50,14 @@ class FeedbackPopup extends Component {
                 this.props.addNewComent(newCom) 
             }
             )
+    };
 
-    }
     render() {
         return (
             <div className={classes.feedbackPopupWindow}>
                 <div className={classes.feedbackPopup}>
                     <div className={classes.feedbackPopupHeader} >
                         <FontAwesomeIcon icon="times" onClick={this.props.toggleComponents} />
-
                     </div>
                     <div className={classes.feedbackPopupMain}>
                         <div className={classes.feedbackPopupUserInfo}>
@@ -113,4 +108,5 @@ class FeedbackPopup extends Component {
         )
     }
 }
+
 export default FeedbackPopup;

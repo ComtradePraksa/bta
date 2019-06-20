@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 .feedbackContainer {
   grid-area: feedback;
   /*height: 80vh;*/
   display: grid;
   grid-template-rows: 3fr 7fr;
   justify-items: center;
-  background-color:rgba(33, 65, 110, 0.767);
+  background-color: rgba(33, 65, 110, 0.767);
   z-index: 1;
   font-family: "Raleway", Arial, Helvetica, sans-serif;
 }

@@ -9,7 +9,7 @@ const getFromDatabase = async (query) => {
         const data = response.data;
         return data;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
@@ -18,23 +18,23 @@ const postToDatabase = async (tableName, data) => {
     try {
         await axios.post(`${url}${tableName}`, data, { headers });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
-const putInDatabase = async (data,id) => {
+const putInDatabase = async (data, id) => {
     try {
         await axios.put(`${url}/tablename/${id}`, data, { headers });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
-const deleteFromDatabase = async(id)=>{
+const deleteFromDatabase = async (id) => {
     try {
         await axios.delete(`${url}/tablename/${id}`, { headers });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 

@@ -43,6 +43,7 @@
     height: 7vh;
     border-radius: 50%;
 }
+
 /*
 .userName, .feedbackTitle, .feedbackText {
     font-family: "Raleway", Arial, Helvetica, sans-serif;
@@ -121,6 +122,7 @@
     .feedbackType {
         font-size: 1.5em;
     }
+
     .feedbackText {
         font-size: 0.8em;
     }

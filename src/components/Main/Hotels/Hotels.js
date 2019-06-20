@@ -18,7 +18,7 @@ class Hotels extends Component{
                 this.setState({ hotel });
             })
         })();
-    }
+    };
 
     render(){
         return(

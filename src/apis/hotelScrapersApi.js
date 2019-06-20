@@ -9,7 +9,7 @@ const getHotel = async (hotelUrl) => {
         const hotel = await response.data;
         return (hotel);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 

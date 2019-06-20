@@ -17,11 +17,10 @@ class CurrentLocation extends Component {
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
-    
 
     getNearbyPlaces =(nearbyPlaces)=>{
-        this.setState({nearbyPlaces})
-    }
+        this.setState({nearbyPlaces});
+    };
 
     componentDidMount() {
         const options = {

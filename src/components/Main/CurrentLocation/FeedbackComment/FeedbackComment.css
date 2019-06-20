@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 .commentContainer {
     display: grid;
     grid-template-rows: 1fr auto;
@@ -30,7 +31,8 @@
     height: 40px;
 }
 
-.feedbackPopupNumberOfComments p, .commentDate {
+.feedbackPopupNumberOfComments p,
+.commentDate {
     color: gray;
 }
 
@@ -41,7 +43,8 @@
 .commentText {
     grid-area: com;
 }
-.deleteComment{
+
+.deleteComment {
     grid-area: delete;
     text-align: end;
     color: crimson;
