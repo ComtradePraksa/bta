@@ -8,27 +8,24 @@ class HotelsCity extends Component {
         hotelLinks: []
       };
 
+      getHotelLinkS=()=>{
+        (async()=>{
+            const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
+            const hotelsByCityId = res.data;
+            const hotelLinks = []
+            hotelsByCityId.map(e=>hotelLinks.push(e.link))
+            this.setState({hotelLinks})
+        })();
+      }
+
     componentDidUpdate(prevProps) {
         if (this.props.city!== prevProps.city) {
-            (async()=>{
-                const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
-                const hotelsByCityId = res.data;
-                const hotelLinks = []
-                hotelsByCityId.map(e=>hotelLinks.push(e.link))
-                console.log(hotelLinks)
-            })();
+            this.getHotelLinkS()
         }
     }
 
         componentDidMount(){
-            (async()=>{
-                const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
-                const hotelsByCityId = res.data;
-                const hotelLinks = []
-                hotelsByCityId.map(e=>hotelLinks.push(e.link))
-                this.setState({hotelLinks})
-                console.log(this.state.hotelLinks)
-            })();
+            this.getHotelLinkS()
         }
         
     render() {
