@@ -32,7 +32,7 @@ class HotelsCity extends Component {
         const view = this.state.hotelLinks.slice(0,5).map((e,index)=><HotelCity key={index} hotelLink={e}/>)
     
        return(
-       <React.Fragment>{view}</React.Fragment>
+       <div>{view}</div>
        )
     }
 }
