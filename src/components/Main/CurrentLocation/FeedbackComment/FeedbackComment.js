@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class FeedbackComment extends Component{
    
     render() {
-        console.log(this.props.loggedUser, this.props.comme)
         return(
             <div className={classes.commentContainer}>
                 <div className={classes.userName}>
