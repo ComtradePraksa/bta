@@ -15,7 +15,7 @@ class HotelsCity extends Component {
                 view:
                     <div className={classes.Nearby}>
                         <img src={`${hotel['og:image']}`} alt={hotel.image} />
-                        <h3>{hotel['og:title']}Lala</h3>
+                        <h3>{hotel['og:title']}</h3>
                         <p>{hotel['og:description']}</p>
                         <p className={classes.address}></p>
                     </div>
