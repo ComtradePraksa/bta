@@ -26,7 +26,7 @@ class NearbyWrapper extends Component {
         if (this.state.nearbyPlaces !== []) {
             nearbyPlacesToRender = (
                 <div>
-                    {this.state.nearbyPlaces.slice(0,6).map((nearbyPlace) => {
+                    {this.state.nearbyPlaces.slice(0,5).map((nearbyPlace) => {
                         return <Nearby
                         title={nearbyPlace.title}
                         icon={nearbyPlace.icon}
