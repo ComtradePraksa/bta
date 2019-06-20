@@ -274,6 +274,14 @@ module.exports = function (app, express, mysqlConnection) {
         res.send({ error: false, data: results, message: 'Feedbacks list.', user: req.user });
         });
     });
+    router.route('/location_feedbacks/:id')
+    .delete(verifyToken,(req, res) => {
+      mysqlConnection.query('delete from location_feedbacks where id_feedback =?',req.params.id, function (error, results) {
+        if (error) throw error;
+        res.send({ error: false, data: results,  user: req.user });
+        });
+    });
+    
     
 // location_comments table //
   router.route('/location_comments')
