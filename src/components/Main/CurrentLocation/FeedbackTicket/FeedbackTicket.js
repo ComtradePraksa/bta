@@ -3,7 +3,7 @@ import classes from "./FeedbackTicket.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackPopup from '../FeedbackPopup/FeedbackPopup';
 import { getType, getStyle } from "../FeedbackFunction/FeedbackFunction"
-import { getFromDatabase } from '../../../../apis/btaApi';
+import { getFromDatabase,deleteFromDatabase } from '../../../../apis/btaApi';
 
 class FeedbackTicket extends Component {
     state = {
@@ -43,6 +43,11 @@ class FeedbackTicket extends Component {
         })
         return sum;
     };
+    getClickedId = ()=>{
+        (async () => {
+            await deleteFromDatabase(`/location_feedbacks`,this.props.fb.id_feedback);
+        })();
+    }
     
     render() {
         return (
@@ -65,7 +70,7 @@ class FeedbackTicket extends Component {
                     <div className={classes.numberOfCommentsWrapper}>
                         <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
                         <p style={{ marginLeft: "8px", color: "gray" }}>{this.getNumberOfComments()}</p>
-                    {(this.props.loggedUser.id === this.props.fb.id_user) && <FontAwesomeIcon icon="trash-alt"/>}
+                    {(this.props.loggedUser.id === this.props.fb.id_user) && <FontAwesomeIcon onClick={this.getClickedId} icon="trash-alt"/>}
 
                     </div>
                 </div>
