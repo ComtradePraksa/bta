@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import {removeAuthHeader} from '../../../apis/removeAuthHeader';
 import {getFromDatabase} from '../../../apis/btaApi';
+import {getHotel} from '../../../apis/hotelScrapersApi'
 import classes from '../Hotels/Hotels.css';
 
 class Hotels extends Component{
@@ -11,13 +11,11 @@ class Hotels extends Component{
 
     componentDidMount() {
         (async () => {
-            const hotel = await getFromDatabase('/accomodations/2');
-            axios.get(`http://scrappet.herokuapp.com/api/scrape?url=${hotel.data.link}`,removeAuthHeader())
-            .then(res => {
-                const hotel = res.data.page.meta_tags;
+            const hotelLink = await getFromDatabase('/accommodations/2');
+            const res = await getHotel(hotelLink.data.link, removeAuthHeader())
+                const hotel = res.page.meta_tags;
                 this.setState({ hotel });
-            })
-        })();
+            })();
     };
 
     render(){

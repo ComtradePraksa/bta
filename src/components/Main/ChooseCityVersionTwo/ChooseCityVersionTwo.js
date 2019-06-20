@@ -27,7 +27,7 @@ class ChooseCity extends Component {
 
     getClickedCity = (item) => {
         this.setState({ placeholderMessage: item.city });
-        this.props.getCity(item.city);
+        this.props.getCity({city:item.city,id:item.id});
         return item.city;
     };
     

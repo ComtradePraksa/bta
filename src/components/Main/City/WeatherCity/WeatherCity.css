@@ -1,6 +1,7 @@
 .WeatherCity {
-  grid-area: weather-city;
+  grid-area: choose-city;
   display: block;
   margin: 1% auto;
   max-height: 5%;
+  z-index: 1;
 }

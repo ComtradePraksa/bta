@@ -46,6 +46,7 @@ nav {
   background: linear-gradient(to bottom, rgba(39, 96, 164, 0.91) 0%, rgba(39, 96, 164, 0.96) 50%, rgba(28, 66, 110, 1) 100%);
 }
 
+
 @media(min-width: 768px) {
   .Main {
     grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
