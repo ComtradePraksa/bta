@@ -10,7 +10,6 @@ class HotelsCity extends Component {
         (async () => {
             const res = await getHotel(this.props.hotelLink, removeAuthHeader())
             const hotel = res.page.meta_tags
-            console.log(hotel['og:title'])
             this.setState({
                 view:
                     <div className={classes.Nearby}>
