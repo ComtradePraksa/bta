@@ -5,10 +5,12 @@
     "icon title title title"
     "icon category category category"
     "icon address address address";
-  border: 1px solid white;
-  border-radius: 4px;
+ /* border-bottom: 0.1px inset rgba(255, 255, 255, 0.226);
+  border-radius: 4px; */
+  justify-items: left;
+  align-items: center;
   padding: 1%;
-  margin: 5% auto;
+  margin: 3% auto;
   width: 95%;
   text-align: left;
   color: white;
@@ -17,6 +19,7 @@
 .icon {
   grid-area: icon;
   padding-left: 5%;
+  height: 50px;
 }
 
 .title {
@@ -48,5 +51,9 @@
 
   .category {
     font-size: 0.8rem;
+  }
+
+  .icon {
+    height: 65px;
   }
 }

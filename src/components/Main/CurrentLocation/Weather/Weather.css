@@ -8,14 +8,17 @@
     flex-direction: column;
     z-index: 1;
 } 
-.Weather img {
-    display: block;
-    width: 30%;
-    margin: 0 auto;
+
+.Weather div {
+    text-align: center;
 }
 
-@media(min-width:768px) {
-    .Weather img {
-        width: 50%;
-    }
+.Weather div:nth-of-type(2) {
+  width: 50vw;
 }
+
+
+/*
+@media(min-width:768px) {
+
+}*/
