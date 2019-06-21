@@ -31,8 +31,7 @@ const patchToDatabase = async (tableName, data, id) => {
 
 const deleteFromDatabase = async (tableName, id) => {
     try {
-        await axios.delete(`${url}${tableName}/${id}`, { headers })
-        .then(res=>console.log(res.data));
+        await axios.delete(`${url}${tableName}/${id}`, { headers });
     } catch (error) {
         console.log(error);
     }
