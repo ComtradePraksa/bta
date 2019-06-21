@@ -15,7 +15,7 @@ class ChooseCity extends Component {
             const data = await getFromDatabase(`/locations`);
             const citiesArray = [];
             data.data.map(city => (
-                citiesArray.push({ id: city.id, city: city.city_name })
+                citiesArray.push({ id: city.id, city: city.city_name, latlon:city.city_lat_lon})
             ));
             this.setState({ cities: citiesArray });
         })();
@@ -27,7 +27,7 @@ class ChooseCity extends Component {
 
     getClickedCity = (item) => {
         this.setState({ placeholderMessage: item.city });
-        this.props.getCity({city:item.city,id:item.id});
+        this.props.getCity({city:item.city,id:item.id, latlon:item.latlon});
         return item.city;
     };
     
