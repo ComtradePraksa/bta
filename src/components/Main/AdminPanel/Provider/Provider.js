@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import {getFromDatabase, postToDatabase} from '../../../../apis/btaApi';
+import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Provider extends Component {
     state = {
         name: '',
         type: '',
         provider: []
+    };
+
+    getDatabase = () => {
+        (async () => {
+            const data = await getFromDatabase(`/provider`);
+            const provider = data.data;
+            this.setState({ provider });
+        })();
     };
 
     inputHandler = (e) => {
@@ -19,22 +28,29 @@ class Provider extends Component {
         };
         (async () => {
             await postToDatabase('/provider', newProvider);
+            this.getDatabase();
+        })();
+    };
+
+    deleteHandler = (id) => {
+        (async () => {
+            await deleteFromDatabase('/provider', id);
+            this.getDatabase();
         })();
     };
 
     componentDidMount() {
-        (async () => {
-            const data = await getFromDatabase(`/provider`);
-            const provider = data.data;
-            this.setState({ provider });
-        })();
+        this.getDatabase();
     };
 
     render() {
         const providers = this.state.provider.map(provider => {
             return (
-                <div key={provider.id} id={provider.id}>
+                <div key={provider.id}>
                     {provider.id}. {provider.name} - type: {provider.type}
+                    <span onClick={() => this.deleteHandler(provider.id)}>
+                        <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
+                    </span>
                 </div>
             )
         });

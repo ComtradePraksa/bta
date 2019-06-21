@@ -12,7 +12,6 @@ const getFromDatabase = async (query) => {
         console.log(error);
     }
 };
-
 // data is object
 const postToDatabase = async (tableName, data) => {
     try {
@@ -22,15 +21,15 @@ const postToDatabase = async (tableName, data) => {
     }
 };
 
-const putInDatabase = async (data, id) => {
+const patchToDatabase = async (tableName, data, id) => {
     try {
-        await axios.put(`${url}/tablename/${id}`, data, { headers });
+        await axios.patch(`${url}${tableName}/${id}`, data, { headers });
     } catch (error) {
         console.log(error);
     }
 };
 
-const deleteFromDatabase = async (tableName,id) => {
+const deleteFromDatabase = async (tableName, id) => {
     try {
         await axios.delete(`${url}${tableName}/${id}`, { headers });
     } catch (error) {
@@ -38,4 +37,4 @@ const deleteFromDatabase = async (tableName,id) => {
     }
 };
 
-export {getFromDatabase, postToDatabase, putInDatabase, deleteFromDatabase};
+export {getFromDatabase, postToDatabase, patchToDatabase, deleteFromDatabase};

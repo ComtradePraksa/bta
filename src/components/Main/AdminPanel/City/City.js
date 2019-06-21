@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {getFromDatabase, postToDatabase} from '../../../../apis/btaApi';
+import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class City extends Component {
     state = {
@@ -7,6 +8,17 @@ class City extends Component {
         geolocation: '',
         state: '',
         locations: []
+    };
+
+    getDatabase = () => {
+        (async () => {
+            const data = await getFromDatabase(`/locations`);
+            const locations = [];
+            data.data.map(city => (
+                locations.push({ id: city.id, name: city.city_name, state: city.state})
+            ));
+            this.setState({ locations });
+        })();
     };
 
     inputHandler = (e) => {
@@ -21,25 +33,29 @@ class City extends Component {
         };
         (async () => {
             await postToDatabase('/locations', newCity);
+            this.getDatabase();
+        })();
+    };
+
+    deleteHandler = (id) => {
+        (async () => {
+            await deleteFromDatabase('/locations', id);
+            this.getDatabase();
         })();
     };
 
     componentDidMount() {
-        (async () => {
-            const data = await getFromDatabase(`/locations`);
-            const locations = [];
-            data.data.map(city => (
-                locations.push({ id: city.id, name: city.city_name, state: city.state})
-            ));
-            this.setState({ locations });
-        })();
+        this.getDatabase();
     };
 
     render() {
         const locations = this.state.locations.map(city => {
             return (
-                <div key={city.id} id={city.id}>
+                <div key={city.id}>
                     {city.id}. {city.name} - state: {city.state}
+                    <span onClick={() => this.deleteHandler(city.id)}>
+                        <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
+                    </span>
                 </div>
             )
         });
