@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classes from './MapCity.css';
 import axios from 'axios';
-import { removeAuthHeader } from '../../../../apis/removeAuthHeader';
 import map from '../../../../apis/mapsApi'
 
 class MapCity extends Component {
