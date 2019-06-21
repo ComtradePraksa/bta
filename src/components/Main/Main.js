@@ -35,7 +35,7 @@ class Main extends Component {
         }
         return (
             <div className={classes.Main}>
-                <Nav loginStatus={this.props.loginStatus} loggedUser={this.props.loggedUser} adminToggle={this.adminToggleHandler}/>
+                <Nav loggedUser={this.props.loggedUser} loginStatus = {this.props.loginStatus}/>
                 {main}
             </div>
         );

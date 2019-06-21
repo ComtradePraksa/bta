@@ -50,6 +50,8 @@ class Login extends Component {
           const loggedUser = jwt.decode(token);
           this.setState({ feedback: `Logged in as ${loggedUser.username}`, isLogged : true});
           this.props.loginStatus(true,loggedUser);
+          //redirect to a home page
+          this.props.history.push('/home');
         }
         else {
           this.setState({ feedback: 'no user with that credentials' });
