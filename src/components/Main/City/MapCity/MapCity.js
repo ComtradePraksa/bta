@@ -6,31 +6,35 @@ import map from '../../../../apis/mapsApi'
 
 class MapCity extends Component {
     state = {
-        view: <div className={classes.Map} id="here-map" style={{ background: 'grey' }}> </div>
+        location:[]
     };
 
     renderMap = () => {
-        this.setState({ view: <div> </div> })
-        axios.get(`https://geocoder.cit.api.here.com/6.2/geocode.json?searchtext=${this.props.city.city}&app_id=bIV674hGvmDcJyBxVMjW&app_code=pZnLTja-QcfDIq6mwL63og&gen=8`, removeAuthHeader())
-            .then(res => {
-                this.setState({ view: <div className={classes.Map} id="here-map" style={{ width: '30vw', height: '30vw', background: 'grey' }}></div> });
-                const locationData = res.data;
-                map(locationData.Response.View[0].Result[0].Location.DisplayPosition.Latitude, locationData.Response.View[0].Result[0].Location.DisplayPosition.Longitude);
-            })
+            document.getElementById('here-map').innerHTML = "";
+        this.props.hotelsInfo.map(e=>this.locationInfo(e.name))
+        map(51.5079705, 7.4002231);
     };
 
+    locationInfo =(hotelName) =>{
+        axios.get(`https://places.cit.api.here.com/places/v1/discover/search?at=51.5079705,7.4002231,12&q=${hotelName}&Accept-Language=en-US%2Cen%3Bq%3D0.9&app_id=oAYeL0kErguvl8l584Tn&app_code=1XgtGSFk3UzuYMqCKiRRSw`)
+        .then(res=>{
+            const info = res.data.results.items[0];
+            if(info!==undefined){
+            console.log(info.position)
+            }
+        })
+    }
+    
     componentDidUpdate(prevProps) {
-        if (prevProps.city !== this.props.city) {
+        if (prevProps.hotelsInfo!== this.props.hotelsInfo) {
+            this.props.hotelsInfo.map(e=>this.locationInfo(e))
+            
             this.renderMap();
         }
     };
 
-    componentDidMount() {
-        this.renderMap();
-    };
-
     render() {
-        return ( <React.Fragment>{this.state.view}</React.Fragment> );
+        return ( <div className={classes.Map} id="here-map" style={{ background: 'grey' }}> </div>);
     }
 }
 
