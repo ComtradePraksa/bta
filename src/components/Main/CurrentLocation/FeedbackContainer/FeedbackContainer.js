@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
-import { getFromDatabase,deleteFromDatabase } from '../../../../apis/btaApi';
+import { getFromDatabase, deleteFromDatabase } from '../../../../apis/btaApi';
 import classes from "./FeedbackContainer.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 class FeedbackContainer extends Component {
     state = {
@@ -19,7 +21,7 @@ class FeedbackContainer extends Component {
                 feedback.push(fb)
                 if (data.user.id === fb.id) {
                     userfeedback.push(fb.id_feedback);
-                     this.setState({ userfeedbacks: userfeedback });
+                    this.setState({ userfeedbacks: userfeedback });
                 }
                 return true;
             });
@@ -39,11 +41,10 @@ class FeedbackContainer extends Component {
     };
 
     render() {
-        
+
         return (
             <div className={classes.feedbackContainer}>
                 <div className={classes.sortTicket}>
-
                 </div>
                 <div className={classes.ticketsWrapper}>
                     {
@@ -51,6 +52,9 @@ class FeedbackContainer extends Component {
                             <FeedbackTicket getClickedId={this.getClickedId} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb} />
                         ))
                     }
+                </div>
+                <div className={classes.addFeedback}>
+                <FontAwesomeIcon icon="plus" style={{color:"white"}}/>
                 </div>
             </div>
         );
