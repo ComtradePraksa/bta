@@ -33,20 +33,20 @@ class Nav extends Component{
         }
         return (
             <div className={classes.Container}>
-                <div className={classes.Nav}>
+                <div className={[classes.Nav, classes.flexNav, classes.center].join(' ')}>
                     <div className={classes.Logo} onClick={() => this.props.adminToggle(false)}>
                         <span>bta.</span>
                     </div>
-                    <div className={classes.Menu}>
+                    <div className={[classes.Menu, classes.flexNav, classes.center].join(' ')}>
 
-                        <div onClick={this.toggleUserMenu} className={classes.User}>
+                        <div onClick={this.toggleUserMenu} className={[classes.User, classes.fullWidth, classes.flexNav, classes.center].join(' ')}>
                             <div className={classes.UserName}>{this.props.loggedUser.username} {admin}</div>
                             <div className={classes.UserPhoto}>
-                                <img src={require(`../../../${this.props.loggedUser.photo}`)} alt = "" />
+                                <img src={require(`../../../${this.props.loggedUser.photo}`)} alt="" className={classes.fullWidth}/>
                             </div>
                             <div className={this.state.toggleUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
-                                <div className={classes.isAdminCheck} onClick={() => this.props.adminToggle(true)}>{adminPanelLink}</div>
-                                <a href="/link" onClick={this.logout}>Logout</a>
+                                <div className={[classes.isAdminCheck, classes.fullWidth].join(' ')} onClick={() => this.props.adminToggle(true)}>{adminPanelLink}</div>
+                                <a href="/link" onClick={this.logout}className = {classes.fullWidth}>Logout</a>
                             </div>
                         </div>
                         <div onClick={this.toggleMenu} className={classes.BurgerMenu}>

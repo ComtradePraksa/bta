@@ -44,11 +44,6 @@
     border-radius: 50%;
 }
 
-/*
-.userName, .feedbackTitle, .feedbackText {
-    font-family: "Raleway", Arial, Helvetica, sans-serif;
-}*/
-
 .userName {
     grid-area: name
 }
@@ -98,6 +93,12 @@
     height: 100%;
 }
 
+.numberOfCommentsWrapper svg:last-of-type {
+    color: crimson;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 .readMore {
     grid-area: readmore;
     cursor: pointer;
@@ -108,8 +109,13 @@
 
 .readMore:hover {
     color: white;
-    transition: 0.5s;
+    transition: 0.7s;
     background: linear-gradient(to bottom, rgba(251, 65, 115, 0.856) 0%, rgba(251, 65, 115, 0.801) 60%, rgba(251, 65, 115, 0.87) 53%, rgba(210, 75, 91, 0.836) 53%, rgba(251, 65, 115, 0.808) 53%);
+}
+
+.numberOfCommentsWrapper svg:last-of-type:hover {
+    transition: all 0.7s ease;
+    opacity: 0.5;
 }
 
 @media(min-width:400px) {
