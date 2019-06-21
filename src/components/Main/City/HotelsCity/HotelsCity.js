@@ -12,20 +12,20 @@ class HotelsCity extends Component {
         (async () => {
             const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
             const hotelsByCityId = res.data;
-            const hotels=[]
-            hotelsByCityId.map(e => hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img}))
-            this.setState({ hotels })
+            const hotels=[];
+            hotelsByCityId.map(e => hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img}));
+            this.setState({ hotels });
         })();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.city !== prevProps.city) {
-            this.getHotelLinkS()
+            this.getHotelLinkS();
         }
-    }
+    };
 
     componentDidMount() {
-        this.getHotelLinkS()
+        this.getHotelLinkS();
     }
 
     render() {

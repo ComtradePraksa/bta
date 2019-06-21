@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './HotelCity.css';
 
-
 const HotelCity = props => {
     return (
         <div className={classes.Nearby}>
@@ -11,7 +10,6 @@ const HotelCity = props => {
             <p className={classes.address}></p>
         </div>
     )
-}
-
+};
 
 export default HotelCity;

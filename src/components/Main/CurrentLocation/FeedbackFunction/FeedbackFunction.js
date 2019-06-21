@@ -54,7 +54,7 @@ const getType = (type) => {
 };
 
 const formatDate = (params) => {
-    let formatted = ""
+    let formatted = "";
     
     if (params.length === 24) {
         let time = params.split("T")[1].split(":");
@@ -71,8 +71,8 @@ const formatDate = (params) => {
 
 const stringForDb = () => {
     const dt = new Date();
-    const dtString = dt.toISOString().replace("T", " ")
+    const dtString = dt.toISOString().replace("T", " ");
     return dtString.substring(0, dtString.length - 5);
-}
+};
 
 export {getType, getStyle, formatDate, stringForDb};
