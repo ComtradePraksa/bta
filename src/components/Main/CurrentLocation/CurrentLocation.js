@@ -36,12 +36,12 @@ class CurrentLocation extends Component {
     };
 
     render() {
-        return (<React.Fragment>
+        return (<div>
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces}/>
                 <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces} />
                 <FeedbackContainer loggedUser={this.props.loggedUser}/>
-                </React.Fragment>
+                </div>
         );
     }
 }

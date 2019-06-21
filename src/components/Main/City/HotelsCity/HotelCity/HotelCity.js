@@ -3,13 +3,15 @@ import classes from './HotelCity.css';
 import { getHotel } from '../../../../../apis/hotelScrapersApi';
 import { removeAuthHeader } from '../../../../../apis/removeAuthHeader';
 
-
 class HotelsCity extends Component {
-    state = { view: <div></div> }
+    state = { 
+        view: <div></div>
+    };
+
     renderHotel = () => {
         (async () => {
-            const res = await getHotel(this.props.hotelLink, removeAuthHeader())
-            const hotel = res.page.meta_tags
+            const res = await getHotel(this.props.hotelLink, removeAuthHeader());
+            const hotel = res.page.meta_tags;
             this.setState({
                 view:
                     <div className={classes.Nearby}>
@@ -18,20 +20,17 @@ class HotelsCity extends Component {
                         <p>{hotel['og:description']}</p>
                         <p className={classes.address}></p>
                     </div>
-            })
+            });
         })();
-
-    }
+    };
 
     componentDidMount() {
-        this.renderHotel()
-    }
+        this.renderHotel();
+    };
 
     render() {
 
-        return (
-            <div>{this.state.view}</div>
-        )
+        return ( <div>{this.state.view}</div> )
     }
 }
 

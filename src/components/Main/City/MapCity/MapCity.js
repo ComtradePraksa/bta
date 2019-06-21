@@ -17,22 +17,20 @@ class MapCity extends Component {
                 const locationData = res.data;
                 map(locationData.Response.View[0].Result[0].Location.DisplayPosition.Latitude, locationData.Response.View[0].Result[0].Location.DisplayPosition.Longitude);
             })
-    }
+    };
 
     componentDidUpdate(prevProps) {
         if (prevProps.city !== this.props.city) {
-            this.renderMap()
+            this.renderMap();
         }
     };
 
     componentDidMount() {
-        this.renderMap()
+        this.renderMap();
     };
 
     render() {
-        return (
-            <React.Fragment>{this.state.view}</React.Fragment>
-        );
+        return ( <div>{this.state.view}</div> );
     }
 }
 

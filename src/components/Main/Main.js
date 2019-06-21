@@ -16,12 +16,12 @@ class Main extends Component {
     
     getCity = (city) => {
         this.setState({city});
-        console.log(city)
+        console.log(city);
     };
 
     adminToggleHandler = (status) => {
-        this.setState({ adminToggle: status })
-    }
+        this.setState({ adminToggle: status });
+    };
 
     render() {
         let main;
@@ -29,10 +29,10 @@ class Main extends Component {
             main = <BrowserRouter><AdminPanel/></BrowserRouter>;
         }
         if (this.state.adminToggle === false && this.state.city === '') {
-            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation loggedUser={this.props.loggedUser} key="2"/>]
+            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation loggedUser={this.props.loggedUser} key="2"/>];
         }
         if (this.state.adminToggle === false && this.state.city !== '') {
-            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<City key='2' city={this.state.city}/>]
+            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<City key='2' city={this.state.city}/>];
         }
         return (
             <div className={classes.Main}>
