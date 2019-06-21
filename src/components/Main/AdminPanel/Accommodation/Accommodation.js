@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import {postToDatabase} from '../../../../apis/btaApi';
+import {getFromDatabase, postToDatabase} from '../../../../apis/btaApi';
 
 class Accommodation extends Component {
     state = {
         name: '',
         link: '',
-        id_city: ''
+        id_city: '',
+        city_lat_lon: ''
+    };
+
+    getDatabase = () => {
+        (async () => {
+            const data = await getFromDatabase(`/accommodations`);
+            const accommodations = data.data;
+            this.setState(accommodations);
+        })();
     };
 
     inputHandler = (e) => {
@@ -15,7 +24,12 @@ class Accommodation extends Component {
     saveHandler = () => {
         (async () => {
             await postToDatabase('/accommodations', this.state);
+            this.getDatabase();
         })();
+    };
+
+    componentDidMount() {
+        this.getDatabase();
     };
 
     render() {

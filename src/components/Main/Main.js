@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {BrowserRouter} from 'react-router-dom';
 import classes from './Main.css';
 import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import CurrentLocation from './CurrentLocation/CurrentLocation'
@@ -24,17 +25,17 @@ class Main extends Component {
     render() {
         let main;
         if (this.state.adminToggle) {
-            main = <AdminPanel />
+            main = <BrowserRouter><AdminPanel/></BrowserRouter>;
         }
         if (this.state.adminToggle === false && this.state.city === '') {
-            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation key="2"/>]
+            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation key="2"/>];
         }
         if (this.state.adminToggle === false && this.state.city !== '') {
-            main = <City city={this.state.city}/>
+            main = <City city={this.state.city}/>;
         }
         return (
             <div className={classes.Main}>
-                <Nav loginStatus = {this.props.loginStatus} loggedUser={this.props.loggedUser} adminToggle={this.adminToggleHandler}/>
+                <Nav loginStatus={this.props.loginStatus} loggedUser={this.props.loggedUser} adminToggle={this.adminToggleHandler}/>
                 {main}
             </div>
         );

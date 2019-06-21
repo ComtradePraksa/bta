@@ -35,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className={classes.App}>
-        {this.state.isLogged ? <Main loginStatus = {this.LoginStatus} loggedUser={this.state.loggedUser}/> : <Login loginStatus={this.LoginStatus}/>}
+        {this.state.isLogged ? <Main loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser}/> : <Login loginStatus={this.LoginStatus}/>}
       </div>
     );
   }
