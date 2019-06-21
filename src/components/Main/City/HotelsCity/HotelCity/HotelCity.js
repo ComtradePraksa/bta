@@ -1,37 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from './HotelCity.css';
-import { getHotel } from '../../../../../apis/hotelScrapersApi';
-import { removeAuthHeader } from '../../../../../apis/removeAuthHeader';
 
-class HotelsCity extends Component {
-    state = { 
-        view: <div></div>
-    };
+const HotelCity = props => {
+    return (
+        <div className={classes.Nearby}>
+            <img src={`${props.hotel.hotel_img}`} alt={props.hotel.image} />
+            <h3>{props.hotel.name}</h3>
+            <p>{props.hotel.hotel_descr}</p>
+            <p className={classes.address}></p>
+        </div>
+    )
+};
 
-    renderHotel = () => {
-        (async () => {
-            const res = await getHotel(this.props.hotelLink, removeAuthHeader());
-            const hotel = res.page.meta_tags;
-            this.setState({
-                view:
-                    <div className={classes.Nearby}>
-                        <img src={`${hotel['og:image']}`} alt={hotel.image} />
-                        <h3>{hotel['og:title']}</h3>
-                        <p>{hotel['og:description']}</p>
-                        <p className={classes.address}></p>
-                    </div>
-            });
-        })();
-    };
-
-    componentDidMount() {
-        this.renderHotel();
-    };
-
-    render() {
-
-        return ( <div>{this.state.view}</div> )
-    }
-}
-
-export default HotelsCity;
+export default HotelCity;

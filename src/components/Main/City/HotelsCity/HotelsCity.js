@@ -5,21 +5,21 @@ import HotelCity from './HotelCity/HotelCity'
 
 class HotelsCity extends Component {
     state = {
-        hotelLinks: []
-      };
-
-    getHotelLinkS = () => {
-        (async()=>{
-            const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`);
-            const hotelsByCityId = res.data;
-            const hotelLinks = [];
-            hotelsByCityId.map(e => hotelLinks.push(e.link));
-            this.setState({ hotelLinks });
-        })();
+        hotels:[]
     };
 
+    getHotelLinkS = () => {
+        (async () => {
+            const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
+            const hotelsByCityId = res.data;
+            const hotels=[];
+            hotelsByCityId.map(e => hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img}));
+            this.setState({ hotels });
+        })();
+    }
+
     componentDidUpdate(prevProps) {
-        if (this.props.city!== prevProps.city) {
+        if (this.props.city !== prevProps.city) {
             this.getHotelLinkS();
         }
     };
@@ -27,11 +27,13 @@ class HotelsCity extends Component {
     componentDidMount() {
         this.getHotelLinkS();
     }
-        
+
     render() {
-        const view = this.state.hotelLinks.slice(0,5).map( (e,index) => <HotelCity key={index} hotelLink={e}/>);
-    
-        return( <div>{view}</div> )
+        const view = this.state.hotels.slice(0, 5).map((e, index) => <HotelCity key={index} hotel={e} />)
+
+        return (
+            <div>{view}</div>
+        )
     }
 }
 
