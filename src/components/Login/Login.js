@@ -38,7 +38,6 @@ class Login extends Component {
         data: user,
         config: { headers: { 'Content-Type': 'application/json' } }
       })
-<<<<<<< HEAD
       .then(res => {
         //check if token exists
         if (res.data.token) {
@@ -59,26 +58,6 @@ class Login extends Component {
         }
       })
       .catch(err=>{console.log(err)});
-=======
-        .then(res => {
-          //check if token exists
-          if (res.data.token) {
-            const token = res.data.token;
-            //save token in localStorage
-            localStorage.setItem('jwtoken', token);
-            //seth auth token so that every axios req has that token uncluded
-            setAuthToken(token);
-            //decode token to fetch a logged user info!!!
-            const loggedUser = jwt.decode(token);
-            this.setState({ feedback: `Logged in as ${loggedUser.username}`, isLogged: true });
-            this.props.loginStatus(true, loggedUser);
-          }
-          else {
-            this.setState({ feedback: 'no user with that credentials' });
-          }
-        })
-        .catch(err => { console.log(err) });
->>>>>>> e49ed495b73494e1bfbf3ddca12280d675461978
     }
   };
 
