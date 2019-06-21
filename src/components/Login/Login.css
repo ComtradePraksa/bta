@@ -224,4 +224,8 @@ input {
     max-width: 85vw;
     margin: 0 auto;
   }
+
+  .LogoDescr {
+    font-size: 2vw;
+  }
 }
