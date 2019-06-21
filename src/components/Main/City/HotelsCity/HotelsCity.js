@@ -5,35 +5,35 @@ import HotelCity from './HotelCity/HotelCity'
 
 class HotelsCity extends Component {
     state = {
-        hotelLinks: []
-      };
+        hotels:[]
+    };
 
-      getHotelLinkS=()=>{
-        (async()=>{
+    getHotelLinkS = () => {
+        (async () => {
             const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
             const hotelsByCityId = res.data;
-            const hotelLinks = []
-            hotelsByCityId.map(e=>hotelLinks.push(e.link))
-            this.setState({hotelLinks})
+            const hotels=[]
+            hotelsByCityId.map(e => hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img}))
+            this.setState({ hotels })
         })();
-      }
+    }
 
     componentDidUpdate(prevProps) {
-        if (this.props.city!== prevProps.city) {
+        if (this.props.city !== prevProps.city) {
             this.getHotelLinkS()
         }
     }
 
-        componentDidMount(){
-            this.getHotelLinkS()
-        }
-        
+    componentDidMount() {
+        this.getHotelLinkS()
+    }
+
     render() {
-        const view = this.state.hotelLinks.slice(0,5).map((e,index)=><HotelCity key={index} hotelLink={e}/>)
-    
-       return(
-       <React.Fragment>{view}</React.Fragment>
-       )
+        const view = this.state.hotels.slice(0, 5).map((e, index) => <HotelCity key={index} hotel={e} />)
+
+        return (
+            <React.Fragment>{view}</React.Fragment>
+        )
     }
 }
 
