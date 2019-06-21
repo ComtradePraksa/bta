@@ -67,7 +67,6 @@ class Login extends Component {
     return (
       <div className={classes.LoginWrap} >
         <img src={require('../../assets/airport-2178606_1920.jpg')} alt="front page wallpaper" />
-        <img src={require('../../assets/bc-2297205.jpg')} alt="front page wallpaper" />
         <img src={require('../../assets/san-francisco-1258848_1920.jpg')} alt="front page wallpaper" />
         <img src={require('../../assets/plane-322864_1920.jpg')} alt="front page wallpaper" />
         <div className={classes.Logo}>
