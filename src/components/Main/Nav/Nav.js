@@ -1,8 +1,8 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import classes from './Nav.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-class Nav extends Component{
+class Nav extends Component {
     state = {
         toggleLogout: false
     };
@@ -12,9 +12,7 @@ class Nav extends Component{
     };
 
     logout = () => {
-        //go back to login page
-        this.props.loginStatus(false,{});
-        //remove token from localStorage
+        this.props.loginStatus(false, {});
         localStorage.removeItem('jwtoken');
     };
 
@@ -27,9 +25,6 @@ class Nav extends Component{
             adminPanelLink = 'Admin panel';
             admin = ' (admin)';
         }
-        // if(this.props.loggedUser !== 'undefined'){
-        //     userPhoto = <img src={require(`../../../${this.props.loggedUser.photo}`)} alt="" className={classes.fullWidth} />
-        // }
         return (
             <div className={classes.Container}>
                 <div className={[classes.Nav, classes.flexNav, classes.center].join(' ')}>
@@ -46,10 +41,10 @@ class Nav extends Component{
                                 }
                             </div>
                             <div className={this.state.toggleUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
-                                <Link to = "/admin">
+                                <Link to="/admin">
                                     <div className={[classes.isAdminCheck, classes.fullWidth].join(' ')}>{adminPanelLink}</div>
                                 </Link>
-                                <Link to="/" onClick = {this.logout} className = {classes.fullWidth}>Logout</Link>
+                                <Link to="/" onClick={this.logout} className={classes.fullWidth}>Logout</Link>
                             </div>
                         </div>
                     </div>

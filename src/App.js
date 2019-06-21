@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import classes from './App.css';
 import Login from './components/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {faTrashAlt, faChevronCircleRight, faPlus, faTimes, faKey, faUser, faChevronDown, faCommentAlt , faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faChevronCircleRight, faPlus, faTimes, faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Main from './components/Main/Main';
 import jwt from 'jsonwebtoken';
 import AdminPanel from './components/Main/AdminPanel/AdminPanel';
 import { ProtectedRoute } from './ProtectedRoute'
 
-library.add(faTrashAlt, faChevronCircleRight, faPlus, faTimes,faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
+library.add(faTrashAlt, faChevronCircleRight, faPlus, faTimes, faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
 
 class App extends Component {
   state = {
     isLogged: false,
-    loggedUser:{}
+    loggedUser: {}
   };
 
   componentDidMount() {
@@ -24,13 +24,13 @@ class App extends Component {
       const now = new Date().getTime();
       if (now > exp) {
         localStorage.removeItem('jwtoken');
-        this.LoginStatus(false,{});
+        this.LoginStatus(false, {});
       }
-      else { this.LoginStatus(true,jwt.decode(token)); }
+      else { this.LoginStatus(true, jwt.decode(token)); }
     }
-    else { this.LoginStatus(false,{}); }
+    else { this.LoginStatus(false, {}); }
   };
-  
+
   LoginStatus = (isLogged, loggedUser) => {
     this.setState({ isLogged, loggedUser });
   };
@@ -38,18 +38,14 @@ class App extends Component {
   render() {
     return (
       <div className={classes.App}>
-        {/* {this.state.isLogged ? <Main loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser}/> : <Login loginStatus={this.LoginStatus}/>} */}
         <Router>
           <Switch>
             <Route exact path="/" render={
-              (props) => <Login {...props} loginStatus={this.LoginStatus} loggedUser = {this.loggedUser}/>
-            }/>
-            {/* <ProtectedRoute path="/home" render = {
-              (props) => <Main {...props} loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser}/>
-            } /> */}
-            <ProtectedRoute loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser} path = "/home" component = {Main}/> 
-            <ProtectedRoute loggedUser = {this.state.loggedUser} path="/admin" component={AdminPanel} />
-            <Route path = "*" component = {() => ':( Error 404, page not found'} />
+              (props) => <Login {...props} loginStatus={this.LoginStatus} loggedUser={this.loggedUser} />
+            } />
+            <ProtectedRoute loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser} path="/home" component={Main} />
+            <ProtectedRoute loggedUser={this.state.loggedUser} path="/admin" component={AdminPanel} />
+            <Route path="*" component={() => ':( Error 404, page not found'} />
           </Switch>
         </Router>
       </div>

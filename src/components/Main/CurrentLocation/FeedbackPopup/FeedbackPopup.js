@@ -1,6 +1,6 @@
 import classes from "./FeedbackPopup.css"
 import React, { Component } from 'react';
-import { getType, getStyle, formatDate,stringForDb } from "../FeedbackFunction/FeedbackFunction"
+import { getType, getStyle, formatDate, stringForDb } from "../FeedbackFunction/FeedbackFunction"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackComment from "../FeedbackComment/FeedbackComment";
 import jwt from 'jsonwebtoken';
@@ -17,16 +17,16 @@ class FeedbackPopup extends Component {
     };
 
     getCommentValue = event => {
-        this.setState({ commentValue : event.target.value });
+        this.setState({ commentValue: event.target.value });
     };
 
     getData = () => {
         document.querySelector("#commentText").value = "";
-        this.setState({ commentValue : "" });
+        this.setState({ commentValue: "" });
         const commentData = {
-            userId:jwt.decode(localStorage.getItem("jwtoken")).id,
-            fbId:this.props.fb.id_feedback,
-            com:this.state.commentValue,
+            userId: jwt.decode(localStorage.getItem("jwtoken")).id,
+            fbId: this.props.fb.id_feedback,
+            com: this.state.commentValue,
             dt: stringForDb()
         }
         axios({
@@ -34,21 +34,20 @@ class FeedbackPopup extends Component {
             url: 'http://localhost:3001/location_comments',
             data: commentData,
             config: { headers: { 'Content-Type': 'application/json' } }
-          }).then(res=>
-            {
-                const dbResults = res.data
-                const newCom = {
-                    id_comment:dbResults.insertedId,
-                    comment_date:dbResults.newComment.dt,
-                    comments:dbResults.newComment.com,
-                    id_feedback:dbResults.newComment.fbId,
-                    id:dbResults.newComment.userId,
-                    name:dbResults.user.name,
-                    photo:dbResults.user.photo
-                }
-                this.props.addNewComent(newCom) 
+        }).then(res => {
+            const dbResults = res.data
+            const newCom = {
+                id_comment: dbResults.insertedId,
+                comment_date: dbResults.newComment.dt,
+                comments: dbResults.newComment.com,
+                id_feedback: dbResults.newComment.fbId,
+                id: dbResults.newComment.userId,
+                name: dbResults.user.name,
+                photo: dbResults.user.photo
             }
-            )
+            this.props.addNewComent(newCom)
+        }
+        )
     };
 
     render() {

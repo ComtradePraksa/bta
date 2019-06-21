@@ -5,17 +5,17 @@ import HotelCity from './HotelCity/HotelCity'
 
 class HotelsCity extends Component {
     state = {
-        hotels:[]
+        hotels: []
     };
 
     getHotelLinkS = () => {
         (async () => {
             const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
             const hotelsByCityId = res.data;
-            const hotels=[];
-            const hotelsInfo=[];
-            hotelsByCityId.map(e => (hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img})));
-            hotelsByCityId.map(e =>  (hotelsInfo.push({name:e.name, image:e.hotel_img})));
+            const hotels = [];
+            const hotelsInfo = [];
+            hotelsByCityId.map(e => (hotels.push({ name: e.name, hotel_descr: e.hotel_descr, hotel_img: e.hotel_img })));
+            hotelsByCityId.map(e => (hotelsInfo.push({ name: e.name, image: e.hotel_img })));
             this.setState({ hotels });
             this.props.getHotelsInfo(hotelsInfo)
         })();
