@@ -201,3 +201,27 @@ input {
   color: crimson;
   font-size: 0.7rem;
 }
+
+@media(max-width: 1080px) {
+  .LoginWrap {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "login";
+  }
+  .Login {
+    margin: 10% 0;
+  }
+
+  .LogoTitle {
+    margin-top: 5vh;
+    font-size: 20vw;
+    font-weight: bold;
+  }
+
+  .Login form {
+    display: block;
+    max-width: 85vw;
+    margin: 0 auto;
+  }
+}
