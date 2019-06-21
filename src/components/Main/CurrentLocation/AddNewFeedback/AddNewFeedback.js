@@ -15,10 +15,7 @@ class AddNewFeedback extends Component {
                     <div>
 
                     </div>
-           
-                   
                 </div>
-
             </div>
         )
     }

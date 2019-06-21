@@ -13,15 +13,15 @@ class CurrentLocation extends Component {
         latitude: '',
         longitude: '',
         error: null,
-        nearbyPlaces:''
+        nearbyPlaces: ''
     };
-    
+
     asyncGetCurrentPosition = options => new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
 
-    getNearbyPlaces =(nearbyPlaces)=>{
-        this.setState({nearbyPlaces});
+    getNearbyPlaces = (nearbyPlaces) => {
+        this.setState({ nearbyPlaces });
     };
 
     componentDidMount() {
@@ -33,7 +33,7 @@ class CurrentLocation extends Component {
         (async () => {
             let { coords: { latitude, longitude } } = await this.asyncGetCurrentPosition(options);
             const value = `${latitude},${longitude}`;
-            this.setState({value, latitude, longitude});
+            this.setState({ value, latitude, longitude });
         })();
     };
 
@@ -42,10 +42,10 @@ class CurrentLocation extends Component {
                 <div className={classes.CurrentLocationWrapper}>
                 <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces} />
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
-                <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces}/>
-                </div>
-                <FeedbackContainer loggedUser={this.props.loggedUser}/>
-                </React.Fragment>
+                <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces} />
+            </div>
+            <FeedbackContainer loggedUser={this.props.loggedUser} />
+        </React.Fragment>
         );
     }
 }
