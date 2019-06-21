@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
+import axios from 'axios';
+import {removeAuthHeader} from '../../../../apis/removeAuthHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class City extends Component {
     state = {
         city_name: '',
-        geolocation: '',
         state: '',
+        city_lat_lon: '',
         locations: []
     };
 
@@ -21,16 +23,30 @@ class City extends Component {
         })();
     };
 
+    getGeolocation = () => {
+        if (this.state.city_name !== '') {
+            axios.get(`https://geocoder.api.here.com/6.2/geocode.json?app_id=oAYeL0kErguvl8l584Tn&app_code=1XgtGSFk3UzuYMqCKiRRSw&searchtext=${this.state.city_name}`, removeAuthHeader())
+            .then(res => {
+                const data = res.data['Response']['View'][0]['Result'][0]['Location']['NavigationPosition'][0];
+                const city_lat_lon = `${data['Latitude']},${data['Longitude']}`;
+                this.setState({city_lat_lon});
+            });
+        }
+    };
+
     inputHandler = (e) => {
         this.setState({[e.target.name]: e.target.value});
     };
 
     saveHandler = () => {
+        this.getGeolocation();
+
         const newCity = {
             city_name: this.state.city_name,
-            geolocation: this.state.geolocation,
-            state: this.state.state
+            state: this.state.state,
+            city_lat_lon: this.state.city_lat_lon
         };
+        
         (async () => {
             await postToDatabase('/locations', newCity);
             this.getDatabase();

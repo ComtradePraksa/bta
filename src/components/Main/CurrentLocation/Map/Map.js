@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Map.css';
-import map from '../../../../apis/mapsApi'
+import map from '../../../../apis/mapsApi';
 
 class Map extends Component {
     state = {
