@@ -39,7 +39,9 @@ class WeatherCity extends Component {
             <div> {Math.round(this.state.weatherData.current.temp_c) + ' ‎°C'}</div>  
             </div>
         }
-        return ( <div>{weather}</div> );
+        return (
+            <React.Fragment>{weather}</React.Fragment>
+        );
     }
 }
 

@@ -11,7 +11,11 @@ class FeedbackTicket extends Component {
         comments: []
     };
 
-    getDatabase = () => {
+    toggleComponents = () => {
+        this.setState({ popupVisible: !this.state.popupVisible });
+    };
+
+    componentDidMount() {
         (async () => {
             const data = await getFromDatabase('/location_comments');
             const comments = [];
@@ -20,14 +24,6 @@ class FeedbackTicket extends Component {
             ));
             this.setState({ comments: comments })
         })();
-    };
-
-    toggleComponents = () => {
-        this.setState({ popupVisible: !this.state.popupVisible });
-    };
-
-    componentDidMount() {
-        this.getDatabase();
     };
 
     addNewComent = (newComment) => {
@@ -41,19 +37,17 @@ class FeedbackTicket extends Component {
         let sum = 0
         this.state.comments.map(comment => {
             if (comment.id_feedback === this.props.fb.id_feedback) {
-                sum++;
+                sum++
             }
             return true;
         })
         return sum;
     };
-
-    getClickedId = () => {
+    getClickedId = ()=>{
         (async () => {
-            await deleteFromDatabase(`/location_feedbacks`, this.props.fb.id_feedback);
-            this.getDatabase();
+            await deleteFromDatabase(`/location_feedbacks`,this.props.fb.id_feedback);
         })();
-    };
+    }
     
     render() {
         return (

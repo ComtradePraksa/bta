@@ -28,8 +28,8 @@ class Nav extends Component{
         let adminPanelLink;
         let admin = ''
         if (isAdmin) {
-            adminPanelLink = 'Admin panel';
-            admin = ' (admin)';
+            adminPanelLink = 'Admin panel'
+            admin = ' (admin)'
         }
         return (
             <div className={classes.Container}>

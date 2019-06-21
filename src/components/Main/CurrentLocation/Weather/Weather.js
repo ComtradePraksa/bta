@@ -30,7 +30,7 @@ class Weather extends Component {
             </div>
         }
         return (
-            <div>{weather}</div>
+            <React.Fragment>{weather}</React.Fragment>
         );
     }
 }

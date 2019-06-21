@@ -99,9 +99,9 @@ nav {
 }
 
 .dropdownItem {
-  padding: 5px 10px;
-  border-bottom: 0.4px solid rgba(237, 230, 230, 0.18);
-  min-height: 5vh;
+    padding: 5px 10px;
+    border-bottom: 0.4px solid rgba(237, 230, 230, 0.18);
+    min-height: 5vh;
   /*  background-color: white;*/
   background: rgba(255, 105, 145);
   color: white;

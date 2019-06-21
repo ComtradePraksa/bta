@@ -1,17 +1,17 @@
 .Weather {
-  grid-area: weather;
-  /* display: block;*/
-  margin: 3% auto;
-  /* max-height: 5%;*/
-  color: white;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
-  font-size: 0.9rem;
-}
+    grid-area: weather;
+    /* display: block;*/
+    margin: 3% auto;
+    /* max-height: 5%;*/
+    color: white;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    font-size: 0.9rem;
+} 
 
 .Weather div {
-  text-align: center;
+    text-align: center;
 }
 
 .Weather div:nth-of-type(2) {

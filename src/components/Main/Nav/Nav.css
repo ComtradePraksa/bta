@@ -57,7 +57,7 @@
     height: 30px;
     border-radius: 50%;
     overflow: hidden;
-    /* border: 2px solid #fff; */
+   /* border: 2px solid #fff; */
 }
 
 .UserPhoto img {
@@ -97,7 +97,6 @@
     color: #444;
     width: 100%;
 }
-
 /*
 .UserMenu a:hover {
     background-color: rgb(0, 81, 255);
@@ -110,11 +109,10 @@
     width: 100%;
 }
 
-.isAdminCheck:hover,
-.UserMenu a:hover {
+.isAdminCheck:hover, .UserMenu a:hover {
     color: #232b4b;
     transition: 0.6s;
-    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
 }
 
 .UserMenu.Show {
@@ -155,7 +153,7 @@
     background-color: rgba(134, 133, 133, 0.993);
     transition: height 0.3s linear;
     overflow: hidden;
-    /* padding: 0 5%; */
+   /* padding: 0 5%; */
     text-align: center;
 }
 
@@ -171,17 +169,16 @@
 }
 
 .NavbarToggle li a:hover {
-    background-color: rgba(221, 222, 226, 0.158);
-    transition: 0.6s;
-    color: rgba(85, 82, 82, 0.993);
-    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+   background-color: rgba(221, 222, 226, 0.158);
+   transition: 0.6s;
+   color: rgba(85, 82, 82, 0.993);
+   text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
 }
 
 @mediA(min-width: 400px) {
     .User {
         font-size: 1.1rem;
     }
-
     .User .UserPhoto {
         width: 40px;
         height: 40px;

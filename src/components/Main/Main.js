@@ -19,23 +19,23 @@ class Main extends Component {
     };
 
     adminToggleHandler = (status) => {
-        this.setState({ adminToggle: status });
-    };
+        this.setState({ adminToggle: status })
+    }
 
     render() {
         let main;
         if (this.state.adminToggle) {
-            main = <BrowserRouter><AdminPanel/></BrowserRouter>;
+            main = <BrowserRouter><AdminPanel/></BrowserRouter>
         }
         if (this.state.adminToggle === false && this.state.city === '') {
-            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation loggedUser={this.props.loggedUser} key="2"/>];
+            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation loggedUser={this.props.loggedUser} key="2"/>]
         }
         if (this.state.adminToggle === false && this.state.city !== '') {
-            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<City key='2' city={this.state.city}/>];
+            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<City key='2' city={this.state.city}/>]
         }
         return (
             <div className={classes.Main}>
-                <Nav loginStatus={this.props.loginStatus} loggedUser={this.props.loggedUser} adminToggle={this.adminToggleHandler}/>
+                <Nav loginStatus = {this.props.loginStatus} loggedUser={this.props.loggedUser} adminToggle={this.adminToggleHandler}/>
                 {main}
             </div>
         );
