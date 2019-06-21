@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
-import { getFromDatabase } from '../../../../apis/btaApi';
+import { getFromDatabase,deleteFromDatabase } from '../../../../apis/btaApi';
 import classes from "./FeedbackContainer.css"
 
 class FeedbackContainer extends Component {
@@ -10,12 +10,11 @@ class FeedbackContainer extends Component {
         userfeedbacks: []
     };
 
-    componentDidMount() {
+    getDatabase = () => {
         (async () => {
             const data = await getFromDatabase('/location_feedbacks');
             const feedback = [];
             const userfeedback = []
-           
             data.data.map(fb => {
                 feedback.push(fb)
                 if (data.user.id === fb.id) {
@@ -25,6 +24,17 @@ class FeedbackContainer extends Component {
                 return true;
             });
             this.setState({ feedbacks: feedback });
+        })();
+    };
+
+    componentDidMount() {
+        this.getDatabase();
+
+    };
+    getClickedId = (params) => {
+        (async () => {
+            await deleteFromDatabase(`/location_feedbacks`, params);
+            this.getDatabase();
         })();
     };
 
@@ -38,7 +48,7 @@ class FeedbackContainer extends Component {
                 <div className={classes.ticketsWrapper}>
                     {
                         this.state.feedbacks.map(fb => (
-                            <FeedbackTicket loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb} />
+                            <FeedbackTicket getClickedId={this.getClickedId} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb} />
                         ))
                     }
                 </div>
