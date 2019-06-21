@@ -4,13 +4,14 @@
     grid-area: nearby;
     display: block;
     padding: 2%;
-    margin: 2% auto;
+   /* margin: 2% auto; */
     width: 90%;
-    min-height: 75vh;
+   /*min-height: 75vh;*/
+  /* height: 60vh; */
     font-size: 0.8rem;
     /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5); */
     z-index: 1;
-    background-color: #2347796e;
+    
 }
 
 .NearbyWrapper>div {
@@ -20,7 +21,7 @@
 
 @media(min-width: 776px) {
     .NearbyWrapper {
-        width: 65%;
+      /*  width: 65%; */
         font-size: 0.8vw;
     }
 }

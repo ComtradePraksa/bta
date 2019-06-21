@@ -3,7 +3,6 @@
   display: block;
   margin: auto;
   width: 90vw;
-  height: 60vw;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
   z-index: 1;
   background-color: gray;
@@ -17,8 +16,8 @@
 
 @media(min-width:768px) {
   .Map {
-    margin: 10% auto;
-    width: 35vw;
-    height: 35vw;
+   /* margin: 10% auto; */
+    width: 80%;
+    height: 80%;
   }
 }

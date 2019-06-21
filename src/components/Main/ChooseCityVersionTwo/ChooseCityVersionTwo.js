@@ -44,7 +44,8 @@ class ChooseCity extends Component {
                 <h2>I would like to get some info on the</h2><div>&nbsp;</div>
                 {!this.state.dropdownVisible &&
 
-                    <h2 className={[classes.cityLink, classes.pointer].join(' ')} onClick={this.toggleDropdown}>city               <FontAwesomeIcon icon="chevron-down" style={{fontSize: "1rem", padding: "0 8px", color: "rgba(1, 1, 34, 0.979)"}}/></h2>}
+                    <h2 className={[classes.cityLink, classes.pointer].join(' ')} onClick={this.toggleDropdown}>city </h2>}
+                   <span><FontAwesomeIcon icon="chevron-down" style={{fontSize: "1rem", padding: "0 8px", color: "rgba(1, 1, 34, 0.979)"}}/></span> 
                 {this.state.dropdownVisible &&
                     <div className={[classes.dropdownWrapper, classes.fullHeight].join(' ')}>
                         <div className={[classes.dropdown, classes.fullHeight].join(' ')} >

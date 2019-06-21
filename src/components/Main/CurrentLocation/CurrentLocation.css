@@ -1,0 +1,18 @@
+.CurrentLocationWrapper {
+    background-color: #2347796e;
+}
+
+@media(min-width:768px) {
+.CurrentLocationWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: 
+    "nearby nearby weather"
+    "nearby nearby map"
+    "nearby nearby map"
+    "nearby nearby map";
+    width: 100vw;
+    padding: 3%;
+}
+}
