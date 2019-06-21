@@ -41,7 +41,6 @@ nav {
 .chooseCity {
   grid-area: choose-city2;
   width: 100vw;
-  height: 5vh;
   align-items: center;
   justify-content: center;
   flex-direction: column;

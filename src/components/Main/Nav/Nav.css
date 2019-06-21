@@ -1,11 +1,5 @@
 .Container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     grid-area: nav;
-    display: grid;
-    grid-row-gap: 5px;
-    width: 100%;
-    color: whitesmoke;
-    text-align: justify;
 }
 
 .flexNav {
@@ -22,13 +16,14 @@
 
 .Nav {
     z-index: 5;
-    height: 60px;
     background-color: #232b4bf3;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-    padding: 0 5%;
+    padding: 0 2%;
     justify-content: space-between;
     color: #fff;
-    /* position: relative; */
+    width: 100vw;
+    height: 60px;
+    position: relative;
 }
 
 .Logo span,
@@ -44,6 +39,10 @@
 .Menu,
 .User {
     justify-content: space-evenly;
+}
+
+.Menu {
+    width: 150px;
 }
 
 .User {
@@ -83,7 +82,7 @@
     padding: 10px 25px;
     color: #666;
     top: 50px;
-    right: 0px;
+    right: 0;
     display: none;
     z-index: 10;
     flex-direction: column;
@@ -156,7 +155,6 @@
     background-color: #232b4bf3;
     transition: height 0.3s linear;
     overflow: hidden;
-    /* padding: 0 5%; */
     text-align: center;
 }
 
@@ -179,6 +177,10 @@
 }
 
 @media(min-width: 400px) {
+    .Menu {
+        width: 200px;
+    }
+
     .User {
         font-size: 1.1rem;
     }
@@ -190,19 +192,13 @@
 }
 
 @media(min-width:768px) {
-    .Menu {
-        width: 30%;
-    }
     .Logo span {
         font-size: 2rem;
     }
-    .UserMenu {
-        right: 30px;
-    }
 }
 
-@media(min-width: 1200px) {
-    .UserMenu {
-        right: 80px;
+@media(min-width:1200px) {
+    .Logo span {
+        font-size: 2rem;
     }
 }
