@@ -4,7 +4,7 @@ import Users from './Users/Users';
 import City from './City/City';
 import Accommodation from './Accommodation/Accommodation';
 import Provider from './Provider/Provider';
-import Routes from './Route/Route';
+import Transportations from './Transportations/Transportations';
 import Feedback from './Feedback/Feedback';
 import classes from './AdminPanel.css';
 
@@ -19,14 +19,14 @@ class AdminPanel extends Component {
                     <Link to='/adminPanel/city'><div>City</div></Link>
                     <Link to='/adminPanel/accommodation'><div>Accommodation</div></Link>
                     <Link to='/adminPanel/provider'><div>Provider</div></Link>
-                    <Link to='/adminPanel/route'><div>Route</div></Link>
+                    <Link to='/adminPanel/Transportations'><div>Transportations</div></Link>
                     <Link to='/adminPanel/feedback'><div>Feedback</div></Link>
                 </div>
                 <Route path='/adminPanel/users' exact component={Users}/>
                 <Route path='/adminPanel/city' exact component={City}/>
                 <Route path='/adminPanel/accommodation' exact component={Accommodation}/>
                 <Route path='/adminPanel/provider' exact component={Provider}/>
-                <Route path='/adminPanel/route' exact component={Routes}/>
+                <Route path='/adminPanel/Transportations' exact component={Transportations}/>
                 <Route path='/adminPanel/feedback' exact component={Feedback}/>
             </div>
         );

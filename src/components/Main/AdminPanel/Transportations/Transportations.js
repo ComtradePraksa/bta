@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class Routes extends Component {
+class Transportations extends Component {
     state = {
         locations: [],
         provider: [],
-        routes: [],
+        transportations: [],
         from_loaction_id: '',
         to_location_id: '',
         type: '',
@@ -16,8 +16,9 @@ class Routes extends Component {
     getDatabase = () => {
         (async () => {
             const data = await getFromDatabase(`/transportations`);
-            const routes = data.data;
-            this.setState(routes);
+            const transportations = data.data;
+            console.log(transportations)
+            this.setState(transportations);
         })();
     };
 
@@ -28,15 +29,16 @@ class Routes extends Component {
     };
 
     saveHandler = () => {
-        const routeData = {
+        const transportationData = {
             from_loaction_id: this.state.from_loaction_id,
             to_location_id: this.state.to_location_id,
             type: this.state.type,
             provider_id: this.state.provider_id
         };
+        console.log('dataNew', transportationData);
 
         (async () => {
-            await postToDatabase('/transportations', routeData);
+            await postToDatabase('/transportations', transportationData);
             this.getDatabase();
         })();
     };
@@ -80,11 +82,11 @@ class Routes extends Component {
             )
         });
 
-        const routes = this.state.routes.map(route => {
+        const transportations = this.state.transportations.map(transportation => {
             return (
-                <div key={route.id}>
-                    {route.id}. {provider.name} - type: {route.type}
-                    <span onClick={() => this.deleteHandler(route.id)}>
+                <div key={transportation.id}>
+                    {transportation.id}. {transportation.provider_id} - type: {transportation.type}
+                    <span onClick={() => this.deleteHandler(transportation.id)}>
                         <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>
                 </div>
@@ -93,7 +95,7 @@ class Routes extends Component {
 
         return(
             <div>
-                <h2>Enter new route for travel</h2>
+                <h2>Enter new transportation for travel</h2>
                 <div>
                     <select onClick={this.inputHandler} name="from_loaction_id">
                         <option value="" defaultChecked>Select location from:</option>
@@ -110,11 +112,11 @@ class Routes extends Component {
                 </div>
                 <button onClick={this.saveHandler}>Add to database</button>
                 <div>
-                    {routes}
+                    {transportations}
                 </div>
             </div>
         )
     }
 }
 
-export default Routes;
+export default Transportations;

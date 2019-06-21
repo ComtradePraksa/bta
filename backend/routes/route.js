@@ -17,8 +17,8 @@ module.exports = function (app, express, mysqlConnection) {
       if (!req.body) {
         return res.status(400).send({ error: true, message: 'Please provide accommodation data' });
       }
-      mysqlConnection.query('INSERT INTO accommodations (name, link, id_city) values (?,?,?)',
-      [req.body.name, req.body.link, req.body.id_city], function (error, results) {
+      mysqlConnection.query('INSERT INTO accommodations (name, hotel_descr, hotel_img, link, id_city) values (?,?,?,?,?)',
+      [req.body.name, req.body.hotel_descr, req.body.hotel_img, req.body.link, req.body.id_city], function (error, results) {
         if (error) throw error;
         //req.user is the info about the logged in user
         return res.send({ error: false, data: results, message: 'New accommodation has been added successfully.', user: req.user});
@@ -155,9 +155,6 @@ module.exports = function (app, express, mysqlConnection) {
       });
     })
     .post(verifyToken,(req, res) => {
-      if (!req.body) {
-        return res.status(400).send({ error: true, message: 'Please provide transportations data' });
-      }
       mysqlConnection.query('INSERT INTO transportations (from_loaction_id, to_location_id, type, provider_id) values (?,?,?,?)',
       [req.body.from_loaction_id, req.body.to_location_id, req.body.type, req.body.provider_id], function (error, results) {
         if (error) throw error;
@@ -208,8 +205,8 @@ module.exports = function (app, express, mysqlConnection) {
       });
     })
     .post(verifyToken,(req, res) => {
-      mysqlConnection.query('INSERT INTO locations (city_name, geolocation, state) values (?,?,?)',
-      [req.body.city_name, req.body.geolocation, req.body.state], function (error, results) {
+      mysqlConnection.query('INSERT INTO locations (city_name, state, city_lat_lon) values (?,?,?)',
+      [req.body.city_name, req.body.state, req.body.city_lat_lon], function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'New location has been added successfully.', user: req.user });
       });

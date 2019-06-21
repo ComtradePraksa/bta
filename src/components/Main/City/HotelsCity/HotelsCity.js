@@ -13,7 +13,7 @@ class HotelsCity extends Component {
             const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
             const hotelsByCityId = res.data;
             const hotels=[];
-            hotelsByCityId.map(e => hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img}));
+            hotelsByCityId.map(e => hotels.push({name:e.name, hotel_descr:e.hotel_descr, hotel_img:e.hotel_img}));
             this.setState({ hotels });
         })();
     }
