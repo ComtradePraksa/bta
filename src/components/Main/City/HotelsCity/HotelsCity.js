@@ -13,8 +13,10 @@ class HotelsCity extends Component {
             const res = await getFromDatabase(`/accommodations/id_city/${this.props.city.id}`)
             const hotelsByCityId = res.data;
             const hotels=[];
-            hotelsByCityId.map(e => hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img}));
+            const hotelsInfo=[];
+            hotelsByCityId.map(e => (hotels.push({name:e.name,hotel_descr:e.hotel_descr,hotel_img:e.hotel_img}), hotelsInfo.push({name:e.name, image:e.hotel_img})));
             this.setState({ hotels });
+            this.props.getHotelsInfo(hotelsInfo)
         })();
     }
 
@@ -32,7 +34,7 @@ class HotelsCity extends Component {
         const view = this.state.hotels.slice(0, 5).map((e, index) => <HotelCity key={index} hotel={e} />)
 
         return (
-            <React.Fragment>{view}</React.Fragment>
+            <div>{view}</div>
         )
     }
 }
