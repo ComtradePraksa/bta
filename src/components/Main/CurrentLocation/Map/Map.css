@@ -8,7 +8,7 @@
   background-color: gray;
   filter: brightness(80%);
   /*height: 30vh;*/
-  min-height: 50vh;
+  height: 50vh;
 }
 
 .Map:hover {

@@ -8,15 +8,16 @@
   color: white;
 }
 
-
-
 @media(min-width:768px) {
 .CityWrapper {
     display: grid;
+   /* grid-area: currentLocation;*/
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-template-areas: "HotelsCity HotelsCity HotelsCity WeatherCity WeatherCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity";
     padding: 3%;
+    width: 100vw;
+    align-items: initial;
 }
 }
 

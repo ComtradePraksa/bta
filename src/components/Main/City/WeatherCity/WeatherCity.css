@@ -4,3 +4,9 @@
   padding: 3% 0;
   order: 1;
 }
+
+@media(min-width: 768px) {
+  .WeatherCity {
+    grid-area: WeatherCity;
+  }
+}

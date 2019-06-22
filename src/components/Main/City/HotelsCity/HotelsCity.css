@@ -15,7 +15,7 @@
 }
 
 .HotelsCity div img {
-  grid-area: icon;
+  grid-area: image;
   padding: 3%;
   width: 200px;
   min-height: 100%;
@@ -23,11 +23,35 @@
 }
 
 .HotelsCity div h3 {
+  grid-area: title;
   font-size: 1.1rem;
   padding: 2%;
 }
 
 .HotelsCity div p {
+  grid-area: txt;
   font-size: 0.8rem;
   padding: 0 2%;
+}
+
+@media(min-width: 768px) {
+  .HotelsCity div {
+    grid-area: HotelsCity;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: repeat(2,1fr);
+    grid-template-areas: 
+    "image image title title title title"
+    "image image txt txt txt txt";
+    justify-items: left;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 1% 0;
+    width: 50vw;
+  }
+
+  .HotelsCity div img {
+    width: 100px;
+  }
 }
