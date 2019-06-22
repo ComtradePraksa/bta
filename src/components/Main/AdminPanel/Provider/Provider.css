@@ -1,0 +1,30 @@
+.Provider {
+    font-size: 1vw;
+}
+
+.Provider h2 {
+    margin: 2%;
+}
+
+.Provider input {
+    width: 20vw;
+    margin: 2%;
+    padding: 1%;
+}
+
+.Provider select {
+    font-size: 1vw;
+}
+
+.ProviderList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+    margin: 3% 14.5% 0 14.5%;
+}
+
+.ProviderDetails {
+    margin: 1% 0;
+}
