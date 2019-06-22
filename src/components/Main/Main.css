@@ -18,7 +18,7 @@ nav {
   grid-gap: 20px;
   grid-template-areas:
     "nav"
-    "choose-city2"
+    "choose-city"
     "weather"
     "map"
     "nearby"
@@ -40,7 +40,7 @@ nav {
     grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
     grid-template-areas:
       "nav nav nav nav"
-      "choose-city2 choose-city2 choose-city2 choose-city2"
+      "choose-city choose-city choose-city choose-city"
       "nearby nearby weather weather"
       "nearby nearby map map"
       "nearby nearby map map"
