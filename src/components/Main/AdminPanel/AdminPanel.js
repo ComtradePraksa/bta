@@ -9,6 +9,11 @@ import Feedback from './Feedback/Feedback';
 import classes from './AdminPanel.css';
 
 class AdminPanel extends Component {
+    logout = () =>{
+        //logout
+        this.props.loginStatus(false, {});
+        localStorage.removeItem('jwtoken');
+    }
     render() {
         //check if logged user is admin
         // if not, redirect to home page
@@ -26,6 +31,8 @@ class AdminPanel extends Component {
                     <Link to={`${this.props.match.url}/provider`}><div>Provider</div></Link>
                     <Link to={`${this.props.match.url}/route`}><div>Route</div></Link>
                     <Link to={`${this.props.match.url}/feedback`}><div>Feedback</div></Link>
+                    <Link to="/home"><div>Home</div></Link>
+                    <Link to="/" onClick={this.logout}><div>Logout</div></Link>
                 </div>
                 <Route path={`${this.props.match.path}/users`} exact component={Users}/>
                 <Route path={`${this.props.match.path}/city`} exact component={City}/>
