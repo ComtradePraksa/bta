@@ -6,7 +6,7 @@
   display: grid;
   grid-template-rows: 2fr 8fr;
   justify-items: center;
-  background-color: rgba(33, 65, 110, 0.767);
+  background: linear-gradient(-90deg, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.3) 100%);
   z-index: 1;
   font-family: "Raleway", Arial, Helvetica, sans-serif;
   position: relative;

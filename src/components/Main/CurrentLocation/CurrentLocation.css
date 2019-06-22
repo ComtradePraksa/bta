@@ -1,5 +1,5 @@
 .CurrentLocationWrapper {
-  background-color: #23477a;
+  background: linear-gradient(-90deg, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.3) 100%);
   justify-content: center;
   align-items: center;
   display: flex;
