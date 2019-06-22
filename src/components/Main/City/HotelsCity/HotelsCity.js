@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import classes from './HotelsCity.css';
 import { getFromDatabase } from '../../../../apis/btaApi';
-import HotelCity from './HotelCity/HotelCity'
+import HotelCity from './HotelCity/HotelCity';
+import classes from './HotelsCity.css';
 
 class HotelsCity extends Component {
     state = {
@@ -35,7 +36,7 @@ class HotelsCity extends Component {
         const view = this.state.hotels.slice(0, 5).map((e, index) => <HotelCity key={index} hotel={e} />)
 
         return (
-            <div>{view}</div>
+            <div className = {classes.HotelsCity}>{view}</div>
         )
     }
 }

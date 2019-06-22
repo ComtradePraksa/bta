@@ -7,6 +7,8 @@
   z-index: 1;
   background-color: gray;
   filter: brightness(80%);
+  /*height: 30vh;*/
+  min-height: 50vh;
 }
 
 .Map:hover {
@@ -16,8 +18,9 @@
 
 @media(min-width:768px) {
   .Map {
-   /* margin: 10% auto; */
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 30vh;
+    min-height: 30vh;
+    height: 40vh;
   }
 }
