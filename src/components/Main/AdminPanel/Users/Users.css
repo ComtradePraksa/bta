@@ -1,0 +1,68 @@
+.Users {
+    margin: 1% auto;
+    font-size: 1vw;
+}
+
+.Users h2 {
+    margin-top: 2%;
+}
+
+.Users h4 {
+    margin-bottom: 1%;
+}
+
+.UsersInputText {
+    width: 20vw;
+    margin: 2%;
+    padding: 1%;
+}
+
+.UsersFlex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2% 3%;
+    margin: 0 4.5vw;
+    width: 90vw;
+}
+
+.UsersDetailsFlex {
+    display: flex;
+    flex-direction: column;
+    padding: 2% 1%;
+}
+
+.UsersImg {
+    width: 15vw;
+    height: 28vh;
+}
+
+.UsersImg img {
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    width: 80%;
+}
+
+.UsersPhotoInput {
+    margin: 1%;
+}
+
+button {
+    margin: 1% 3%;
+    padding: 1% 3%;
+    font-size: 1vw;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin: 0 1%;
+}
+
+input[type='file'] {
+    font-size: 1vw;
+}
+
+label {
+    margin: 0 0.25%;
+}

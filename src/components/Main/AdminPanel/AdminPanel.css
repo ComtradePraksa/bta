@@ -1,29 +1,57 @@
 .AdminPanel {
     grid-area: choose-city;
+    display: grid;
+    grid-template-areas:
+        "adminH1"
+        "adminContainer"
+        "adminComponent";
+    grid-template-rows: 0.5fr 1fr auto;
     z-index: 1;
+    background-image: linear-gradient(to bottom, rgba(19, 44, 64, 0.81) 0%, rgba(19, 44, 64, 0.95) 50%, rgba(19, 44, 64, 1) 100%), url("../../../assets/taxi-cab-381233_1920.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.AdminH1 {
+    grid-area: "adminH1";
+    margin: 2rem;
 }
 
 .AdminContainer {
+    grid-area: "adminContainer";
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 2%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
-.AdminContainer div {
-    padding: 4% 1% 1%;
-    background: linear-gradient(to bottom, rgba(251, 65, 115, 0.856) 0%, rgba(251, 65, 115, 0.801) 60%, rgba(251, 65, 115, 0.87) 53%, rgba(210, 75, 91, 0.836) 53%, rgba(251, 65, 115, 0.808) 53%);
-    color: whitesmoke;
-    border-radius: 1vw;
-    text-align: center;
-    width: 15vw;
-    height: 10vw;
-    text-transform: uppercase;
-    font-size: 1.4vw;
-    cursor: pointer;
+.AdminComponent {
+    grid-area: "adminComponent";
+    min-height: 75vh;
 }
 
-.AdminContainer div:hover {
-    transition: all 0.5s ease;
-    transform: scale(0.98);
+.AdminPanelLink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 10rem;
+    width: 15rem;
+    color: white;
+}
+
+.AdminPanelLink:hover {
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.icon {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.City {
+    color: yellow;
 }

@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import classes from './App.css';
 import Login from './components/Login/Login';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrashAlt, faChevronCircleRight, faPlus, faTimes, faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faChevronCircleRight, faPlus, faCity, faHotel, faPlane, faRoute, faComments, faTimes, faKey, faUser, faUsers, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Main from './components/Main/Main';
 import jwt from 'jsonwebtoken';
 import AdminPanel from './components/Main/AdminPanel/AdminPanel';
 import { ProtectedRoute } from './ProtectedRoute'
 
-library.add(faTrashAlt, faChevronCircleRight, faPlus, faTimes, faKey, faUser, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
+library.add(faTrashAlt, faChevronCircleRight, faPlus, faCity, faHotel, faPlane, faRoute, faComments, faTimes, faKey, faUser, faUsers, faChevronDown, faCommentAlt, faHamburger, faBus, faHardHat, faBinoculars, faLandmark, faMapSigns, faMapMarkerAlt);
 
 class App extends Component {
   state = {
@@ -44,7 +44,7 @@ class App extends Component {
               (props) => <Login {...props} loginStatus={this.LoginStatus} loggedUser={this.loggedUser} />
             } />
             <ProtectedRoute loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser} path="/home" component={Main} />
-            <ProtectedRoute loggedUser={this.state.loggedUser} path="/admin" component={AdminPanel} />
+            <ProtectedRoute loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser} path="/admin" component={AdminPanel} />
             <Route path="*" component={() => ':( Error 404, page not found'} />
           </Switch>
         </Router>

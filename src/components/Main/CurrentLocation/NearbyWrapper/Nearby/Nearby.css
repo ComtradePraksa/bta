@@ -34,7 +34,7 @@
 .address {
   grid-area: address;
   padding-right: 5%;
- /* font-size: 0.7rem;*/
+  /* font-size: 0.7rem;*/
 }
 
 @media(min-width:400px) {

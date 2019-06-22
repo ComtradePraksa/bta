@@ -1,5 +1,5 @@
 .CityWrapper {
-  background-color: #23477aa2;
+  background: linear-gradient(-90deg, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.3) 100%);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    grid-template-areas: "HotelsCity HotelsCity HotelsCity WeatherCity WeatherCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity";
+    grid-template-areas: "HotelsCity HotelsCity HotelsCity WeatherCity WeatherCity""HotelsCity HotelsCity HotelsCity MapCity MapCity""HotelsCity HotelsCity HotelsCity MapCity MapCity""HotelsCity HotelsCity HotelsCity MapCity MapCity";
     padding: 3%;
     grid-gap: 10px;
 }
@@ -24,4 +24,4 @@
   .CityWrapper {
       padding: 3% 10%;
   }
-  }
+}

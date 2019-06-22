@@ -3,7 +3,7 @@ import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../a
 import axios from 'axios';
 import {removeAuthHeader} from '../../../../apis/removeAuthHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import classes from './City.css';
 class City extends Component {
     state = {
         city_name: '',
@@ -67,24 +67,23 @@ class City extends Component {
     render() {
         const locations = this.state.locations.map(city => {
             return (
-                <div key={city.id}>
-                    {city.id}. {city.name} - state: {city.state}
-                    <span onClick={() => this.deleteHandler(city.id)}>
-                        <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
-                    </span>
+                <div key={city.id} className={classes.CityDb}>
+                    <div className={classes.CityNameDb}>{city.name}</div>
+                    <div onClick={() => this.deleteHandler(city.id)}>state:&nbsp;{city.state}<FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/></div>
                 </div>
             )
         });
 
         return(
-            <div>
+            <div className={classes.City}>
                 <h2>Enter new city for travel</h2>
-                <div>
+                <div className={classes.AdminCityInput}>
                     <input onBlur={this.inputHandler} type="text" name="city_name" placeholder="Enter city"/>
                     <input onBlur={this.inputHandler} type="text" name="state" placeholder="Enter state for city"/>
                 </div>
                 <button onClick={this.saveHandler}>Save to database</button>
-                <div>
+                <h2>Cities in database:</h2>
+                <div className={classes.CitiesFromDb}>
                     {locations}
                 </div>
             </div>

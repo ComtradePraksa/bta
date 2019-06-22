@@ -16,7 +16,7 @@ class WeatherCity extends Component {
                 .then(res => {
                     const weatherData = res.data;
                     this.setState({ weatherData });
-                })
+                });
         }
     };
 
@@ -26,7 +26,7 @@ class WeatherCity extends Component {
             .then(res => {
                 const weatherData = res.data;
                 this.setState({ weatherData });
-            })
+            });
     };
 
     render() {
@@ -34,11 +34,11 @@ class WeatherCity extends Component {
         if (this.state.weatherData !== '') {
             let imgLink = this.state.weatherData.current.condition.icon.substring(2).replace('64x64', '128x128');
             weather = <div className={classes.WeatherCity}>
-                <div>{this.state.weatherData.location.name},</div>
-                <div>{this.state.weatherData.current.condition.text}</div>
-                <div><img src={`http://${imgLink}`} alt={this.state.userName} /></div>
-                <div> {Math.round(this.state.weatherData.current.temp_c) + ' ‎°C'}</div>
-            </div>
+                        <div>{this.state.weatherData.location.name},</div>
+                        <div>{this.state.weatherData.current.condition.text}</div>
+                        <div><img src={`http://${imgLink}`} alt={this.state.userName} /></div>
+                        <div> {Math.round(this.state.weatherData.current.temp_c) + ' ‎°C'}</div>
+                    </div>;
         }
         return (<React.Fragment>{weather}</React.Fragment>);
     }

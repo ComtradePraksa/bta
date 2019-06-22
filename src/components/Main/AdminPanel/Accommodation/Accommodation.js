@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
 import {getHotel} from '../../../../apis/hotelScrapersApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classes from './Accommodation.css';
 
 class Accommodation extends Component {
     state = {
@@ -12,12 +13,14 @@ class Accommodation extends Component {
         accommodationsNew: ''
     };
 
-    getDatabase = () => {
-        (async () => {
-            const data = await getFromDatabase(`/accommodations`);
-            const accommodationsData = data.data;
-            this.setState({accommodationsData});
-        })();
+    getDatabase = (idCity='') => {
+        if (idCity !== undefined) {
+            (async () => {
+                const data = await getFromDatabase(`/accommodations${idCity}`);
+                const accommodationsData = data.data;
+                this.setState({accommodationsData});
+            })();
+        }
     };
 
     inputHandler = (e) => {
@@ -73,14 +76,16 @@ class Accommodation extends Component {
 
         const accommodationsData = this.state.accommodationsData.map(acc => {
             return (
-                <div key={acc.id}>
+                <div key={acc.id} className={classes.AccommodationDetails}>
+                    <div className={classes.AccommodationsDescr}>
                     <h3>{acc.name}</h3>
                     <p>{acc.hotel_descr}</p>
-                    <div><img src = {`${acc.hotel_img}`} alt = {acc.hotel_img} /></div>
-                    <a href = {`${acc.link}`} target="_blank">{`${acc.link}`}</a>
+                    <div><a href = {`${acc.link}`} target="_blank">website: {`${acc.link}`}</a></div>
                     <span onClick={() => this.deleteHandler(acc.id)}>
                         <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>
+                    </div> 
+                    <div><img src = {`${acc.hotel_img}`} alt = {acc.hotel_img} /></div>
                 </div>
             )
         });
@@ -104,7 +109,7 @@ class Accommodation extends Component {
         }
         
         return (
-            <div>
+            <div className={classes.Accommodation}>
                 <h2>Enter new accomodation for travel</h2>
                 <select onClick={this.inputHandler} name="id_city">
                         <option value="" defaultChecked>Select location:</option>
@@ -115,6 +120,13 @@ class Accommodation extends Component {
                 <button onClick={this.saveHandler}>Add to database</button>
                 <h2>All accommodations</h2>
                 <div>
+                    <h3>Accommodations from city:</h3>
+                    <select onClick={(e) => this.getDatabase(`/id_city/${e.target.value}`)} name="id_city">
+                            <option value="" defaultChecked disabled>Select location:</option>
+                            {locations}
+                    </select>
+                </div>
+                <div className={classes.AllAcomodations}>
                     {accommodationsData}
                 </div>
             </div>

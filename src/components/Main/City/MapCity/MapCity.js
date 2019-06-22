@@ -3,9 +3,10 @@ import classes from './MapCity.css';
 import map from '../../../../apis/mapsApi'
 
 class MapCity extends Component {
+    
     renderMap = async () => {
         document.getElementById('here-map').innerHTML = "";
-        let index = this.props.city.latlon.indexOf(',')
+        let index = this.props.city.latlon.indexOf(',');
         let cityLat = Number(this.props.city.latlon.substr(0, index));
         let cityLon = Number(this.props.city.latlon.substr(index + 1));
         map(cityLat, cityLon, this.props.location);

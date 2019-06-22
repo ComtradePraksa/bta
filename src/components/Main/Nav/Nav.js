@@ -27,9 +27,11 @@ class Nav extends Component {
         return (
             <div className={classes.Container}>
                 <div className={[classes.Nav, classes.flexNav, classes.center].join(' ')}>
-                    <div className={classes.Logo} onClick={() => this.props.adminToggle(false)}>
-                        <span>bta.</span>
-                    </div>
+                    <Link to = "/home">
+                        <div className={classes.Logo}>
+                            <span>bta.</span>
+                        </div>
+                    </Link>
                     <div className={[classes.Menu, classes.flexNav, classes.center].join(' ')}>
 
                         <div onClick={this.toggleUserMenu} className={[classes.User, classes.fullWidth, classes.flexNav, classes.center].join(' ')}>

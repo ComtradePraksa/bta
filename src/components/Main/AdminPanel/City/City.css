@@ -1,0 +1,33 @@
+.City {
+    margin-top: 2%;
+    font-size: 1vw;
+}
+
+.City h2 {
+    margin: 2%;
+}
+
+.AdminCityInput input {
+    width: 20vw;
+    margin: 2%;
+    padding: 1%;
+}
+
+.CitiesFromDb {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    margin: 0 9.5vw;
+    width: 80vw;
+}
+
+.CityDb {
+    display: flex;
+    flex-direction: column;
+    padding: 3% 1%;
+    margin: 1%;
+}
+
+.CityNameDb {
+    margin: 1% 0;
+}

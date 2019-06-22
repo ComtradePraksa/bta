@@ -5,24 +5,23 @@ import classes from "./FeedbackContainer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AddNewFeedback from "../AddNewFeedback/AddNewFeedback"
 
-
 class FeedbackContainer extends Component {
     state = {
         feedbacks: [],
         users: [],
         userfeedbacks: [],
         newComentVisible: false
-
     };
 
     toggle = () => {
-        this.setState({ newComentVisible: !this.state.newComentVisible })
-    }
+        this.setState({ newComentVisible: !this.state.newComentVisible });
+    };
+
     getDatabase = () => {
         (async () => {
             const data = await getFromDatabase('/location_feedbacks');
             const feedback = [];
-            const userfeedback = []
+            const userfeedback = [];
             data.data.map(fb => {
                 feedback.push(fb)
                 if (data.user.id === fb.id) {
@@ -55,14 +54,14 @@ class FeedbackContainer extends Component {
                 <div className={classes.ticketsWrapper}>
                     {
                         this.state.feedbacks.map(fb => (
-                            <FeedbackTicket getClickedId={this.getClickedId} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb} />
+                            <FeedbackTicket getClickedId={this.getClickedId} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb}/>
                         ))
                     }
                 </div>
                 <div onClick={this.toggle} className={classes.addFeedback}>
-                    <FontAwesomeIcon icon="plus" style={{ color: "white" }} />
+                    <FontAwesomeIcon icon="plus" style={{ color: "white" }}/>
                 </div>
-                {this.state.newComentVisible && <AddNewFeedback toggle={this.toggle} />}
+                {this.state.newComentVisible && <AddNewFeedback toggle={this.toggle}/>}
             </div>
         );
     }
