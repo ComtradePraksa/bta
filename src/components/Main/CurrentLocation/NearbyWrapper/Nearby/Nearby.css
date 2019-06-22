@@ -1,41 +1,39 @@
 .Nearby {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    "icon title title title"
-    "icon category category category"
-    "icon address address address";
-  /* border-bottom: 0.1px inset rgba(255, 255, 255, 0.226);
-  border-radius: 4px; */
-  justify-items: left;
-  align-items: center;
-  padding: 1%;
+  padding: 4% 0;
   margin: 3% auto;
   width: 95%;
-  text-align: left;
   color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border: 0.7px inset #e6e7ed94;
+  border-radius: 20px;
+  line-height: 1.6;
+  box-shadow: 0px 0px 2px 1px rgb(212, 213, 219);
 }
 
 .icon {
   grid-area: icon;
-  padding-left: 5%;
-  height: 50px;
+ /* padding-left: 5%;*/
+  width: 40px;
+  min-height: 100%;
+  display: inline-block;
 }
 
 .title {
   grid-area: title;
-  padding-right: 5%;
+  text-shadow: #111010 2px 3px 3px;
 }
 
 .category {
   grid-area: category;
-  padding-right: 5%;
 }
 
 .address {
   grid-area: address;
   padding-right: 5%;
-  font-size: 0.7rem;
+ /* font-size: 0.7rem;*/
 }
 
 @media(min-width:400px) {
@@ -44,7 +42,22 @@
   }
 }
 
-@media(min-width: 776px) {
+@media(min-width: 768px) {
+.Nearby {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: repeat(3,1fr);
+  grid-template-areas: 
+  "icon title title title title title"
+  "icon category category category category category"
+  "icon address address address address address";
+  justify-items: left;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 1% 0;
+}
+
   .title {
     font-size: 1rem;
   }
@@ -54,6 +67,6 @@
   }
 
   .icon {
-    height: 65px;
+    width: 70px;
   }
 }

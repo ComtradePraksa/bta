@@ -10,13 +10,17 @@
   z-index: 1;
   font-family: "Raleway", Arial, Helvetica, sans-serif;
   position: relative;
+  width: 100vw;
 }
 
 .ticketsWrapper {
-  height: 100%;
-  display: grid;
+/*  height: 100%;
+  display: grid;*/
   justify-items: center;
   align-items: center;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(1fr);
 }
 
 .sortTicket {
@@ -38,14 +42,14 @@
   justify-content: center;
 }
 
-@media(min-width: 992px) {
+@media(min-width: 768px) {
   .ticketsWrapper {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
 
 @media(min-width: 1300px) {
   .ticketsWrapper {
-    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
   }
 }

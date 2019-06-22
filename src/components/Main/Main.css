@@ -18,10 +18,8 @@ nav {
   grid-gap: 20px;
   grid-template-areas:
     "nav"
-    "choose-city"
-    "weather"
-    "map"
-    "nearby"
+    "choose-city2"
+    "currentLocation" 
     "feedback";
   background-color: #333;
   position: relative;
@@ -40,12 +38,9 @@ nav {
     grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
     grid-template-areas:
       "nav nav nav nav"
-      "choose-city choose-city choose-city choose-city"
-      "nearby nearby weather weather"
-      "nearby nearby map map"
-      "nearby nearby map map"
+      "choose-city2 choose-city2 choose-city2 choose-city2"
+      "currentLocation currentLocation currentLocation currentLocation"
       "feedback feedback feedback feedback"
-      "weather-city weather-city weather-city weather-city";
   }
 }
 

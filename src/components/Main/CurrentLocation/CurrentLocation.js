@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Weather from './Weather/Weather';
 import Map from './Map/Map'
 import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
-import FeedbackContainer from './FeedbackContainer/FeedbackContainer'
+import FeedbackContainer from './FeedbackContainer/FeedbackContainer';
+import classes from './CurrentLocation.css';
+
 
 class CurrentLocation extends Component {
     state = {
@@ -37,9 +39,10 @@ class CurrentLocation extends Component {
 
     render() {
         return (<React.Fragment>
-            <div>
-                <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces} />
+            <div className={classes.CurrentLocationWrapper}>
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude} />
+                <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces} />
+
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces} />
             </div>
             <FeedbackContainer loggedUser={this.props.loggedUser} />

@@ -1,11 +1,5 @@
 .Container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     grid-area: nav;
-    display: grid;
-    grid-row-gap: 5px;
-    width: 100%;
-    color: whitesmoke;
-    text-align: justify;
 }
 
 .flexNav {
@@ -22,18 +16,18 @@
 
 .Nav {
     z-index: 5;
-    height: 60px;
     background-color: #232b4bf3;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-    padding: 0 5%;
+    padding: 0 2%;
     justify-content: space-between;
     color: #fff;
-    /* position: relative; */
+    width: 100vw;
+    height: 60px;
+    position: relative;
 }
 
 .Logo span,
-.User,
-.BurgerMenu {
+.User {
     cursor: pointer;
 }
 
@@ -46,25 +40,24 @@
     justify-content: space-evenly;
 }
 
+.Menu {
+    width: 150px;
+}
+
 .User {
     position: relative;
     font-size: 0.8rem;
 }
 
-.BurgerMenu {
-    margin-left: 20px;
-}
-
 .UserPhoto {
-    margin-left: 10px;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     overflow: hidden;
 }
 
 .UserPhoto img {
-    height: 100%;
+    min-height: 100%;
 }
 
 .UserMenu,
@@ -83,7 +76,7 @@
     padding: 10px 25px;
     color: #666;
     top: 50px;
-    right: 0px;
+    right: 0;
     display: none;
     z-index: 10;
     flex-direction: column;
@@ -123,86 +116,23 @@
     display: flex;
 }
 
-.Line {
-    width: 40px;
-    height: 4px;
-    background-color: #fff;
-    margin-top: 10px;
-    transition: 0.5s;
-    border-radius: 4px;
-}
-
-.Line:first-child {
-    margin-top: 0;
-}
-
-.Line.TransformMenu:first-of-type {
-    transform: rotate(45deg) translate(10px, 10px);
-}
-
-.Line.TransformMenu:nth-of-type(2) {
-    transform: rotate(-45deg);
-}
-
-.Line.TransformMenu:nth-of-type(3) {
-    opacity: 0;
-}
-
-.NavbarToggle {
-    top: 60px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: #232b4bf3;
-    transition: height 0.3s linear;
-    overflow: hidden;
-    /* padding: 0 5%; */
-    text-align: center;
-}
-
-.NavbarToggle.Show {
-    height: 125px;
-}
-
-.NavbarToggle li a {
-    padding: 10px 0;
-    display: block;
-    text-transform: uppercase;
-    color: #fff;
-}
-
-.NavbarToggle li a:hover {
-   background-color:#2c3761;
-   transition: all 0.6s ease;
-   text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
-   color: rgb(221, 218, 218);
-}
-
 @media(min-width: 400px) {
-    .User {
-        font-size: 1.1rem;
+    .Menu {
+        width: 200px;
     }
 
-    .User .UserPhoto {
-        width: 40px;
-        height: 40px;
+    .User {
+        font-size: 1.1rem;
     }
 }
 
 @media(min-width:768px) {
-    .Menu {
-        width: 30%;
-    }
     .Logo span {
         font-size: 2rem;
     }
-    .UserMenu {
-        right: 30px;
-    }
-}
 
-@media(min-width: 1200px) {
-    .UserMenu {
-        right: 80px;
+    .UserPhoto {
+        width: 50px;
+        height: 50px;
     }
 }

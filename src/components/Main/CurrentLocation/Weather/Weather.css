@@ -5,23 +5,20 @@
   /* max-height: 5%;*/
   color: white;
   display: flex;
-  flex-direction: column;
   z-index: 1;
   font-size: 0.9rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 1.6;
 }
 
 .Weather div {
   text-align: center;
 }
 
-.Weather div:nth-of-type(2) {
-  width: 50vw;
-}
-
 .Weather div:nth-last-of-type(2) img {
-  display: block;
-  width: 50%;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .Weather div:nth-of-type(4) {
@@ -36,6 +33,8 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
+    margin: 0;
   }
 
   .Weather div:nth-of-type(2) {

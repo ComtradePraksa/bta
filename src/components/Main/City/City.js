@@ -3,6 +3,7 @@ import WeatherCity from './WeatherCity/WeatherCity'
 import MapCity from './MapCity/MapCity';
 import HotelsCity from './HotelsCity/HotelsCity';
 import axios from 'axios';
+import classes from './City.css';
 
 class City extends Component {
     state = {
@@ -37,9 +38,11 @@ class City extends Component {
 
     render() {
         return (<React.Fragment>
-            <WeatherCity city={this.props.city} />
-            <MapCity location={this.state.location} city={this.props.city} />
-            <HotelsCity getHotelsInfo={this.getHotelsInfo} city={this.props.city} />
+            <div className={classes.CityWrapper}>
+            <HotelsCity getHotelsInfo={this.getHotelsInfo} city={this.props.city} className={classes.HotelsCity} />
+            <WeatherCity city={this.props.city} className={classes.WeatherCity} />
+            <MapCity location={this.state.location} city={this.props.city} className={classes.MapCity}/>
+            </div>
         </React.Fragment>
         );
     }

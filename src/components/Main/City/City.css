@@ -1,0 +1,27 @@
+.CityWrapper {
+  background-color: #23477a;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 5% 0;
+  color: white;
+}
+
+
+
+@media(min-width:768px) {
+.CityWrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: "HotelsCity HotelsCity HotelsCity WeatherCity WeatherCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity";
+    padding: 3%;
+}
+}
+
+@media(min-width:992px) {
+.CityWrapper {
+      padding: 3% 10%;
+  }
+  }

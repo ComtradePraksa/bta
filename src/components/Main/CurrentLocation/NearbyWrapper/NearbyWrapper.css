@@ -5,22 +5,21 @@
     display: block;
     padding: 2%;
     margin: 2% auto;
-    width: 90%;
-    min-height: 75vh;
+    width: 100%;
     font-size: 0.8rem;
-    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5); */
     z-index: 1;
-    background-color: #2347796e;
 }
 
 .NearbyWrapper>div {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    margin: 0 auto;
+
 }
+
 
 @media(min-width: 776px) {
     .NearbyWrapper {
-        width: 65%;
         font-size: 0.8vw;
+        margin: 0;
     }
 }

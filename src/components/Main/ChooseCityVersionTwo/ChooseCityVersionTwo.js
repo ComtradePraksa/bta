@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getFromDatabase } from '../../../apis/btaApi';
-import classes from './ChooseCity.css';
+import classes from './ChooseCityVersionTwo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ChooseCity extends Component {

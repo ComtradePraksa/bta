@@ -22,7 +22,7 @@ class MapCity extends Component {
     }
 
     render() {
-        return (<div className={classes.Map} id="here-map"> </div>);
+        return (<div className={classes.MapCity} id="here-map"> </div>);
     }
 }
 
