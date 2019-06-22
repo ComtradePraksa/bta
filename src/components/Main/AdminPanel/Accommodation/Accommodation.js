@@ -122,7 +122,7 @@ class Accommodation extends Component {
                 <div>
                     <h3>Accommodations from city:</h3>
                     <select onClick={(e) => this.getDatabase(`/id_city/${e.target.value}`)} name="id_city">
-                            {/* <option value="" defaultChecked>Select location:</option> */}
+                            <option value="" defaultChecked disabled>Select location:</option>
                             {locations}
                     </select>
                 </div>
