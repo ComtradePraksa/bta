@@ -37,13 +37,12 @@ class City extends Component {
     };
 
     render() {
-        return (<React.Fragment>
+        return (
             <div className={classes.CityWrapper}>
             <HotelsCity getHotelsInfo={this.getHotelsInfo} city={this.props.city} className={classes.HotelsCity} />
             <WeatherCity city={this.props.city} className={classes.WeatherCity} />
             <MapCity location={this.state.location} city={this.props.city} className={classes.MapCity}/>
             </div>
-        </React.Fragment>
         );
     }
 }
