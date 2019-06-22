@@ -7,7 +7,7 @@ class Transportations extends Component {
         locations: [],
         provider: [],
         transportations: [],
-        from_loaction_id: '',
+        from_location_id: '',
         to_location_id: '',
         type: '',
         provider_id: ''
@@ -17,20 +17,23 @@ class Transportations extends Component {
         (async () => {
             const data = await getFromDatabase(`/transportations`);
             const transportations = data.data;
-            console.log(transportations)
-            this.setState(transportations);
+            this.setState({transportations});
         })();
     };
 
     inputHandler = (e) => {
         if (e.target.name === 'type') {
-            this.setState({ [e.target.name]: e.target.value, provider_id: e.target.id });
+            const providerId = this.state.provider.find(provider => provider.name === e.target.value);
+            let id = '';
+            let type = '';
+            if (providerId !== undefined) {id = providerId.id; type = providerId.type;}
+            this.setState({ [e.target.name]: type, provider_id: id });
         } else { this.setState({ [e.target.name]: e.target.value }); }
     };
 
     saveHandler = () => {
-        const transportationData = {
-            from_loaction_id: this.state.from_loaction_id,
+        let transportationData = {
+            from_location_id: this.state.from_location_id,
             to_location_id: this.state.to_location_id,
             type: this.state.type,
             provider_id: this.state.provider_id
@@ -83,9 +86,17 @@ class Transportations extends Component {
         });
 
         const transportations = this.state.transportations.map(transportation => {
+            const locationFrom = this.state.locations.find(city => city.id === transportation['from_location_id']);
+            const locationTo = this.state.locations.find(city => city.id === transportation['to_location_id']);
+            const providerId = this.state.provider.find(provider => provider.id === transportation['provider_id']);
+            let cityNameFrom, cityNameTo, providerName;
+            if (locationFrom !== undefined) {cityNameFrom = locationFrom.city;}
+            if (locationTo !== undefined) {cityNameTo = locationTo.city;}
+            if (providerId !== undefined) {providerName = providerId.name;}
+            
             return (
                 <div key={transportation.id}>
-                    {transportation.id}. {transportation.provider_id} - type: {transportation.type}
+                    {transportation.id}. From {cityNameFrom} - To {cityNameTo}, - Provider: {providerName}, - type of transportation: {transportation.type}
                     <span onClick={() => this.deleteHandler(transportation.id)}>
                         <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>
@@ -97,7 +108,7 @@ class Transportations extends Component {
             <div>
                 <h2>Enter new transportation for travel</h2>
                 <div>
-                    <select onClick={this.inputHandler} name="from_loaction_id">
+                    <select onClick={this.inputHandler} name="from_location_id">
                         <option value="" defaultChecked>Select location from:</option>
                         {locations}
                     </select>

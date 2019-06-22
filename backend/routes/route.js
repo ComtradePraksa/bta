@@ -155,8 +155,8 @@ module.exports = function (app, express, mysqlConnection) {
       });
     })
     .post(verifyToken,(req, res) => {
-      mysqlConnection.query('INSERT INTO transportations (from_loaction_id, to_location_id, type, provider_id) values (?,?,?,?)',
-      [req.body.from_loaction_id, req.body.to_location_id, req.body.type, req.body.provider_id], function (error, results) {
+      mysqlConnection.query('INSERT INTO transportations (from_location_id, to_location_id, type, provider_id) values (?,?,?,?)',
+      [req.body['from_location_id'], req.body['to_location_id'], req.body.type, req.body['provider_id']], function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'New transportation has been added successfully.', user: req.user });
       });
