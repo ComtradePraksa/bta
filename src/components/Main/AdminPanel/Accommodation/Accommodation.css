@@ -37,7 +37,10 @@
     text-align: left;
 }
 
-.AccommodationsDescr h3, .AccommodationsDescr p, .AccommodationsDescr a, .AccommodationsDescr span {
+.AccommodationsDescr h3,
+.AccommodationsDescr p,
+.AccommodationsDescr a,
+.AccommodationsDescr span {
     margin-bottom: 1%;
 }
 
