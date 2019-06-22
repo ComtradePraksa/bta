@@ -18,7 +18,6 @@ class Nav extends Component {
 
     render() {
         const isAdmin = this.props.loggedUser.is_admin;
-        console.log(this.props.loggedUser.photo);
         let adminPanelLink;
         let admin = ''
         if (isAdmin) {
