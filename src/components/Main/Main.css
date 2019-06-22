@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 body, div,
 h1, h2, h3, h4, h5, h6, p,
 a, ol, ul, li, input
@@ -19,7 +20,7 @@ nav {
   grid-template-areas:
     "nav"
     "choose-city2"
-    "currentLocation" 
+    "currentLocation"
     "feedback";
   background-color: #333;
   position: relative;

@@ -43,7 +43,6 @@ class Users extends Component {
         // this.setState(prevState=>({ users: [newUser, ...prevState.users]}));
         (async () => {
             await postToDatabase('/users', newUser);
-            alert('Succesfuly added new user');
             this.getDatabase();
         })();
     };

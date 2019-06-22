@@ -13,12 +13,14 @@ class Accommodation extends Component {
         accommodationsNew: ''
     };
 
-    getDatabase = () => {
-        (async () => {
-            const data = await getFromDatabase(`/accommodations`);
-            const accommodationsData = data.data;
-            this.setState({accommodationsData});
-        })();
+    getDatabase = (idCity='') => {
+        if (idCity !== undefined) {
+            (async () => {
+                const data = await getFromDatabase(`/accommodations${idCity}`);
+                const accommodationsData = data.data;
+                this.setState({accommodationsData});
+            })();
+        }
     };
 
     inputHandler = (e) => {
@@ -117,6 +119,13 @@ class Accommodation extends Component {
                 {accommodationCheck}
                 <button onClick={this.saveHandler}>Add to database</button>
                 <h2>All accommodations</h2>
+                <div>
+                    <h3>Accommodations from city:</h3>
+                    <select onClick={(e) => this.getDatabase(`/id_city/${e.target.value}`)} name="id_city">
+                            {/* <option value="" defaultChecked>Select location:</option> */}
+                            {locations}
+                    </select>
+                </div>
                 <div className={classes.AllAcomodations}>
                     {accommodationsData}
                 </div>

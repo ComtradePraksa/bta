@@ -8,18 +8,18 @@
 }
 
 @media(min-width:768px) {
-.CurrentLocationWrapper {
+  .CurrentLocationWrapper {
     grid-area: currentLocation;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    grid-template-areas: "nearby nearby nearby weather weather" "nearby nearby nearby map map" "nearby nearby nearby map map" "nearby nearby nearby map map";
+    grid-template-areas: "nearby nearby nearby weather weather""nearby nearby nearby map map""nearby nearby nearby map map""nearby nearby nearby map map";
     padding: 3%;
-}
+  }
 }
 
 @media(min-width:992px) {
   .CurrentLocationWrapper {
-      padding: 3% 10%;
+    padding: 3% 10%;
   }
-  }
+}

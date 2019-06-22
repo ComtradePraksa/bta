@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class AdminPanel extends Component {
     render() {
         if (!this.props.loggedUser.is_admin) {
-            return <Redirect to="/home" />
+            return <Redirect to="/home"/>;
         }
 
         return (

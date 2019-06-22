@@ -15,7 +15,7 @@
 
 .icon {
   grid-area: icon;
- /* padding-left: 5%;*/
+  /* padding-left: 5%;*/
   width: 40px;
   min-height: 100%;
   display: inline-block;
@@ -33,7 +33,7 @@
 .address {
   grid-area: address;
   padding-right: 5%;
- /* font-size: 0.7rem;*/
+  /* font-size: 0.7rem;*/
 }
 
 @media(min-width:400px) {
@@ -43,20 +43,20 @@
 }
 
 @media(min-width: 768px) {
-.Nearby {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: repeat(3,1fr);
-  grid-template-areas: 
-  "icon title title title title title"
-  "icon category category category category category"
-  "icon address address address address address";
-  justify-items: left;
-  border: none;
-  box-shadow: none;
-  margin: 0;
-  padding: 1% 0;
-}
+  .Nearby {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "icon title title title title title"
+      "icon category category category category category"
+      "icon address address address address address";
+    justify-items: left;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 1% 0;
+  }
 
   .title {
     font-size: 1rem;
