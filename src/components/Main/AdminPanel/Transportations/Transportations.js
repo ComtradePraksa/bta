@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classes from './Transportations.css';
 
 class Transportations extends Component {
     state = {
@@ -94,7 +95,7 @@ class Transportations extends Component {
         });
 
         return(
-            <div>
+            <div className={classes.Transportations}>
                 <h2>Enter new transportation for travel</h2>
                 <div>
                     <select onClick={this.inputHandler} name="from_loaction_id">

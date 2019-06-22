@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {getFromDatabase} from '../../../../apis/btaApi';
+import classes from './Feedback.css';
 
 class Feedback extends Component {
     state = {
@@ -16,15 +17,15 @@ class Feedback extends Component {
 
     render() {
         return (
-            <div>
+            <div className={classes.Feedback}>
                 <div>
-                    <h3>City feedbacks:</h3>
+                    <h2>City feedbacks:</h2>
                     <div>
 
                     </div>
                 </div>
                 <div>
-                    <h3>Accommodation feedbacks:</h3>
+                    <h2>Accommodation feedbacks:</h2>
                     <div>
 
                     </div>

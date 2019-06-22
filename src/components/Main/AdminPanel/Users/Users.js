@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {getFromDatabase , postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classes from './Users.css';
 
 class Users extends Component {
     state = {
@@ -61,34 +62,32 @@ class Users extends Component {
     render() {
         const users = this.state.users.map(user => {
             return (
-                <div key={user.id}>
-                    <img src={require(`../../../../${user.photo}`)} alt = "" /> 
-                    {user.name} - username: {user.username}
-                    <span>{user.is_admin === 1 ? ' - Admin privileges' : ' - User'}</span>
-                    <span onClick={() => this.deleteHandler(user.id)}>
-                        <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
-                    </span>
+                <div key={user.id} className={classes.UsersDetailsFlex}>
+                    <div className={classes.UsersImg}><img src={require(`../../../../${user.photo}`)} alt = "" /> </div>
+                    <div>{user.name}</div>
+                    <div>username: {user.username}</div>
+                    <span>{user.is_admin === 1 ? 'Administrator' : 'User'}<FontAwesomeIcon onClick={() => this.deleteHandler(user.id)} icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/></span>
                 </div>
             )
         });
 
         return (
-            <div>
+            <div className={classes.Users}>
                 <h2>Create new user</h2>
                 <div>
-                    <input onBlur={this.inputHandler} type="text" name="name" placeholder="Enter name" />
-                    <input onBlur={this.inputHandler} type="text" name="username" placeholder="Enter username" />
-                    <input onBlur={this.inputHandler} type="password" name="password" placeholder="Enter password" />
+                    <input className={classes.UsersInputText} onBlur={this.inputHandler} type="text" name="name" placeholder="Enter name" />
+                    <input className={classes.UsersInputText} onBlur={this.inputHandler} type="text" name="username" placeholder="Enter username" />
+                    <input className={classes.UsersInputText} onBlur={this.inputHandler} type="password" name="password" placeholder="Enter password" />
                     <h4>Administrator privileges:</h4>
-                    <label htmlFor="admin1">Yes</label>
+                    <div classname={classes.AdminToggleYes}><label htmlFor="admin1">Yes</label>
                     <input onClick={this.inputHandler} type="radio" name="is_admin" value="1" id="admin1" />
                     <label htmlFor="admin0">No</label>
-                    <input onClick={this.inputHandler} type="radio" name="is_admin" value="0" id="admin0" />
-                    <input onChange={this.inputHandler} type="file" name="photo" />
+                    <input onClick={this.inputHandler} type="radio" name="is_admin" value="0" id="admin0" /></div>
+                    <div className={classes.UsersPhotoInput}><input onChange={this.inputHandler} type="file" name="photo" /></div>
                 </div>
                 <button onClick={this.saveHandler}>Save to database</button>
                 <h2>All users:</h2>
-                <div>
+                <div className={classes.UsersFlex}>
                     {users}
                 </div>
             </div>

@@ -1,0 +1,46 @@
+.Accommodation {
+    font-size: 1vw;
+}
+
+.Accommodation h2 {
+    margin: 3%;
+}
+
+.Accommodation select {
+    font-size: 1vw;
+}
+
+.AllAcomodations {
+    display: flex;
+    flex-direction: column;
+    margin: 0 9.5vw;
+    width: 80vw;
+}
+
+.AccommodationDetails {
+    display: flex;
+    flex-direction: row;
+    margin: 1% 0;
+    font-size: 1vw;
+}
+
+.AccommodationDetails img {
+    width: 100%;
+}
+
+.AccommodationsDescr {
+    display: block;
+    margin: auto 0;
+    width: 60vw;
+    padding: 0 1%;
+    text-align: left;
+}
+
+.AccommodationsDescr h3, .AccommodationsDescr p, .AccommodationsDescr a, .AccommodationsDescr span {
+    margin-bottom: 1%;
+}
+
+.AccommodationsDescr a {
+    text-decoration: none;
+    color: white;
+}
