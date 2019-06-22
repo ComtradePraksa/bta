@@ -1,28 +1,27 @@
 .CityWrapper {
-  background-color: #23477a;
+  background-color: #23477aa2;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
   padding: 5% 0;
-  color: white;
+  width: 100vw;
 }
 
 @media(min-width:768px) {
 .CityWrapper {
-    display: grid;
    /* grid-area: currentLocation;*/
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-template-areas: "HotelsCity HotelsCity HotelsCity WeatherCity WeatherCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity" "HotelsCity HotelsCity HotelsCity MapCity MapCity";
     padding: 3%;
-    width: 100vw;
-    align-items: initial;
+    grid-gap: 10px;
 }
 }
 
 @media(min-width:992px) {
-.CityWrapper {
+  .CityWrapper {
       padding: 3% 10%;
   }
   }
