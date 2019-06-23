@@ -45,7 +45,7 @@
 @media(min-width: 768px) {
 .Nearby {
   display: grid;
- grid-template-columns: 1fr 5fr;
+ grid-template-columns: 0.5fr 5fr;
   grid-template-rows: repeat(3,1fr);
   grid-template-areas: 
   "icon title title title title title"
@@ -67,10 +67,6 @@
     font-size: 0.8rem;
   }
 
-  .icon {
-    width: 70px;
-    height: 70px;
-  }
 }
 
 @media(min-width: 1200px) {
