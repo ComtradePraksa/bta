@@ -23,14 +23,16 @@ class Provider extends Component {
     };
 
     saveHandler = () => {
-        const newProvider = {
-            name: this.state.name,
-            type: this.state.type
-        };
-        (async () => {
-            await postToDatabase('/provider', newProvider);
-            this.getDatabase();
-        })();
+        if (this.state.name && this.state.type !== '') {
+            const newProvider = {
+                name: this.state.name,
+                type: this.state.type
+            };
+            (async () => {
+                await postToDatabase('/provider', newProvider);
+                this.getDatabase();
+            })();
+        } else { alert('Enter provider name and type'); }
     };
 
     deleteHandler = (id) => {
