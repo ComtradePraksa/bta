@@ -7,13 +7,13 @@
 }
 
 .HotelsCity {
-  width: 95%;
+  width: 100%;
 }
 
 .HotelsCity div {
   padding: 3%;
   margin: 3% auto;
-  width: 90%;
+  width: 95%;
   color: white;
   border: 0.7px inset #e6e7ed94;
   border-radius: 20px;
@@ -31,7 +31,6 @@
 
 .HotelsCity img {
   grid-area: hotelPhoto;
-  /* padding-left: 5%;*/
   height: 50%;
   display: inline-block;
   margin-bottom: 0.6em;
@@ -53,12 +52,6 @@
     grid-area: HotelsCity;
     text-align: left;
     align-items: initial;
-  }
-
-  .HotelsCity img {
-    /* height: 40px;*/
-    display: block;
-    margin-right: 10px;
   }
 
   .HotelsCity div {
@@ -83,15 +76,25 @@
   }
 
   .HotelsCity h3 {
-    font-size: 1vw;
+    font-size: 1.2vw;
   }
 
   .HotelsCity p {
-    font-size: 0.8vw;
+    font-size: 1vw;
+  }
+
+  .HotelsCity img {
+    width: 100%;
+    height: 100%;
+    margin: 0 2%;
+  }
+
+  .HotelsCity p, .HotelsCity h3 {
+    padding-left: 3%;
   }
 }
 
-@media(min-width: 1300px) {
+@media(min-width: 1200px) {
   .HotelsCity {
     margin: 0 auto;
   }
@@ -102,15 +105,5 @@
 
   .HotelsCity p {
     font-size: 0.8vw;
-  }
-
-  .HotelsCity p, .HotelsCity h3 {
-    padding-left: 3%;
-  }
-
-  .HotelsCity img {
-    width: 100%;
-    height: 100%;
-    margin: 0 2%;
   }
 }
