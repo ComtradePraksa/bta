@@ -79,7 +79,7 @@ class Users extends Component {
                     <input className={classes.UsersInputText} onBlur={this.inputHandler} type="text" name="username" placeholder="Enter username" />
                     <input className={classes.UsersInputText} onBlur={this.inputHandler} type="password" name="password" placeholder="Enter password" />
                     <h4>Administrator privileges:</h4>
-                    <div classname={classes.AdminToggleYes}><label htmlFor="admin1">Yes</label>
+                    <div className={classes.AdminToggleYes}><label htmlFor="admin1">Yes</label>
                     <input onClick={this.inputHandler} type="radio" name="is_admin" value="1" id="admin1" />
                     <label htmlFor="admin0">No</label>
                     <input onClick={this.inputHandler} type="radio" name="is_admin" value="0" id="admin0" /></div>
