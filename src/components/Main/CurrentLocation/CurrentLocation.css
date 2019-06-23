@@ -12,9 +12,9 @@
   .CurrentLocationWrapper {
     grid-area: currentLocation;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    grid-template-areas: "nearby nearby weather weather""nearby nearby map map""nearby nearby map map""nearby nearby map map";
+    grid-template-areas: "nearby nearby weather""nearby nearby map""nearby nearby map""nearby nearby map";
     padding: 3%;
   }
 }

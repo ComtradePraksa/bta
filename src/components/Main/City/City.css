@@ -21,7 +21,7 @@
       "HotelsCity HotelsCity MapCity"
       "HotelsCity HotelsCity MapCity"
       "HotelsCity HotelsCity MapCity";
-    padding: 5% 1%;
+    padding: 3%;
   }
 
   .accTitle {
@@ -39,6 +39,6 @@
 
 @media(min-width:1400px) {
   .CityWrapper {
-    padding: 3% 5%;
+    padding: 0 5%;
   }
 }
