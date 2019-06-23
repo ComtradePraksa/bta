@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 import classes from './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import setAuthToken from '../../utils/setAuthToken';
@@ -9,8 +10,7 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
-    feedback: '',
-    isLogged: false
+    feedback: ''
   };
 
   inputHandler = e => {
@@ -57,6 +57,9 @@ class Login extends Component {
   };
 
   render() {
+    if (localStorage.jwtoken) {
+      return <Redirect to="/home" />
+    }
     return (
       <div className={classes.LoginWrap} >
         <img src={require('../../assets/airport-2178606_1920.jpg')} alt="front page wallpaper" />
