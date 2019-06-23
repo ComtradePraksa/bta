@@ -211,6 +211,10 @@
     text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(4, 3, 27, 0.452);
 }
 
+.postButton:hover {
+    background-color: rgba(61, 60, 60, 0.835);
+}
+
 @media(min-width: 400px) {
     .feedbackPopup {
         width: 80%;
