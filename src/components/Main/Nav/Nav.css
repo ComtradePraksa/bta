@@ -51,14 +51,14 @@
 }
 
 .UserPhoto {
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     overflow: hidden;
+    height: 100%;
 }
 
 .UserPhoto img {
-    min-height: 100%;
+    display: block;
+    height: 40px;
 }
 
 .UserMenu,
@@ -73,11 +73,11 @@
 }
 
 .UserMenu {
-    background-color: rgb(171, 170, 180);
+    background-color: whitesmoke;
     padding: 10px 25px;
     color: #666;
-    top: 50px;
-    right: 0;
+    top: 60px;
+    right: 2%;
     display: none;
     z-index: 10;
     flex-direction: column;
@@ -87,7 +87,7 @@
 .UserMenu:before {
     top: -5px;
     right: 8px;
-    background-color: rgb(171, 170, 180);
+    background-color: whitesmoke;
     content: '';
     width: 15px;
     height: 15px;
@@ -108,9 +108,9 @@
 
 .isAdminCheck:hover,
 .UserMenu a:hover {
-    color: #fff;
+    color: rgb(7, 2, 29);
     transition: 0.6s;
-    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(4, 3, 27, 0.452);
 }
 
 .UserMenu.Show {
@@ -130,10 +130,5 @@
 @media(min-width:768px) {
     .Logo span {
         font-size: 2rem;
-    }
-
-    .UserPhoto {
-        width: 50px;
-        height: 50px;
     }
 }

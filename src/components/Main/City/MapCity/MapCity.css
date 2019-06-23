@@ -1,5 +1,5 @@
 .MapCity {
-  grid-area: map;
+  grid-area: MapCity;
   display: block;
   margin: 0 auto;
   width: 90vw;

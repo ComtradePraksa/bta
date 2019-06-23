@@ -15,12 +15,12 @@
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-template-areas: "HotelsCity HotelsCity HotelsCity WeatherCity WeatherCity""HotelsCity HotelsCity HotelsCity MapCity MapCity""HotelsCity HotelsCity HotelsCity MapCity MapCity""HotelsCity HotelsCity HotelsCity MapCity MapCity";
-    padding: 3%;
+    padding: 2% 0;
     grid-gap: 10px;
 }
 }
 
-@media(min-width:992px) {
+@media(min-width:1400px) {
   .CityWrapper {
       padding: 3% 10%;
   }

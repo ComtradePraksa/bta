@@ -22,13 +22,10 @@
   .CurrentLocationWrapper {
     padding: 3% 10%;
   }
-<<<<<<< HEAD
   }
 
 @media(min-width:1400px){
   .CurrentLocationWrapper {
     padding: 3% 20%;
 }
-=======
->>>>>>> ab457c70f9832fcb492416cdaa4067ff293d6f51
 }

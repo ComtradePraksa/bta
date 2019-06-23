@@ -38,7 +38,7 @@ class Nav extends Component {
                             <div className={classes.UserName}>{this.props.loggedUser.username} {admin}</div>
                             <div className={classes.UserPhoto}>
                                 {
-                                    (this.props.loggedUser.photo) ? (<img src={require(`../../../${this.props.loggedUser.photo}`)} alt="" className={classes.fullWidth} />) : null
+                                    (this.props.loggedUser.photo) ? (<img src={require(`../../../${this.props.loggedUser.photo}`)} alt="" />) : null
                                 }
                             </div>
                             <div className={this.state.toggleUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
