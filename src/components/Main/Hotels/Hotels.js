@@ -16,11 +16,7 @@ class Hotels extends Component {
                 map(position[0], position[1], undefined);
             });
     };
-    renderMap = async () => {
-        
-    };
-
-
+   
     componentDidMount() {
         (async () => {
             const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
