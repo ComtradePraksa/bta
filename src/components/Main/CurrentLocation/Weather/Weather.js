@@ -26,7 +26,7 @@ class Weather extends Component {
                         <div>{this.state.weatherData.location.name},</div>
                         <div>{this.state.weatherData.current.condition.text}</div>
                         <div><img src={`http://${imgLink}`} alt={this.state.userName}/></div>
-                        <div> {Math.round(this.state.weatherData.current.temp_c) + ' ‎°C'}</div>
+                        <div> {Math.round(this.state.weatherData.current.temp_c) + '\xa0‎°C'}</div>
                     </div>;
         }
         return (
