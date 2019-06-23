@@ -3,9 +3,9 @@
 .NearbyWrapper {
     grid-area: nearby;
     display: block;
-    padding: 2%;
+    padding: 2% 0;
     margin: 2% auto;
-    width: 100%;
+    width: 90vw;
     font-size: 0.8rem;
     z-index: 1;
 }

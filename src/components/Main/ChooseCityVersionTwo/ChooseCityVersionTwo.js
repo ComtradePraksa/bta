@@ -55,7 +55,7 @@ class ChooseCity extends Component {
                             <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
                                 <FontAwesomeIcon icon="chevron-down" style={{color: '#fff'}}/>
                             </div>
-                            <ul className={[classes.dropdownItemList, classes.flex].join(' ')}>
+                            <ul className={[classes.dropdownItemList, classes.flex].join(' ')} onClick={this.toggleDropdown}>
                                 {list}
                             </ul>
                         </div>

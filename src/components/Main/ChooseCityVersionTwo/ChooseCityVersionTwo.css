@@ -88,7 +88,7 @@ nav {
 
 .dropdownItemList {
   min-height: 0vh;
-  max-height: 15vh;
+  max-height: 35vh;
   overflow-y: auto;
   flex-direction: column;
   z-index: 10;
