@@ -11,7 +11,7 @@ class Hotels extends Component {
 
     componentDidMount() {
         (async () => {
-            const hotelLink = await getFromDatabase('/accommodations/2');
+            const hotelLink = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
             const res = await getHotel(hotelLink.data.link, removeAuthHeader())
             const hotel = res.page.meta_tags;
             this.setState({ hotel });
