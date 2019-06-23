@@ -23,24 +23,6 @@ module.exports = function (app, express, mysqlConnection) {
         //req.user is the info about the logged in user
         return res.send({ error: false, data: results, message: 'New accommodation has been added successfully.', user: req.user});
       });
-    })
-    .put(verifyToken,(req, res) => {
-      if (!req.body.id || !req.body) {
-        return res.status(400).send({ error: req.body, message: 'Please provide accommodation data and accommodation id' });
-      }
-      mysqlConnection.query("UPDATE accommodations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Accommodation has been updated successfully.', user: req.user });
-      });
-    })
-    .patch(verifyToken,(req, res) => {
-      if (!req.body.id || !req.body) {
-        return res.status(400).send({ error: req.body, message: 'Please provide accommodation data and accommodation id' });
-      }
-      mysqlConnection.query("UPDATE accommodations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Accommodation has been patched successfully.', user: req.user });
-      });
     });
   router.route('/accommodations/:id')
     .get(verifyToken,(req, res) => {
@@ -50,6 +32,12 @@ module.exports = function (app, express, mysqlConnection) {
       mysqlConnection.query('SELECT * FROM accommodations where id=?', req.params.id, function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results[0], message: 'Accommodations list by id.', user: req.user });
+      });
+    })
+    .patch(verifyToken,(req, res) => {
+      mysqlConnection.query("UPDATE accommodations SET ? WHERE id = ?", [req.body, req.params.id], function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Accommodation has been patched successfully.', user: req.user });
       });
     })
     .delete(verifyToken,(req, res) => {
@@ -95,7 +83,6 @@ module.exports = function (app, express, mysqlConnection) {
       });
     })
     .delete(verifyToken,(req, res) => {
-      // return res.status(400).send({ error: true, message: 'Please provide user id' });
       mysqlConnection.query('DELETE FROM users WHERE id=?', req.params.id, function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'User has been deleted successfully.', user: req.user });
@@ -118,15 +105,6 @@ module.exports = function (app, express, mysqlConnection) {
       [req.body.name, req.body.type], function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'New provider has been added successfully.', user: req.user });
-      });
-    })
-    .patch(verifyToken,(req, res) => {
-      if (!req.body.id || !req.body) {
-        return res.status(400).send({ error: req.body, message: 'Please provide provider data and provider id' });
-      }
-      mysqlConnection.query("UPDATE provider SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Provider has been patched successfully.', user: req.user });
       });
     });
   router.route('/provider/:id')
@@ -169,15 +147,6 @@ module.exports = function (app, express, mysqlConnection) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Transportations has been updated successfully.', user: req.user });
       });
-    })
-    .patch(verifyToken,(req, res) => {
-      if (!req.body.id || !req.body) {
-        return res.status(400).send({ error: req.body, message: 'Please provide transportations data and transportation id' });
-      }
-      mysqlConnection.query("UPDATE transportations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Transportation has been patched successfully.', user: req.user });
-      });
     });
   router.route('/transportations/:id')
     .get(verifyToken,(req, res) => {
@@ -187,6 +156,12 @@ module.exports = function (app, express, mysqlConnection) {
       mysqlConnection.query('SELECT * FROM transportations where id=?', req.params.id, function (error, results) {
         if (error) throw error;
         res.send({ error: false, data: results[0], message: 'Transportations list by id.', user: req.user });
+      });
+    })
+    .patch(verifyToken,(req, res) => {
+      mysqlConnection.query("UPDATE transportations SET ? WHERE id = ?", [req.body, req.params.id], function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Transportations has been patched successfully.', user: req.user });
       });
     })
     .delete(verifyToken,(req, res) => {
@@ -209,15 +184,6 @@ module.exports = function (app, express, mysqlConnection) {
       [req.body.city_name, req.body.state, req.body.city_lat_lon], function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'New location has been added successfully.', user: req.user });
-      });
-    })
-    .patch(verifyToken,(req, res) => {
-      if (!req.body.id || !req.body) {
-        return res.status(400).send({ error: req.body, message: 'Please provide location data and location id' });
-      }
-      mysqlConnection.query("UPDATE locations SET ? WHERE id = ?", [req.body, req.body.id], function (error, results) {
-        if (error) throw error;
-        return res.send({ error: false, data: results, message: 'Location has been patched successfully.', user: req.user });
       });
     });
   router.route('/locations/:id')
@@ -245,15 +211,14 @@ module.exports = function (app, express, mysqlConnection) {
         res.send({ error: false, data: results, message: 'Feedbacks list.', user: req.user });
         });
     });
-    router.route('/location_feedbacks/:id')
+  router.route('/location_feedbacks/:id')
     .delete(verifyToken,(req, res) => {
       mysqlConnection.query('delete from location_feedbacks where id_feedback =?',req.params.id, function (error, results) {
         if (error) throw error;
         res.send({ error: false, data: results,  user: req.user });
         });
     });
-    
-    
+
 // location_comments table //
   router.route('/location_comments')
     .get(verifyToken,(req, res) => {
@@ -275,6 +240,38 @@ module.exports = function (app, express, mysqlConnection) {
           if (error) throw error;
           res.send({ error: false, newComment, user: req.user,insertedId:results.insertedId });
         });
+    });
+
+// acc_feedbacks table //
+  router.route('/acc_feedbacks')
+    .get(verifyToken,(req, res) => {
+      mysqlConnection.query('SELECT * FROM acc_feedbacks', function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Acc feedbacks list.', user: req.user });
+      });
+    });
+  router.route('/acc_feedbacks/:id')
+    .delete(verifyToken,(req, res) => {
+    mysqlConnection.query('delete from acc_feedbacks where id=?',req.params.id, function (error, results) {
+      if (error) throw error;
+      res.send({ error: false, data: results,  user: req.user });
+      });
+    });
+
+  // transportation_feedbacks table //
+  router.route('/transportation_feedbacks')
+    .get(verifyToken,(req, res) => {
+      mysqlConnection.query('SELECT * FROM transportation_feedbacks', function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Transportation feedbacks list.', user: req.user });
+      });
+    });
+  router.route('/transportation_feedbacks/:id')
+    .delete(verifyToken,(req, res) => {
+    mysqlConnection.query('delete from transportation_feedbacks where id=?',req.params.id, function (error, results) {
+      if (error) throw error;
+      res.send({ error: false, data: results,  user: req.user });
+      });
     });
 
   // login route //

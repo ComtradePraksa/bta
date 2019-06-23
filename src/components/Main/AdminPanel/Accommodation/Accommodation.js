@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
+import {getFromDatabase, postToDatabase, patchToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
 import {getHotel} from '../../../../apis/hotelScrapersApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './Accommodation.css';
@@ -10,7 +10,8 @@ class Accommodation extends Component {
         id_city: '',
         locations: [],
         accommodationsData: [],
-        accommodationsNew: ''
+        accommodationsNew: '',
+        updateId: ''
     };
 
     getDatabase = (idCity='') => {
@@ -27,25 +28,37 @@ class Accommodation extends Component {
         this.setState({[e.target.name]: e.target.value});
     };
 
-    getDataHandler = () => {
-        (async () => {
-            const data = await getHotel(`${this.state.link}`);
-            const hotelData = data.page.meta_tags;
-            let accommodationsNew = {
-                    name: hotelData['og:title'],
-                    hotel_descr: hotelData['og:description'],
-                    hotel_img: hotelData['og:image'],
-                    link: hotelData['og:url'],
-                    id_city: this.state.id_city };
-            this.setState({accommodationsNew});
-        })();
+    getDataHandler = (link=this.state.link, idCity=this.state.id_city) => {
+        if (link !== '') {
+            (async () => {
+                const data = await getHotel(`${link}`);
+                const hotelData = data.page.meta_tags;
+                let accommodationsNew = {
+                        name: hotelData['og:title'],
+                        hotel_descr: hotelData['og:description'],
+                        hotel_img: hotelData['og:image'],
+                        link: hotelData['og:url'],
+                        id_city: idCity };
+                this.setState({accommodationsNew});
+            })();
+        } else { alert('Enter link to get accommodation info'); }
     };
 
     saveHandler = () => {
+        if (this.state.accommodationsNew !== '') {
+            (async () => {
+                await postToDatabase('/accommodations', this.state.accommodationsNew);
+                this.getDatabase();
+            })();
+        } else { alert('Enter accommodation info'); }
+    };
+
+    updateHandler = () => {
         (async () => {
-            await postToDatabase('/accommodations', this.state.accommodationsNew);
+            await patchToDatabase('/accommodations', this.state.updateId, this.state.accommodationsNew);
             this.getDatabase();
         })();
+        this.setState({updateId: ''});
     };
 
     deleteHandler = (id) => {
@@ -53,6 +66,11 @@ class Accommodation extends Component {
             await deleteFromDatabase('/accommodations', id);
             this.getDatabase();
         })();
+    };
+
+    getDataForUpdate = (link, idCity, id) => {
+        this.setState({updateId: id});
+        this.getDataHandler(link, idCity);
     };
 
     componentDidMount() {
@@ -84,6 +102,9 @@ class Accommodation extends Component {
                     <span onClick={() => this.deleteHandler(acc.id)}>
                         <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>
+                    <span onClick={() => this.getDataForUpdate(acc.link, acc.id_city, acc.id)}>
+                        <FontAwesomeIcon icon={['fas', 'edit']} style={{color: "lightgreen", cursor: "pointer", paddingLeft: "1vw"}}/>
+                    </span>
                     </div> 
                     <div><img src = {`${acc.hotel_img}`} alt = {acc.hotel_img} /></div>
                 </div>
@@ -94,7 +115,7 @@ class Accommodation extends Component {
         if (this.state.id_city !== '') {
             inputForGetData = <React.Fragment>
                                 <input onBlur={this.inputHandler} type="text" name="link" placeholder="Enter link of accomodation here"/>
-                                <button onClick={this.getDataHandler}>Get data</button><br/>
+                                <button onClick={() => this.getDataHandler()}>Get data</button><br/>
                             </React.Fragment>;
         }
 
@@ -107,17 +128,22 @@ class Accommodation extends Component {
                                     <a href = {`${this.state.accommodationsNew.link}`} target="_blank">{`${this.state.accommodationsNew.link}`}</a>
                                 </div>;
         }
+
+        const buttonSwitch = (this.state.updateId === '') ? <button onClick={this.saveHandler}>Add to database</button> 
+                                                          : <button onClick={this.updateHandler}>Update info</button>;
+
+        const inputSwitch = (this.state.updateId === '') ? <select onClick={this.inputHandler} name="id_city">
+                                                                <option value="" defaultChecked>Select location:</option>
+                                                                {locations}
+                                                           </select> : null;
         
         return (
             <div className={classes.Accommodation}>
                 <h2>Enter new accomodation for travel</h2>
-                <select onClick={this.inputHandler} name="id_city">
-                        <option value="" defaultChecked>Select location:</option>
-                        {locations}
-                </select>
+                {inputSwitch}
                 {inputForGetData}
                 {accommodationCheck}
-                <button onClick={this.saveHandler}>Add to database</button>
+                {buttonSwitch}
                 <h2>All accommodations</h2>
                 <div>
                     <h3>Accommodations from city:</h3>
