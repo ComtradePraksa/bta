@@ -14,37 +14,37 @@ class Transportations extends Component {
         provider_id: ''
     };
 
-    getDatabase = () => {
+    getDatabase = (tableName='/transportations', saveLocation='transportations') => {
         (async () => {
-            const data = await getFromDatabase(`/transportations`);
-            const transportations = data.data;
-            this.setState({transportations});
+            const data = await getFromDatabase(`${tableName}`);
+            const dataToSave = data.data;
+            this.setState({[saveLocation]: dataToSave});
         })();
     };
 
     inputHandler = (e) => {
         if (e.target.name === 'type') {
             const providerId = this.state.provider.find(provider => provider.name === e.target.value);
-            let id = '';
-            let type = '';
+            let id, type;
             if (providerId !== undefined) {id = providerId.id; type = providerId.type;}
             this.setState({ [e.target.name]: type, provider_id: id });
         } else { this.setState({ [e.target.name]: e.target.value }); }
     };
 
     saveHandler = () => {
-        let transportationData = {
-            from_location_id: this.state.from_location_id,
-            to_location_id: this.state.to_location_id,
-            type: this.state.type,
-            provider_id: this.state.provider_id
-        };
-        console.log('dataNew', transportationData);
-
-        (async () => {
-            await postToDatabase('/transportations', transportationData);
-            this.getDatabase();
-        })();
+        if (this.state.from_location_id && this.state.to_location_id && this.state.type !== '') {
+            const transportationData = {
+                from_location_id: this.state.from_location_id,
+                to_location_id: this.state.to_location_id,
+                type: this.state.type,
+                provider_id: this.state.provider_id
+            };
+    
+            (async () => {
+                await postToDatabase('/transportations', transportationData);
+                this.getDatabase();
+            })();
+        } else { alert('Select route for transportation'); }
     };
 
     deleteHandler = (id) => {
@@ -64,12 +64,7 @@ class Transportations extends Component {
             this.setState({ locations });
         })();
 
-        (async () => {
-            const data = await getFromDatabase(`/provider`);
-            const providers = data.data;
-            this.setState({ provider: providers });
-        })();
-
+        this.getDatabase('/provider', 'provider');
         this.getDatabase();
     };
 

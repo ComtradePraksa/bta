@@ -34,7 +34,7 @@ class FeedbackTicket extends Component {
         const copy = this.state.comments;
         this.setState({
             comments: [newComment, ...copy]
-        })
+        });
     };
 
     getNumberOfComments = () => {
@@ -47,8 +47,6 @@ class FeedbackTicket extends Component {
         })
         return sum;
     };
-
-
 
     render() {
         return (

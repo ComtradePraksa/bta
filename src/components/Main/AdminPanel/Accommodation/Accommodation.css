@@ -26,6 +26,7 @@
 
 .AccommodationDetails img {
     width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
 }
 
 .AccommodationsDescr {
@@ -36,7 +37,10 @@
     text-align: left;
 }
 
-.AccommodationsDescr h3, .AccommodationsDescr p, .AccommodationsDescr a, .AccommodationsDescr span {
+.AccommodationsDescr h3,
+.AccommodationsDescr p,
+.AccommodationsDescr a,
+.AccommodationsDescr span {
     margin-bottom: 1%;
 }
 

@@ -59,9 +59,9 @@ input[type="radio"] {
     margin: 0 1%;
 }
 
-input[type='file']{
+input[type='file'] {
     font-size: 1vw;
-  }
+}
 
 label {
     margin: 0 0.25%;

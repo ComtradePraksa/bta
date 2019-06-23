@@ -37,7 +37,7 @@ nav {
 .pointer {
   cursor: pointer;
 }
- 
+
 .chooseCity {
   grid-area: choose-city2;
   width: 100vw;
@@ -49,7 +49,6 @@ nav {
 
 .chooseCity h2 {
   font-size: 1rem;
-
   font-weight: 200;
 }
 
@@ -91,7 +90,6 @@ nav {
   min-height: 0vh;
   max-height: 15vh;
   overflow-y: auto;
-  /* border: 1px solid black;*/
   flex-direction: column;
   z-index: 10;
   margin-top: 0.5rem;
@@ -101,9 +99,11 @@ nav {
   padding: 5px 10px;
   border-bottom: 0.4px solid rgba(237, 230, 230, 0.18);
   min-height: 5vh;
-  /*  background-color: white;*/
   background: rgba(255, 105, 145);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dropdownItem:hover {
@@ -145,5 +145,11 @@ nav {
 
   .dropdownItemList {
     margin-top: 0;
+  }
+}
+
+@media(min-width:1200px) {
+  .dropdown {
+    max-width: 80%;
   }
 }

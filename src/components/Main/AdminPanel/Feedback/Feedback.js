@@ -4,32 +4,25 @@ import classes from './Feedback.css';
 
 class Feedback extends Component {
     state = {
-        location_feedbacks: []
+        location_feedbacks: '',
+        acc_feedbacks: '',
+        transportation_feedbacks: ''
     };
 
-    componentDidMount() {
+    getDatabase = (tableName, saveLocation) => {
         (async () => {
-            const data = await getFromDatabase(`/location_feedbacks`);
-            const location_feedbacks = data.data;
-            this.setState({ location_feedbacks });
+            const data = await getFromDatabase(`${tableName}`);
+            let feedbacks = data.data;
+            this.setState({ [saveLocation]: feedbacks });
         })();
     };
 
     render() {
         return (
             <div className={classes.Feedback}>
-                <div>
-                    <h2>City feedbacks:</h2>
-                    <div>
-
-                    </div>
-                </div>
-                <div>
-                    <h2>Accommodation feedbacks:</h2>
-                    <div>
-
-                    </div>
-                </div>
+                <div onClick={() => this.getDatabase('/location_feedbacks', 'location_feedbacks')}>Location Feedbacks</div>
+                <div onClick={() => this.getDatabase('/acc_feedbacks', 'acc_feedbacks')}>Accommodation Feedbacks</div>
+                <div onClick={() => this.getDatabase('/transportation_feedbacks', 'transportation_feedbacks')}>Transportation Feedbacks</div>
             </div>
         )
     }

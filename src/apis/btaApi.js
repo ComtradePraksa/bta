@@ -21,7 +21,7 @@ const postToDatabase = async (tableName, data) => {
     }
 };
 
-const patchToDatabase = async (tableName, data, id) => {
+const patchToDatabase = async (tableName, id, data) => {
     try {
         await axios.patch(`${url}${tableName}/${id}`, data, { headers });
     } catch (error) {

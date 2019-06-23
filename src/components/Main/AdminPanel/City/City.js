@@ -4,6 +4,7 @@ import axios from 'axios';
 import {removeAuthHeader} from '../../../../apis/removeAuthHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './City.css';
+
 class City extends Component {
     state = {
         city_name: '',
@@ -39,18 +40,19 @@ class City extends Component {
     };
 
     saveHandler = () => {
-        this.getGeolocation();
-
-        const newCity = {
-            city_name: this.state.city_name,
-            state: this.state.state,
-            city_lat_lon: this.state.city_lat_lon
-        };
-        
-        (async () => {
-            await postToDatabase('/locations', newCity);
-            this.getDatabase();
-        })();
+        if (this.state.city_name && this.state.state !== '') {
+            this.getGeolocation();
+            
+            const newCity = {
+                city_name: this.state.city_name,
+                state: this.state.state,
+                city_lat_lon: this.state.city_lat_lon
+            };
+            (async () => {
+                await postToDatabase('/locations', newCity);
+                this.getDatabase();
+            })();
+        } else { alert('Enter city-name and state'); }
     };
 
     deleteHandler = (id) => {
