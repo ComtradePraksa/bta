@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getFromDatabase } from '../../../apis/btaApi';
 import classes from './ChooseCityVersionTwo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 class ChooseCity extends Component {
     state = {
@@ -28,14 +29,17 @@ class ChooseCity extends Component {
     getClickedCity = (item) => {
         this.setState({ placeholderMessage: item.city });
         this.props.getCity({city:item.city,id:item.id, latlon:item.latlon});
+        console.log(item)
         return item.city;
     };
     
     render() {
         const list = this.state.cities.map(city => {
             return (
+                <Link key={city.id} to="/home/city">
                 <li key={city.id} className={classes.dropdownItem}
                     onClick={this.getClickedCity.bind(this, city)}>{city.city}</li>
+                    </Link>
             )
         });
 
