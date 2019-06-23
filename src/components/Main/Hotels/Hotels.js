@@ -6,7 +6,10 @@ import map from '../../../apis/mapsApi'
 
 class Hotels extends Component {
     state = {
-        hotel: {}
+        hotel: {},
+        phone:"/",
+        email:"/",
+        address:" "
     };
 
     locationInfo = () => {
@@ -15,8 +18,18 @@ class Hotels extends Component {
                 const position = res.data.results.items[0].position;
                 map(position[0], position[1], undefined);
                 axios.get(`${res.data.results.items[0].href}`)
-                .then(res=>
-                    console.log(res))
+                .then(res=>{
+                    if(res.data.contacts.phone !==undefined){
+                    const phone = res.data.contacts.phone[0].value
+                    this.setState({phone})
+                    }
+                    if(res.data.contacts.email !==undefined){
+                        const email = res.data.contacts.email[0].value
+                        this.setState({email})
+                        }
+                    const address = res.data.location.address.text.replace(/<br\/>/g,' ')
+                    this.setState({address})
+                })
             });
     };
    
@@ -39,6 +52,9 @@ class Hotels extends Component {
                 
             </div>
             <div className={classes.MapCity} id="here-map"> </div>
+            <div>Adress: {this.state.address}</div>
+            <div>Phone: {this.state.phone}</div>
+            <div>Email: {this.state.email}</div>
             </React.Fragment>
         );
     }
