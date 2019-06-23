@@ -67,6 +67,7 @@ nav {
   position: relative;
   width: 80%;
   background-color: transparent;
+  z-index: 2;
 }
 
 .dropdown {
@@ -116,7 +117,15 @@ nav {
   color: rgb(189, 184, 184);
   transition: 0.7s;
 }
-
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
 @media(min-width: 400px) {
   .dropdownWrapper {
     width: 50vw;
