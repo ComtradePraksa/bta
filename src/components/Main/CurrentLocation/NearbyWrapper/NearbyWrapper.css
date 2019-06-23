@@ -19,7 +19,7 @@
 
 @media(min-width: 776px) {
     .NearbyWrapper {
-        font-size: 0.8vw;
+        width: 70vw;
         margin: 0;
     }
 }
