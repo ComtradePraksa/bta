@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 
 body, div,
-h1, h2, h3, h4, h5, h6, p,
+h1, h2, h3, h4, h5, h6, nav, p,
 a, ol, ul, li, input, textarea,
-nav {
+button {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,7 +16,7 @@ nav {
 
 .Main {
   display: grid;
-  grid-gap: 20px;
+ /* grid-gap: 20px; */
   grid-template-areas:
     "nav"
     "choose-city2"
@@ -25,7 +25,10 @@ nav {
   background-color: #333;
   position: relative;
   min-height: 100vh;
+  /*
   background-image: linear-gradient(to bottom, rgba(19, 44, 64, 0.81) 0%, rgba(19, 44, 64, 0.95) 50%, rgba(19, 44, 64, 1) 100%), url("../../assets/taxi-cab-381233_1920.jpg");
+  */
+  background-image: linear-gradient(135deg, rgba(17, 19, 85, 0.92) 0%, rgba(52, 95, 211, 0.92) 57%, rgba(16, 11, 74, 0.78) 100%), url(/static/media/taxi-cab-381233_1920.730209cf.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;

@@ -1,5 +1,5 @@
 .CityWrapper {
-  background: linear-gradient(-90deg, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.3) 100%);
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
   justify-content: center;
   align-items: center;
   display: flex;
@@ -9,19 +9,36 @@
 }
 
 @media(min-width:768px) {
-.CityWrapper {
-   /* grid-area: currentLocation;*/
+  .CityWrapper {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-areas: "HotelsCity HotelsCity HotelsCity WeatherCity WeatherCity""HotelsCity HotelsCity HotelsCity MapCity MapCity""HotelsCity HotelsCity HotelsCity MapCity MapCity""HotelsCity HotelsCity HotelsCity MapCity MapCity";
-    padding: 2% 0;
-    grid-gap: 10px;
-}
+    grid-template-columns: 3fr 1fr 2fr;
+    grid-template-rows: 30px 30px 2fr 2fr 2fr 2fr 2fr;
+    grid-template-areas:
+      "accTitle showAll WeatherCity"
+      "topRated topRated ."
+      "HotelsCity HotelsCity MapCity"
+      "HotelsCity HotelsCity MapCity"
+      "HotelsCity HotelsCity MapCity"
+      "HotelsCity HotelsCity MapCity"
+      "HotelsCity HotelsCity MapCity";
+    padding: 5% 1%;
+  }
+
+  .accTitle {
+    grid-area: accTitle;
+  }
+
+  .showAll {
+    grid-area: showAll;
+  }
+
+  .topRated {
+    grid-area: topRated;
+  }
 }
 
 @media(min-width:1400px) {
   .CityWrapper {
-      padding: 3% 10%;
+    padding: 3% 10%;
   }
 }

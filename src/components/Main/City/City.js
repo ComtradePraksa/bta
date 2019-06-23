@@ -38,8 +38,8 @@ class City extends Component {
 
     render() {
         return (
-            <div className={classes.CityWrapper}>
-                {this.props.city === undefined ? <div></div>: <div>
+            <div>
+                {this.props.city === undefined ? <div></div>: <div className={classes.CityWrapper}>
                 <HotelsCity getHotelsInfo={this.getHotelsInfo} city={this.props.city} className={classes.HotelsCity}/>
                 <WeatherCity city={this.props.city} className={classes.WeatherCity}/>
                 <MapCity location={this.state.location} city={this.props.city} className={classes.MapCity}/></div>}
