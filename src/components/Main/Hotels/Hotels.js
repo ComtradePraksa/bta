@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { removeAuthHeader } from '../../../apis/removeAuthHeader';
 import { getFromDatabase } from '../../../apis/btaApi';
-import { getHotel } from '../../../apis/hotelScrapersApi'
 import classes from '../Hotels/Hotels.css';
 
 class Hotels extends Component {
