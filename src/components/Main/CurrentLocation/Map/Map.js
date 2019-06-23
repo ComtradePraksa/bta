@@ -15,7 +15,6 @@ class Map extends Component {
     };
 
     render() {
-        console.log(this.props.latitude)
         return (
             <div className={classes.Map} id="here-map"/>
         );
