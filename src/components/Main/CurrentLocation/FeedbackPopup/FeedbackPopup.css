@@ -95,7 +95,7 @@
 }
 
 .feedbackPopupType {
-    grid-area: icons
+    grid-area: icons;
 }
 
 .feedbackPopupRate {
@@ -110,7 +110,6 @@
     height: 12px;
     display: flex;
     align-items: center;
-
 }
 
 .feedbackPopupInnerProgress {
@@ -144,18 +143,33 @@
 
 .feedbackNewComment textarea {
     width: 90%;
-    height: 10vh;
+    height: 15vh;
     resize: none;
     box-sizing: border-box;
+    border: 0.5px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.21);
+    font-size: 1rem;
 }
+
+.feedbackNewComment textarea::placeholder {
+    color: rgb(95, 92, 92);
+    font-size: 1rem;
+    padding: 0.1rem 0.5rem;
+  }
 
 .feedbackNewComment {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+    margin: 2% 0;
 }
 
 .feedbackPopupCommentTitleContainer {
     display: grid;
-    grid-template-columns: 2fr 4fr 3fr
+    grid-template-columns: 2fr 4fr 3fr;
+    align-items: center;
 }
 
 .feedbackPopupNumberOfComments {
@@ -163,13 +177,27 @@
 }
 
 .feedbackPopupNumberOfComments p {
-    margin-left: 8px;
+    margin-left: 2px;
 }
 
 .feedbackPopupCommentTitleContainer button {
+  /*  margin-left: 8px;
+    padding: 10px 5px;*/
+    color: #fff;
     margin-left: 8px;
-    padding: 10px 5px;
+    padding: 5% 2%;
+    font-size: 0.5rem;
     cursor: pointer;
+    background: linear-gradient(to bottom, rgba(251, 65, 115, 0.856) 0%, rgba(251, 65, 115, 0.801) 60%, rgba(251, 65, 115, 0.87) 53%, rgba(210, 75, 91, 0.836) 53%, rgba(251, 65, 115, 0.808) 53%);
+}
+
+.postButton {
+    width: 90%;
+    background-color: gray;
+    color: white;
+    padding: 2%;
+    font-size: 0.7rem;
+    box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.21);
 }
 
 .feedbackPopupHeader svg:hover {
@@ -177,10 +205,10 @@
     transition: 0.6s;
 }
 
-.feedbackPopupCommentTitleContainer button:hover {
-    color: white;
+.feedbackPopupCommentTitleContainer button:hover,
+.postButton:hover {
     transition: all 0.5s ease;
-    background: linear-gradient(to bottom, rgba(251, 65, 115, 0.856) 0%, rgba(251, 65, 115, 0.801) 60%, rgba(251, 65, 115, 0.87) 53%, rgba(210, 75, 91, 0.836) 53%, rgba(251, 65, 115, 0.808) 53%);
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(4, 3, 27, 0.452);
 }
 
 @media(min-width: 400px) {
@@ -209,6 +237,11 @@
 
     .feedbackPopupTypeIcon {
         font-size: 1.5em;
+    }
+
+    .feedbackPopupCommentTitleContainer button,
+    .postButton {
+        font-size: 0.9rem;
     }
 }
 

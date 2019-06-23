@@ -79,14 +79,15 @@ class FeedbackPopup extends Component {
                             <div className={classes.feedbackPopupCommentTitleContainer}>
                                 <p className={classes.feedbackPopupCommentTitle}>Comments</p>
                                 <div className={classes.feedbackPopupNumberOfComments}>
-                                    <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
+                                    <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray", marginLeft: "8px" }} />
                                     <p>{this.props.numberOfComments}</p>
                                 </div>
                                 <button onClick={this.toggleComment}> <FontAwesomeIcon icon="plus" /> Add Comment</button>
                             </div>
                             {this.state.commentVisible && <div className={classes.feedbackNewComment}>
-                                <textarea id={`commentText`} onChange={this.getCommentValue} />
-                                <FontAwesomeIcon onClick={this.getData} icon="chevron-circle-right" style={{ width: "40px", height: "40px" }} />
+                                <textarea id={`commentText`} onChange={this.getCommentValue} placeholder = "Enter your comment"/>
+                              {/* <FontAwesomeIcon onClick={this.getData} icon="chevron-circle-right" style={{ width: "40px", height: "40px" }} /> */}
+                                <button onClick={this.getData} className={classes.postButton}>Post Comment</button>
                             </div>}
                             <div className={classes.feedbackPopupCommentsContainer}>
                                 {this.props.comments.map((com) => {

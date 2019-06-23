@@ -2,16 +2,16 @@
 
 body, div,
 h1, h2, h3, h4, h5, h6, p,
-a, ol, ul, li, input
+a, ol, ul, li, input, textarea,
 nav {
   margin: 0;
   padding: 0;
-
   box-sizing: border-box;
   outline: none;
   border: none;
   scroll-behavior: smooth;
   text-decoration: none;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
 .Main {
@@ -44,19 +44,3 @@ nav {
       "feedback feedback feedback feedback"
   }
 }
-
-/* prvobitni prikaz 
-.Main {
-    display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
-    grid-template-areas:
-        "welcome welcome welcome welcome"
-        "choose-city choose-city choose-city choose-city"
-        "choose-city2 choose-city2 choose-city2 choose-city2"
-        "weather weather weather weather"
-        "nearby nearby map map"
-        "nearby nearby map map"
-        "feedback feedback feedback feedback"
-        "weather-city weather-city weather-city weather-city";
-}
-*/
