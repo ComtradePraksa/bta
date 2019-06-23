@@ -1,5 +1,6 @@
 .HotelWrapper {
     color: #fff;
+    grid-area: currentLocation;
 }
 
 .HotelWrapper a {
