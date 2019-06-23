@@ -4,6 +4,7 @@ import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
 import CurrentLocation from './CurrentLocation/CurrentLocation'
 import City from './City/City'
 import Nav from './Nav/Nav';
+import Hotels from './Hotels/Hotels'
 import { ProtectedRoute } from '../../ProtectedRoute'
 import { Route, Redirect } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ class Main extends Component {
                         ? <City city={this.state.city} {...props} />
                         : <Redirect to='/home' />
                 )} />
+                <ProtectedRoute key="3" loggedUser={this.props.loggedUser} exact path="/home/hotels/:id" component={Hotels} />
             </div>
         );
     }
