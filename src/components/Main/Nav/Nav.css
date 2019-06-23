@@ -53,12 +53,12 @@
 .UserPhoto {
     border-radius: 50%;
     overflow: hidden;
-    height: 100%;
 }
 
 .UserPhoto img {
     display: block;
-    height: 40px;
+    height: 5vh;
+   /* height: 40px;*/
 }
 
 .UserMenu,
