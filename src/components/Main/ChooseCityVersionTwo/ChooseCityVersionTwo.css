@@ -92,7 +92,6 @@ nav {
   max-height: 15vh;
   overflow-y: auto;
   flex-direction: column;
-  z-index: 10;
   margin-top: 0.5rem;
 }
 

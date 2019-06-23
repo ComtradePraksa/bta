@@ -1,5 +1,6 @@
 .Provider {
     font-size: 1vw;
+    max-width: 100vw;
 }
 
 .Provider h2 {
@@ -28,3 +29,19 @@
 .ProviderDetails {
     margin: 1% 0;
 }
+
+@media(max-width: 1080px) {
+    .Provider, .Provider input, .Provider select {
+        font-size: 3vw;
+    }
+    .Provider input {
+        width: 80vw;
+    }
+    .Provider select {
+        margin: 5% 0;
+    }
+    .ProviderList {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+  }

@@ -1,5 +1,6 @@
 .Container {
   grid-area: nav;
+  max-width: 100vw;
 }
 
 .flexNav {
@@ -7,7 +8,7 @@
 }
 
 .fullWidth {
-  width: 100%;
+  max-width: 100%;
 }
 
 .center {
@@ -21,9 +22,9 @@
   padding: 0 2%;
   justify-content: space-between;
   color: #fff;
-  max-width: 100vw;
   height: 60px;
   position: relative;
+  max-width: 100vw;
 }
 
 .Logo span,
