@@ -14,6 +14,9 @@ class Hotels extends Component {
             .then(res => {
                 const position = res.data.results.items[0].position;
                 map(position[0], position[1], undefined);
+                axios.get(`${res.data.results.items[0].href}`)
+                .then(res=>
+                    console.log(res))
             });
     };
    
