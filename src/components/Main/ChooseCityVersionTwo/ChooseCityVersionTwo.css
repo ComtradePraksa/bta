@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
-
+/*
 body,
 div,
 h1,
@@ -24,7 +24,7 @@ nav {
   scroll-behavior: smooth;
   text-decoration: none;
   list-style-type: none;
-}
+}*/
 
 .flex {
   display: flex;
@@ -44,7 +44,7 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 2;
+  padding: 2%
 }
 
 .chooseCity h2 {
