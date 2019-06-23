@@ -11,12 +11,12 @@
 @media(min-width:768px) {
   .CityWrapper {
     display: grid;
-    grid-template-columns: 3fr 1fr 2fr;
-    grid-template-rows: 30px 30px 2fr 2fr 2fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
     grid-template-areas:
-      "accTitle showAll WeatherCity"
-      "topRated topRated ."
-      "HotelsCity HotelsCity MapCity"
+      /* "accTitle showAll WeatherCity"
+      "topRated topRated ." */
+      "HotelsCity HotelsCity WeatherCity"
       "HotelsCity HotelsCity MapCity"
       "HotelsCity HotelsCity MapCity"
       "HotelsCity HotelsCity MapCity"
@@ -39,6 +39,6 @@
 
 @media(min-width:1400px) {
   .CityWrapper {
-    padding: 3% 10%;
+    padding: 3% 5%;
   }
 }

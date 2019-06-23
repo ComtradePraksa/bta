@@ -1,7 +1,6 @@
 .CurrentLocationWrapper {
-  /*
-  background: linear-gradient(-90deg, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.3) 100%);*/
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.18) 0%,rgba(0, 0, 0, 0.23) 100%);
+  background: linear-gradient(-90deg, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.3) 100%);
+  /* background: linear-gradient(-90deg, rgba(0, 0, 0, 0.18) 0%,rgba(0, 0, 0, 0.23) 100%); */
   justify-content: center;
   align-items: center;
   display: flex;
@@ -13,21 +12,15 @@
   .CurrentLocationWrapper {
     grid-area: currentLocation;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    grid-template-areas: "nearby nearby nearby weather weather""nearby nearby nearby map map""nearby nearby nearby map map""nearby nearby nearby map map";
+    grid-template-areas: "nearby nearby weather weather""nearby nearby map map""nearby nearby map map""nearby nearby map map";
     padding: 3%;
   }
 }
 
 @media(min-width:992px) {
   .CurrentLocationWrapper {
-    padding: 3% 10%;
+    padding: 0 5%;
   }
   }
-
-@media(min-width:1400px){
-  .CurrentLocationWrapper {
-    padding: 3% 20%;
-}
-}

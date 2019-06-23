@@ -44,7 +44,7 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2%
+  padding: 3% 2%;
 }
 
 .chooseCity h2 {
@@ -57,7 +57,7 @@ nav {
 }
 
 .cityLink {
-  color: rgba(1, 1, 34, 0.979);
+  color: whitesmoke;
   text-decoration: underline;
   padding: 0 1%;
 }

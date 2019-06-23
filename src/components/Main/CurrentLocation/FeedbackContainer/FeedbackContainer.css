@@ -7,11 +7,12 @@
   grid-template-rows: 2fr 8fr;
   justify-items: center;
   /* background: linear-gradient(-90deg, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.3) 100%);*/
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.18) 0%,rgba(0, 0, 0, 0.23) 100%);
+  /* background: linear-gradient(-90deg, rgba(0, 0, 0, 0.18) 0%,rgba(0, 0, 0, 0.23) 100%); */
  /* background-color: rgb(90, 111, 152);*/
   font-family: "Raleway", Arial, Helvetica, sans-serif;
   position: relative;
   width: 100vw;
+  padding-top: 5%;
 }
 
 .ticketsWrapper {
@@ -34,7 +35,7 @@
   height: 8vh;
   width: 8vh;
   border-radius: 50%;
-  top: -4vh;
+  top: 4vh;
   right: 10vh;
   background-color: crimson;
   display: flex;
