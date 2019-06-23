@@ -29,14 +29,14 @@ class Nav extends Component {
         return (
             <div className={classes.Container}>
                 <div className={[classes.Nav, classes.flexNav, classes.center].join(' ')}>
-                    <Link to = "/home">
+                    <Link to="/home">
                         <div className={classes.Logo}>
                             <span>bta.</span>
                         </div>
                     </Link>
                     <div className={[classes.Menu, classes.flexNav, classes.center].join(' ')}>
 
-                        <OutsideAlert isOpenUserMenu = {this.state.isOpenUserMenu} toggleUserMenu = {this.toggleUserMenu}>
+                        <OutsideAlert isOpenUserMenu={this.state.isOpenUserMenu} toggleUserMenu={this.toggleUserMenu}>
                             <div onClick={this.toggleUserMenu} className={[classes.User, classes.fullWidth, classes.flexNav, classes.center].join(' ')}>
                                 <div className={classes.UserName}>{this.props.loggedUser.username} {admin}</div>
                                 <div className={classes.UserPhoto}>
