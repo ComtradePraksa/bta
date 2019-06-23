@@ -54,12 +54,11 @@ class Accommodation extends Component {
     };
 
     updateHandler = () => {
-        console.log('id', this.state.updateId)
-        console.log('ceoo', this.state.accommodationsNew);
         (async () => {
             await patchToDatabase('/accommodations', this.state.updateId, this.state.accommodationsNew);
             this.getDatabase();
         })();
+        this.setState({updateId: ''});
     };
 
     deleteHandler = (id) => {
@@ -116,7 +115,7 @@ class Accommodation extends Component {
         if (this.state.id_city !== '') {
             inputForGetData = <React.Fragment>
                                 <input onBlur={this.inputHandler} type="text" name="link" placeholder="Enter link of accomodation here"/>
-                                <button onClick={this.getDataHandler}>Get data</button><br/>
+                                <button onClick={() => this.getDataHandler()}>Get data</button><br/>
                             </React.Fragment>;
         }
 
