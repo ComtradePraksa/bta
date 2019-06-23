@@ -23,7 +23,7 @@ class Nav extends Component {
         let adminPanelLink;
         let admin = ''
         if (isAdmin) {
-            adminPanelLink = 'Admin panel';
+            adminPanelLink = 'Admin\xa0panel';
             admin = ' (admin)';
         }
         return (
