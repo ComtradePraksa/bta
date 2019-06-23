@@ -11,9 +11,8 @@ class Hotels extends Component {
 
     componentDidMount() {
         (async () => {
-            const hotelLink = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
-            const res = await getHotel(hotelLink.data.link, removeAuthHeader())
-            const hotel = res.page.meta_tags;
+            const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
+            const hotel = res.data[0]
             this.setState({ hotel });
         })();
     };
@@ -21,10 +20,10 @@ class Hotels extends Component {
     render() {
         return (
             <div className={classes.HotelWrapper}>
-                <h3>{this.state.hotel['og:title']}</h3>
-                <p>{this.state.hotel['og:description']}</p>
-                <div><img src={`${this.state.hotel['og:image']}`} alt={this.state.hotel.image} /></div>
-                <a href={`${this.state.hotel['og:url']}`} target="_blank">{`${this.state.hotel['og:url']}`}</a>
+                <h3>{this.state.hotel.name}</h3>
+                <p>{this.state.hotel.hotel_descr}</p>
+                <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image} /></div>
+                <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
             </div>
         );
     }

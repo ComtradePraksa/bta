@@ -31,7 +31,7 @@ module.exports = function (app, express, mysqlConnection) {
       }
       mysqlConnection.query('SELECT * FROM accommodations where id=?', req.params.id, function (error, results) {
         if (error) throw error;
-        return res.send({ error: false, data: results[0], message: 'Accommodations list by id.', user: req.user });
+        return res.send({ error: false, data: results, message: 'Accommodations list by id.', user: req.user });
       });
     })
     .patch(verifyToken,(req, res) => {
