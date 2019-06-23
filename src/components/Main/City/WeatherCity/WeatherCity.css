@@ -5,7 +5,7 @@
   /* max-height: 5%;*/
   color: white;
   display: flex;
-  font-size: 0.9rem;
+  font-size: 4vw;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
@@ -29,6 +29,7 @@ font-weight: 200;
     flex-direction: row;
   /* justify-content: flex-start;*/
     align-items: center;
+    font-size: 1vw;
     width: 100%;
     margin: 0;
     padding: 0 1%;

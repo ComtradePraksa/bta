@@ -24,7 +24,6 @@ class Nav extends Component {
         let admin = ''
         if (isAdmin) {
             adminPanelLink = 'Admin\xa0panel';
-            admin = ' (admin)';
         }
         return (
             <div className={classes.Container}>

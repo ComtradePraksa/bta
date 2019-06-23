@@ -32,7 +32,7 @@
 .HotelsCity img {
   grid-area: hotelPhoto;
   /* padding-left: 5%;*/
-  height: 50px;
+  height: 50%;
   display: inline-block;
   margin-bottom: 0.6em;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
@@ -63,7 +63,7 @@
 
   .HotelsCity div {
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-columns: 2fr 8fr 1fr;
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
       "hotelPhoto hotelTitle hotelRating"
@@ -83,28 +83,34 @@
   }
 
   .HotelsCity h3 {
-    font-size: 0.7rem;
+    font-size: 1vw;
   }
 
   .HotelsCity p {
-    font-size: 0.7rem;
+    font-size: 0.8vw;
   }
 }
 
 @media(min-width: 1300px) {
   .HotelsCity {
-    margin: 1% auto;
+    margin: 0 auto;
   }
 
   .HotelsCity h3 {
-    font-size: 1rem;
+    font-size: 1vw;
   }
 
   .HotelsCity p {
-    font-size: 0.8rem;
+    font-size: 0.8vw;
+  }
+
+  .HotelsCity p, .HotelsCity h3 {
+    padding-left: 3%;
   }
 
   .HotelsCity img {
-    height: 60px;
+    width: 100%;
+    height: 100%;
+    margin: 0 2%;
   }
 }
