@@ -8,6 +8,7 @@ import Transportations from './Transportations/Transportations';
 import Feedback from './Feedback/Feedback';
 import classes from './AdminPanel.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Nav from '../Nav/Nav';
 
 class AdminPanel extends Component {
     
@@ -24,6 +25,7 @@ class AdminPanel extends Component {
 
         return (
             <div className={classes.AdminPanel}>
+                <Nav loggedUser={this.props.loggedUser} loginStatus={this.props.loginStatus} />
                 <div className={classes.AdminH1}><h1>Administration panel</h1></div>
                 <div className={classes.AdminContainer}>
                     <Link to={`${this.props.match.url}/users`}><div className={classes.AdminPanelLink}><div className={classes.icon}><FontAwesomeIcon icon="users" size='3x' /></div>Users</div></Link>

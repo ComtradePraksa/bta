@@ -2,6 +2,7 @@
     grid-area: choose-city;
     display: grid;
     grid-template-areas:
+        "nav"
         "adminH1"
         "adminContainer"
         "adminComponent";
