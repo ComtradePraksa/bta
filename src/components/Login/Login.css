@@ -173,7 +173,7 @@ input {
 .Login form button {
   display: inline-block;
   padding: 0.6rem 0.8rem;
-  margin-bottom: 3rem;
+  margin: 0 0 3rem 0;
   font-size: 1em;
   background: linear-gradient(to bottom, rgba(251, 65, 115, 0.856) 0%, rgba(251, 65, 115, 0.801) 60%, rgba(251, 65, 115, 0.87) 53%, rgba(210, 75, 91, 0.836) 53%, rgba(251, 65, 115, 0.808) 53%);
 }

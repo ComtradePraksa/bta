@@ -44,7 +44,7 @@ class Nav extends Component {
                                     }
                                 </div>
                                 <div className={this.state.isOpenUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
-                                    <Link to="/admin">
+                                    <Link to="/admin/users">
                                         <div className={[classes.isAdminCheck, classes.fullWidth].join(' ')}>{adminPanelLink}</div>
                                     </Link>
                                     <Link to="/" onClick={this.logout} className={classes.fullWidth}>Logout</Link>
