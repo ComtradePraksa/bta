@@ -3,7 +3,6 @@ import classes from './WeatherCity.css';
 import { removeAuthHeader } from '../../../../apis/removeAuthHeader'
 import axios from 'axios';
 
-
 class WeatherCity extends Component {
     _isMounted = false;
     state = {
@@ -15,9 +14,9 @@ class WeatherCity extends Component {
             let city = this.props.city.city.toLowerCase();
             axios.get(`http://api.apixu.com/v1/current.json?key=937e493fb43842b4a90103252191706&q=${city}`, removeAuthHeader())
                 .then(res => {
-                    if(this._isMounted){
-                    const weatherData = res.data;
-                    this.setState({ weatherData });
+                    if (this._isMounted) {
+                        const weatherData = res.data;
+                        this.setState({ weatherData });
                     }
                 });
         }
@@ -33,9 +32,9 @@ class WeatherCity extends Component {
             });
     };
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         this._isMounted = false;
-    }
+    };
 
     render() {
         let weather = '';

@@ -1,47 +1,55 @@
-.CityLifeWrapper{
-        grid-area: CityLife;
-        background-color: #384867;
-        color: #fff;
-        padding: 20px 5%;
-        z-index: 10000;
-    }
-    .CityLifeCategoriesWrapper{
-        padding: 40px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-    .CityLifeCategory{
-        padding: 10px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        margin: 5px;
-    }
-    .FoodAndDrinks{
-        color: #b05dd9;
-    }
-    .Safety{
-        color: #f96b2c;
-    }
-    .Sightseeing{
-        color: #6876fb;
-    }
-    .LocalTransport{
-        color: #96bf4f;
-    }
-    .LocalCulture{
-        color: #00b8d9;
-    }
-    .Other{
-        color: #ffda44;
-    }
+.CityLifeWrapper {
+    grid-area: CityLife;
+    background-color: #384867;
+    color: #fff;
+    padding: 20px 5%;
+    z-index: 10000;
+}
 
-    /* .TransportWrapper{
+.CityLifeCategoriesWrapper {
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.CityLifeCategory {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.FoodAndDrinks {
+    color: #b05dd9;
+}
+
+.Safety {
+    color: #f96b2c;
+}
+
+.Sightseeing {
+    color: #6876fb;
+}
+
+.LocalTransport {
+    color: #96bf4f;
+}
+
+.LocalCulture {
+    color: #00b8d9;
+}
+
+.Other {
+    color: #ffda44;
+}
+
+/* .TransportWrapper{
         padding: 20px 5%;
         background: linear-gradient(to right, #8067b1, #335ea3);
     }

@@ -86,7 +86,8 @@
   color: rgb(189, 184, 184);
   transition: 0.7s;
 }
-.overlay{
+
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -95,6 +96,7 @@
   height: 100vh;
   z-index: -1;
 }
+
 @media(min-width: 400px) {
   .dropdownWrapper {
     width: 50vw;

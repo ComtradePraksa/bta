@@ -20,7 +20,7 @@ class MapCity extends Component {
 
     componentDidMount() {
         this.renderMap();
-    }
+    };
 
     render() {
         return (<div className={classes.MapCity} id="here-map"> </div>);

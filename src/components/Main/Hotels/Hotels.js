@@ -19,15 +19,15 @@ class Hotels extends Component {
                 const position = res.data.results.items[0].position;
                 map(position[0], position[1], undefined);
                 axios.get(`${res.data.results.items[0].href}`)
-                .then(res=>{
-                    if(this._isMounted){
-                        if(res.data.contacts.phone !==undefined){
-                        const phone = res.data.contacts.phone[0].value;
-                        this.setState({phone});
+                .then(res => {
+                    if (this._isMounted) {
+                        if (res.data.contacts.phone !==undefined) {
+                            const phone = res.data.contacts.phone[0].value;
+                            this.setState({phone});
                         }
-                        if(res.data.contacts.email !==undefined){
-                        const email = res.data.contacts.email[0].value;
-                        this.setState({email});
+                        if (res.data.contacts.email !==undefined) {
+                            const email = res.data.contacts.email[0].value;
+                            this.setState({email});
                         }    
                     const address = res.data.location.address.text.replace(/<br\/>/g,' ');
                     this.setState({address});
@@ -38,19 +38,19 @@ class Hotels extends Component {
    
     componentDidMount() {
         this._isMounted=true;
-        if(this._isMounted){
-        (async () => {
-            const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
-            const hotel = res.data[0];
-            this.setState({ hotel });
-            this.locationInfo();
-        })();
-    }
+        if (this._isMounted) {
+            (async () => {
+                const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
+                const hotel = res.data[0];
+                this.setState({ hotel });
+                this.locationInfo();
+            })();
+        }
     };
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         this._isMounted = false;
-    }
+    };
 
     render() {
         return (

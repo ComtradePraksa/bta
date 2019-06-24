@@ -8,4 +8,4 @@ export default function setAuthToken(token) {
     //if there is no token then delete the auth header
     delete axios.defaults.headers.common['Authorization'];
   }
-}
+};

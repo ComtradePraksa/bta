@@ -13,7 +13,9 @@
 }
 
 @media(max-width: 1080px) {
-    .Transportations, .Transportations select {
+
+    .Transportations,
+    .Transportations select {
         font-size: 3vw;
     }
-  }
+}

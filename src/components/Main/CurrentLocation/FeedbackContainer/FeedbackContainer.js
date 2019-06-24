@@ -38,6 +38,7 @@ class FeedbackContainer extends Component {
         this.getDatabase();
 
     };
+    
     getClickedId = (params) => {
         (async () => {
             await deleteFromDatabase(`/location_feedbacks`, params);

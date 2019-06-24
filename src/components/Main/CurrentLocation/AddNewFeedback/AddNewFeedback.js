@@ -7,17 +7,18 @@ class AddNewFeedback extends Component {
         rate: 0,
         dropdownVisible:false,
         category:""
-    }
-    getNewValue = (event) => {
-        this.setState({ rate: event.target.value })
-    }
+    };
 
-toggle = ()=>{
-    this.setState({dropdownVisible:!this.state.dropdownVisible})
-}
+    getNewValue = (event) => {
+        this.setState({ rate: event.target.value });
+    };
+
+    toggle = () => {
+        this.setState({ dropdownVisible:!this.state.dropdownVisible });
+    };
 
     render() {
-        console.log(this.state.rate)
+        console.log(this.state.rate);
 
         return (
             <div className={classes.newFeedbackWindow}>
@@ -68,8 +69,6 @@ toggle = ()=>{
                         <textarea/>
                         </div>
                         </div>
-     
-
                     </div>
                 </div>
             </div>
@@ -77,4 +76,4 @@ toggle = ()=>{
     }
 }
 
-export default AddNewFeedback
+export default AddNewFeedback;

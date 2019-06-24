@@ -20,20 +20,22 @@
 .WeatherCity div img {
   width: 100%;
 }
-.WeatherCity div:last-of-type{
-font-size: 1.5rem;
-font-weight: 200;
+
+.WeatherCity div:last-of-type {
+  font-size: 1.5rem;
+  font-weight: 200;
 }
+
 @media(min-width:768px) {
   .WeatherCity {
     flex-direction: row;
-  /* justify-content: flex-start;*/
+    /* justify-content: flex-start;*/
     align-items: center;
     font-size: 1vw;
     width: 100%;
     margin: 0;
     padding: 0 1%;
-   /* justify-content: center;*/
-   /* align-self: start;*/
+    /* justify-content: center;*/
+    /* align-self: start;*/
   }
 }

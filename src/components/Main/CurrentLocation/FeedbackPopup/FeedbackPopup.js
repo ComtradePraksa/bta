@@ -28,7 +28,8 @@ class FeedbackPopup extends Component {
             fbId: this.props.fb.id_feedback,
             com: this.state.commentValue,
             dt: stringForDb()
-        }
+        };
+        
         axios({
             method: 'post',
             url: 'http://localhost:3001/location_comments',

@@ -37,9 +37,8 @@ class ChooseCity extends Component {
         const list = this.state.cities.map(city => {
             return (
                 <Link key={city.id} to="/home/city">
-                <li key={city.id} className={classes.dropdownItem}
-                    onClick={this.getClickedCity.bind(this, city)}>{city.city}</li>
-                    </Link>
+                    <li key={city.id} className={classes.dropdownItem} onClick={this.getClickedCity.bind(this, city)}>{city.city}</li>
+                </Link>
             )
         });
 

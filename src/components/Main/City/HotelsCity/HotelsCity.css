@@ -89,7 +89,8 @@
     margin: 0 2%;
   }
 
-  .HotelsCity p, .HotelsCity h3 {
+  .HotelsCity p,
+  .HotelsCity h3 {
     padding-left: 3%;
   }
 }

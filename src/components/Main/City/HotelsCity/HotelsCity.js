@@ -19,8 +19,8 @@ class HotelsCity extends Component {
             const hotelsInfo = [];
             hotelsByCityId.map(e => (hotels.push({ name: e.name, hotel_descr: e.hotel_descr, hotel_img: e.hotel_img, id:e.id })));
             hotelsByCityId.map(e => (hotelsInfo.push({ name: e.name, image: e.hotel_img })));
-            if(this._isMounted){
-            this.setState({ hotels });
+            if (this._isMounted) {
+                this.setState({ hotels });
             }
             this.props.getHotelsInfo(hotelsInfo);
         })();
@@ -37,12 +37,12 @@ class HotelsCity extends Component {
         this.getHotelLinkS();
     };
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         this._isMounted = false;
-    }
+    };
 
     render() {
-        const view = this.state.hotels.slice(0, 5).map((e, index) =><Link key={e.id} to={`/home/hotels/${e.id}`}> <HotelCity key={index} hotel={e} /></Link>)
+        const view = this.state.hotels.slice(0, 5).map((e, index) => <Link key={e.id} to={`/home/hotels/${e.id}`}> <HotelCity key={index} hotel={e}/></Link>)
         
         return (
             <div className = {classes.HotelsCity}>{view}</div>
