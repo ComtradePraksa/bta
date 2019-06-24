@@ -52,6 +52,7 @@
 .User {
   position: relative;
   font-size: 0.8rem;
+  user-select: none;
 }
 
 .User div:first-of-type {
@@ -116,6 +117,10 @@
   color: #444;
 }
 
+.UserMenu a:last-child{
+  margin: 0;
+}
+
 .isAdminCheck:hover,
 .UserMenu a:hover {
   color: rgb(7, 2, 29);
@@ -125,6 +130,7 @@
 
 .UserMenu.Show {
   display: flex;
+  align-items: center;
 }
 
 @media(min-width: 400px) {

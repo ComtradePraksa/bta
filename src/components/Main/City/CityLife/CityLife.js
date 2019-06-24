@@ -8,7 +8,7 @@ class CityLife extends Component {
         <h3 className="Title">
           City Life
         </h3>
-        <div className="CityLifeCategoriesWrapper">
+        <div className={classes.CityLifeCategoriesWrapper}>
           <div className={`${classes.CityLifeCategory} ${classes.FoodAndDrinks}`}>
             <FontAwesomeIcon icon="hamburger" style={{fontSize: '40px', marginBottom: '10px'}}/>
             <p className= {classes.CategoryName}>Food and Drinks</p>
