@@ -20,6 +20,9 @@ const map = (latitude, longitude, location) => {
     const mapEvents = new window.H.mapevents.MapEvents(map);
     const behavior = new window.H.mapevents.Behavior(mapEvents);
     /*eslint-enable */
+    window.addEventListener('resize', function () {
+        map.getViewPort().resize(); 
+    });
 }
 
 export default map;

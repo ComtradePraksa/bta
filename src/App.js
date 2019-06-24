@@ -43,7 +43,7 @@ class App extends Component {
             <Route exact path="/" render={
               (props) => <Login {...props} loginStatus={this.LoginStatus} loggedUser={this.loggedUser} />
             } />
-            <ProtectedRoute key="3" loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser} path="/admin" component={AdminPanel} />
+            <ProtectedRoute loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser} path="/admin" component={AdminPanel} />
             <ProtectedRoute loginStatus={this.LoginStatus} loggedUser={this.state.loggedUser} path="/home" component={Main} />
             <Route path="*" component={() => ':( Error 404, page not found'} />
           </Switch>
