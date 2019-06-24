@@ -38,7 +38,7 @@
   }
 }
 
-@media(min-width: 1080px) {
+@media(min-width: 768px) {
   .Nearby {
     display: grid;
     grid-template-columns: 5fr 0.5fr;

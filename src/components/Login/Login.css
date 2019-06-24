@@ -200,7 +200,7 @@ input {
   font-size: 0.7rem;
 }
 
-@media(max-width: 1080px) {
+@media(max-width: 768px) {
   .LoginWrap {
     grid-template-columns: 1fr;
     grid-template-areas:
