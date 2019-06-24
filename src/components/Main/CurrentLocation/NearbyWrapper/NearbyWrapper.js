@@ -30,6 +30,7 @@ class NearbyWrapper extends Component {
                         return <Nearby
                             title={nearbyPlace.title}
                             icon={nearbyPlace.icon}
+                            distance={nearbyPlace.distance}
                             address={nearbyPlace.vicinity.replace('<br/>', ' ')}
                             category={nearbyPlace.category.title}
                             key={nearbyPlace.id} />

@@ -27,7 +27,8 @@
 
 @media(min-width:1200px) {
   .MapCity {
-    width: 40vw;
-    height: 45vh;
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
   }
 }

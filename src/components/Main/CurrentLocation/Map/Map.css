@@ -13,16 +13,17 @@
 
 .Map:hover {
   filter: brightness(100%);
-  transition: all 0.5s ease;
+  transition: all 1s ease-in-out;
 }
 
 canvas {
-  border-radius: 1vw;
+  border-radius: 50%;
 }
 
 @media(min-width:768px) {
   .Map {
-    width: 40vw;
-    height: 45vh;
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
   }
 }
