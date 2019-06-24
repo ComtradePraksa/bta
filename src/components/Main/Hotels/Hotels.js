@@ -5,6 +5,7 @@ import axios from 'axios'
 import map from '../../../apis/mapsApi'
 
 class Hotels extends Component {
+    _isMounted = false;
     state = {
         hotel: {},
         phone:"/",
@@ -19,28 +20,37 @@ class Hotels extends Component {
                 map(position[0], position[1], undefined);
                 axios.get(`${res.data.results.items[0].href}`)
                 .then(res=>{
-                    if(res.data.contacts.phone !==undefined){
-                    const phone = res.data.contacts.phone[0].value
-                    this.setState({phone})
-                    }
-                    if(res.data.contacts.email !==undefined){
-                        const email = res.data.contacts.email[0].value
-                        this.setState({email})
+                    if(this._isMounted){
+                        if(res.data.contacts.phone !==undefined){
+                        const phone = res.data.contacts.phone[0].value;
+                        this.setState({phone});
                         }
-                    const address = res.data.location.address.text.replace(/<br\/>/g,' ')
-                    this.setState({address})
+                        if(res.data.contacts.email !==undefined){
+                        const email = res.data.contacts.email[0].value;
+                        this.setState({email});
+                        }    
+                    const address = res.data.location.address.text.replace(/<br\/>/g,' ');
+                    this.setState({address});
+                    }
                 })
             });
     };
    
     componentDidMount() {
+        this._isMounted=true;
+        if(this._isMounted){
         (async () => {
             const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
             const hotel = res.data[0]
             this.setState({ hotel });
             this.locationInfo()
         })();
+    }
     };
+
+    componentWillUnmount(){
+        this._isMounted = false;
+    }
 
     render() {
         return (<React.Fragment>

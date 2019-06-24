@@ -5,6 +5,7 @@ import axios from 'axios';
 
 
 class WeatherCity extends Component {
+    _isMounted = false;
     state = {
         weatherData: ''
     };
@@ -14,13 +15,16 @@ class WeatherCity extends Component {
             let city = this.props.city.city.toLowerCase();
             axios.get(`http://api.apixu.com/v1/current.json?key=937e493fb43842b4a90103252191706&q=${city}`, removeAuthHeader())
                 .then(res => {
+                    if(this._isMounted){
                     const weatherData = res.data;
                     this.setState({ weatherData });
+                    }
                 });
         }
     };
 
     componentDidMount() {
+        this._isMounted = true;
         let city = this.props.city.city.toLowerCase();
         axios.get(`http://api.apixu.com/v1/current.json?key=937e493fb43842b4a90103252191706&q=${city}`, removeAuthHeader())
             .then(res => {
@@ -28,6 +32,10 @@ class WeatherCity extends Component {
                 this.setState({ weatherData });
             });
     };
+
+    componentWillUnmount(){
+        this._isMounted = false;
+    }
 
     render() {
         let weather = '';
