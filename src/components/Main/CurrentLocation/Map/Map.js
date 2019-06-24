@@ -16,7 +16,7 @@ class Map extends Component {
 
     render() {
         return (
-            <div className={classes.Map} id="here-map"/>
+            <div className={classes.Map} id="here-map" />
         );
     }
 }

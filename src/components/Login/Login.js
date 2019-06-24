@@ -52,10 +52,6 @@ class Login extends Component {
     }
   };
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  };
-
   render() {
     if (localStorage.jwtoken) {
       return <Redirect to="/home" />

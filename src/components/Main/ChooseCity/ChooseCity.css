@@ -1,37 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
-/*
-body,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-ol,
-ul,
-li,
-input,
-nav {
-  margin: 0;
-  padding: 0;
-  font-family: "Raleway", Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  scroll-behavior: smooth;
-  text-decoration: none;
-  list-style-type: none;
-}*/
 
 .flex {
   display: flex;
-}
-
-.fullHeight {
-  height: 100%;
 }
 
 .pointer {
@@ -40,7 +10,6 @@ nav {
 
 .chooseCity {
   grid-area: choose-city2;
-  width: 100vw;
   align-items: center;
   justify-content: center;
   flex-direction: column;

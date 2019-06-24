@@ -42,7 +42,6 @@ class CurrentLocation extends Component {
             <div className={classes.CurrentLocationWrapper}>
                 <Weather latitude={this.state.latitude} longitude={this.state.longitude}/>
                 <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces}/>
-
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces}/>
             </div>
             <FeedbackContainer loggedUser={this.props.loggedUser}/>
