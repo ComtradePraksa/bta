@@ -30,9 +30,9 @@ nav {
   display: flex;
 }
 
-.fullHeight {
+/* .fullHeight {
   height: 100%;
-}
+} */
 
 .pointer {
   cursor: pointer;
@@ -40,7 +40,6 @@ nav {
 
 .chooseCity {
   grid-area: choose-city2;
-  width: 100vw;
   align-items: center;
   justify-content: center;
   flex-direction: column;

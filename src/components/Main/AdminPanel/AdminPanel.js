@@ -22,7 +22,7 @@ class AdminPanel extends Component {
         if (!this.props.loggedUser.is_admin) {
             return <Redirect to="/home"/>;
         }
-        console.log(this.props.match)
+        
         return (
             <div className={classes.AdminPanel}>
                 <Nav loggedUser={this.props.loggedUser} loginStatus={this.props.loginStatus} />
