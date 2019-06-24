@@ -13,7 +13,6 @@ class Weather extends Component {
             axios.get(`http://api.apixu.com/v1/forecast.json?key=937e493fb43842b4a90103252191706&q=${this.props.latitude},${this.props.longitude}`, removeAuthHeader())
                 .then(res => {
                     const weatherData = res.data;
-                    console.log(weatherData);
                     this.setState({ weatherData });
                 });
         }
