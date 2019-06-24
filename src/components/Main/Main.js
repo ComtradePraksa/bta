@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Main.css';
-import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
+import ChooseCityVersionTwo from './ChooseCity/ChooseCity';
 import CurrentLocation from './CurrentLocation/CurrentLocation'
 import City from './City/City'
 import Nav from './Nav/Nav';
