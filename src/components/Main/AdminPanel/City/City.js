@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
+import axios from 'axios';
+import {removeAuthHeader} from '../../../../apis/removeAuthHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classes from './City.css';
 
 class City extends Component {
     state = {
         city_name: '',
-        geolocation: '',
         state: '',
+        city_lat_lon: '',
         locations: []
     };
 
@@ -21,20 +24,35 @@ class City extends Component {
         })();
     };
 
+    getGeolocation = () => {
+        if (this.state.city_name !== '') {
+            axios.get(`https://geocoder.api.here.com/6.2/geocode.json?app_id=oAYeL0kErguvl8l584Tn&app_code=1XgtGSFk3UzuYMqCKiRRSw&searchtext=${this.state.city_name}`, removeAuthHeader())
+            .then(res => {
+                const data = res.data['Response']['View'][0]['Result'][0]['Location']['NavigationPosition'][0];
+                const city_lat_lon = `${data['Latitude']},${data['Longitude']}`;
+                this.setState({city_lat_lon});
+            });
+        }
+    };
+
     inputHandler = (e) => {
         this.setState({[e.target.name]: e.target.value});
     };
 
     saveHandler = () => {
-        const newCity = {
-            city_name: this.state.city_name,
-            geolocation: this.state.geolocation,
-            state: this.state.state
-        };
-        (async () => {
-            await postToDatabase('/locations', newCity);
-            this.getDatabase();
-        })();
+        if (this.state.city_name && this.state.state !== '') {
+            this.getGeolocation();
+            
+            const newCity = {
+                city_name: this.state.city_name,
+                state: this.state.state,
+                city_lat_lon: this.state.city_lat_lon
+            };
+            (async () => {
+                await postToDatabase('/locations', newCity);
+                this.getDatabase();
+            })();
+        } else { alert('Enter city-name and state'); }
     };
 
     deleteHandler = (id) => {
@@ -51,24 +69,23 @@ class City extends Component {
     render() {
         const locations = this.state.locations.map(city => {
             return (
-                <div key={city.id}>
-                    {city.id}. {city.name} - state: {city.state}
-                    <span onClick={() => this.deleteHandler(city.id)}>
-                        <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
-                    </span>
+                <div key={city.id} className={classes.CityDb}>
+                    <div className={classes.CityNameDb}>{city.name}</div>
+                    <div onClick={() => this.deleteHandler(city.id)}>state:&nbsp;{city.state}<FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/></div>
                 </div>
             )
         });
 
         return(
-            <div>
+            <div className={classes.City}>
                 <h2>Enter new city for travel</h2>
-                <div>
+                <div className={classes.AdminCityInput}>
                     <input onBlur={this.inputHandler} type="text" name="city_name" placeholder="Enter city"/>
                     <input onBlur={this.inputHandler} type="text" name="state" placeholder="Enter state for city"/>
                 </div>
                 <button onClick={this.saveHandler}>Save to database</button>
-                <div>
+                <h2>Cities in database:</h2>
+                <div className={classes.CitiesFromDb}>
                     {locations}
                 </div>
             </div>

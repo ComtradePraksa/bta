@@ -33,8 +33,8 @@ class FeedbackTicket extends Component {
     addNewComent = (newComment) => {
         const copy = this.state.comments;
         this.setState({
-            comments: [newComment,...copy]
-        })
+            comments: [newComment, ...copy]
+        });
     };
 
     getNumberOfComments = () => {
@@ -48,8 +48,6 @@ class FeedbackTicket extends Component {
         return sum;
     };
 
-
-    
     render() {
         return (
             <div className={classes.ticketContainer}>
@@ -71,7 +69,7 @@ class FeedbackTicket extends Component {
                     <div className={classes.numberOfCommentsWrapper}>
                         <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
                         <p style={{ marginLeft: "8px", color: "gray" }}>{this.getNumberOfComments()}</p>
-                    {(this.props.loggedUser.id === this.props.fb.id_user) && <FontAwesomeIcon onClick={()=>this.props.getClickedId(this.props.fb.id_feedback)} icon="trash-alt"/>}
+                        {(this.props.loggedUser.id === this.props.fb.id_user) && <FontAwesomeIcon onClick={() => this.props.getClickedId(this.props.fb.id_feedback)} icon="trash-alt" />}
 
                     </div>
                 </div>

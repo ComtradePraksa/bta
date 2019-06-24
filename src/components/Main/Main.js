@@ -1,42 +1,37 @@
 import React, { Component } from 'react';
-import {BrowserRouter} from 'react-router-dom';
 import classes from './Main.css';
-import ChooseCityVersionTwo from './ChooseCityVersionTwo/ChooseCityVersionTwo';
+import ChooseCityVersionTwo from './ChooseCity/ChooseCity';
 import CurrentLocation from './CurrentLocation/CurrentLocation'
 import City from './City/City'
-import AdminPanel from './AdminPanel/AdminPanel';
 import Nav from './Nav/Nav';
+import Hotels from './Hotels/Hotels'
+import { ProtectedRoute } from '../../ProtectedRoute'
+import { Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
     state = {
-        city:'',
+        city: '',
         is_admin: this.props.loggedUser.is_admin,
         adminToggle: false
     };
-    
-    getCity = (city) => {
-        this.setState({city});
-    };
 
-    adminToggleHandler = (status) => {
-        this.setState({ adminToggle: status });
+    getCity = (city) => {
+        this.setState({ city });
     };
 
     render() {
-        let main;
-        if (this.state.adminToggle) {
-            main = <BrowserRouter><AdminPanel/></BrowserRouter>;
-        }
-        if (this.state.adminToggle === false && this.state.city === '') {
-            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<CurrentLocation loggedUser={this.props.loggedUser} key="2"/>];
-        }
-        if (this.state.adminToggle === false && this.state.city !== '') {
-            main = [<ChooseCityVersionTwo key="1" getCity={this.getCity}/>,<City key='2' city={this.state.city}/>];
-        }
         return (
             <div className={classes.Main}>
-                <Nav loginStatus={this.props.loginStatus} loggedUser={this.props.loggedUser} adminToggle={this.adminToggleHandler}/>
-                {main}
+                <Nav loggedUser={this.props.loggedUser} loginStatus={this.props.loginStatus} />
+                <ChooseCityVersionTwo key="1" getCity={this.getCity} />
+                <ProtectedRoute key="2" loggedUser={this.props.loggedUser} exact path="/home" component={CurrentLocation} />
+                
+                <Route path="/home/city" key="4" render={(props) => (
+                    (this.state.city !== '')
+                        ? <City city={this.state.city} {...props} />
+                        : <Redirect to='/home' />
+                )} />
+                <ProtectedRoute key="3" loggedUser={this.props.loggedUser} exact path="/home/hotels/:id" component={Hotels} />
             </div>
         );
     }

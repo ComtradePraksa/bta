@@ -1,13 +1,14 @@
 .Map {
   grid-area: map;
   display: block;
-  margin: auto;
-  width: 90vw;
-  height: 60vw;
+  /* margin: auto; */
+  width: 85vw;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
   z-index: 1;
   background-color: gray;
   filter: brightness(80%);
+  /*height: 30vh;*/
+  height: 50vh;
 }
 
 .Map:hover {
@@ -17,8 +18,7 @@
 
 @media(min-width:768px) {
   .Map {
-    margin: 10% auto;
-    width: 35vw;
-    height: 35vw;
+    width: 40vw;
+    height: 45vh;
   }
 }

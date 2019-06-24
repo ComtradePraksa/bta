@@ -1,7 +1,13 @@
 .HotelWrapper {
     color: #fff;
+    grid-area: currentLocation;
 }
 
 .HotelWrapper a {
     color: #fff;
+}
+
+.MapCity{
+    width: 300px;
+    height: 300px;
 }

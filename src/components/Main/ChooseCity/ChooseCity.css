@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
-
+/*
 body,
 div,
 h1,
@@ -24,7 +24,7 @@ nav {
   scroll-behavior: smooth;
   text-decoration: none;
   list-style-type: none;
-}
+}*/
 
 .flex {
   display: flex;
@@ -41,16 +41,14 @@ nav {
 .chooseCity {
   grid-area: choose-city2;
   width: 100vw;
-  height: 5vh;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  z-index: 2;
+  padding: 3% 2%;
 }
 
 .chooseCity h2 {
   font-size: 1rem;
-
   font-weight: 200;
 }
 
@@ -59,7 +57,7 @@ nav {
 }
 
 .cityLink {
-  color: rgba(1, 1, 34, 0.979);
+  color: whitesmoke;
   text-decoration: underline;
   padding: 0 1%;
 }
@@ -69,6 +67,7 @@ nav {
   position: relative;
   width: 80%;
   background-color: transparent;
+  z-index: 2;
 }
 
 .dropdown {
@@ -92,9 +91,7 @@ nav {
   min-height: 0vh;
   max-height: 15vh;
   overflow-y: auto;
-  /* border: 1px solid black;*/
   flex-direction: column;
-  z-index: 10;
   margin-top: 0.5rem;
 }
 
@@ -102,9 +99,11 @@ nav {
   padding: 5px 10px;
   border-bottom: 0.4px solid rgba(237, 230, 230, 0.18);
   min-height: 5vh;
-  /*  background-color: white;*/
   background: rgba(255, 105, 145);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dropdownItem:hover {
@@ -118,7 +117,15 @@ nav {
   color: rgb(189, 184, 184);
   transition: 0.7s;
 }
-
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
 @media(min-width: 400px) {
   .dropdownWrapper {
     width: 50vw;
@@ -146,5 +153,11 @@ nav {
 
   .dropdownItemList {
     margin-top: 0;
+  }
+}
+
+@media(min-width:1200px) {
+  .dropdown {
+    max-width: 80%;
   }
 }

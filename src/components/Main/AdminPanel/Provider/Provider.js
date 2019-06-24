@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classes from './Provider.css';
 
 class Provider extends Component {
     state = {
@@ -22,14 +23,16 @@ class Provider extends Component {
     };
 
     saveHandler = () => {
-        const newProvider = {
-            name: this.state.name,
-            type: this.state.type
-        };
-        (async () => {
-            await postToDatabase('/provider', newProvider);
-            this.getDatabase();
-        })();
+        if (this.state.name && this.state.type !== '') {
+            const newProvider = {
+                name: this.state.name,
+                type: this.state.type
+            };
+            (async () => {
+                await postToDatabase('/provider', newProvider);
+                this.getDatabase();
+            })();
+        } else { alert('Enter provider name and type'); }
     };
 
     deleteHandler = (id) => {
@@ -46,17 +49,14 @@ class Provider extends Component {
     render() {
         const providers = this.state.provider.map(provider => {
             return (
-                <div key={provider.id}>
-                    {provider.id}. {provider.name} - type: {provider.type}
-                    <span onClick={() => this.deleteHandler(provider.id)}>
-                        <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
-                    </span>
+                <div key={provider.id} className={classes.ProviderDetails}>
+                    <div onClick={() => this.deleteHandler(provider.id)}>{provider.name} - type: {provider.type} <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/></div>
                 </div>
             )
         });
 
         return(
-            <div>
+            <div className={classes.Provider}>
                 <h2>Enter new provider for travel</h2>
                 <div>
                     <input onBlur={this.inputHandler} type="text" name="name" placeholder="Enter provider name"/>
@@ -71,7 +71,7 @@ class Provider extends Component {
                     </select>
                 </div>
                 <button onClick={this.saveHandler}>Add to database</button>
-                <div>
+                <div className={classes.ProviderList}>
                     {providers}
                 </div>
             </div>

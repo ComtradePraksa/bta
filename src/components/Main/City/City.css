@@ -1,0 +1,47 @@
+.City {
+  grid-area: currentLocation;
+}
+.CityWrapper {
+  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 5% 0;
+  width: 100vw;
+}
+
+@media(min-width:768px) {
+  .CityWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    grid-template-areas:
+      /* "accTitle showAll WeatherCity"
+      "topRated topRated ." */
+      "HotelsCity HotelsCity WeatherCity"
+      "HotelsCity HotelsCity MapCity"
+      "HotelsCity HotelsCity MapCity"
+      "HotelsCity HotelsCity MapCity"
+      "HotelsCity HotelsCity MapCity";
+    padding: 3%;
+  }
+
+  .accTitle {
+    grid-area: accTitle;
+  }
+
+  .showAll {
+    grid-area: showAll;
+  }
+
+  .topRated {
+    grid-area: topRated;
+  }
+}
+
+@media(min-width:1400px) {
+  .CityWrapper {
+    padding: 0 5%;
+  }
+}

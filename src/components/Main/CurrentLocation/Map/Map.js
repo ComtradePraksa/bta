@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Map.css';
-import map from '../../../../apis/mapsApi'
+import map from '../../../../apis/mapsApi';
 
 class Map extends Component {
     state = {
@@ -10,13 +10,13 @@ class Map extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.nearbyPlaces !== prevProps.nearbyPlaces) {
-           map(this.props.latitude, this.props.longitude, this.props.nearbyPlaces);
+            map(this.props.latitude, this.props.longitude, this.props.nearbyPlaces);
         }
     };
 
     render() {
         return (
-            <div className={classes.Map} id="here-map" />
+            <div className={classes.Map} id="here-map"/>
         );
     }
 }

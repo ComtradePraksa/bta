@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classes from "./AddNewFeedback.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
 class AddNewFeedback extends Component {
 
     render() {
@@ -15,12 +14,10 @@ class AddNewFeedback extends Component {
                     <div>
 
                     </div>
-           
-                   
                 </div>
-
             </div>
         )
     }
 }
+
 export default AddNewFeedback

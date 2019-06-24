@@ -1,0 +1,13 @@
+.Feedback {
+    font-size: 1vw;
+}
+
+.Feedback h2 {
+    margin: 2%;
+}
+
+@media(max-width: 1080px) {
+    .Feedback {
+        font-size: 3vw;
+    }
+  }

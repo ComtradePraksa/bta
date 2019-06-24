@@ -9,7 +9,7 @@
         "com com delete";
     padding: 3%;
     grid-row-gap: 3px;
-   /* box-shadow: 0px 0 16px 3px rgba(0, 0, 0, 0.21); */
+    /* box-shadow: 0px 0 16px 3px rgba(0, 0, 0, 0.21); */
     box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.21);
     margin: 5% 0;
     font-family: "Raleway", Arial, Helvetica, sans-serif;
@@ -19,7 +19,7 @@
 
 .userName {
     grid-area: name;
-    font-weight: 500; 
+    font-weight: 500;
 }
 
 .userPicture {
@@ -74,12 +74,14 @@
     .deleteComment {
         font-size: 1.2rem;
     }
+
     .commentDate {
         font-size: 0.7rem;
     }
-@media(min-width: 1280px) {
-    .commentDate {
-        font-size: 0.9rem;
+
+    @media(min-width: 1280px) {
+        .commentDate {
+            font-size: 0.9rem;
+        }
     }
-}
 }

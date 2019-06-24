@@ -1,34 +1,28 @@
 import React, { Component } from 'react';
 import {getFromDatabase} from '../../../../apis/btaApi';
+import classes from './Feedback.css';
 
 class Feedback extends Component {
     state = {
-        location_feedbacks: []
+        location_feedbacks: '',
+        acc_feedbacks: '',
+        transportation_feedbacks: ''
     };
 
-    componentDidMount() {
+    getDatabase = (tableName, saveLocation) => {
         (async () => {
-            const data = await getFromDatabase(`/location_feedbacks`);
-            const location_feedbacks = data.data;
-            this.setState({ location_feedbacks });
+            const data = await getFromDatabase(`${tableName}`);
+            let feedbacks = data.data;
+            this.setState({ [saveLocation]: feedbacks });
         })();
     };
 
     render() {
         return (
-            <div>
-                <div>
-                    <h3>City feedbacks:</h3>
-                    <div>
-
-                    </div>
-                </div>
-                <div>
-                    <h3>Accommodation feedbacks:</h3>
-                    <div>
-
-                    </div>
-                </div>
+            <div className={classes.Feedback}>
+                <div onClick={() => this.getDatabase('/location_feedbacks', 'location_feedbacks')}>Location Feedbacks</div>
+                <div onClick={() => this.getDatabase('/acc_feedbacks', 'acc_feedbacks')}>Accommodation Feedbacks</div>
+                <div onClick={() => this.getDatabase('/transportation_feedbacks', 'transportation_feedbacks')}>Transportation Feedbacks</div>
             </div>
         )
     }

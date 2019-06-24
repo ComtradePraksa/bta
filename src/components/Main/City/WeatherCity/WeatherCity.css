@@ -1,7 +1,39 @@
 .WeatherCity {
-  grid-area: choose-city;
-  display: block;
-  margin: 1% auto;
-  max-height: 5%;
-  z-index: 1;
+  grid-area: WeatherCity;
+  /* display: block;*/
+  margin: 0 auto;
+  /* max-height: 5%;*/
+  color: white;
+  display: flex;
+  font-size: 4vw;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+.WeatherCity div {
+  text-align: center;
+  padding: 0 2%;
+}
+
+.WeatherCity div img {
+  width: 100%;
+}
+.WeatherCity div:last-of-type{
+font-size: 1.5rem;
+font-weight: 200;
+}
+@media(min-width:768px) {
+  .WeatherCity {
+    flex-direction: row;
+  /* justify-content: flex-start;*/
+    align-items: center;
+    font-size: 1vw;
+    width: 100%;
+    margin: 0;
+    padding: 0 1%;
+   /* justify-content: center;*/
+   /* align-self: start;*/
+  }
 }

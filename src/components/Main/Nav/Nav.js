@@ -1,25 +1,20 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import classes from './Nav.css';
+import { Link } from 'react-router-dom';
+import OutsideAlert from '../../../OutsideAlert'
 
-class Nav extends Component{
+class Nav extends Component {
     state = {
-        toggleMenu: false,
-        toggleLogout: false
-    };
-
-    toggleMenu = () => {
-        this.setState({ toggleMenu: !this.state.toggleMenu });
+        toggleLogout: false,
+        isOpenUserMenu: false
     };
 
     toggleUserMenu = () => {
-        this.setState({ toggleUserMenu: !this.state.toggleUserMenu });
+        this.setState({ isOpenUserMenu: !this.state.isOpenUserMenu });
     };
 
-    logout = (e) => {
-        e.preventDefault();
-        //go back to login page
-        this.props.loginStatus(false,{});
-        //remove token from localStorage
+    logout = () => {
+        this.props.loginStatus(false, {});
         localStorage.removeItem('jwtoken');
     };
 
@@ -28,39 +23,35 @@ class Nav extends Component{
         let adminPanelLink;
         let admin = ''
         if (isAdmin) {
-            adminPanelLink = 'Admin panel';
-            admin = ' (admin)';
+            adminPanelLink = 'Admin\xa0panel';
         }
         return (
             <div className={classes.Container}>
                 <div className={[classes.Nav, classes.flexNav, classes.center].join(' ')}>
-                    <div className={classes.Logo} onClick={() => this.props.adminToggle(false)}>
-                        <span>bta.</span>
-                    </div>
+                    <Link to="/home">
+                        <div className={classes.Logo}>
+                            <span>bta.</span>
+                        </div>
+                    </Link>
                     <div className={[classes.Menu, classes.flexNav, classes.center].join(' ')}>
 
-                        <div onClick={this.toggleUserMenu} className={[classes.User, classes.fullWidth, classes.flexNav, classes.center].join(' ')}>
-                            <div className={classes.UserName}>{this.props.loggedUser.username} {admin}</div>
-                            <div className={classes.UserPhoto}>
-                                <img src={require(`../../../${this.props.loggedUser.photo}`)} alt="" className={classes.fullWidth}/>
+                        <OutsideAlert isOpenUserMenu={this.state.isOpenUserMenu} toggleUserMenu={this.toggleUserMenu}>
+                            <div onClick={this.toggleUserMenu} className={[classes.User, classes.fullWidth, classes.flexNav, classes.center].join(' ')}>
+                                <div className={classes.UserName}>{this.props.loggedUser.username} {admin}</div>
+                                <div className={classes.UserPhoto}>
+                                    {
+                                        (this.props.loggedUser.photo) ? (<img src={require(`../../../${this.props.loggedUser.photo}`)} alt="" className={classes.fullWidth} />) : null
+                                    }
+                                </div>
+                                <div className={this.state.isOpenUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
+                                    <Link to="/admin">
+                                        <div className={[classes.isAdminCheck, classes.fullWidth].join(' ')}>{adminPanelLink}</div>
+                                    </Link>
+                                    <Link to="/" onClick={this.logout} className={classes.fullWidth}>Logout</Link>
+                                </div>
                             </div>
-                            <div className={this.state.toggleUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
-                                <div className={[classes.isAdminCheck, classes.fullWidth].join(' ')} onClick={() => this.props.adminToggle(true)}>{adminPanelLink}</div>
-                                <a href="/link" onClick={this.logout}className = {classes.fullWidth}>Logout</a>
-                            </div>
-                        </div>
-                        <div onClick={this.toggleMenu} className={classes.BurgerMenu}>
-                            <div className={this.state.toggleMenu ? `${classes.TransformMenu} ${classes.Line}` : `${classes.Line}`}></div>
-                            <div className={this.state.toggleMenu ? `${classes.TransformMenu} ${classes.Line}` : `${classes.Line}`}></div>
-                            <div className={this.state.toggleMenu ? `${classes.TransformMenu} ${classes.Line}` : `${classes.Line}`}></div>
-                        </div>
-
+                        </OutsideAlert>
                     </div>
-                    <ul className={this.state.toggleMenu ? `${classes.NavbarToggle} ${classes.Show}` : `${classes.NavbarToggle}`}>
-                        <li><a href="/link">Accommodations</a></li>
-                        <li><a href="/link">Transport</a></li>
-                        <li><a href="/link">City life</a></li>
-                    </ul>
                 </div>
             </div>
         );

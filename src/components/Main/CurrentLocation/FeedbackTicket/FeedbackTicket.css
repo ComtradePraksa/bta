@@ -19,6 +19,7 @@
     text-align: left;
     grid-row-gap: 3px;
     font-family: "Raleway", Arial, Helvetica, sans-serif;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
 }
 
 .feedbackType {
@@ -34,7 +35,7 @@
     display: flex;
     /*justify-content: center;*/
     align-items: flex-start;
-    padding-right: 5x;
+    padding-right: 5px;
 
 }
 

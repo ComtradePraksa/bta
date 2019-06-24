@@ -1,50 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
 body, div,
-h1, h2, h3, h4, h5, h6, p,
-a, ol, ul, li, input
-nav {
+h1, h2, h3, h4, h5, h6, nav, p,
+a, ol, ul, li, input, textarea,
+button {
   margin: 0;
   padding: 0;
-
   box-sizing: border-box;
   outline: none;
   border: none;
   scroll-behavior: smooth;
   text-decoration: none;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
 .Main {
   display: grid;
-  grid-gap: 20px;
   grid-template-areas:
     "nav"
     "choose-city2"
-    "weather"
-    "map"
-    "nearby"
+    "currentLocation"
     "feedback";
   background-color: #333;
   position: relative;
-  min-height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(39, 96, 164, 0.91) 0%, rgba(39, 96, 164, 0.96) 50%, rgba(28, 66, 110, 1) 100%), url("./../../assets/new-york-city.jpg");
+  background-image: linear-gradient(to bottom, rgba(19, 44, 64, 0.81) 0%, rgba(19, 44, 64, 0.95) 50%, rgba(19, 44, 64, 1) 100%), url("../../assets/taxi-cab-381233_1920.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* padding: 2.5rem 1rem; */
   overflow: hidden;
 }
-
-/* .Main::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(39, 96, 164, 0.91) 0%, rgba(39, 96, 164, 0.96) 50%, rgba(28, 66, 110, 1) 100%);
-} */
-
 
 @media(min-width: 768px) {
   .Main {
@@ -52,26 +37,7 @@ nav {
     grid-template-areas:
       "nav nav nav nav"
       "choose-city2 choose-city2 choose-city2 choose-city2"
-      "nearby nearby weather weather"
-      "nearby nearby map map"
-      "nearby nearby map map"
+      "currentLocation currentLocation currentLocation currentLocation"
       "feedback feedback feedback feedback"
-      "weather-city weather-city weather-city weather-city";
   }
 }
-
-/* prvobitni prikaz 
-.Main {
-    display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
-    grid-template-areas:
-        "welcome welcome welcome welcome"
-        "choose-city choose-city choose-city choose-city"
-        "choose-city2 choose-city2 choose-city2 choose-city2"
-        "weather weather weather weather"
-        "nearby nearby map map"
-        "nearby nearby map map"
-        "feedback feedback feedback feedback"
-        "weather-city weather-city weather-city weather-city";
-}
-*/
