@@ -6,7 +6,8 @@ class Feedback extends Component {
     state = {
         location_feedbacks: '',
         acc_feedbacks: '',
-        transportation_feedbacks: ''
+        transportation_feedbacks: '',
+        regEx_message: ''
     };
 
     getDatabase = (tableName, saveLocation) => {

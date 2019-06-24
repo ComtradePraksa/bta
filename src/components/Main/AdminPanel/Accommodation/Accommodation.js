@@ -5,21 +5,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './Accommodation.css';
 
 class Accommodation extends Component {
+    _isMounted = false;
     state = {
         link: '',
         id_city: '',
         locations: [],
         accommodationsData: [],
         accommodationsNew: '',
-        updateId: ''
+        updateId: '',
+        regEx_message: ''
     };
 
-    getDatabase = (idCity='') => {
-        if (idCity !== undefined) {
+    getDatabase = (idCity) => {
+        if (idCity !== '') {
             (async () => {
                 const data = await getFromDatabase(`/accommodations${idCity}`);
                 const accommodationsData = data.data;
-                this.setState({accommodationsData});
+                if (this._isMounted) {
+                    this.setState({accommodationsData});
+                }
             })();
         }
     };
@@ -41,22 +45,22 @@ class Accommodation extends Component {
                         id_city: idCity };
                 this.setState({accommodationsNew});
             })();
-        } else { alert('Enter link to get accommodation info'); }
+        } else { this.setState({regEx_message: 'Please, enter link to get accommodation info'}); }
     };
 
     saveHandler = () => {
         if (this.state.accommodationsNew !== '') {
             (async () => {
                 await postToDatabase('/accommodations', this.state.accommodationsNew);
-                this.getDatabase();
+                this.getDatabase(`/id_city/${this.state.accommodationsNew.id_city}`);
             })();
-        } else { alert('Enter accommodation info'); }
+        } else { this.setState({regEx_message: 'Please, enter accommodation info'}); }
     };
 
     updateHandler = () => {
         (async () => {
             await patchToDatabase('/accommodations', this.state.updateId, this.state.accommodationsNew);
-            this.getDatabase();
+            this.getDatabase(`/id_city/${this.state.accommodationsNew.id_city}`);
         })();
         this.setState({updateId: ''});
     };
@@ -64,7 +68,7 @@ class Accommodation extends Component {
     deleteHandler = (id) => {
         (async () => {
             await deleteFromDatabase('/accommodations', id);
-            this.getDatabase();
+            this.getDatabase(`/id_city/${this.state.id_city}`);
         })();
     };
 
@@ -74,15 +78,22 @@ class Accommodation extends Component {
     };
 
     componentDidMount() {
+        this._isMounted = true;
         (async () => {
             const data = await getFromDatabase(`/locations`);
             const locations = [];
             data.data.map(city => (
                 locations.push({ id: city.id, city: city.city_name })
             ));
-            this.setState({ locations });
+            if (this._isMounted) {
+                this.setState({ locations });
+                this.getDatabase(`/id_city/${locations[0].id}`);
+            }
         })();
-        this.getDatabase();
+    };
+
+    componentWillUnmount() {
+        this._isMounted = false;
     };
 
     render() {
@@ -143,12 +154,13 @@ class Accommodation extends Component {
                 {inputSwitch}
                 {inputForGetData}
                 {accommodationCheck}
+                <p>{this.state.regEx_message}</p>
                 {buttonSwitch}
                 <h2>All accommodations</h2>
                 <div>
                     <h3>Accommodations from city:</h3>
                     <select onClick={(e) => this.getDatabase(`/id_city/${e.target.value}`)} name="id_city">
-                            <option value="" defaultChecked disabled>Select location:</option>
+                            <option value="" disabled>Select location:</option>
                             {locations}
                     </select>
                 </div>

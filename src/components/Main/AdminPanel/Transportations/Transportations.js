@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './Transportations.css';
 
 class Transportations extends Component {
+    _isMounted = false;
     state = {
         locations: [],
         provider: [],
@@ -12,14 +13,17 @@ class Transportations extends Component {
         to_location_id: '',
         type: '',
         provider_id: '',
-        updateId: ''
+        updateId: '',
+        regEx_message: ''
     };
 
     getDatabase = (tableName='/transportations', saveLocation='transportations') => {
         (async () => {
             const data = await getFromDatabase(`${tableName}`);
             const dataToSave = data.data;
-            this.setState({[saveLocation]: dataToSave});
+            if (this._isMounted) {
+                this.setState({[saveLocation]: dataToSave});
+            }
         })();
     };
 
@@ -45,7 +49,7 @@ class Transportations extends Component {
                 await postToDatabase('/transportations', transportationData);
                 this.getDatabase();
             })();
-        } else { alert('Select route for transportation'); }
+        } else { this.setState({regEx_message: 'Please, select route for transportation'}); }
     };
 
     updateHandler = () => {
@@ -68,17 +72,24 @@ class Transportations extends Component {
     };
 
     componentDidMount() {
+        this._isMounted = true;
         (async () => {
             const data = await getFromDatabase(`/locations`);
             const locations = [];
             data.data.map(city => (
                 locations.push({ id: city.id, city: city.city_name })
             ));
-            this.setState({ locations });
+            if (this._isMounted) {
+                this.setState({ locations });
+            }
         })();
 
         this.getDatabase('/provider', 'provider');
         this.getDatabase();
+    };
+
+    componentWillUnmount() {
+        this._isMounted = false;
     };
 
     render() {
@@ -133,6 +144,7 @@ class Transportations extends Component {
                         {provider}
                     </select>
                 </div>
+                <p>{this.state.regEx_message}</p>
                 <button onClick={this.saveHandler}>Add to database</button>
                 <div>
                     {transportations}

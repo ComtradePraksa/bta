@@ -4,17 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './Provider.css';
 
 class Provider extends Component {
+    _isMounted = false;
     state = {
         name: '',
         type: '',
-        provider: []
+        provider: [],
+        regEx_message: ''
     };
 
     getDatabase = () => {
         (async () => {
             const data = await getFromDatabase(`/provider`);
             const provider = data.data;
-            this.setState({ provider });
+            if (this._isMounted) {
+                this.setState({ provider });
+            }
         })();
     };
 
@@ -32,7 +36,7 @@ class Provider extends Component {
                 await postToDatabase('/provider', newProvider);
                 this.getDatabase();
             })();
-        } else { alert('Enter provider name and type'); }
+        } else { this.setState({regEx_message: 'Please, enter provider name and type'}); }
     };
 
     deleteHandler = (id) => {
@@ -43,7 +47,12 @@ class Provider extends Component {
     };
 
     componentDidMount() {
+        this._isMounted = true;
         this.getDatabase();
+    };
+
+    componentWillUnmount() {
+        this._isMounted = false;
     };
 
     render() {
@@ -70,6 +79,7 @@ class Provider extends Component {
                         <option value="Taxi">Taxi</option>
                     </select>
                 </div>
+                <p>{this.state.regEx_message}</p>
                 <button onClick={this.saveHandler}>Add to database</button>
                 <div className={classes.ProviderList}>
                     {providers}
