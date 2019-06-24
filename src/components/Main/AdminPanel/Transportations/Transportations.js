@@ -53,8 +53,16 @@ class Transportations extends Component {
     };
 
     updateHandler = () => {
+        let providerName = document.querySelector('#type').value;
+        const provider = this.state.provider.find(provider => provider.name === providerName);
+        const transportationEditedData = {
+            from_location_id: document.querySelector('#from_location_id').value,
+            to_location_id: document.querySelector('#to_location_id').value,
+            type: provider.type,
+            provider_id: provider.id
+        };
         (async () => {
-            await patchToDatabase('/transportations', this.state.updateId, this.state.accommodationsNew);
+            await patchToDatabase('/transportations', this.state.updateId, transportationEditedData);
             this.getDatabase();
         })();
         this.setState({updateId: ''});
@@ -67,8 +75,14 @@ class Transportations extends Component {
         })();
     };
 
-    getDataForUpdate = (id) => {
+    getRouteForUpdate = (id) => {
         this.setState({updateId: id});
+        const selectedRoute = this.state.transportations.find(route => route.id === id);
+        document.querySelector(`#from_location_id [value="${selectedRoute.from_location_id}"]`).selected = true;
+        document.querySelector(`#to_location_id [value="${selectedRoute.to_location_id}"]`).selected = true;
+
+        const provider = this.state.provider.find(provider => provider.id === selectedRoute.provider_id);
+        document.querySelector(`#type [value="${provider.name}"]`).selected = true;
     };
 
     componentDidMount() {
@@ -120,7 +134,7 @@ class Transportations extends Component {
                     <span onClick={() => this.deleteHandler(transportation.id)}>
                         <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>
-                    <span onClick={() => this.getDataForUpdate(transportation.id)}>
+                    <span onClick={() => this.getRouteForUpdate(transportation.id)}>
                         <FontAwesomeIcon icon={['fas', 'edit']} style={{color: "lightgreen", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>
                 </div>
@@ -129,23 +143,26 @@ class Transportations extends Component {
 
         return(
             <div className={classes.Transportations}>
-                <h2>Enter new transportation for travel</h2>
+                <h2>{(this.state.updateId === '') ? 'Enter new transportation for travel' : 'Edit selected route:'}</h2>
                 <div>
-                    <select onClick={this.inputHandler} name="from_location_id">
+                    <select onClick={this.inputHandler} name="from_location_id" id="from_location_id">
                         <option value="" defaultChecked>Select location from:</option>
                         {locations}
                     </select>
-                    <select onClick={this.inputHandler} name="to_location_id">
+                    <select onClick={this.inputHandler} name="to_location_id" id="to_location_id">
                         <option value="" defaultChecked>Select location to:</option>
                         {locations}
                     </select>
-                    <select onClick={this.inputHandler} name="type">
+                    <select onClick={this.inputHandler} name="type" id="type">
                         <option value="" defaultChecked>Select provider:</option>
                         {provider}
                     </select>
                 </div>
                 <p>{this.state.regEx_message}</p>
-                <button onClick={this.saveHandler}>Add to database</button>
+                { (this.state.updateId === '') ?
+                    <button onClick={this.saveHandler}>Add to database</button>
+                  : <button onClick={this.updateHandler}>Update route</button> 
+                }
                 <div>
                     {transportations}
                 </div>
