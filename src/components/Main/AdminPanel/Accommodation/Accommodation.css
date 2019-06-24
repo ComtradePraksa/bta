@@ -54,20 +54,24 @@
     .Accommodation {
         font-size: 3vw;
     }
+
     .AccommodationDetails {
         font-size: 3vw;
         flex-direction: column;
         margin: 5% 0;
     }
+
     .AccommodationsDescr {
         margin: 5%;
     }
+
     .Accommodation select {
         font-size: 3vw;
         margin: 3% auto;
     }
+
     .AllAcomodations {
         display: block;
         margin: 0 auto;
     }
-  }
+}

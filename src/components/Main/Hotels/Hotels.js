@@ -8,9 +8,9 @@ class Hotels extends Component {
     _isMounted = false;
     state = {
         hotel: {},
-        phone:"/",
-        email:"/",
-        address:" "
+        phone: '/',
+        email: '/',
+        address: ' '
     };
 
     locationInfo = () => {
@@ -41,9 +41,9 @@ class Hotels extends Component {
         if(this._isMounted){
         (async () => {
             const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
-            const hotel = res.data[0]
+            const hotel = res.data[0];
             this.setState({ hotel });
-            this.locationInfo()
+            this.locationInfo();
         })();
     }
     };
@@ -53,18 +53,18 @@ class Hotels extends Component {
     }
 
     render() {
-        return (<React.Fragment>
-            <div className={classes.HotelWrapper}>
-                <h3>{this.state.hotel.name}</h3>
-                <p>{this.state.hotel.hotel_descr}</p>
-                <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image} /></div>
-                <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
-                
-            </div>
-            <div className={classes.MapCity} id="here-map"> </div>
-            <div>Adress: {this.state.address}</div>
-            <div>Phone: {this.state.phone}</div>
-            <div>Email: {this.state.email}</div>
+        return (
+            <React.Fragment>
+                <div className={classes.HotelWrapper}>
+                    <h3>{this.state.hotel.name}</h3>
+                    <p>{this.state.hotel.hotel_descr}</p>
+                    <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image}/></div>
+                    <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
+                </div>
+                <div className={classes.MapCity} id="here-map"></div>
+                <div>Adress: {this.state.address}</div>
+                <div>Phone: {this.state.phone}</div>
+                <div>Email: {this.state.email}</div>
             </React.Fragment>
         );
     }

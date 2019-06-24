@@ -1,9 +1,10 @@
 .MapCity {
   grid-area: MapCity;
   display: block;
-  margin: 0 auto;
+  margin: 5% auto;
   width: 90vw;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 1vw;
   z-index: 1;
   background-color: gray;
   filter: brightness(80%);
