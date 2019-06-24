@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getFromDatabase, postToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
+import {getFromDatabase, postToDatabase, patchToDatabase, deleteFromDatabase} from '../../../../apis/btaApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './Transportations.css';
 
@@ -11,7 +11,8 @@ class Transportations extends Component {
         from_location_id: '',
         to_location_id: '',
         type: '',
-        provider_id: ''
+        provider_id: '',
+        updateId: ''
     };
 
     getDatabase = (tableName='/transportations', saveLocation='transportations') => {
@@ -47,11 +48,23 @@ class Transportations extends Component {
         } else { alert('Select route for transportation'); }
     };
 
+    updateHandler = () => {
+        (async () => {
+            await patchToDatabase('/transportations', this.state.updateId, this.state.accommodationsNew);
+            this.getDatabase();
+        })();
+        this.setState({updateId: ''});
+    };
+
     deleteHandler = (id) => {
         (async () => {
             await deleteFromDatabase('/transportations', id);
             this.getDatabase();
         })();
+    };
+
+    getDataForUpdate = (id) => {
+        this.setState({updateId: id});
     };
 
     componentDidMount() {
@@ -95,6 +108,9 @@ class Transportations extends Component {
                     {transportation.id}. From {cityNameFrom} - To {cityNameTo}, - Provider: {providerName}, - type of transportation: {transportation.type}
                     <span onClick={() => this.deleteHandler(transportation.id)}>
                         <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
+                    </span>
+                    <span onClick={() => this.getDataForUpdate(transportation.id)}>
+                        <FontAwesomeIcon icon={['fas', 'edit']} style={{color: "lightgreen", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>
                 </div>
             )
