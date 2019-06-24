@@ -1,13 +1,13 @@
 .MapCity {
   grid-area: MapCity;
   display: block;
-  margin: 0 auto;
+  margin: 5% auto;
   width: 90vw;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 1vw;
   z-index: 1;
   background-color: gray;
   filter: brightness(80%);
-  /*height: 30vh;*/
   height: 50vh;
 }
 
@@ -27,7 +27,8 @@
 
 @media(min-width:1200px) {
   .MapCity {
-    width: 40vw;
-    height: 45vh;
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
   }
 }

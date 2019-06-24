@@ -3,23 +3,10 @@
 .NearbyWrapper {
     grid-area: nearby;
     display: block;
-    padding: 2% 0;
-    margin: 2% auto;
-    width: 90vw;
-    font-size: 0.8rem;
+    border-left: 4px solid whitesmoke;
+    padding: 3.15rem;
+    /* padding: 2% 0;
+    margin: 2% auto; */
+    font-size: 0.8vw;
     z-index: 1;
-}
-
-.NearbyWrapper>div {
-    display: block;
-    margin: 0 auto;
-
-}
-
-
-@media(min-width: 776px) {
-    .NearbyWrapper {
-        width: 70vw;
-        margin: 0;
-    }
 }

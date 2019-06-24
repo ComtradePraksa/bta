@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './City.css';
 
 class City extends Component {
+    _isMounted = false;
     state = {
         city_name: '',
         state: '',
         city_lat_lon: '',
-        locations: []
+        locations: [],
+        regEx_message: ''
     };
 
     getDatabase = () => {
@@ -20,7 +22,9 @@ class City extends Component {
             data.data.map(city => (
                 locations.push({ id: city.id, name: city.city_name, state: city.state})
             ));
-            this.setState({ locations });
+            if (this._isMounted) {
+                this.setState({ locations });
+            }
         })();
     };
 
@@ -52,7 +56,7 @@ class City extends Component {
                 await postToDatabase('/locations', newCity);
                 this.getDatabase();
             })();
-        } else { alert('Enter city-name and state'); }
+        } else { this.setState({regEx_message: 'Please, enter city-name and state'}); }
     };
 
     deleteHandler = (id) => {
@@ -63,8 +67,13 @@ class City extends Component {
     };
 
     componentDidMount() {
+        this._isMounted = true;
         this.getDatabase();
     };
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
 
     render() {
         const locations = this.state.locations.map(city => {
@@ -83,6 +92,7 @@ class City extends Component {
                     <input onBlur={this.inputHandler} type="text" name="city_name" placeholder="Enter city"/>
                     <input onBlur={this.inputHandler} type="text" name="state" placeholder="Enter state for city"/>
                 </div>
+                <p>{this.state.regEx_message}</p>
                 <button onClick={this.saveHandler}>Save to database</button>
                 <h2>Cities in database:</h2>
                 <div className={classes.CitiesFromDb}>

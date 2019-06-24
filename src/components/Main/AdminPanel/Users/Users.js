@@ -4,23 +4,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classes from './Users.css';
 
 class Users extends Component {
+    _isMounted = false;
     state = {
         name: '',
         username: '',
         password: '',
         is_admin: 0,
         photo: '',
-        users: []
+        usersAll: [],
+        users_onePage: [],
+        showAll: false,
+        regEx_message: ''
     };
 
     getDatabase = () => {
         (async () => {
             const data = await getFromDatabase(`/users`);
-            const users = [];
+            const usersAll = [];
             data.data.map(user => (
-                users.push({ id: user.id, name: user.name, username: user.username, is_admin: user.is_admin, photo: user.photo })
+                usersAll.push({ id: user.id, name: user.name, username: user.username, is_admin: user.is_admin, photo: user.photo })
             ));
-            this.setState({ users });
+            if (this._isMounted) {
+                const users_onePage = usersAll.slice(0, 10);
+                this.setState({ usersAll, users_onePage });
+            }
         })();
     };
 
@@ -40,11 +47,14 @@ class Users extends Component {
             is_admin: this.state.is_admin,
             photo: this.state.photo,
         };
-        // this.setState(prevState=>({ users: [newUser, ...prevState.users]}));
-        (async () => {
-            await postToDatabase('/users', newUser);
-            this.getDatabase();
-        })();
+        const isEmpty = Object.values(newUser).every(input => (input !== ''));
+        if (isEmpty) {
+            // this.setState(prevState=>({ users: [newUser, ...prevState.users]}));
+            (async () => {
+                await postToDatabase('/users', newUser);
+                this.getDatabase();
+            })();
+        } else { this.setState({regEx_message: 'Please complete all fields to add new user'}); }
     };
 
     deleteHandler = (id) => {
@@ -54,18 +64,32 @@ class Users extends Component {
         })();
     };
 
+    showAllUsers = () => {
+        if (this.state.showAll) {
+            const users_onePage = this.state.usersAll.slice(0, 10);
+            this.setState({ showAll: false, users_onePage });
+        } else {
+            this.setState({showAll: true, users_onePage: this.state.usersAll});
+        }
+    };
+
     componentDidMount() {
+        this._isMounted = true;
         this.getDatabase();
     };
 
+    componentWillUnmount() {
+        this._isMounted = false;
+    };
+
     render() {
-        const users = this.state.users.map(user => {
+        const users = this.state.users_onePage.map(user => {
             return (
                 <div key={user.id} className={classes.UsersDetailsFlex}>
                     <div className={classes.UsersImg}><img src={require(`../../../../${user.photo}`)} alt = "" /> </div>
                     <div>{user.name}</div>
                     <div>username: {user.username}</div>
-                    <span>{user.is_admin === 1 ? 'Administrator' : 'User'}<FontAwesomeIcon onClick={() => this.deleteHandler(user.id)} icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/></span>
+                    <span>{user.is_admin === 1 ? 'Administrator' : 'User'}<FontAwesomeIcon onClick={() => this.deleteHandler(user.id)} icon="trash-alt" size="lg" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/></span>
                 </div>
             )
         });
@@ -84,11 +108,13 @@ class Users extends Component {
                     <input onClick={this.inputHandler} type="radio" name="is_admin" value="0" id="admin0" /></div>
                     <div className={classes.UsersPhotoInput}><input onChange={this.inputHandler} type="file" name="photo" /></div>
                 </div>
+                <p>{this.state.regEx_message}</p>
                 <button onClick={this.saveHandler}>Save to database</button>
                 <h2>All users:</h2>
                 <div className={classes.UsersFlex}>
                     {users}
                 </div>
+                <button onClick={this.showAllUsers}>{this.state.showAll ? 'Hide' : 'Show All'}</button>
             </div>
         )
     }

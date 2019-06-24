@@ -22,16 +22,16 @@ class Main extends Component {
     render() {
         return (
             <div className={classes.Main}>
-                <Nav loggedUser={this.props.loggedUser} loginStatus={this.props.loginStatus} />
+                <Nav loggedUser={this.props.loggedUser} loginStatus={this.props.loginStatus}/>
                 <ChooseCityVersionTwo key="1" getCity={this.getCity} />
-                <ProtectedRoute key="2" loggedUser={this.props.loggedUser} exact path="/home" component={CurrentLocation} />
+                <ProtectedRoute key="2" loggedUser={this.props.loggedUser} exact path="/home" component={CurrentLocation}/>
                 
                 <Route path="/home/city" key="4" render={(props) => (
                     (this.state.city !== '')
-                        ? <City city={this.state.city} {...props} />
-                        : <Redirect to='/home' />
+                        ? <City city={this.state.city} {...props}/>
+                        : <Redirect to='/home'/>
                 )} />
-                <ProtectedRoute key="3" loggedUser={this.props.loggedUser} exact path="/home/hotels/:id" component={Hotels} />
+                <ProtectedRoute key="3" loggedUser={this.props.loggedUser} exact path="/home/hotels/:id" component={Hotels}/>
             </div>
         );
     }

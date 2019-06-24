@@ -21,7 +21,6 @@ class Nav extends Component {
     render() {
         const isAdmin = this.props.loggedUser.is_admin;
         let adminPanelLink;
-        let admin = ''
         if (isAdmin) {
             adminPanelLink = 'Admin\xa0panel';
         }
@@ -34,19 +33,16 @@ class Nav extends Component {
                         </div>
                     </Link>
                     <div className={[classes.Menu, classes.flexNav, classes.center].join(' ')}>
-
                         <OutsideAlert isOpenUserMenu={this.state.isOpenUserMenu} toggleUserMenu={this.toggleUserMenu}>
                             <div onClick={this.toggleUserMenu} className={[classes.User, classes.fullWidth, classes.flexNav, classes.center].join(' ')}>
-                                <div className={classes.UserName}>{this.props.loggedUser.username} {admin}</div>
+                                <div className={classes.UserName}>{this.props.loggedUser.name}</div>
                                 <div className={classes.UserPhoto}>
                                     {
                                         (this.props.loggedUser.photo) ? (<img src={require(`../../../${this.props.loggedUser.photo}`)} alt="" className={classes.fullWidth} />) : null
                                     }
                                 </div>
                                 <div className={this.state.isOpenUserMenu ? `${classes.UserMenu} ${classes.Show}` : `${classes.UserMenu}`}>
-                                    <Link to="/admin">
-                                        <div className={[classes.isAdminCheck, classes.fullWidth].join(' ')}>{adminPanelLink}</div>
-                                    </Link>
+                                    { isAdmin ? <Link to="/admin/users" className={[classes.fullWidth].join(' ')}>{adminPanelLink}</Link> : "" }
                                     <Link to="/" onClick={this.logout} className={classes.fullWidth}>Logout</Link>
                                 </div>
                             </div>

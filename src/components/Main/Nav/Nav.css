@@ -16,7 +16,7 @@
 }
 
 .Nav {
-  z-index: 5;
+  z-index: 1;
   background-color: #232b4bf3;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
   padding: 0 2%;
@@ -52,6 +52,7 @@
 .User {
   position: relative;
   font-size: 0.8rem;
+  user-select: none;
 }
 
 .User div:first-of-type {
@@ -116,6 +117,10 @@
   color: #444;
 }
 
+.UserMenu a:last-child {
+  margin: 0;
+}
+
 .isAdminCheck:hover,
 .UserMenu a:hover {
   color: rgb(7, 2, 29);
@@ -125,6 +130,7 @@
 
 .UserMenu.Show {
   display: flex;
+  align-items: center;
 }
 
 @media(min-width: 400px) {

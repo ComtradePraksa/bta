@@ -13,6 +13,7 @@ class Weather extends Component {
             axios.get(`http://api.apixu.com/v1/forecast.json?key=937e493fb43842b4a90103252191706&q=${this.props.latitude},${this.props.longitude}`, removeAuthHeader())
                 .then(res => {
                     const weatherData = res.data;
+                    console.log(weatherData);
                     this.setState({ weatherData });
                 });
         }
@@ -27,8 +28,11 @@ class Weather extends Component {
                         <div>{this.state.weatherData.current.condition.text}</div>
                         <div><img src={`http://${imgLink}`} alt={this.state.userName}/></div>
                         <div> {Math.round(this.state.weatherData.current.temp_c) + '\xa0‎°C'}</div>
-                    </div>;
+                        <div>humidity: {this.state.weatherData.current.humidity} %</div>
+                        <div>pressure: {this.state.weatherData.current.pressure_mb} mbar</div>
+                      </div>;
         }
+
         return (
             <React.Fragment>{weather}</React.Fragment>
         );

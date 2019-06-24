@@ -28,11 +28,13 @@
 
 @media(min-width:768px) {
   .Weather {
-    flex-direction: row;
-  /* justify-content: flex-start;*/
+    flex-direction: column;
+    /* justify-content: flex-start;*/
     align-items: center;
     font-size: 1vw;
     width: 100%;
-    margin: 0;
+  }
+  .Weather > * {
+    margin: 3% 0;
   }
 }

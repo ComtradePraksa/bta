@@ -5,11 +5,12 @@ import axios from 'axios'
 import map from '../../../apis/mapsApi'
 
 class Hotels extends Component {
+    _isMounted = false;
     state = {
         hotel: {},
-        phone:"/",
-        email:"/",
-        address:" "
+        phone: '/',
+        email: '/',
+        address: ' '
     };
 
     locationInfo = () => {
@@ -18,43 +19,52 @@ class Hotels extends Component {
                 const position = res.data.results.items[0].position;
                 map(position[0], position[1], undefined);
                 axios.get(`${res.data.results.items[0].href}`)
-                .then(res=>{
-                    if(res.data.contacts.phone !==undefined){
-                    const phone = res.data.contacts.phone[0].value
-                    this.setState({phone})
-                    }
-                    if(res.data.contacts.email !==undefined){
-                        const email = res.data.contacts.email[0].value
-                        this.setState({email})
+                .then(res => {
+                    if (this._isMounted) {
+                        if (res.data.contacts.phone !==undefined) {
+                            const phone = res.data.contacts.phone[0].value;
+                            this.setState({phone});
                         }
-                    const address = res.data.location.address.text.replace(/<br\/>/g,' ')
-                    this.setState({address})
+                        if (res.data.contacts.email !==undefined) {
+                            const email = res.data.contacts.email[0].value;
+                            this.setState({email});
+                        }    
+                    const address = res.data.location.address.text.replace(/<br\/>/g,' ');
+                    this.setState({address});
+                    }
                 })
             });
     };
    
     componentDidMount() {
-        (async () => {
-            const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
-            const hotel = res.data[0]
-            this.setState({ hotel });
-            this.locationInfo()
-        })();
+        this._isMounted=true;
+        if (this._isMounted) {
+            (async () => {
+                const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);
+                const hotel = res.data[0];
+                this.setState({ hotel });
+                this.locationInfo();
+            })();
+        }
+    };
+
+    componentWillUnmount() {
+        this._isMounted = false;
     };
 
     render() {
-        return (<React.Fragment>
-            <div className={classes.HotelWrapper}>
-                <h3>{this.state.hotel.name}</h3>
-                <p>{this.state.hotel.hotel_descr}</p>
-                <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image} /></div>
-                <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
-                
-            </div>
-            <div className={classes.MapCity} id="here-map"> </div>
-            <div>Adress: {this.state.address}</div>
-            <div>Phone: {this.state.phone}</div>
-            <div>Email: {this.state.email}</div>
+        return (
+            <React.Fragment>
+                <div className={classes.HotelWrapper}>
+                    <h3>{this.state.hotel.name}</h3>
+                    <p>{this.state.hotel.hotel_descr}</p>
+                    <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image}/></div>
+                    <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
+                </div>
+                <div className={classes.MapCity} id="here-map"></div>
+                <div>Adress: {this.state.address}</div>
+                <div>Phone: {this.state.phone}</div>
+                <div>Email: {this.state.email}</div>
             </React.Fragment>
         );
     }

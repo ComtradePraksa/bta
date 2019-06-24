@@ -37,9 +37,8 @@ class ChooseCity extends Component {
         const list = this.state.cities.map(city => {
             return (
                 <Link key={city.id} to="/home/city">
-                <li key={city.id} className={classes.dropdownItem}
-                    onClick={this.getClickedCity.bind(this, city)}>{city.city}</li>
-                    </Link>
+                    <li key={city.id} className={classes.dropdownItem} onClick={this.getClickedCity.bind(this, city)}>{city.city}</li>
+                </Link>
             )
         });
 
@@ -50,10 +49,10 @@ class ChooseCity extends Component {
                     <h2 className={[classes.cityLink, classes.pointer].join(' ')} onClick={this.toggleDropdown}>city
                     <FontAwesomeIcon icon="chevron-down" style={{fontSize: "1rem", padding: "0 8px", color: '#fff'}}/></h2>}
                 {this.state.dropdownVisible &&
-                    <div className={[classes.dropdownWrapper, classes.fullHeight].join(' ')}>
-                        <div className={[classes.dropdown, classes.fullHeight].join(' ')} >
+                    <div className={[classes.dropdownWrapper].join(' ')}>
+                        <div className={classes.dropdown} >
                             <div onClick = {this.toggleDropdown} className= {classes.overlay}></div>
-                            <div className={[classes.dropdownTileWrapper, classes.fullHeight, classes.pointer].join(' ')}>
+                            <div className={[classes.dropdownTileWrapper, classes.pointer].join(' ')}>
                             <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
                                 <FontAwesomeIcon icon="chevron-down" style={{color: '#fff'}}/>
                             </div>

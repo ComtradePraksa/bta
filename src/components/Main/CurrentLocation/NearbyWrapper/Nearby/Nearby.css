@@ -1,6 +1,5 @@
 .Nearby {
   margin: 3% 0;
-  
   color: white;
   display: flex;
   justify-content: center;
@@ -14,10 +13,8 @@
 
 .icon {
   grid-area: icon;
- /* padding-left: 5%;*/
   width: 50px;
   height: 50px;
-  /*min-height: 100*/
   display: inline-block;
 }
 
@@ -33,7 +30,6 @@
 .address {
   grid-area: address;
   padding-right: 5%;
-  /* font-size: 0.7rem;*/
 }
 
 @media(min-width:400px) {
@@ -43,38 +39,68 @@
 }
 
 @media(min-width: 768px) {
-.Nearby {
-  display: grid;
- grid-template-columns: 0.5fr 5fr;
-  grid-template-rows: repeat(3,1fr);
-  grid-template-areas: 
-  "icon title title title title title"
-  "icon category category category category category"
-  "icon address address address address address";
-  justify-items: left;
+  .Nearby {
+    display: grid;
+    grid-template-columns: 5fr 0.5fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "title title title title title icon"
+      "category category category category category icon"
+      "address address address address address icon";
+    justify-items: left;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 1% 0;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .title {
+    font-size: 1vw;
+  }
+
+  .category,
+  .address {
+    font-size: 0.8vw;
+  }
+
+}
+
+.event {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 25px;
+  margin-bottom: 50px;
+  position: relative;
+}
+.event:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
   border: none;
-  box-shadow: none;
-  margin: 0;
-  padding: 1% 0;
-  line-height: 1.3;
 }
-
-  .title {
-    font-size: 1rem;
-  }
-
-  .category {
-    font-size: 0.8rem;
-  }
-
+.event:before,
+.event:after {
+  position: absolute;
+  display: block;
+  top: 0;
 }
-
-@media(min-width: 1200px) {
-  .title {
-    font-size: 1.2rem;
-  }
-
-  .category, .address {
-    font-size: 1rem;
-  }
+.event:before {
+  left: -217.5px;
+  color: rgba(255, 255, 255, 0.4);
+  content: attr(data-date);
+  text-align: right;
+  font-weight: 100;
+  font-size: 0.9em;
+  min-width: 120px;
+  font-family: 'Saira', sans-serif;
+}
+.event:after {
+  box-shadow: 0 0 0 4px whitesmoke;
+  left: -57.85px;
+  background: #313534;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: "";
+  top: 5px;
 }
