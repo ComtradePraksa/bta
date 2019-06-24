@@ -11,7 +11,7 @@
  /* background-color: rgb(90, 111, 152);*/
   font-family: "Raleway", Arial, Helvetica, sans-serif;
   position: relative;
-  width: 100vw;
+  max-width: 100vw;
   padding-top: 5%;
 }
 

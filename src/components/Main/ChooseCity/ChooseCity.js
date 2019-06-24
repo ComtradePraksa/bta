@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getFromDatabase } from '../../../apis/btaApi';
-import classes from './ChooseCityVersionTwo.css';
+import classes from './ChooseCity.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +29,7 @@ class ChooseCity extends Component {
     getClickedCity = (item) => {
         this.setState({ placeholderMessage: item.city });
         this.props.getCity({city:item.city,id:item.id, latlon:item.latlon});
+        this.toggleDropdown();
         return item.city;
     };
     
@@ -51,11 +52,12 @@ class ChooseCity extends Component {
                 {this.state.dropdownVisible &&
                     <div className={[classes.dropdownWrapper, classes.fullHeight].join(' ')}>
                         <div className={[classes.dropdown, classes.fullHeight].join(' ')} >
+                            <div onClick = {this.toggleDropdown} className= {classes.overlay}></div>
                             <div className={[classes.dropdownTileWrapper, classes.fullHeight, classes.pointer].join(' ')}>
                             <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
                                 <FontAwesomeIcon icon="chevron-down" style={{color: '#fff'}}/>
                             </div>
-                            <ul className={[classes.dropdownItemList, classes.flex].join(' ')}>
+                            <ul className={[classes.dropdownItemList, classes.flex].join(' ')} onClick={this.toggleDropdown}>
                                 {list}
                             </ul>
                         </div>
