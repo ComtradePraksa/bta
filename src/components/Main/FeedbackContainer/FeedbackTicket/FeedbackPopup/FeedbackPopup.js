@@ -60,7 +60,7 @@ class FeedbackPopup extends Component {
                     <div className={classes.feedbackPopupMain}>
                         <div className={classes.feedbackPopupUserInfo}>
                             <div className={classes.feedbackPopupUserPhoto}>
-                                <img src={require(`../../../../${this.props.fb.photo}`)} alt="userPicture" />
+                                <img src={require(`../../../../../${this.props.fb.photo}`)} alt="userPicture" />
                             </div>
                             <div className={classes.feedbackPopupUserName}>{this.props.fb.name}</div>
                             <div className={classes.feedbackPopupTitle}>{this.props.fb.title}</div>
