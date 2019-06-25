@@ -90,9 +90,6 @@ class Login extends Component {
               {this.state.feedback}
             </div>
             <button className={[classes.fullWidth, classes.white, classes.radius2, classes.upperC].join(' ')}>Login</button>
-            <div className={classes.Warning}>Warning!</div>
-            <p className={classes.WarningMessage}>To use this application you need a company account.
-          </p>
           </form>
         </div>
       </div>
