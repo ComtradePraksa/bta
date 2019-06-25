@@ -45,7 +45,7 @@ class FeedbackContainer extends Component {
 
     };
     
-    getClickedId = (params) => {
+    deleteFeedback = (params) => {
         (async () => {
             await deleteFromDatabase(`/location_feedbacks`, params);
             this.getDatabase();
@@ -60,7 +60,7 @@ class FeedbackContainer extends Component {
                 <div className={classes.ticketsWrapper}>
                     {
                         this.state.feedbacks.map(fb => (
-                            <FeedbackTicket getClickedId={this.getClickedId} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb}/>
+                            <FeedbackTicket deleteFeedback={this.deleteFeedback} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb}/>
                         ))
                     }
                 </div>

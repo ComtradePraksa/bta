@@ -3,7 +3,7 @@ import classes from "./FeedbackTicket.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackPopup from './FeedbackPopup/FeedbackPopup';
 import { getType, getStyle } from "../FeedbackFunction/FeedbackFunction"
-import { getFromDatabase } from '../../../../apis/btaApi';
+import { getFromDatabase,deleteFromDatabase } from '../../../../apis/btaApi';
 
 class FeedbackTicket extends Component {
     state = {
@@ -29,7 +29,12 @@ class FeedbackTicket extends Component {
     componentDidMount() {
         this.getDatabase();
     };
-
+    deleteComment = (params) => {
+        (async () => {
+            await deleteFromDatabase(`/location_comments`, params);
+            this.getDatabase();
+        })();
+    };
     addNewComent = (newComment) => {
         const copy = this.state.comments;
         this.setState({
@@ -69,12 +74,12 @@ class FeedbackTicket extends Component {
                     <div className={classes.numberOfCommentsWrapper}>
                         <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray" }} />
                         <p style={{ marginLeft: "8px", color: "gray" }}>{this.getNumberOfComments()}</p>
-                        {(this.props.loggedUser.id === this.props.fb.id_user) && <FontAwesomeIcon onClick={() => this.props.getClickedId(this.props.fb.id_feedback)} icon="trash-alt" />}
+                        {(this.props.loggedUser.id === this.props.fb.id_user) && <FontAwesomeIcon onClick={() => this.props.deleteFeedback(this.props.fb.id_feedback)} icon="trash-alt" />}
 
                     </div>
                 </div>
                 <button className={classes.readMore} onClick={this.toggleComponents}>READ MORE</button>
-                {this.state.popupVisible && <FeedbackPopup loggedUser={this.props.loggedUser} addNewComent={this.addNewComent} numberOfComments={this.getNumberOfComments()} comments={this.state.comments} toggleComponents={this.toggleComponents} fb={this.props.fb} />}
+                {this.state.popupVisible && <FeedbackPopup loggedUser={this.props.loggedUser} addNewComent={this.addNewComent} numberOfComments={this.getNumberOfComments()} comments={this.state.comments} toggleComponents={this.toggleComponents} fb={this.props.fb} deleteComment={this.deleteComment}/>}
             </div>
         );
     }

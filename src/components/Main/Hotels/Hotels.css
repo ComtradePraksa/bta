@@ -1,13 +1,45 @@
 .HotelWrapper {
+    display: grid;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "hotelData weather"
+                         "hotelData map"
+                         "hotelData map";
     color: #fff;
     grid-area: currentLocation;
+    font-size: 1vw;
 }
 
-.HotelWrapper a {
-    color: #fff;
+.HotelData {
+    grid-area: hotelData;
+}
+
+.HotelWrapper h3,
+.HotelWrapper p,
+.HotelWrapper div,
+.HotelWrapper a,
+.HotelWrapper {
+  margin-top: 5%;
+  color: #fff;
+}
+
+.HotelWrapper h3 {
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+.HotelWrapper img {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+}
+
+.HotelWrapper a,
+.MapCity~div {
+  margin: 3% auto;
+  font-size: 0.7rem;
 }
 
 .MapCity {
+    grid-area: map;
     width: 300px;
     height: 300px;
 }
