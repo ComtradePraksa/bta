@@ -60,8 +60,8 @@ class FeedbackContainer extends Component {
                 </div>
                 <div className={classes.ticketsWrapper}>
                     {
-                        this.state.feedbacks.map(fb => (
-                            <FeedbackTicket deleteFeedback={this.deleteFeedback} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb}/>
+                        this.state.feedbacks.map((fb,index) => (
+                            <FeedbackTicket deleteFeedback={this.deleteFeedback} loggedUser={this.props.loggedUser} key={index} fb={fb}/>
                         ))
                     }
                 </div>

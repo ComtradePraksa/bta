@@ -272,7 +272,13 @@ module.exports = function (app, express, mysqlConnection) {
         res.send({ error: false, data: results, user: req.user });
       });
     });
-
+    router.route('/acc_feedbacks/accommodation/:id')
+    .get(verifyToken, (req, res) => {
+      mysqlConnection.query('SELECT * FROM acc_feedbacks AS lf JOIN users AS u ON lf.id_user=u.id where id_acc', function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Acc feedbacks list.', user: req.user });
+      });
+    });
   // transportation_feedbacks table //
   router.route('/transportation_feedbacks')
     .get(verifyToken, (req, res) => {

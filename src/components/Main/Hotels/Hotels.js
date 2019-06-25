@@ -3,6 +3,7 @@ import { getFromDatabase } from '../../../apis/btaApi';
 import classes from '../Hotels/Hotels.css';
 import axios from 'axios'
 import map from '../../../apis/mapsApi'
+import FeedbackHotel from './FeedbackHotel/FeedbackHotel';
 
 class Hotels extends Component {
     _isMounted = false;
@@ -67,6 +68,7 @@ class Hotels extends Component {
                     </div>
                     <div className={classes.MapCity} id="here-map"></div>
                 </div>
+                <FeedbackHotel loggedUser={this.props.loggedUser} id={this.props.match.params.id}/>
             </React.Fragment>
         );
     }
