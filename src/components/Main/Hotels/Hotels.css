@@ -14,8 +14,28 @@
     grid-area: hotelData;
 }
 
-.HotelWrapper a {
-    color: #fff;
+.HotelWrapper h3,
+.HotelWrapper p,
+.HotelWrapper div,
+.HotelWrapper a,
+.HotelWrapper {
+  margin-top: 5%;
+  color: #fff;
+}
+
+.HotelWrapper h3 {
+  font-size: 3vh;
+  font-weight: bold;
+}
+
+.HotelWrapper img {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+}
+
+.HotelWrapper a,
+.MapCity~div {
+  margin: 3% auto;
+  font-size: 0.7rem;
 }
 
 .MapCity {
