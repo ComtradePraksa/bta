@@ -41,7 +41,7 @@
 
 .dropdown {
   position: absolute;
-  width: 40%;
+  width: 70%;
   top: 0;
   left: 0;
 }
@@ -126,6 +126,10 @@
 
   .dropdownItemList {
     margin-top: 0;
+  }
+
+  .dropdown {
+    width: 40%;
   }
 }
 
