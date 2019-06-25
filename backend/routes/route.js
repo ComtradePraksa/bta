@@ -127,7 +127,7 @@ module.exports = function (app, express, mysqlConnection) {
   // transportations table //
   router.route('/transportations')
     .get(verifyToken, (req, res) => {
-      mysqlConnection.query('SELECT * FROM transportations', function (error, results) {
+      mysqlConnection.query('SELECT * from transportations', function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Transportations list.', user: req.user });
       });
@@ -310,5 +310,13 @@ module.exports = function (app, express, mysqlConnection) {
         else { res.send({ message: 'No user with those credentials' }); }
       });
     });
+  //city connected transportations
+  router.route('/city_transportations')
+    .get(verifyToken, (req, res) => {
+      mysqlConnection.query('SELECT t.id,l.city_name AS from_loc,loc.city_name AS to_loc,p.name,p.type FROM transportations AS t JOIN provider AS p ON t.provider_id = p.id JOIN locations as l ON t.from_location_id = l.id JOIN locations as loc ON t.to_location_id = loc.id', function (error, results) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Transportations list.', user: req.user });
+      });
+    })
   app.use(router);
 };
