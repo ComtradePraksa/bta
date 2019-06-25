@@ -34,7 +34,8 @@
     font-size: 1vw;
     width: 100%;
   }
-  .Weather > * {
+
+  .Weather>* {
     margin: 3% 0;
   }
 }

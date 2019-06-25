@@ -34,15 +34,14 @@ class FeedbackContainer extends Component {
         })();
     };
 
-    componentDidUpdate(prevProps,prevState){
-        if(prevProps.cityId!==this.props.cityId){
-            this.getDatabase(this.props.cityId)
+    componentDidUpdate(prevProps,prevState) {
+        if (prevProps.cityId!==this.props.cityId) {
+            this.getDatabase(this.props.cityId);
         }
-    }
+    };
 
     componentDidMount() {
         this.getDatabase(this.props.cityId);
-
     };
     
     deleteFeedback = (params) => {

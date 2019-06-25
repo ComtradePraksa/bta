@@ -6,9 +6,9 @@ class AddNewFeedback extends Component {
     state = {
         rate: 0,
         dropdownVisible:false,
-        category:"",
-        title:"",
-        text:""
+        category:'',
+        title:'',
+        text:''
     };
 
     getRate = (event) => {
@@ -18,16 +18,17 @@ class AddNewFeedback extends Component {
     toggle = () => {
         this.setState({ dropdownVisible:!this.state.dropdownVisible });
     };
-    getFeedbackValue = event => {
+
+    getFeedbackValue = (event) => {
         this.setState({ text: event.target.value });
     };
-    getCategory=(e)=>{
-        this.setState({category:e.target.innerText.toLowerCase()})
-        this.toggle()
-    }
+
+    getCategory = (e) => {
+        this.setState({category:e.target.innerText.toLowerCase()});
+        this.toggle();
+    };
 
     render() {
-        console.log(this.state)
         return (
             <div className={classes.newFeedbackWindow}>
                 <div className={classes.newFeedbackPopup}>

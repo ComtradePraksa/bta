@@ -8,30 +8,34 @@ class Transportation extends Component{
         open: false,
         transportations: [],
         providers: [],
-    }
-    componentDidMount(){
+    };
+
+    componentDidMount() {
         (async () => {
             const data = await getFromDatabase(`/transportations`);
             this.setState({
                 transportations: data.data
-            })
+            });
         })();
         (async () => {
             const data = await getFromDatabase(`/provider`);
             this.setState({
                 providers: data.data
-            })
+            });
         })();
-    }
-    componentDidUpdate(){
+    };
+
+    componentDidUpdate() {
         console.log(123)
-    }
+    };
+
     toggleDisplay = () => {
         this.setState({
             open: !this.state.open
-        })
-    }
-    render (){
+        });
+    };
+
+    render() {
         console.log(this.props.city.id)
         console.log(this.state.transportations);
         console.log(this.state.providers);
@@ -48,7 +52,6 @@ class Transportation extends Component{
                 {this.state.open && 
                     <div className = {classes.TransportationBody}>
                         Here goes a the real info!!!
-                        asfsdfsdkfj
                     </div>
                 }
             </div>

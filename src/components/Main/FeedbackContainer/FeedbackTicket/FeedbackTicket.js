@@ -18,7 +18,7 @@ class FeedbackTicket extends Component {
             data.data.map(fb => (
                 comments.push(fb)
             ));
-            this.setState({ comments: comments })
+            this.setState({ comments: comments });
         })();
     };
 
@@ -29,12 +29,14 @@ class FeedbackTicket extends Component {
     componentDidMount() {
         this.getDatabase();
     };
+
     deleteComment = (params) => {
         (async () => {
             await deleteFromDatabase(`/location_comments`, params);
             this.getDatabase();
         })();
     };
+    
     addNewComent = (newComment) => {
         const copy = this.state.comments;
         this.setState({
