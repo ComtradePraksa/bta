@@ -3,6 +3,7 @@ import Weather from './Weather/Weather';
 import Map from './Map/Map'
 import NearbyWrapper from './NearbyWrapper/NearbyWrapper';
 import classes from './CurrentLocation.css';
+import FeedbackCL from './FeedbackCL/FeedbackCL';
 
 class CurrentLocation extends Component {
     state = {
@@ -43,6 +44,7 @@ class CurrentLocation extends Component {
                 <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces}/>
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces}/>
             </div>
+            <FeedbackCL loggedUser={this.props.loggedUser}/>
         </React.Fragment>
         );
     }
