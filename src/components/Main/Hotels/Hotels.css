@@ -1,6 +1,17 @@
 .HotelWrapper {
+    display: grid;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "hotelData weather"
+                         "hotelData map"
+                         "hotelData map";
     color: #fff;
     grid-area: currentLocation;
+    font-size: 1vw;
+}
+
+.HotelData {
+    grid-area: hotelData;
 }
 
 .HotelWrapper a {
@@ -8,6 +19,7 @@
 }
 
 .MapCity {
+    grid-area: map;
     width: 300px;
     height: 300px;
 }
