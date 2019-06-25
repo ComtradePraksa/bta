@@ -30,12 +30,12 @@
     margin: 1% 0;
 }
 
-@media(max-width: 1080px) {
+@media(max-width: 500px) {
 
     .Provider,
     .Provider input,
     .Provider select {
-        font-size: 3vw;
+        font-size: 4vw;
     }
 
     .Provider input {
@@ -49,5 +49,9 @@
     .ProviderList {
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .ProviderDetails {
+        margin: 5% 0;
     }
 }

@@ -33,9 +33,9 @@
     margin: 1% 0;
 }
 
-@media(max-width: 1080px) {
+@media(max-width: 500px) {
     .City {
-        font-size: 3vw;
+        font-size: 4vw;
     }
 
     .CitiesFromDb {
@@ -46,6 +46,6 @@
 
     .AdminCityInput input {
         width: 70vw;
-        font-size: 3vw;
+        font-size: 4vw;
     }
 }
