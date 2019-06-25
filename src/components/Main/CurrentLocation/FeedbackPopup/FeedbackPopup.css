@@ -155,7 +155,7 @@
 .feedbackNewComment textarea::placeholder {
   color: rgb(95, 92, 92);
   font-size: 1rem;
-  padding: 0.1rem 0.5rem;
+  padding: 0.4rem 0.5rem;
 }
 
 .feedbackNewComment {
