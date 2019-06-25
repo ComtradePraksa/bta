@@ -60,11 +60,11 @@ class Hotels extends Component {
                     <p>{this.state.hotel.hotel_descr}</p>
                     <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image}/></div>
                     <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
+                    <div>Adress: {this.state.address}</div>
+                    <div>Phone: {this.state.phone}</div>
+                    <div>Email: {this.state.email}</div>
                 </div>
                 <div className={classes.MapCity} id="here-map"></div>
-                <div>Adress: {this.state.address}</div>
-                <div>Phone: {this.state.phone}</div>
-                <div>Email: {this.state.email}</div>
             </React.Fragment>
         );
     }
