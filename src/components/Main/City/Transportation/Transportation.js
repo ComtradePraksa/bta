@@ -6,29 +6,17 @@ import { getFromDatabase } from '../../../../apis/btaApi';
 class Transportation extends Component{
     state = {
         open: false,
-        transportations: [],
-        providers: [],
+        cityTransportations: [],
     };
 
     componentDidMount() {
         (async () => {
-            const data = await getFromDatabase(`/transportations`);
+            const data = await getFromDatabase(`/city_transportations`);
             this.setState({
-                transportations: data.data
-            });
-        })();
-        (async () => {
-            const data = await getFromDatabase(`/provider`);
-            this.setState({
-                providers: data.data
+                cityTransportations: data.data
             });
         })();
     };
-
-    componentDidUpdate() {
-        console.log(123)
-    };
-
     toggleDisplay = () => {
         this.setState({
             open: !this.state.open
@@ -36,14 +24,10 @@ class Transportation extends Component{
     };
 
     render() {
-        console.log(this.props.city.id)
-        console.log(this.state.transportations);
-        console.log(this.state.providers);
-        const cityTrans = this.state.transportations.filter(transportation=> {
-            return transportation.from_location_id === this.props.city.id
-                    || transportation.to_location_id === this.props.city.id;
+        const transportations = this.state.cityTransportations.filter(t => {
+            return t.from_loc === this.props.city.city
+            || t.to_loc === this.props.city.city
         })
-        console.log(cityTrans);
         return (
             <div className = {classes.TransportationWrapper}>
                 <div onClick = {this.toggleDisplay} className = {classes.TransportationTitle}>
@@ -51,7 +35,22 @@ class Transportation extends Component{
                 </div>
                 {this.state.open && 
                     <div className = {classes.TransportationBody}>
-                        Here goes a the real info!!!
+                       {
+                           transportations.length ? (
+                            transportations.map(t=>{
+                                return (
+                                    <div key={t.id} className={classes.Transportation}>
+                                        <div className="From">{t.from_loc}</div>
+                                        <div className="To">{t.to_loc}</div>
+                                        <div className="Name">{t.name}</div>
+                                        <div className="type">{t.type}</div>
+                                    </div>
+                                );
+                            })
+                           ) : (
+                            <div className = {classes.Transportation}>No transportations connected with this city so far!</div>
+                           )
+                       }
                     </div>
                 }
             </div>
