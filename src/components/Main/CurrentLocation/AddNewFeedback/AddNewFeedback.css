@@ -13,7 +13,7 @@
 
 .newFeedbackPopup {
   height: 90%;
-  width: 50%;
+  width: 90%;
   background-color: white;
   display: grid;
   grid-template-rows: 1fr 9fr;
@@ -31,16 +31,33 @@
   padding: 0 2%
 }
 
+.newFeedbackHeader svg {
+  font-size: 1.4em;
+  padding: 3%;
+  cursor: pointer;
+}
+
+.saveFeedback {
+  color: whitesmoke;
+  background-color: transparent;
+  padding: 1% 2%;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  cursor: pointer; 
+}
+
 .newFeedbackMain {
   height: 100%;
   display: grid;
   padding: 0% 5%;
-  grid-template-columns: 6fr 4fr;
-  grid-template-rows: 2fr 2fr 6fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 2fr 2fr 6fr;
   grid-template-areas:
-    "title title"
-    "type rate"
-    "fb fb"
+    "title"
+    "type"
+    "rate"
+    "fb"
 }
 
 .inputTitle {
@@ -52,7 +69,7 @@
 .inputTitle input {
   width: 100%;
   padding: 2%;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid lightgrey;
   text-align: left;
   font-size: 1em;
   font-weight: 700;
@@ -83,11 +100,13 @@
 .feedbackRate input[type="range"] {
   width: 100%;
   -webkit-appearance: none;
-  height: 5px;
+  height: 3px;
   background-color: lightgray;
+  cursor: pointer;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb
+/*input[type="range"]::-moz-range-thumb*/ {
   -webkit-appearance: none;
   width: 10px;
   height: 10px;
@@ -124,12 +143,12 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 textarea {
-  border: 1px solid black;
+  border: 1px solid lightgrey;
   width: 100%;
   height: 90%;
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.21);
+  resize: none;
 }
-
-
 
 .dropdownWrapper {
   padding: 5px 10px;
@@ -149,7 +168,7 @@ textarea {
 }
 
 .dropdownTileWrapper {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid lightgray;
 }
 
 .dropdownTileWrapper input {
@@ -159,6 +178,10 @@ textarea {
   font-size: 1em;
   font-weight: 700;
   padding: 2% 0;
+  cursor: pointer;
+}
+
+.dropdownTileWrapper input svg {
   cursor: pointer;
 }
 
@@ -173,25 +196,73 @@ textarea {
   padding: 5px 10px;
   border-bottom: 0.4px solid rgba(237, 230, 230, 0.18);
   min-height: 4vh;
-  background: lightgreen;
+  justify-content: center;
+  background: gray;
   color: white;
   display: flex;
   align-items: center;
+  text-align: center;
+}
 
+.title::placeholder,
+.categoryInput::placeholder,
+.textarea::placeholder{
+  color: rgb(95, 92, 92);
+  font-size: 1rem;
+  padding: 0.1rem 0.5rem;
 }
 
 .dropdownItem:hover {
   background-color: gray;
-  background: rgba(250, 133, 164);
+  background: #999393;
   cursor: pointer;
   transition: 0.5s;
 }
 
 .title {
   display: flex;
-  align-items: center;
-  font-size: 1em;
+  align-items: flex-end;
+  font-size: 1rem;
   font-weight: 700;
-  color: #666;
-  padding-left: 2%
+  color: rgb(95, 92, 92);
+}
+
+.newFeedbackHeader svg:hover, 
+.saveFeedback:hover,
+.categoryInput svg {
+  color: gray;
+  transition: 0.6s;
+}
+
+.saveFeedback:hover {
+  border: 0.6px inset lightgray;
+}
+
+@media(min-width: 400px) {
+  .newFeedbackPopup {
+    width: 80%;
+  }
+}
+
+@media(min-width: 768px) {
+  .newFeedbackMain {
+    grid-template-columns: 6fr 4fr;
+    grid-template-rows: 2fr 2fr 6fr;
+    grid-template-areas:
+      "title title"
+      "type rate"
+      "fb fb"
+  }
+}
+
+@media(min-width: 992px) {
+  .newFeedbackPopup {
+    width: 60%;
+  }
+}
+
+@media(min-width: 1200px) {
+  .newFeedbackPopup {
+    width: 50%;
+  }
 }

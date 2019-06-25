@@ -45,8 +45,8 @@ class AddNewFeedback extends Component {
                                 <div className={classes.dropdown} >
                                     <div className={classes.overlay}></div>
                                     <div className={classes.dropdownTileWrapper}>
-                                        <input placeholder="Category" readOnly  onClick={this.toggle}/>
-                                        <FontAwesomeIcon icon="chevron-down" style={{ color: '#fff' }} />
+                                        <input placeholder="Category" className={classes.categoryInput}  readOnly onClick={this.toggle}/>
+                                        <FontAwesomeIcon icon="chevron-down" style={{ color: '#gray' }} />
                                     </div>
                                     {this.state.dropdownVisible && <ul className={classes.dropdownItemList}>
                                         <li className={classes.dropdownItem} onClick={this.getCategory}>Food</li>                                        
@@ -74,7 +74,7 @@ class AddNewFeedback extends Component {
                         Your feedback
                         </div>
                         <div className={classes.textarea}>
-                        <textarea onChange={this.getFeedbackValue}/>
+                        <textarea onChange={this.getFeedbackValue} placeholder="Enter your feedback"/>
                         </div>
                         </div>
                     </div>
