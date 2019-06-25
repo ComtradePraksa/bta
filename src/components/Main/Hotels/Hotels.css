@@ -9,7 +9,7 @@
 }
 
 .HotelData {
-    grid-area: hotelData;
+  grid-area: hotelData;
 }
 
 .HotelData > * {

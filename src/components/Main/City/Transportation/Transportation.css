@@ -1,17 +1,19 @@
-.TransportationWrapper{
+.TransportationWrapper {
     color: #fff;
-    background: linear-gradient(to right , rgb(127,103, 176), rgb(65,115, 183));
+    background: linear-gradient(to right, rgb(127, 103, 176), rgb(65, 115, 183));
     text-align: left;
 }
-.TransportationTitle{
+
+.TransportationTitle {
     cursor: pointer;
     padding: 1.2rem 2%;
 }
-.TransportationTitle span{
+
+.TransportationTitle span {
     margin-right: 0.4rem;
 }
 
-.TransportationBody{
+.TransportationBody {
     /* display: none; */
     /* background-color: blue; */
     height: 400px;

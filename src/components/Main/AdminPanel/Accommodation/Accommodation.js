@@ -9,6 +9,7 @@ class Accommodation extends Component {
     state = {
         link: '',
         id_city: '',
+        id_city_selected: '',
         locations: [],
         accommodationsData: [],
         accommodationsNew: '',
@@ -68,13 +69,18 @@ class Accommodation extends Component {
     deleteHandler = (id) => {
         (async () => {
             await deleteFromDatabase('/accommodations', id);
-            this.getDatabase(`/id_city/${this.state.id_city}`);
+            this.getDatabase(`/id_city/${this.state.id_city_selected}`);
         })();
     };
 
     getDataForUpdate = (link, idCity, id) => {
         this.setState({updateId: id});
         this.getDataHandler(link, idCity);
+    };
+
+    getHotelsByCity = (e) => {
+        this.getDatabase(`/id_city/${e.target.value}`);
+        this.setState({[e.target.name]: e.target.value});
     };
 
     componentDidMount() {
@@ -86,7 +92,7 @@ class Accommodation extends Component {
                 locations.push({ id: city.id, city: city.city_name })
             ));
             if (this._isMounted) {
-                this.setState({ locations });
+                this.setState({ locations, id_city_selected: locations[0].id });
                 this.getDatabase(`/id_city/${locations[0].id}`);
             }
         })();
@@ -147,7 +153,7 @@ class Accommodation extends Component {
                                                                 <option value="" defaultChecked>Select location:</option>
                                                                 {locations}
                                                            </select> : null;
-        
+                                                           
         return (
             <div className={classes.Accommodation}>
                 <h2>Enter new accomodation for travel</h2>
@@ -159,7 +165,7 @@ class Accommodation extends Component {
                 <h2>All accommodations</h2>
                 <div>
                     <h3>Accommodations from city:</h3>
-                    <select onClick={(e) => this.getDatabase(`/id_city/${e.target.value}`)} name="id_city">
+                    <select onClick={this.getHotelsByCity} name="id_city_selected">
                             <option value="" disabled>Select location:</option>
                             {locations}
                     </select>

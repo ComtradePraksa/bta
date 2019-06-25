@@ -236,14 +236,16 @@ input {
     grid-template-columns: 1fr;
     grid-template-rows: 33%;
     grid-template-areas:
-      "logo" 
+      "logo"
       "login";
-      background-size: cover
+    background-size: cover
   }
+
   .Logo {
     color: white;
     max-height: 25%;
   }
+
   .Login {
     margin: 0;
   }
@@ -260,6 +262,7 @@ input {
     margin: 0 auto;
     padding: 2em 1em 0.8 1em;
   }
+
   .Login form .formHeader {
     display: block;
     height: 2em;
@@ -269,6 +272,7 @@ input {
     border-top-left-radius: 0.3rem;
     border-top-right-radius: 0.3rem;
   }
+
   .LogoDescr {
     font-size: 2vw;
   }

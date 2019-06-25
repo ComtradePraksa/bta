@@ -12,7 +12,7 @@ import Nav from '../Nav/Nav';
 
 class AdminPanel extends Component {
     
-    logout = () =>{
+    logout = () => {
         //logout
         this.props.loginStatus(false, {});
         localStorage.removeItem('jwtoken');

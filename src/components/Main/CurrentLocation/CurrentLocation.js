@@ -43,7 +43,6 @@ class CurrentLocation extends Component {
                 <NearbyWrapper location={this.state.value} getNearbyPlaces={this.getNearbyPlaces}/>
                 <Map latitude={this.state.latitude} longitude={this.state.longitude} nearbyPlaces={this.state.nearbyPlaces}/>
             </div>
-           
         </React.Fragment>
         );
     }
