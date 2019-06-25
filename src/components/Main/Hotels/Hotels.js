@@ -58,9 +58,9 @@ class Hotels extends Component {
                 <div className={classes.HotelWrapper}>
                     <div className={classes.HotelData}>
                     <h3 className={classes.HotelName}>{this.state.hotel.name}</h3>
-                    <p>{this.state.hotel.hotel_descr}</p>
-                    <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image}/></div>
-                    <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
+                    <p className={classes.HotelDescr}>{this.state.hotel.hotel_descr}</p>
+                    <div className={classes.HotelImage}><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image}/></div>
+                    <div className={classes.HotelLink}>website: <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a></div>
                     <div>Address: {this.state.address}</div>
                     <div>Phone: {this.state.phone}</div>
                     <div>Email: {this.state.email}</div>

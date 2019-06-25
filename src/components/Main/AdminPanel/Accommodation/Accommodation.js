@@ -41,7 +41,7 @@ class Accommodation extends Component {
                 let accommodationsNew = {
                         name: hotelData['og:title'],
                         hotel_descr: hotelData['og:description'],
-                        hotel_img: hotelData['og:image'],
+                        hotel_img: hotelData['og:image'].replace('max300', 'max600'),
                         link: hotelData['og:url'],
                         id_city: idCity };
                 this.setState({accommodationsNew});

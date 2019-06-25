@@ -1,46 +1,66 @@
 .HotelWrapper {
-  display: grid;
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "hotelData weather"
-    "hotelData map"
-    "hotelData map";
-  color: #fff;
-  grid-area: currentLocation;
-  font-size: 1vw;
+    display: grid;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 100%);
+    grid-template-columns: 0.2fr 1fr 1fr;
+    grid-template-areas: ". hotelData map";
+    color: #fff;
+    grid-area: currentLocation;
+    font-size: 1vw;
 }
 
 .HotelData {
   grid-area: hotelData;
 }
 
-.HotelWrapper h3,
-.HotelWrapper p,
-.HotelWrapper div,
-.HotelWrapper a,
+.HotelData > * {
+    margin: 3% 0;
+}
+
+.HotelLink a {
+    color: white;
+    font-size: 1vw;
+}
+
 .HotelWrapper {
-  margin-top: 5%;
+  padding: 3% 0;
   color: #fff;
 }
 
 .HotelWrapper h3 {
-  font-size: 3vh;
+  font-size: 1.5vw;
   font-weight: bold;
 }
 
-.HotelWrapper img {
+.HotelImage img {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
-}
-
-.HotelWrapper a,
-.MapCity~div {
-  margin: 3% auto;
-  font-size: 0.7rem;
+  width: 70%;
 }
 
 .MapCity {
-  grid-area: map;
-  width: 300px;
-  height: 300px;
+    grid-area: map;
+    margin: 12% auto 0 auto;
+    width: 30vw;
+    height: 30vw;
 }
+
+@media(max-width:768px) {
+    .HotelWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 3vw;
+    }
+
+    .HotelWrapper h3 {
+        font-size: 4.5vw;
+      }
+
+    .MapCity {
+        width: 70vw;
+        height: 70vw;
+    }
+
+    .HotelLink a {
+        font-size: 3vw;
+    }
+  }
