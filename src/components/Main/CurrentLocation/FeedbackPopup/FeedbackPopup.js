@@ -94,7 +94,7 @@ class FeedbackPopup extends Component {
                                 {this.props.comments.map((com) => {
                                     if (com.id_feedback === this.props.fb.id_feedback) {
                                         return (
-                                            <FeedbackComment loggedUser={this.props.loggedUser} key={com.id_comment} comments={com} />
+                                            <FeedbackComment loggedUser={this.props.loggedUser} key={com.id_comment} comments={com} deleteComment={this.props.deleteComment}/>
                                         )
                                     }
                                     return true;

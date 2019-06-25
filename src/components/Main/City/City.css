@@ -15,17 +15,14 @@
   .CityWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr 2fr 2fr 2fr 2fr;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
     grid-template-areas:
       /* "accTitle showAll WeatherCity"
       "topRated topRated ." */
       "HotelsCity HotelsCity WeatherCity"
       "HotelsCity HotelsCity MapCity"
-      "HotelsCity HotelsCity MapCity"
-      "HotelsCity HotelsCity MapCity"
-      "HotelsCity HotelsCity MapCity"
       "CityLife CityLife CityLife";
-    padding: 3%;
+      padding: 0;
   }
 
   .accTitle {
