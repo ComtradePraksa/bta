@@ -38,7 +38,7 @@ class AddNewFeedback extends Component {
                     </div>
                     <div className={classes.newFeedbackMain}>
                         <div className={classes.inputTitle}>
-                            <input classes={classes.title} type="text" placeholder="Enter Title" />
+                            <input className={classes.title} type="text" placeholder="Enter Title" />
                         </div>
                         <div className={classes.chooseType}>
                         
