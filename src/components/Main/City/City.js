@@ -5,6 +5,7 @@ import HotelsCity from './HotelsCity/HotelsCity';
 import CityLife from './CityLife/CityLife';
 import axios from 'axios';
 import classes from './City.css';
+import FeedbackContainer from '../FeedbackContainer/FeedbackContainer';
 
 class City extends Component {
     _isMounted = false;
@@ -60,6 +61,7 @@ class City extends Component {
                 <WeatherCity city={this.props.city} className={classes.WeatherCity}/>
                 <MapCity location={this.state.location} city={this.props.city} className={classes.MapCity}/></div>}
                 <CityLife />
+                <FeedbackContainer loggedUser={this.props.loggedUser} cityId={this.props.city.id}/>
             </div>
         );
     }

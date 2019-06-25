@@ -218,6 +218,13 @@ module.exports = function (app, express, mysqlConnection) {
         res.send({ error: false, data: results,  user: req.user });
         });
     });
+    router.route('/location_feedbacks/location/:id')
+    .get(verifyToken,(req, res) => {
+      mysqlConnection.query('SELECT * FROM location_feedbacks AS lf JOIN users AS u ON lf.id_user=u.id where id_location=?',req.params.id, function (error, results) {
+        if (error) throw error;
+        res.send({ error: false, data: results, message: 'Feedbacks list.', user: req.user });
+        });
+    });
 
 // location_comments table //
   router.route('/location_comments')

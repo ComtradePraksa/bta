@@ -28,7 +28,7 @@ class Main extends Component {
                 
                 <Route path="/home/city" key="4" render={(props) => (
                     (this.state.city !== '')
-                        ? <City city={this.state.city} {...props}/>
+                        ? <City city={this.state.city} loggedUser={this.props.loggedUser} {...props}/>
                         : <Redirect to='/home'/>
                 )} />
                 <ProtectedRoute key="3" loggedUser={this.props.loggedUser} exact path="/home/hotels/:id" component={Hotels}/>

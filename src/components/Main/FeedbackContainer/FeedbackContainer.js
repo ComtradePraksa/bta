@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
-import { getFromDatabase, deleteFromDatabase } from '../../../../apis/btaApi';
+import FeedbackTicket from './FeedbackTicket/FeedbackTicket';
+import { getFromDatabase, deleteFromDatabase } from '../../../apis/btaApi'
 import classes from "./FeedbackContainer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AddNewFeedback from "../AddNewFeedback/AddNewFeedback"
+import AddNewFeedback from "./AddNewFeedback/AddNewFeedback"
 
 class FeedbackContainer extends Component {
     state = {
@@ -17,9 +17,9 @@ class FeedbackContainer extends Component {
         this.setState({ newComentVisible: !this.state.newComentVisible });
     };
 
-    getDatabase = () => {
+    getDatabase = (cityId) => {
         (async () => {
-            const data = await getFromDatabase('/location_feedbacks');
+            const data = await getFromDatabase(`/location_feedbacks/location/${cityId}`);
             const feedback = [];
             const userfeedback = [];
             data.data.map(fb => {
@@ -34,8 +34,14 @@ class FeedbackContainer extends Component {
         })();
     };
 
+    componentDidUpdate(prevProps,prevState){
+        if(prevProps.cityId!==this.props.cityId){
+            this.getDatabase(this.props.cityId)
+        }
+    }
+
     componentDidMount() {
-        this.getDatabase();
+        this.getDatabase(this.props.cityId);
 
     };
     
@@ -47,7 +53,6 @@ class FeedbackContainer extends Component {
     };
 
     render() {
-
         return (
             <div className={classes.feedbackContainer}>
                 <div className={classes.sortTicket}>

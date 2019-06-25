@@ -1,8 +1,8 @@
 import classes from "./FeedbackPopup.css"
 import React, { Component } from 'react';
-import { getType, getStyle, formatDate, stringForDb } from "../FeedbackFunction/FeedbackFunction"
+import { getType, getStyle, formatDate, stringForDb } from "../../FeedbackFunction/FeedbackFunction"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import FeedbackComment from "../FeedbackComment/FeedbackComment";
+import FeedbackComment from "./FeedbackComment/FeedbackComment";
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 

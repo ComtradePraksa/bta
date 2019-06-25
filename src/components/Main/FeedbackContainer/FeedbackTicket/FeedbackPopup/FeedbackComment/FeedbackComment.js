@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from "./FeedbackComment.css"
-import { formatDate } from "../FeedbackFunction/FeedbackFunction"
+import { formatDate } from "../../../FeedbackFunction/FeedbackFunction"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class FeedbackComment extends Component {
