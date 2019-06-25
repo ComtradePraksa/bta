@@ -6,20 +6,28 @@ class AddNewFeedback extends Component {
     state = {
         rate: 0,
         dropdownVisible:false,
-        category:""
+        category:"",
+        title:"",
+        text:""
     };
 
-    getNewValue = (event) => {
+    getRate = (event) => {
         this.setState({ rate: event.target.value });
     };
 
     toggle = () => {
         this.setState({ dropdownVisible:!this.state.dropdownVisible });
     };
+    getFeedbackValue = event => {
+        this.setState({ text: event.target.value });
+    };
+    getCategory=(e)=>{
+        this.setState({category:e.target.innerText.toLowerCase()})
+        this.toggle()
+    }
 
     render() {
-        console.log(this.state.rate);
-
+        console.log(this.state)
         return (
             <div className={classes.newFeedbackWindow}>
                 <div className={classes.newFeedbackPopup}>
@@ -41,12 +49,12 @@ class AddNewFeedback extends Component {
                                         <FontAwesomeIcon icon="chevron-down" style={{ color: '#fff' }} />
                                     </div>
                                     {this.state.dropdownVisible && <ul className={classes.dropdownItemList}>
-                                        <li className={classes.dropdownItem}>Food</li>                                        
-                                        <li className={classes.dropdownItem}>Transportation</li>
-                                        <li className={classes.dropdownItem}>Culture</li>
-                                        <li className={classes.dropdownItem}>Safety</li>
-                                        <li className={classes.dropdownItem}>Sightseeing</li>
-                                        <li className={classes.dropdownItem}>Other</li>
+                                        <li className={classes.dropdownItem} onClick={this.getCategory}>Food</li>                                        
+                                        <li className={classes.dropdownItem} onClick={this.getCategory}>Transportation</li>
+                                        <li className={classes.dropdownItem} onClick={this.getCategory}>Culture</li>
+                                        <li className={classes.dropdownItem} onClick={this.getCategory}>Safety</li>
+                                        <li className={classes.dropdownItem} onClick={this.getCategory}>Sightseeing</li>
+                                        <li className={classes.dropdownItem} onClick={this.getCategory}>Other</li>
                                     </ul> }
                                 </div>
                             </div>
@@ -58,7 +66,7 @@ class AddNewFeedback extends Component {
                             <div className={classes.rateContainer}>
                                 <FontAwesomeIcon id="iconmove" style={{ height: "40px", width: "40px", left: `${this.state.rate * 10}%` }} icon="map-marker" />
                                 <p style={{ left: `${this.state.rate * 10}%` }} id="text">{this.state.rate}</p>
-                                <input type="range" min="0" max="10" step="0.1" onChange={this.getNewValue} value={this.state.rate} />
+                                <input type="range" min="0" max="10" step="0.1" onChange={this.getRate} value={this.state.rate} />
                             </div>
                         </div>
                         <div className={classes.feedbackField}>
@@ -66,7 +74,7 @@ class AddNewFeedback extends Component {
                         Your feedback
                         </div>
                         <div className={classes.textarea}>
-                        <textarea/>
+                        <textarea onChange={this.getFeedbackValue}/>
                         </div>
                         </div>
                     </div>

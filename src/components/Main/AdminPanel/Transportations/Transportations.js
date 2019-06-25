@@ -14,6 +14,7 @@ class Transportations extends Component {
         type: '',
         provider_id: '',
         updateId: '',
+        routeEdit: '',
         regEx_message: ''
     };
 
@@ -76,8 +77,19 @@ class Transportations extends Component {
     };
 
     getRouteForUpdate = (id) => {
-        this.setState({updateId: id});
         const selectedRoute = this.state.transportations.find(route => route.id === id);
+        const locationFrom = this.state.locations.find(city => city.id === selectedRoute['from_location_id']);
+        const locationTo = this.state.locations.find(city => city.id === selectedRoute['to_location_id']);
+        const providerId = this.state.provider.find(provider => provider.id === selectedRoute['provider_id']);
+        const routeEdit = {
+            id: selectedRoute.id,
+            cityNameFrom: locationFrom.city,
+            cityNameTo: locationTo.city,
+            type: selectedRoute.type,
+            providerName: providerId.name
+        };
+
+        this.setState({updateId: id, routeEdit});
         document.querySelector(`#from_location_id [value="${selectedRoute.from_location_id}"]`).selected = true;
         document.querySelector(`#to_location_id [value="${selectedRoute.to_location_id}"]`).selected = true;
 
@@ -140,10 +152,15 @@ class Transportations extends Component {
                 </div>
             )
         });
+        
+        const routeForEdit = <div key={this.state.routeEdit.id}>
+            {this.state.routeEdit.id}. From {this.state.routeEdit.cityNameFrom} - To {this.state.routeEdit.cityNameTo}, - Provider: {this.state.routeEdit.providerName}, - type of transportation: {this.state.routeEdit.type}
+                            </div>;
 
         return(
             <div className={classes.Transportations}>
                 <h2>{(this.state.updateId === '') ? 'Enter new transportation for travel' : 'Edit selected route:'}</h2>
+                { (this.state.routeEdit !== '') ? routeForEdit : null }
                 <div>
                     <select onClick={this.inputHandler} name="from_location_id" id="from_location_id">
                         <option value="" defaultChecked>Select location from:</option>
