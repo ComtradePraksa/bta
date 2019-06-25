@@ -20,8 +20,8 @@
 
 @media(min-width:768px) {
   .Map {
-    width: 25vw;
-    height: 25vw;
+    width: 30vw;
+    height: 30vw;
     border-radius: 50%;
   }
 

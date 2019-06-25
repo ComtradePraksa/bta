@@ -17,11 +17,12 @@ class FeedbackContainer extends Component {
         this.setState({ newComentVisible: !this.state.newComentVisible });
     };
 
-    getDatabase = (cityId) => {
+    getDatabase = (url,id) => {
         (async () => {
-            const data = await getFromDatabase(`/location_feedbacks/location/${cityId}`);
+            const data = await getFromDatabase(`${url}${id}`);
             const feedback = [];
             const userfeedback = [];
+            if(data!==undefined){
             data.data.map(fb => {
                 feedback.push(fb)
                 if (data.user.id === fb.id) {
@@ -30,23 +31,24 @@ class FeedbackContainer extends Component {
                 }
                 return true;
             });
+        }
             this.setState({ feedbacks: feedback });
         })();
     };
 
     componentDidUpdate(prevProps,prevState) {
-        if (prevProps.cityId!==this.props.cityId) {
-            this.getDatabase(this.props.cityId);
+        if (prevProps.id!==this.props.id ) {
+            this.getDatabase(this.props.url,this.props.id);
         }
     };
 
     componentDidMount() {
-        this.getDatabase(this.props.cityId);
+        this.getDatabase(this.props.url,this.props.id);
     };
     
     deleteFeedback = (params) => {
         (async () => {
-            await deleteFromDatabase(`/location_feedbacks`, params);
+            await deleteFromDatabase(`${this.props.url}`, params);
             this.getDatabase();
         })();
     };
