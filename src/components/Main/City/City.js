@@ -3,6 +3,7 @@ import WeatherCity from './WeatherCity/WeatherCity'
 import MapCity from './MapCity/MapCity';
 import HotelsCity from './HotelsCity/HotelsCity';
 import CityLife from './CityLife/CityLife';
+import Transportation from './Transportation/Transportation'
 import axios from 'axios';
 import classes from './City.css';
 
@@ -59,6 +60,7 @@ class City extends Component {
                 <HotelsCity getHotelsInfo={this.getHotelsInfo} city={this.props.city} className={classes.HotelsCity}/>
                 <WeatherCity city={this.props.city} className={classes.WeatherCity}/>
                 <MapCity location={this.state.location} city={this.props.city} className={classes.MapCity}/></div>}
+                <Transportation city = {this.props.city} />
                 <CityLife />
             </div>
         );

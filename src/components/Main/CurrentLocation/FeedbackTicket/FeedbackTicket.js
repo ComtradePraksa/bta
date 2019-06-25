@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from "./FeedbackTicket.css"
+import classes from "./FeedbackTicket.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedbackPopup from '../FeedbackPopup/FeedbackPopup';
 import { getType, getStyle } from "../FeedbackFunction/FeedbackFunction"
