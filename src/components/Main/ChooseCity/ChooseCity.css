@@ -11,8 +11,7 @@
 .chooseCity {
   grid-area: choose-city2;
   align-items: center;
-  margin-left: 33%;
-  /* justify-content: center; */
+  justify-content: center;
   flex-direction: column;
   padding: 3% 2%;
 }
@@ -112,6 +111,8 @@
   .chooseCity {
     width: 100%;
     flex-direction: row;
+    margin-left: 33%;
+    justify-content: unset;
   }
 
   .chooseCity h2 {

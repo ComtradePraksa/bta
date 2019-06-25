@@ -58,15 +58,16 @@
     color: yellow;
 }
 
-@media(max-width: 1080px) {
+@media(max-width: 500px) {
     .AdminPanelLink {
-        display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
+        height: 50vw;
+        width: 50vw;
     }
 
-    .AdminPanelLink svg {
+    /* .AdminPanelLink svg {
         width: 20px;
         height: 20px;
-    }
+    } */
 }

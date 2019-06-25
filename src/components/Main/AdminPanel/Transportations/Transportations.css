@@ -12,10 +12,25 @@
     margin: 2%;
 }
 
-@media(max-width: 1080px) {
+.TransportationsRoutes > div {
+    font-size: 1vw;
+    margin: 2%;
+}
+
+@media(max-width: 500px) {
 
     .Transportations,
     .Transportations select {
-        font-size: 3vw;
+        font-size: 4vw;
+    }
+
+    .Transportations select {
+        width: 80vw;
+    }
+
+    .TransportationsRoutes > div {
+        font-size: 4vw;
+        text-align: left;
+        margin: 5% 2%;
     }
 }

@@ -68,26 +68,27 @@ label {
     margin: 0 0.25%;
 }
 
-@media(max-width: 1080px) {
+@media(max-width: 500px) {
     .Users {
         font-size: 3vw;
     }
 
     .UsersImg {
         width: 40vw;
+        height: 18vh;
     }
 
     input[type='file'] {
-        font-size: 2vw;
+        font-size: 4vw;
         margin: 2% auto;
     }
 
     .UsersInputText {
         width: 70vw;
-        font-size: 3vw;
+        font-size: 4vw;
     }
 
     button {
-        font-size: 3vw;
+        font-size: 4vw;
     }
 }

@@ -180,7 +180,7 @@ class Transportations extends Component {
                     <button onClick={this.saveHandler}>Add to database</button>
                   : <button onClick={this.updateHandler}>Update route</button> 
                 }
-                <div>
+                <div className={classes.TransportationsRoutes}>
                     {transportations}
                 </div>
             </div>

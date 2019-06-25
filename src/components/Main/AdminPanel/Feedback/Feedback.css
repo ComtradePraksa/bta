@@ -6,8 +6,12 @@
     margin: 2%;
 }
 
-@media(max-width: 1080px) {
+.Feedback > div {
+    margin: 5% 0;
+ }
+
+@media(max-width: 500px) {
     .Feedback {
-        font-size: 3vw;
+        font-size: 4vw;
     }
 }
