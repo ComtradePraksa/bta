@@ -105,14 +105,17 @@
   cursor: pointer;
 }
 
-input[type="range"]::-webkit-slider-thumb
-/*input[type="range"]::-moz-range-thumb*/ {
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background-color: lightgreen;
 }
+
 
 .feedbackRate svg {
   color: lightgreen;
