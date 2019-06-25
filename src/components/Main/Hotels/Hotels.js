@@ -56,15 +56,17 @@ class Hotels extends Component {
         return (
             <React.Fragment>
                 <div className={classes.HotelWrapper}>
-                    <h3>{this.state.hotel.name}</h3>
+                    <div className={classes.HotelData}>
+                    <h3 className={classes.HotelName}>{this.state.hotel.name}</h3>
                     <p>{this.state.hotel.hotel_descr}</p>
                     <div><img src={`${this.state.hotel.hotel_img}`} alt={this.state.hotel.image}/></div>
                     <a href={`${this.state.hotel.link}`} target="_blank">{`${this.state.hotel.link}`}</a>
-                    <div>Adress: {this.state.address}</div>
+                    <div>Address: {this.state.address}</div>
                     <div>Phone: {this.state.phone}</div>
                     <div>Email: {this.state.email}</div>
+                    </div>
+                    <div className={classes.MapCity} id="here-map"></div>
                 </div>
-                <div className={classes.MapCity} id="here-map"></div>
             </React.Fragment>
         );
     }

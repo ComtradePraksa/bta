@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import FeedbackTicket from '../FeedbackTicket/FeedbackTicket';
-import { getFromDatabase, deleteFromDatabase } from '../../../../apis/btaApi';
+import FeedbackTicket from './FeedbackTicket/FeedbackTicket';
+import { getFromDatabase, deleteFromDatabase } from '../../../apis/btaApi'
 import classes from "./FeedbackContainer.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import AddNewFeedback from "../AddNewFeedback/AddNewFeedback"
+import AddNewFeedback from "./AddNewFeedback/AddNewFeedback"
 
 class FeedbackContainer extends Component {
     state = {
@@ -17,9 +17,9 @@ class FeedbackContainer extends Component {
         this.setState({ newComentVisible: !this.state.newComentVisible });
     };
 
-    getDatabase = () => {
+    getDatabase = (cityId) => {
         (async () => {
-            const data = await getFromDatabase('/location_feedbacks');
+            const data = await getFromDatabase(`/location_feedbacks/location/${cityId}`);
             const feedback = [];
             const userfeedback = [];
             data.data.map(fb => {
@@ -34,12 +34,18 @@ class FeedbackContainer extends Component {
         })();
     };
 
+    componentDidUpdate(prevProps,prevState){
+        if(prevProps.cityId!==this.props.cityId){
+            this.getDatabase(this.props.cityId)
+        }
+    }
+
     componentDidMount() {
-        this.getDatabase();
+        this.getDatabase(this.props.cityId);
 
     };
     
-    getClickedId = (params) => {
+    deleteFeedback = (params) => {
         (async () => {
             await deleteFromDatabase(`/location_feedbacks`, params);
             this.getDatabase();
@@ -47,7 +53,6 @@ class FeedbackContainer extends Component {
     };
 
     render() {
-
         return (
             <div className={classes.feedbackContainer}>
                 <div className={classes.sortTicket}>
@@ -55,7 +60,7 @@ class FeedbackContainer extends Component {
                 <div className={classes.ticketsWrapper}>
                     {
                         this.state.feedbacks.map(fb => (
-                            <FeedbackTicket getClickedId={this.getClickedId} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb}/>
+                            <FeedbackTicket deleteFeedback={this.deleteFeedback} loggedUser={this.props.loggedUser} key={fb.id_feedback} fb={fb}/>
                         ))
                     }
                 </div>
