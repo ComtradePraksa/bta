@@ -14,7 +14,8 @@ class Accommodation extends Component {
         accommodationsData: [],
         accommodationsNew: '',
         updateId: '',
-        regEx_message: ''
+        regEx_message: '',
+        true_message: ''
     };
 
     getDatabase = (idCity) => {
@@ -46,7 +47,7 @@ class Accommodation extends Component {
                         id_city: idCity };
                 this.setState({accommodationsNew});
             })();
-        } else { this.setState({regEx_message: 'Please, enter link to get accommodation info'}); }
+        } else { this.setState({regEx_message: 'Please, enter link to get accommodation info!'}); }
     };
 
     saveHandler = () => {
@@ -55,7 +56,8 @@ class Accommodation extends Component {
                 await postToDatabase('/accommodations', this.state.accommodationsNew);
                 this.getDatabase(`/id_city/${this.state.accommodationsNew.id_city}`);
             })();
-        } else { this.setState({regEx_message: 'Please, enter accommodation info'}); }
+            this.setState({true_message: '- Successfully aded new accommodation -'});
+        } else { this.setState({regEx_message: 'Please, enter accommodation info!'}); }
     };
 
     updateHandler = () => {
@@ -63,6 +65,7 @@ class Accommodation extends Component {
             await patchToDatabase('/accommodations', this.state.updateId, this.state.accommodationsNew);
             this.getDatabase(`/id_city/${this.state.accommodationsNew.id_city}`);
         })();
+        this.setState({true_message: '- Successfully updated! -'});
         this.setState({updateId: ''});
     };
 
@@ -71,6 +74,7 @@ class Accommodation extends Component {
             await deleteFromDatabase('/accommodations', id);
             this.getDatabase(`/id_city/${this.state.id_city_selected}`);
         })();
+        this.setState({true_message: '- Successfully deleted accommodation -'});
     };
 
     getDataForUpdate = (link, idCity, id) => {
@@ -117,10 +121,10 @@ class Accommodation extends Component {
                     <p>{acc.hotel_descr}</p>
                     <div><a href = {`${acc.link}`} target="_blank">website: {`${acc.link}`}</a></div>
                     <span onClick={() => this.deleteHandler(acc.id)}>
-                        <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
+                        <FontAwesomeIcon icon="trash-alt" size="lg" style={{color: "red", cursor: "pointer", padding: "0.5vw"}}/>
                     </span>
                     <span onClick={() => this.getDataForUpdate(acc.link, acc.id_city, acc.id)}>
-                        <FontAwesomeIcon icon={['fas', 'edit']} style={{color: "lightgreen", cursor: "pointer", paddingLeft: "1vw"}}/>
+                        <FontAwesomeIcon icon={['fas', 'edit']} size="lg" style={{color: "lightgreen", cursor: "pointer", padding: "0.5vw"}}/>
                     </span>
                     </div> 
                     <div><img src = {`${acc.hotel_img}`} alt = {acc.hotel_img} /></div>
@@ -153,14 +157,18 @@ class Accommodation extends Component {
                                                                 <option value="" defaultChecked>Select location:</option>
                                                                 {locations}
                                                            </select> : null;
-                                                           
+
         return (
             <div className={classes.Accommodation}>
                 <h2>Enter new accomodation for travel</h2>
                 {inputSwitch}
                 {inputForGetData}
                 {accommodationCheck}
-                <p>{this.state.regEx_message}</p>
+                {
+                    (this.state.regEx_message !== '' && this.state.true_message === '') ? 
+                    <p className={classes.Message}>{this.state.regEx_message}</p> :
+                    <p className={classes.MessageTrue}>{this.state.true_message}</p>
+                }
                 {buttonSwitch}
                 <h2>All accommodations</h2>
                 <div>

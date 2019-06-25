@@ -9,7 +9,8 @@ class Provider extends Component {
         name: '',
         type: '',
         provider: [],
-        regEx_message: ''
+        regEx_message: '',
+        true_message: ''
     };
 
     getDatabase = () => {
@@ -36,7 +37,8 @@ class Provider extends Component {
                 await postToDatabase('/provider', newProvider);
                 this.getDatabase();
             })();
-        } else { this.setState({regEx_message: 'Please, enter provider name and type'}); }
+            this.setState({true_message: '- Successfully aded new provider -'});
+        } else { this.setState({regEx_message: 'Please, enter provider name and type!'}); }
     };
 
     deleteHandler = (id) => {
@@ -44,6 +46,7 @@ class Provider extends Component {
             await deleteFromDatabase('/provider', id);
             this.getDatabase();
         })();
+        this.setState({true_message: '- Successfully deleted provider -'});
     };
 
     componentDidMount() {
@@ -79,7 +82,11 @@ class Provider extends Component {
                         <option value="Taxi">Taxi</option>
                     </select>
                 </div>
-                <p>{this.state.regEx_message}</p>
+                {
+                    (this.state.regEx_message !== '' && this.state.true_message === '') ? 
+                    <p className={classes.Message}>{this.state.regEx_message}</p> :
+                    <p className={classes.MessageTrue}>{this.state.true_message}</p>
+                }
                 <button onClick={this.saveHandler}>Add to database</button>
                 <div className={classes.ProviderList}>
                     {providers}

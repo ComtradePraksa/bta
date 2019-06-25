@@ -15,6 +15,17 @@
 
 .Provider select {
     font-size: 1vw;
+    width: 20vw;
+    margin: 1%;
+    padding: 1%;
+}
+
+.Message {
+    color: red;   
+}
+
+.MessageTrue {
+    color: lightgreen;
 }
 
 .ProviderList {

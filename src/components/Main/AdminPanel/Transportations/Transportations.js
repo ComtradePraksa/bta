@@ -15,7 +15,8 @@ class Transportations extends Component {
         provider_id: '',
         updateId: '',
         routeEdit: '',
-        regEx_message: ''
+        regEx_message: '',
+        true_message: ''
     };
 
     getDatabase = (tableName='/transportations', saveLocation='transportations') => {
@@ -50,7 +51,8 @@ class Transportations extends Component {
                 await postToDatabase('/transportations', transportationData);
                 this.getDatabase();
             })();
-        } else { this.setState({regEx_message: 'Please, select route for transportation'}); }
+            this.setState({true_message: '- Successfully aded new route -'});
+        } else { this.setState({regEx_message: 'Please, select route for transportation!'}); }
     };
 
     updateHandler = () => {
@@ -66,6 +68,7 @@ class Transportations extends Component {
             await patchToDatabase('/transportations', this.state.updateId, transportationEditedData);
             this.getDatabase();
         })();
+        this.setState({true_message: '- Successfully updated! -'});
         this.setState({updateId: ''});
     };
 
@@ -74,6 +77,7 @@ class Transportations extends Component {
             await deleteFromDatabase('/transportations', id);
             this.getDatabase();
         })();
+        this.setState({true_message: '- Successfully deleted route -'});
     };
 
     getRouteForUpdate = (id) => {
@@ -175,10 +179,15 @@ class Transportations extends Component {
                         {provider}
                     </select>
                 </div>
-                <p>{this.state.regEx_message}</p>
-                { (this.state.updateId === '') ?
-                    <button onClick={this.saveHandler}>Add to database</button>
-                  : <button onClick={this.updateHandler}>Update route</button> 
+                {
+                    (this.state.regEx_message !== '' && this.state.true_message === '') ? 
+                    <p className={classes.Message}>{this.state.regEx_message}</p> :
+                    <p className={classes.MessageTrue}>{this.state.true_message}</p>
+                }
+                { 
+                    (this.state.updateId === '') ?
+                    <button onClick={this.saveHandler}>Add to database</button> : 
+                    <button onClick={this.updateHandler}>Update route</button> 
                 }
                 <div className={classes.TransportationsRoutes}>
                     {transportations}

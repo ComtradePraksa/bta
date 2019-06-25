@@ -12,7 +12,8 @@ class City extends Component {
         state: '',
         city_lat_lon: '',
         locations: [],
-        regEx_message: ''
+        regEx_message: '',
+        true_message: ''
     };
 
     getDatabase = () => {
@@ -56,7 +57,8 @@ class City extends Component {
                 await postToDatabase('/locations', newCity);
                 this.getDatabase();
             })();
-        } else { this.setState({regEx_message: 'Please, enter city-name and state'}); }
+            this.setState({true_message: '- Successfully aded new city -'});
+        } else { this.setState({regEx_message: 'Please, enter city-name and state!'}); }
     };
 
     deleteHandler = (id) => {
@@ -64,6 +66,7 @@ class City extends Component {
             await deleteFromDatabase('/locations', id);
             this.getDatabase();
         })();
+        this.setState({true_message: '- Successfully deleted city -'});
     };
 
     componentDidMount() {
@@ -92,7 +95,11 @@ class City extends Component {
                     <input onBlur={this.inputHandler} type="text" name="city_name" placeholder="Enter city"/>
                     <input onBlur={this.inputHandler} type="text" name="state" placeholder="Enter state for city"/>
                 </div>
-                <p>{this.state.regEx_message}</p>
+                {
+                    (this.state.regEx_message !== '' && this.state.true_message === '') ? 
+                    <p className={classes.Message}>{this.state.regEx_message}</p> :
+                    <p className={classes.MessageTrue}>{this.state.true_message}</p>
+                }
                 <button onClick={this.saveHandler}>Save to database</button>
                 <h2>Cities in database:</h2>
                 <div className={classes.CitiesFromDb}>

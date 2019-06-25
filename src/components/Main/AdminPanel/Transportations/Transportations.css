@@ -9,12 +9,23 @@
 
 .Transportations select {
     font-size: 1vw;
-    margin: 2%;
+    width: 20vw;
+    margin: 1%;
+    padding: 1%;
 }
 
 .TransportationsRoutes > div {
     font-size: 1vw;
     margin: 2%;
+}
+
+.Message {
+    color: red;
+    font-size: 1vw;
+}
+
+.MessageTrue {
+    color: lightgreen;
 }
 
 @media(max-width: 500px) {

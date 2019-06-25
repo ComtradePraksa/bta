@@ -18,6 +18,14 @@
     padding: 1%;
 }
 
+.Message {
+    color: crimson;   
+}
+
+.MessageTrue {
+    color: lightgreen;
+}
+
 .UsersFlex {
     display: flex;
     flex-direction: row;

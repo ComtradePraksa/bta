@@ -14,7 +14,8 @@ class Users extends Component {
         usersAll: [],
         users_onePage: [],
         showAll: false,
-        regEx_message: ''
+        regEx_message: '',
+        true_message: ''
     };
 
     getDatabase = () => {
@@ -54,7 +55,8 @@ class Users extends Component {
                 await postToDatabase('/users', newUser);
                 this.getDatabase();
             })();
-        } else { this.setState({regEx_message: 'Please complete all fields to add new user'}); }
+            this.setState({true_message: '- Successfully aded new user -'});
+        } else { this.setState({regEx_message: 'Please complete all fields to add new user!'}); }
     };
 
     deleteHandler = (id) => {
@@ -62,6 +64,7 @@ class Users extends Component {
             await deleteFromDatabase('/users', id);
             this.getDatabase();
         })();
+        this.setState({true_message: '- Successfully deleted user -'});
     };
 
     showAllUsers = () => {
@@ -108,7 +111,11 @@ class Users extends Component {
                     <input onClick={this.inputHandler} type="radio" name="is_admin" value="0" id="admin0" /></div>
                     <div className={classes.UsersPhotoInput}><input onChange={this.inputHandler} type="file" name="photo" /></div>
                 </div>
-                <p>{this.state.regEx_message}</p>
+                {
+                    (this.state.regEx_message !== '' && this.state.true_message === '') ? 
+                    <p className={classes.Message}>{this.state.regEx_message}</p> :
+                    <p className={classes.MessageTrue}>{this.state.true_message}</p>
+                }
                 <button onClick={this.saveHandler}>Save to database</button>
                 <h2>All users:</h2>
                 <div className={classes.UsersFlex}>

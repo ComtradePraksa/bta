@@ -9,14 +9,29 @@
 
 .Accommodation select {
     font-size: 1vw;
-    margin: 3% 0;
+    width: 20vw;
+    margin: 1%;
+    padding: 1%;
+}
+
+.Accommodation input {
+    width: 20vw;
+    margin: 2%;
+    padding: 1%;
+}
+
+.Message {
+    color: red;
+}
+
+.MessageTrue {
+    color: lightgreen;
 }
 
 .AllAcomodations {
     display: flex;
     flex-direction: column;
     margin: 0 9.5vw;
-    width: 80vw;
 }
 
 .AccommodationDetails {
