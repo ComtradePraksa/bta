@@ -5,7 +5,7 @@ class FeedbackCity extends Component {
 
     render(){
         return(
-            <FeedbackContainer loggedUser={this.props.loggedUser} url='/location_feedbacks' id={`/location/${this.props.cityId}`}/>
+            <FeedbackContainer cityId = {this.props.cityId} loggedUser={this.props.loggedUser} url='/location_feedbacks' id={`/location/${this.props.cityId}`}/>
         );
     }
 }

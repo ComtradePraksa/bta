@@ -29,6 +29,7 @@ class AddNewFeedback extends Component {
     };
 
     render() {
+        console.log(this.props.cityId)
         return (
             <div className={[classes.newFeedbackWindow, classes.flex, classes.center, classes.fullWidth].join(' ')}>
                 <div className={classes.newFeedbackPopup}>

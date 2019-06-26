@@ -68,7 +68,7 @@ class FeedbackContainer extends Component {
                 <div onClick={this.toggle} className={classes.addFeedback}>
                     <FontAwesomeIcon icon="plus" style={{ color: "white" }}/>
                 </div>
-                {this.state.newComentVisible && <AddNewFeedback toggle={this.toggle}/>}
+                {this.state.newComentVisible && <AddNewFeedback cityId = {this.props.cityId} toggle={this.toggle}/>}
             </div>
         );
     }

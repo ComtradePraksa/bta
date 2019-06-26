@@ -31,7 +31,7 @@ class Transportation extends Component{
         return (
             <div className = {classes.TransportationWrapper}>
                 <div onClick = {this.toggleDisplay} className = {classes.TransportationTitle}>
-                    <span>Transport</span><FontAwesomeIcon icon="chevron-down" />
+                    <h3>Transport</h3><FontAwesomeIcon icon="chevron-down" />
                 </div>
                 {this.state.open && 
                     <div className = {classes.TransportationBody}>
@@ -40,10 +40,10 @@ class Transportation extends Component{
                             transportations.map(t=>{
                                 return (
                                     <div key={t.id} className={classes.Transportation}>
-                                        <div className="From">{t.from_loc}</div>
-                                        <div className="To">{t.to_loc}</div>
-                                        <div className="Name">{t.name}</div>
-                                        <div className="type">{t.type}</div>
+                                        <div className={classes.Info}><span>From:</span> {t.from_loc}</div>
+                                        <div className={classes.Info}><span>To:</span>{t.to_loc}</div>
+                                        <div className={classes.Info}><span>Provider:</span> {t.name}</div>
+                                        <div className={classes.Info}><span>Type:</span> {t.type}</div>
                                     </div>
                                 );
                             })
