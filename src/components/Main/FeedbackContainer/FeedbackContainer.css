@@ -12,7 +12,16 @@
   font-family: "Raleway", Arial, Helvetica, sans-serif;
   position: relative;
   max-width: 100vw;
-  padding: 4% 0 2%;
+  padding: 4% 0;
+}
+
+.Heading {
+  font-size: 1.8vw;
+  font-weight: 500;
+  color: whitesmoke;
+  position: absolute;
+  top: 5vh;
+  left: 23vh;
 }
 
 .ticketsWrapper {
@@ -35,7 +44,7 @@
   height: 8vh;
   width: 8vh;
   border-radius: 50%;
-  top: 4vh;
+  top: -4vh;
   right: 10vh;
   background-color: crimson;
   display: flex;
