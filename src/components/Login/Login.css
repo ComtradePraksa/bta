@@ -89,6 +89,8 @@ input {
   /* box-shadow: 0 0 0.3rem 0.2rem rgba(0, 0, 0, 0.267); */
   border-radius: 0.3rem;
   margin: auto;
+  width: 40vw;
+  padding: 3vw 0 0 8vw;
 }
 
 .flex {
@@ -206,7 +208,9 @@ input {
   }
 
   .Login {
-    margin: 10% 0;
+    margin: auto;
+    width: 80vw;
+    padding: 0 0 20vw 0;
   }
 
   .LogoTitle {
@@ -244,7 +248,9 @@ input {
   }
 
   .Login {
-    margin: 0;
+    margin: auto;
+    width: 40vw;
+    padding: 0;
   }
 
   .LogoTitle {
@@ -262,8 +268,8 @@ input {
 
   .Login form .formHeader {
     display: block;
-    height: 2em;
-    padding-top: 0.5em;
+    height: 3em;
+    padding: 1em 0;
     background-color: #232b4b;
     margin-bottom: 0;
     border-top-left-radius: 0.3rem;
@@ -283,6 +289,7 @@ input {
   }
 
   .Login form .formGroup {
+    margin-top: 2em;
     margin-bottom: 1em;
   }
 }
