@@ -41,7 +41,7 @@ class AdminPanel extends Component {
                     <Route path={`${this.props.match.path}/accomodation`} exact component={Accommodation} />
                     <Route path={`${this.props.match.path}/provider`} exact component={Provider} />
                     <Route path={`${this.props.match.path}/route`} exact component={Transportations} />
-                    <Route path={`${this.props.match.path}/feedback`} exact component={Feedback} />
+                    <Route path={`${this.props.match.path}/feedback`} exact render={ () => <Feedback loggedUser={this.props.loggedUser}/> } />
                 </div>
             </div>
         );

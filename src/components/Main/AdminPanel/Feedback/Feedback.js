@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {getFromDatabase} from '../../../../apis/btaApi';
-import FeedbackTicket from '../../FeedbackContainer/FeedbackTicket/FeedbackTicket';
+// import FeedbackCL from '../../CurrentLocation/FeedbackCL/FeedbackCL';
 import classes from './Feedback.css';
 
 class Feedback extends Component {
@@ -26,11 +26,9 @@ class Feedback extends Component {
                 <div onClick={() => this.getDatabase('/location_feedbacks', 'feedbacks')}>Location Feedbacks</div>
                 <div onClick={() => this.getDatabase('/acc_feedbacks', 'feedbacks')}>Accommodation Feedbacks</div>
                 <div onClick={() => this.getDatabase('/transportation_feedbacks', 'feedbacks')}>Transportation Feedbacks</div>
-                <p>
-                {   (this.state.feedbacks !== '') ? 
-                    this.state.feedbacks.map((fb,index) => (<FeedbackTicket loggedUser={this.props.loggedUser} key={index} fb={fb}/>)) : null 
-                }
-                </p>
+                {/* <div className={classes.FeedbackCL}>
+                    <FeedbackCL loggedUser={this.props.loggedUser}/>
+                </div> */}
             </div>
         )
     }
