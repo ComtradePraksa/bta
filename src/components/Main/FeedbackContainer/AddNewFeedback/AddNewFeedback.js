@@ -44,9 +44,9 @@ class AddNewFeedback extends Component {
             cat:this.state.category,
             rate:this.state.rate,
             title:this.state.title,
-            cityId:this.props.cityId
+            cityId: this.props.cityId
         };
-        
+        console.log(commentData)
         axios({
             method: 'post',
             url: `http://localhost:3001${this.props.url}`,

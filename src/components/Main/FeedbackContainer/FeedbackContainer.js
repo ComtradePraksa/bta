@@ -54,22 +54,24 @@ class FeedbackContainer extends Component {
     };
 
     render() {
-       
+        let fb = this.state.feedbacks
         return (
             <div className={classes.feedbackContainer}>
                 <div className={classes.Heading}>Feedbacks</div>
                 <div className={classes.sortTicket}></div>
                 <div className={classes.ticketsWrapper}>
                     {
-                        this.state.feedbacks.map((fb,index) => (
+                        
+                        this.state.feedbacks.slice(fb.length-6, ).map((fb,index) => (
                             <FeedbackTicket deleteFeedback={this.deleteFeedback} loggedUser={this.props.loggedUser} key={index} fb={fb}/>
                         ))
                     }
                 </div>
+                {this.props.cityId !==undefined ?
                 <div onClick={this.toggle} className={classes.addFeedback}>
                     <FontAwesomeIcon icon="plus" style={{ color: "white" }}/>
-                </div>
-                {this.state.newComentVisible && <AddNewFeedback cityId = {this.props.cityId} toggle={this.toggle}/>}
+                </div> :""}
+                {this.state.newComentVisible && <AddNewFeedback url={this.props.url} cityId = {this.props.cityId} toggle={this.toggle}/>}
             </div>
         );
     }
