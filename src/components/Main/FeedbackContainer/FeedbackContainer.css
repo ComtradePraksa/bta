@@ -21,7 +21,7 @@
   color: whitesmoke;
   position: absolute;
   top: 5vh;
-  left: 23vh;
+  left: 8vw;
 }
 
 .ticketsWrapper {
@@ -50,6 +50,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 @media(min-width: 768px) {
