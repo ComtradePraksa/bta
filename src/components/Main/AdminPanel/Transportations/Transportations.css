@@ -14,7 +14,7 @@
     padding: 1%;
 }
 
-.TransportationsRoutes > div {
+.TransportationsRoutes>div {
     font-size: 1vw;
     margin: 2%;
 }
@@ -39,7 +39,7 @@
         width: 80vw;
     }
 
-    .TransportationsRoutes > div {
+    .TransportationsRoutes>div {
         font-size: 4vw;
         text-align: left;
         margin: 5% 2%;
