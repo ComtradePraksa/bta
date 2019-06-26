@@ -30,7 +30,7 @@ class FeedbackContainer extends Component {
                     this.setState({ userfeedbacks: userfeedback });
                 }
                 return true;
-            });
+            })
         }
             this.setState({ feedbacks: feedback });
         })();
@@ -68,7 +68,7 @@ class FeedbackContainer extends Component {
                 <div onClick={this.toggle} className={classes.addFeedback}>
                     <FontAwesomeIcon icon="plus" style={{ color: "white" }}/>
                 </div>
-                {this.state.newComentVisible && <AddNewFeedback toggle={this.toggle}/>}
+                {this.state.newComentVisible && <AddNewFeedback url={this.props.url} cityId={this.props.cityId} toggle={this.toggle}/>}
             </div>
         );
     }

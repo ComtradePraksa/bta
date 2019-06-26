@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import classes from "./AddNewFeedback.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import jwt from 'jsonwebtoken';
+import axios from 'axios';
+import { stringForDb } from "../FeedbackFunction/FeedbackFunction"
+
 
 class AddNewFeedback extends Component {
     state = {
@@ -8,7 +12,8 @@ class AddNewFeedback extends Component {
         dropdownVisible:false,
         category:'',
         title:'',
-        text:''
+        text:'',
+        placeholder:"Select category..."
     };
 
     getRate = (event) => {
@@ -22,23 +27,59 @@ class AddNewFeedback extends Component {
     getFeedbackValue = (event) => {
         this.setState({ text: event.target.value });
     };
+    getTitle = (event) =>{
+        this.setState({title:event.target.value})
+    }
 
     getCategory = (e) => {
         this.setState({category:e.target.innerText.toLowerCase()});
+        this.setState({placeholder:e.target.innerText})
         this.toggle();
+    };
+    getData = () => {
+        const commentData = {
+            userId: jwt.decode(localStorage.getItem("jwtoken")).id,
+            fb: this.state.text,
+            dt: stringForDb(),
+            cat:this.state.category,
+            rate:this.state.rate,
+            title:this.state.title,
+            cityId:this.props.cityId
+        };
+        
+        axios({
+            method: 'post',
+            url: `http://localhost:3001${this.props.url}`,
+            data: commentData,
+            config: { headers: { 'Content-Type': 'application/json' } }
+        })
+        .then(res => {
+            const dbResults = res.data;
+            const newCom = {
+                id_feedback: dbResults.insertedId,
+                title: dbResults.newComment.title,
+                category: dbResults.newComment.cat,
+                rating: dbResults.newComment.rate,
+                feedback: dbResults.newComment.fb,
+                id_user: dbResults.newComment.userId,
+                id_location:dbResults.newComment.cityId,
+                date:dbResults.newComment.dt
+            };
+        });
     };
 
     render() {
+        console.log(this.state)
         return (
             <div className={[classes.newFeedbackWindow, classes.flex, classes.center, classes.fullWidth].join(' ')}>
                 <div className={classes.newFeedbackPopup}>
                     <div className={[classes.newFeedbackHeader, classes.flex].join(' ')}>
                         <FontAwesomeIcon icon="times" onClick={this.props.toggle} />
-                        <button className={[classes.saveFeedback, classes.pointer].join(' ')}>SAVE</button>
+                        <button onClick={this.getData} className={[classes.saveFeedback, classes.pointer].join(' ')}>SAVE</button>
                     </div>
                     <div className={classes.newFeedbackMain}>
                         <div className={[classes.inputTitle, classes.flex].join(' ')}>
-                            <input className={[classes.title, classes.flex, classes.fullWidth].join(' ')} type="text" placeholder="Enter Title" />
+                            <input className={[classes.title, classes.flex, classes.fullWidth].join(' ')} onChange={this.getTitle} type="text" placeholder="Enter Title" />
                         </div>
                         <div className={classes.chooseType}>
                         
@@ -46,7 +87,7 @@ class AddNewFeedback extends Component {
                                 <div className={[classes.dropdown, classes.fullWidth].join(' ')} >
                                     <div className={classes.overlay}></div>
                                     <div className={classes.dropdownTileWrapper}>
-                                        <input placeholder="Category" className={[classes.categoryInput, classes.pointer].join(' ')}  readOnly onClick={this.toggle}/>
+                                        <input placeholder={this.state.placeholder} className={[classes.categoryInput, classes.pointer].join(' ')}  readOnly onClick={this.toggle}/>
                                         <FontAwesomeIcon icon="chevron-down" style={{ color: '#gray' }} />
                                     </div>
                                     {this.state.dropdownVisible && <ul className={classes.dropdownItemList}>

@@ -211,6 +211,23 @@ module.exports = function (app, express, mysqlConnection) {
         res.send({ error: false, data: results, message: 'Feedbacks list.', user: req.user });
       });
     });
+    router.route('/location_feedbacks')
+    .post(verifyToken, (req, res) => {
+      const newComment = {
+        userId: req.body.userId,
+        fb: req.body.fb,
+        dt: req.body.dt,
+        cat:req.body.cat,
+        rate:req.body.rate,
+        title:req.body.title,
+        cityId:req.body.cityId
+      }
+      mysqlConnection.query('insert into location_feedbacks (id_user,title,category,rating,feedback,id_location,date) values (?,?,?,?,?,?,?)',
+        [req.body.userId,req.body.title,req.body.cat,req.body.rate,req.body.fb,req.body.cityId,req.body.dt], function (error, results) {
+          if (error) throw error;
+          res.send({ error: false, newComment, user: req.user, insertedId: results.insertedId });
+        });
+    });
   router.route('/location_feedbacks/:id')
     .delete(verifyToken, (req, res) => {
       mysqlConnection.query('delete from location_feedbacks where id_feedback =?', req.params.id, function (error, results) {
