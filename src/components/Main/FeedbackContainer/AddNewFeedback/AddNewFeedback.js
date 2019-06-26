@@ -53,27 +53,10 @@ class AddNewFeedback extends Component {
             data: commentData,
             config: { headers: { 'Content-Type': 'application/json' } }
         })
-        .then(res => {
-            const dbResults = res.data;
-            const newCom = {
-                id_feedback: dbResults.insertedId,
-                title: dbResults.newComment.title,
-                category: dbResults.newComment.cat,
-                rating: dbResults.newComment.rate,
-                feedback: dbResults.newComment.fb,
-                id_user: dbResults.newComment.userId,
-                id_location:dbResults.newComment.cityId,
-                date:dbResults.newComment.dt
-            };
-        });
+     
     };
 
     render() {
-<<<<<<< HEAD
-        console.log(this.state)
-=======
-        console.log(this.props.cityId)
->>>>>>> 05c4ce2b31efce1cca56c7bcfc15737164cfb325
         return (
             <div className={[classes.newFeedbackWindow, classes.flex, classes.center, classes.fullWidth].join(' ')}>
                 <div className={classes.newFeedbackPopup}>
