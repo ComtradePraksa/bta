@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 
+.flex {
+  display: flex;
+}
+
+.center {
+  align-items: center;
+}
+
 .feedbackPopupWindow {
   height: 100vh;
   width: 100%;
@@ -8,9 +16,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 5;
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .feedbackPopup {
@@ -26,7 +32,6 @@
 .feedbackPopupHeader {
   background-color: #232b4b;
   color: white;
-  display: flex;
   justify-content: flex-end;
   font-size: 1.2rem;
 }
@@ -39,7 +44,6 @@
 
 .feedbackPopupMain {
   max-height: 81vh;
-  /* proveriti zasto ne rade procenti ovde*/
   overflow-y: auto;
 }
 
@@ -48,8 +52,6 @@
   padding: 3%;
   display: grid;
   grid-template-columns: 3fr;
-  /* grid-template-columns: 2.5fr 5fr 2.5fr;
-    grid-template-rows: 1fr 1fr 1fr 7fr;*/
   grid-template-areas:
     "photo name ."
     "photo title ."
@@ -108,8 +110,6 @@
   grid-area: progressbar;
   width: 80%;
   height: 12px;
-  display: flex;
-  align-items: center;
 }
 
 .feedbackPopupInnerProgress {
@@ -135,7 +135,6 @@
 }
 
 .feedbackPopupComments {
-  display: flex;
   flex-direction: column;
   width: 100%;
   padding: 3%;
@@ -159,9 +158,7 @@
 }
 
 .feedbackNewComment {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 2%;
   margin: 2% 0;
 }
@@ -169,11 +166,6 @@
 .feedbackPopupCommentTitleContainer {
   display: grid;
   grid-template-columns: 2fr 4fr 3fr;
-  align-items: center;
-}
-
-.feedbackPopupNumberOfComments {
-  display: flex;
 }
 
 .feedbackPopupNumberOfComments p {
@@ -181,8 +173,6 @@
 }
 
 .feedbackPopupCommentTitleContainer button {
-  /*margin-left: 8px;
-    padding: 10px 5px;*/
   color: #fff;
   margin-left: 8px;
   padding: 5% 2%;

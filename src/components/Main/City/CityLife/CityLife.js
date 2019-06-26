@@ -7,7 +7,7 @@ class CityLife extends Component {
   render() {
     return (
             <div className={classes.CityLifeWrapper}>
-              <h3 className="Title">City Life</h3>
+              <h3 className={classes.Title}>City Life</h3>
               <div className={classes.CityLifeCategoriesWrapper}>
                 <div className={`${classes.CityLifeCategory} ${classes.FoodAndDrinks}`}>
                   <FontAwesomeIcon icon="hamburger" style={{fontSize: '40px', marginBottom: '10px'}}/>

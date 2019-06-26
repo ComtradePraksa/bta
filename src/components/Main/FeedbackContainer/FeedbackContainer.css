@@ -16,12 +16,12 @@
 }
 
 .Heading {
-  font-size: 1.8vw;
+  font-size: 7vw;
   font-weight: 500;
   color: whitesmoke;
   position: absolute;
   top: 5vh;
-  left: 23vh;
+  left: 8vw;
 }
 
 .ticketsWrapper {
@@ -44,8 +44,8 @@
   height: 8vh;
   width: 8vh;
   border-radius: 50%;
-  top: -4vh;
-  right: 10vh;
+  top: 3vh;
+  right: 3vh;
   background-color: crimson;
   display: flex;
   align-items: center;
@@ -56,6 +56,17 @@
   .ticketsWrapper {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
+
+  .Heading {
+    font-size: 1.8vw;
+  }
+
+  .addFeedback {
+    top: -4vh;
+    right: 10vh;
+    cursor: pointer;
+  }
+
 }
 
 @media(min-width: 1300px) {
