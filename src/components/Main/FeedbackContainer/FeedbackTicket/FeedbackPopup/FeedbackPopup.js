@@ -52,9 +52,9 @@ class FeedbackPopup extends Component {
 
     render() {
         return (
-            <div className={classes.feedbackPopupWindow}>
+            <div className={[classes.feedbackPopupWindow, classes.flex, classes.center].join(' ')}>
                 <div className={classes.feedbackPopup}>
-                    <div className={classes.feedbackPopupHeader} >
+                    <div className={[classes.feedbackPopupHeader, classes.flex].join(' ')} >
                         <FontAwesomeIcon icon="times" onClick={this.props.toggleComponents} />
                     </div>
                     <div className={classes.feedbackPopupMain}>
@@ -64,7 +64,7 @@ class FeedbackPopup extends Component {
                             </div>
                             <div className={classes.feedbackPopupUserName}>{this.props.fb.name}</div>
                             <div className={classes.feedbackPopupTitle}>{this.props.fb.title}</div>
-                            <div className={classes.feedbackPopupProgress}>
+                            <div className={[classes.feedbackPopupProgress, classes.flex, classes.center].join(' ')}>
                                 <div className={classes.feedbackPopupInnerProgress}>
                                     <div className={classes.feedbackPopupProgressColor} style={getStyle(this.props.fb.rating)}></div>
                                 </div>
@@ -76,18 +76,17 @@ class FeedbackPopup extends Component {
                                 <FontAwesomeIcon icon={getType(this.props.fb.category).icon} style={{ color: getType(this.props.fb.category).color }} />
                             </div>
                         </div>
-                        <div className={classes.feedbackPopupComments}>
-                            <div className={classes.feedbackPopupCommentTitleContainer}>
+                        <div className={[classes.feedbackPopupComments, classes.flex].join(' ')}>
+                            <div className={[classes.feedbackPopupCommentTitleContainer, classes.center].join(' ')}>
                                 <p className={classes.feedbackPopupCommentTitle}>Comments</p>
-                                <div className={classes.feedbackPopupNumberOfComments}>
+                                <div className={[classes.feedbackPopupNumberOfComments, classes.flex].join(' ')}>
                                     <FontAwesomeIcon icon="comment-alt" style={{ color: "lightgray", marginLeft: "8px" }} />
                                     <p>{this.props.numberOfComments}</p>
                                 </div>
                                 <button onClick={this.toggleComment}> <FontAwesomeIcon icon="plus" /> Add Comment</button>
                             </div>
-                            {this.state.commentVisible && <div className={classes.feedbackNewComment}>
+                            {this.state.commentVisible && <div className={[classes.feedbackNewComment, classes.flex, classes.center].join(' ')}>
                                 <textarea id={`commentText`} onChange={this.getCommentValue} placeholder = "Enter your comment"/>
-                              {/* <FontAwesomeIcon onClick={this.getData} icon="chevron-circle-right" style={{ width: "40px", height: "40px" }} /> */}
                                 <button onClick={this.getData} className={classes.postButton}>Post Comment</button>
                             </div>}
                             <div className={classes.feedbackPopupCommentsContainer}>
