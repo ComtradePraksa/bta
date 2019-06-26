@@ -64,7 +64,7 @@ class FeedbackPopup extends Component {
                             </div>
                             <div className={classes.feedbackPopupUserName}>{this.props.fb.name}</div>
                             <div className={classes.feedbackPopupTitle}>{this.props.fb.title}</div>
-                            <div className={[classes.feedbackPopupProgress, classes.flex, classes.center].join}>
+                            <div className={[classes.feedbackPopupProgress, classes.flex, classes.center].join(' ')}>
                                 <div className={classes.feedbackPopupInnerProgress}>
                                     <div className={classes.feedbackPopupProgressColor} style={getStyle(this.props.fb.rating)}></div>
                                 </div>
