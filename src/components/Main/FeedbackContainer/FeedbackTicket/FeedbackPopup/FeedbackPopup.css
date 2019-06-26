@@ -150,12 +150,12 @@
   border-radius: 5px;
   box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.21);
   font-size: 1rem;
+  padding: 0.5rem;
 }
 
 .feedbackNewComment textarea::placeholder {
   color: rgb(95, 92, 92);
   font-size: 1rem;
-  padding: 0.4rem 0.5rem;
 }
 
 .feedbackNewComment {
@@ -195,7 +195,7 @@
   width: 90%;
   background-color: gray;
   color: white;
-  padding: 2%;
+  padding: 1.5%;
   font-size: 0.7rem;
   box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.21);
 }
