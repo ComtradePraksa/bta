@@ -10,7 +10,7 @@ class Users extends Component {
         username: '',
         password: '',
         is_admin: 0,
-        photo: '',
+        photo: 'assets/profiles/defaultPhoto.jpg',
         usersAll: [],
         users_onePage: [],
         showAll: false,
@@ -27,7 +27,7 @@ class Users extends Component {
             ));
             if (this._isMounted) {
                 const users_onePage = usersAll.slice(0, 10);
-                this.setState({ usersAll, users_onePage });
+                (this.state.showAll) ? this.setState({ usersAll, users_onePage: usersAll }) : this.setState({ usersAll, users_onePage });
             }
         })();
     };
@@ -53,6 +53,7 @@ class Users extends Component {
             // this.setState(prevState=>({ users: [newUser, ...prevState.users]}));
             (async () => {
                 await postToDatabase('/users', newUser);
+                this.setState({ showAll: true });
                 this.getDatabase();
             })();
             this.setState({true_message: '- Successfully aded new user -'});
