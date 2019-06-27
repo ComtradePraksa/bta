@@ -70,11 +70,13 @@ class Accommodation extends Component {
     };
 
     deleteHandler = (id) => {
-        (async () => {
-            await deleteFromDatabase('/accommodations', id);
-            this.getDatabase(`/id_city/${this.state.id_city_selected}`);
-        })();
-        this.setState({true_message: '- Successfully deleted accommodation -'});
+        if (window.confirm('Are you sure you want to permanently delete this accommodation?')) {
+            (async () => {
+                await deleteFromDatabase('/accommodations', id);
+                this.getDatabase(`/id_city/${this.state.id_city_selected}`);
+            })();
+            this.setState({true_message: '- Successfully deleted accommodation -'});
+        }
     };
 
     getDataForUpdate = (link, idCity, id) => {

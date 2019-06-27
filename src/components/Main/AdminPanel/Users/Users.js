@@ -60,11 +60,13 @@ class Users extends Component {
     };
 
     deleteHandler = (id) => {
-        (async () => {
-            await deleteFromDatabase('/users', id);
-            this.getDatabase();
-        })();
-        this.setState({true_message: '- Successfully deleted user -'});
+        if (window.confirm('Are you sure you want to permanently delete this user?')) {
+            (async () => {
+                await deleteFromDatabase('/users', id);
+                this.getDatabase();
+            })();
+            this.setState({true_message: '- Successfully deleted user -'});
+        }
     };
 
     showAllUsers = () => {

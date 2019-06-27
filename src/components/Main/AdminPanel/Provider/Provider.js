@@ -42,11 +42,13 @@ class Provider extends Component {
     };
 
     deleteHandler = (id) => {
-        (async () => {
-            await deleteFromDatabase('/provider', id);
-            this.getDatabase();
-        })();
-        this.setState({true_message: '- Successfully deleted provider -'});
+        if (window.confirm('Are you sure you want to permanently delete this provider?')) {
+            (async () => {
+                await deleteFromDatabase('/provider', id);
+                this.getDatabase();
+            })();
+            this.setState({true_message: '- Successfully deleted provider -'});
+        }
     };
 
     componentDidMount() {

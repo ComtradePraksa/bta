@@ -73,11 +73,13 @@ class Transportations extends Component {
     };
 
     deleteHandler = (id) => {
-        (async () => {
-            await deleteFromDatabase('/transportations', id);
-            this.getDatabase();
-        })();
-        this.setState({true_message: '- Successfully deleted route -'});
+        if (window.confirm('Are you sure you want to permanently delete this route?')) {
+            (async () => {
+                await deleteFromDatabase('/transportations', id);
+                this.getDatabase();
+            })();
+            this.setState({true_message: '- Successfully deleted route -'});
+        }
     };
 
     getRouteForUpdate = (id) => {

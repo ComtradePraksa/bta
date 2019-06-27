@@ -11,12 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Nav from '../Nav/Nav';
 
 class AdminPanel extends Component {
-    
-    logout = () => {
-        //logout
-        this.props.loginStatus(false, {});
-        localStorage.removeItem('jwtoken');
-    };
 
     render() {
         if (!this.props.loggedUser.is_admin) {

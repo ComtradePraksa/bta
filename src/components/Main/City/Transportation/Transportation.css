@@ -1,44 +1,47 @@
 .TransportationWrapper {
-    color: #fff;
-    background: linear-gradient(to right, rgb(127, 103, 176), rgb(65, 115, 183));
-    text-align: left;
+  color: #fff;
+  background: linear-gradient(to right, rgb(127, 103, 176), rgb(65, 115, 183));
+  text-align: left;
 }
 
 .TransportationTitle {
-    cursor: pointer;
-    padding: 1.2rem 2%;
-    user-select: none;
+  cursor: pointer;
+  padding: 1.2rem 2%;
+  user-select: none;
 }
 
 .TransportationTitle h3 {
-    margin-right: 0.4rem;
-    display: inline-block;
+  margin-right: 0.4rem;
+  display: inline-block;
 }
 
 .TransportationBody {
-    padding: 0 2% 1.2rem 2%;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap: 1.2rem;
+  padding: 0 2% 1.2rem 2%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.2rem;
 }
 
-.Transportation{
-    background-color: whitesmoke;
-    color: #333;
-    padding: 1.2rem;
-    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.7);
-    border-radius: 0.4rem;
-    margin-bottom: 0.4rem;
-    text-align: center;
+.Transportation {
+  background-color: whitesmoke;
+  color: #333;
+  padding: 1.2rem;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.7);
+  border-radius: 0.4rem;
+  margin-bottom: 0.4rem;
+  text-align: center;
 }
-.Info{
-    margin-bottom: 0.4rem;
+
+.Info {
+  margin-bottom: 0.4rem;
 }
-.Info:last-child{
-    margin-bottom: 0;
+
+.Info:last-child {
+  margin-bottom: 0;
 }
-.Info span{
-    font-weight: bold;
+
+.Info span {
+  font-weight: bold;
 }
 
 /* @media(min-width: 768px) {
@@ -47,20 +50,20 @@
     }
   } */
 
-  @media(max-width: 768px) {
-    .TransportationBody {
-      grid-template-columns: 1fr;
-    }
+@media(max-width: 768px) {
+  .TransportationBody {
+    grid-template-columns: 1fr;
   }
+}
 
-  @media(min-width: 768px) {
-    .TransportationBody {
-      grid-template-columns: repeat(2,1fr);
-    }
+@media(min-width: 768px) {
+  .TransportationBody {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  @media(min-width: 992px) {
-    .TransportationBody {
-      grid-template-columns: repeat(3,1fr);
-    }
+@media(min-width: 992px) {
+  .TransportationBody {
+    grid-template-columns: repeat(3, 1fr);
   }
+}

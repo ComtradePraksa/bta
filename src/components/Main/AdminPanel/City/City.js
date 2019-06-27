@@ -62,11 +62,13 @@ class City extends Component {
     };
 
     deleteHandler = (id) => {
-        (async () => {
-            await deleteFromDatabase('/locations', id);
-            this.getDatabase();
-        })();
-        this.setState({true_message: '- Successfully deleted city -'});
+        if (window.confirm('Are you sure you want to permanently delete this city?')) {
+            (async () => {
+                await deleteFromDatabase('/locations', id);
+                this.getDatabase();
+            })();
+            this.setState({true_message: '- Successfully deleted city -'});
+        }
     };
 
     componentDidMount() {

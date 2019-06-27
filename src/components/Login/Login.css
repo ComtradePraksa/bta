@@ -231,7 +231,6 @@ input {
   }
 }
 
-
 @media(min-width: 481px) and (max-width:1024px) {
   .LoginWrap {
     grid-template-columns: 1fr;
