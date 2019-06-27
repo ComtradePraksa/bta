@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classes from "./AddNewFeedback.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import jwt from 'jsonwebtoken';
-import axios from 'axios';
+import {postToDatabase} from '../../../../apis/btaApi';
 import { stringForDb } from "../FeedbackFunction/FeedbackFunction"
 
 
@@ -21,39 +21,39 @@ class AddNewFeedback extends Component {
     };
 
     toggle = () => {
-        this.setState({ dropdownVisible:!this.state.dropdownVisible });
+        this.setState({ dropdownVisible: !this.state.dropdownVisible });
     };
 
     getFeedbackValue = (event) => {
         this.setState({ text: event.target.value });
     };
-    getTitle = (event) =>{
-        this.setState({title:event.target.value})
-    }
+
+    getTitle = (event) => {
+        this.setState({title: event.target.value});
+    };
 
     getCategory = (e) => {
-        this.setState({category:e.target.innerText.toLowerCase()});
-        this.setState({placeholder:e.target.innerText})
+        this.setState({category: e.target.innerText.toLowerCase()});
+        this.setState({placeholder: e.target.innerText});
         this.toggle();
     };
+
     getData = () => {
         const commentData = {
             userId: jwt.decode(localStorage.getItem("jwtoken")).id,
             fb: this.state.text,
             dt: stringForDb(),
-            cat:this.state.category,
-            rate:this.state.rate,
-            title:this.state.title,
+            cat: this.state.category,
+            rate: this.state.rate,
+            title: this.state.title,
             cityId: this.props.cityId
         };
-        console.log(commentData)
-        axios({
-            method: 'post',
-            url: `http://localhost:3001${this.props.url}`,
-            data: commentData,
-            config: { headers: { 'Content-Type': 'application/json' } }
-        })
-     
+
+        (async () => {
+            await postToDatabase(`${this.props.url}`, commentData);
+            this.props.getDatabase(`${this.props.url}`, this.props.id);
+        })();
+        this.props.toggle();
     };
 
     render() {
@@ -69,7 +69,6 @@ class AddNewFeedback extends Component {
                             <input className={[classes.title, classes.flex, classes.fullWidth].join(' ')} onChange={this.getTitle} type="text" placeholder="Enter Title" />
                         </div>
                         <div className={classes.chooseType}>
-                        
                             <div className={classes.dropdownWrapper}>
                                 <div className={[classes.dropdown, classes.fullWidth].join(' ')} >
                                     <div className={classes.overlay}></div>

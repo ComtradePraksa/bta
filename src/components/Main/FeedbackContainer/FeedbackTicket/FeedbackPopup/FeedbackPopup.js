@@ -21,8 +21,8 @@ class FeedbackPopup extends Component {
     };
 
     getData = () => {
-        document.querySelector("#commentText").value = "";
-        this.setState({ commentValue: "" });
+        document.querySelector("#commentText").value = '';
+        this.setState({ commentValue: '' });
         const commentData = {
             userId: jwt.decode(localStorage.getItem("jwtoken")).id,
             fbId: this.props.fb.id_feedback,
@@ -93,7 +93,7 @@ class FeedbackPopup extends Component {
                                 {this.props.comments.map((com) => {
                                     if (com.id_feedback === this.props.fb.id_feedback) {
                                         return (
-                                            <FeedbackComment loggedUser={this.props.loggedUser} key={com.id_comment} comments={com} deleteComment={this.props.deleteComment}/>
+                                            <FeedbackComment loggedUser={this.props.loggedUser} key={com.id} comments={com} deleteComment={this.props.deleteComment}/>
                                         )
                                     }
                                     return true;
