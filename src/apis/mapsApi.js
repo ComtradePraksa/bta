@@ -23,6 +23,6 @@ const map = (latitude, longitude, location) => {
     window.addEventListener('resize', function () {
         map.getViewPort().resize(); 
     });
-}
+};
 
 export default map;

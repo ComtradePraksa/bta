@@ -24,6 +24,7 @@ class Nav extends Component {
         if (isAdmin) {
             adminPanelLink = 'Admin\xa0panel';
         }
+        
         return (
             <div className={classes.Container}>
                 <div className={[classes.Nav, classes.flexNav, classes.center].join(' ')}>

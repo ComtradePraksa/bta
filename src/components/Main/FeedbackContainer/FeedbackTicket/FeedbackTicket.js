@@ -45,13 +45,13 @@ class FeedbackTicket extends Component {
     };
 
     getNumberOfComments = () => {
-        let sum = 0
+        let sum = 0;
         this.state.comments.map(comment => {
             if (comment.id_feedback === this.props.fb.id_feedback) {
                 sum++;
             }
             return true;
-        })
+        });
         return sum;
     };
 

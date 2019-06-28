@@ -47,7 +47,7 @@
 }
 
 .UsersImg img {
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
     border-radius: 4px;
     width: 80%;
 }

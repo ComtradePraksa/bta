@@ -9,8 +9,7 @@ const headers = {
 const getHotel = async (hotelUrl) => {
     try {
         const response = await axios.get(`${url}${hotelUrl}`, {headers});
-        const hotel = response.data;
-        return hotel;
+        return response.data;
     } catch (error) {
         console.log(error);
     }

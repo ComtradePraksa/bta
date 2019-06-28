@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 import {postToDatabase} from '../../../../apis/btaApi';
 import { stringForDb } from "../FeedbackFunction/FeedbackFunction"
 
-
 class AddNewFeedback extends Component {
     state = {
         rate: 0,

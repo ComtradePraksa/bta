@@ -42,7 +42,7 @@ class HotelsCity extends Component {
     };
 
     render() {
-        const view = this.state.hotels.slice(0, 5).map((e, index) => <Link key={e.id} to={`/home/hotels/${e.id}`}> <HotelCity key={index} hotel={e}/></Link>)
+        const view = this.state.hotels.slice(0, 5).map((e, index) => <Link key={e.id} to={`/home/hotels/${e.id}`}> <HotelCity key={index} hotel={e}/></Link>);
         
         return (
             <div className = {classes.HotelsCity}>{view}</div>

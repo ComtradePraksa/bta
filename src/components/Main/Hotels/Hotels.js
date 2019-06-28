@@ -38,7 +38,7 @@ class Hotels extends Component {
     };
    
     componentDidMount() {
-        this._isMounted=true;
+        this._isMounted = true;
         if (this._isMounted) {
             (async () => {
                 const res = await getFromDatabase(`/accommodations/${this.props.match.params.id}`);

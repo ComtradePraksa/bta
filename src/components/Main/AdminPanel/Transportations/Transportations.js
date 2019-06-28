@@ -137,7 +137,7 @@ class Transportations extends Component {
             )
         });
 
-        const transportations = this.state.transportations.map(transportation => {
+        const transportations = this.state.transportations.map((transportation, index) => {
             const locationFrom = this.state.locations.find(city => city.id === transportation['from_location_id']);
             const locationTo = this.state.locations.find(city => city.id === transportation['to_location_id']);
             const providerId = this.state.provider.find(provider => provider.id === transportation['provider_id']);
@@ -148,7 +148,7 @@ class Transportations extends Component {
             
             return (
                 <div key={transportation.id}>
-                    {transportation.id}. From {cityNameFrom} - To {cityNameTo}, - Provider: {providerName}, - type of transportation: {transportation.type}
+                    {(index + 1)}. From {cityNameFrom} - To {cityNameTo}, - Provider: {providerName}, - type of transportation: {transportation.type}
                     <span onClick={() => this.deleteHandler(transportation.id)}>
                         <FontAwesomeIcon icon="trash-alt" style={{color: "red", cursor: "pointer", paddingLeft: "1vw"}}/>
                     </span>

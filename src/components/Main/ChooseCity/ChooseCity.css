@@ -57,7 +57,7 @@
 }
 
 .dropdownItemList {
-  min-height: 0vh;
+  min-height: 0;
   max-height: 35vh;
   overflow-y: auto;
   flex-direction: column;

@@ -18,12 +18,12 @@
 }
 
 .AdminH1 {
-    grid-area: "adminH1";
+    grid-area: adminH1;
     margin: 2rem;
 }
 
 .AdminContainer {
-    grid-area: "adminContainer";
+    grid-area: adminContainer;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -32,7 +32,7 @@
 }
 
 .AdminComponent {
-    grid-area: "adminComponent";
+    grid-area: adminComponent;
     min-height: 75vh;
 }
 

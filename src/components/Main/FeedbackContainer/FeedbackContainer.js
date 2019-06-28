@@ -24,7 +24,7 @@ class FeedbackContainer extends Component {
             const userfeedback = [];
             if (data !== undefined) {
                 data.data.map(fb => {
-                    feedback.push(fb)
+                    feedback.push(fb);
                     if (data.user.id === fb.id) {
                         userfeedback.push(fb.id_feedback);
                         this.setState({ userfeedbacks: userfeedback });
@@ -36,7 +36,7 @@ class FeedbackContainer extends Component {
         })();
     };
 
-    componentDidUpdate(prevProps,prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.id !== this.props.id ) {
             this.getDatabase(this.props.url, this.props.id);
         }
@@ -66,10 +66,10 @@ class FeedbackContainer extends Component {
                         ))
                     }
                 </div>
-                {this.props.cityId !==undefined ?
+                {this.props.id !== '' ?
                 <div onClick={this.toggle} className={classes.addFeedback}>
                     <FontAwesomeIcon icon="plus" style={{ color: "white" }}/>
-                </div> :""}
+                </div> : null}
                 {this.state.newComentVisible && <AddNewFeedback getDatabase={this.getDatabase} url={this.props.url} cityId = {this.props.cityId} toggle={this.toggle} id={this.props.id}/>}
             </div>
         );

@@ -51,7 +51,7 @@ class ChooseCity extends Component {
                 {this.state.dropdownVisible &&
                     <div className={[classes.dropdownWrapper].join(' ')}>
                         <div className={classes.dropdown} >
-                            <div onClick = {this.toggleDropdown} className= {classes.overlay}></div>
+                            <div onClick={this.toggleDropdown} className={classes.overlay}></div>
                             <div className={[classes.dropdownTileWrapper, classes.pointer].join(' ')}>
                             <input placeholder={this.state.placeholderMessage} readOnly className={[classes.fullHeight, classes.pointer].join(' ')}/>
                                 <FontAwesomeIcon icon="chevron-down" style={{color: '#fff'}}/>

@@ -7,4 +7,4 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => (
       ? <Component {...props} {...rest} />
       : <Redirect to='/' />
   )} />
-)
+);
