@@ -217,13 +217,13 @@ module.exports = function (app, express, mysqlConnection) {
         userId: req.body.userId,
         fb: req.body.fb,
         dt: req.body.dt,
-        cat:req.body.cat,
-        rate:req.body.rate,
-        title:req.body.title,
-        cityId:req.body.cityId
+        cat: req.body.cat,
+        rate: req.body.rate,
+        title: req.body.title,
+        cityId: req.body.cityId
       }
-      mysqlConnection.query('insert into location_feedbacks (id_user,title,category,rating,feedback,id_location,date) values (?,?,?,?,?,?,?)',
-        [req.body.userId,req.body.title,req.body.cat,req.body.rate,req.body.fb,req.body.cityId,req.body.dt], function (error, results) {
+      mysqlConnection.query('insert into location_feedbacks (id_user, title, category, rating, feedback, id_location, date) values (?,?,?,?,?,?,?)',
+        [req.body.userId, req.body.title, req.body.cat, req.body.rate, req.body.fb, req.body.cityId, req.body.dt], function (error, results) {
           if (error) throw error;
           res.send({ error: false, newComment, user: req.user, insertedId: results.insertedId });
         });
@@ -281,6 +281,22 @@ module.exports = function (app, express, mysqlConnection) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Acc feedbacks list.', user: req.user });
       });
+    })
+    .post(verifyToken, (req, res) => {
+      const newComment = {
+        userId: req.body.userId,
+        fb: req.body.fb,
+        dt: req.body.dt,
+        cat: req.body.cat,
+        rate: req.body.rate,
+        title: req.body.title,
+        cityId: req.body.cityId
+      }
+      mysqlConnection.query('insert into acc_feedbacks (id_user, rating, feedback, id_acc, date) values (?,?,?,?,?)',
+        [req.body.userId, req.body.rate, req.body.fb, req.body.cityId, req.body.dt], function (error, results) {
+          if (error) throw error;
+          res.send({ error: false, newComment, user: req.user, insertedId: results.insertedId });
+        });
     });
   router.route('/acc_feedbacks/:id')
     .delete(verifyToken, (req, res) => {
@@ -291,7 +307,7 @@ module.exports = function (app, express, mysqlConnection) {
     });
     router.route('/acc_feedbacks/accommodation/:id')
     .get(verifyToken, (req, res) => {
-      mysqlConnection.query('SELECT * FROM acc_feedbacks AS lf JOIN users AS u ON lf.id_user=u.id where id_acc', function (error, results) {
+      mysqlConnection.query('SELECT * FROM acc_feedbacks AS lf JOIN users AS u ON lf.id_user=u.id where id_acc', req.params.id, function (error, results) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Acc feedbacks list.', user: req.user });
       });
