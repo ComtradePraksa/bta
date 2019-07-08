@@ -1,4 +1,4 @@
-# Project - BTA - Business Trip Advisor - Travel Companion  
+# Project: BTA - Business Trip Advisor (Travel Companion)  
 
 [![build-shield]](#)
 [![code-clean]](#)
@@ -34,14 +34,15 @@ Our team sprint is manifested through our commitment in helping others have more
 ## Technology used
 
 <p align="center">
-    <img src="./forReadme/react_logo.png" alt="Logo" width="200" height="200">
+    <img src="./forReadme/react_logo.jpg" alt="Logo" width="200" height="290">
+
+> HTML5, CSS3, ES6, React.js with React Router, phpMyAdmin, MySQL, Express.js, Webpack, RESTapi, Axios...
 
 [![html]](#)&nbsp;
 [![css]](#)&nbsp;
 [![js]](#)&nbsp;
 [![axios]](https://www.npmjs.com/package/axios)&nbsp;
 [![webpack]](https://webpack.js.org/)
-> HTML5, CSS3, ES6, React.js with React Router, phpMyAdmin, MySQL, Express.js, Webpack, RESTapi.
 <br>
 <p align="center">
     <img src="./forReadme/react.jpg" alt="Logo">
