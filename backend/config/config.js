@@ -1,9 +1,9 @@
 module.exports = {
   dbConfig: {
     host: 'remotemysql.com',
-    user: 'Gu3wYk28LK',
-    password: '9EVqUde3cW',
-    database: 'Gu3wYk28LK',
+    user: 'RVxl8wbWc3',
+    password: 'LXwbUiOjsJ',
+    database: 'RVxl8wbWc3',
     connectionLimit: 100,
     debug: false
   }

@@ -15,7 +15,7 @@ input {
 .LoginWrap {
   display: grid;
   grid-template-areas:
-    "logo login .";
+    "logo login";
   min-height: 100vh;
   grid-template-columns: 2fr 1fr 0.5fr;
   background-image: linear-gradient(-90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);

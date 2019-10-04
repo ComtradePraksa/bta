@@ -46,8 +46,6 @@ class City extends Component {
 
     saveHandler = () => {
         if (this.state.city_name && this.state.state !== '') {
-            this.getGeolocation();
-            
             const newCity = {
                 city_name: this.state.city_name,
                 state: this.state.state,
@@ -89,13 +87,12 @@ class City extends Component {
                 </div>
             )
         });
-
         return(
             <div className={classes.City}>
                 <h2>Enter new city for travel</h2>
                 <div className={classes.AdminCityInput}>
-                    <input onBlur={this.inputHandler} type="text" name="city_name" placeholder="Enter city"/>
-                    <input onBlur={this.inputHandler} type="text" name="state" placeholder="Enter state for city"/>
+                    <input onChange={this.inputHandler} onBlur={this.getGeolocation} type="text" name="city_name" placeholder="Enter city"/>
+                    <input onChange={this.inputHandler} type="text" name="state" placeholder="Enter state for city"/>
                 </div>
                 {
                     (this.state.regEx_message !== '' && this.state.true_message === '') ? 

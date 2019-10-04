@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {getFromDatabase} from '../../../../apis/btaApi';
-// import FeedbackCL from '../../CurrentLocation/FeedbackCL/FeedbackCL';
 import classes from './Feedback.css';
+import FeedbackContainer from '../../FeedbackContainer/FeedbackContainer';
 
 class Feedback extends Component {
     state = {
-        // location_feedbacks: '',
-        // acc_feedbacks: '',
-        // transportation_feedbacks: '',
+        location_feedbacks: '',
+        acc_feedbacks: '',
         feedbacks: '',
         regEx_message: ''
     };
@@ -22,14 +21,13 @@ class Feedback extends Component {
 
     render() {
         return (
-            <div className={classes.Feedback}>
-                <div onClick={() => this.getDatabase('/location_feedbacks', 'feedbacks')}>Location Feedbacks</div>
-                <div onClick={() => this.getDatabase('/acc_feedbacks', 'feedbacks')}>Accommodation Feedbacks</div>
-                <div onClick={() => this.getDatabase('/transportation_feedbacks', 'feedbacks')}>Transportation Feedbacks</div>
-                {/* <div className={classes.FeedbackCL}>
-                    <FeedbackCL loggedUser={this.props.loggedUser}/>
-                </div> */}
-            </div>
+            <React.Fragment>
+                <div className={classes.Feedback}>
+                    <div onClick={() => this.getDatabase('/location_feedbacks', 'feedbacks')}>Location Feedbacks</div>
+                    <div onClick={() => this.getDatabase('/acc_feedbacks', 'feedbacks')}>Accommodation Feedbacks</div>
+                </div>
+                <FeedbackContainer loggedUser={this.props.loggedUser} url='/location_feedbacks' id=''/>
+            </React.Fragment>
         )
     }
 }
